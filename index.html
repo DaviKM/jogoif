@@ -1,11 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ódio Salgado</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div id="tela">
+
+            <button type="button" id="jogar" onclick="controle(1)">Jogar</button>
+    </div>
+    <script>
+
+        //switch-case que controla qual pagina sera exibida ao clicar para passar o dialogo
+        function controle(cont){
+            switch(cont){
+                case 1:
+                    document.getElementById("tela").innerHTML = `
+                    <div class = "hud">
+                        <p class = "dialogo">Dialogo exemplo aaaaaaaaaaaaaaaaaadia dia dia lo lo lo lo go go go go go aaaaaaaaaaaago go go e e e ee e xem xem xem xem plo plo plo </p>
+                    </div>
+                    `
+            }
+        }
+    </script>
 </body>
 </html>
