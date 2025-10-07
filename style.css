@@ -72,6 +72,25 @@ main{
 .botao-passar:hover{
     cursor: pointer;
 }
+.opcao:hover{
+    cursor: pointer;
+}
+.opcao{
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 18px;
+    width: 80%;
+    text-align: left;
+}
+
+.bot-opc{
+    display: flex;
+    gap: 10px;   
+    margin: 20px 40px;
+}
 
 .hud{
     display: flex;
@@ -81,19 +100,14 @@ main{
     background-color: rgba(94, 5, 5, 0.7);
     color: white;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    z-index: 2;
+    z-index: 5;
+    flex-direction: column;
 }
 
 .hud p{
     margin: 40px;
 }
 
-.hud button{
-    position: absolute;
-    right: 25vh;
-    bottom: 15vh;
-    padding: 4px;
-}
 .dialogo{
     margin-bottom: 30px;
 }
