@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,41 +8,48 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Metal+Mania&family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Metal+Mania&family=Smooch+Sans:wght@100..900&display=swap"
+        rel="stylesheet">
 
 </head>
+
 <body>
-    <div id="tela" class="inicio">
+    <main id="tela" class="inicio">
+        <h1 id="tit_principal">Ódio Salgado</h1>
         <div class="botoes-inicio">
-            <button type="button" id="jogar" onclick="controle(1)">Jogar</button>
-            <button type="button" id="jogar" >Créditos</button>
+            <button type="button" id="jogar" onclick="controle(1)" class="botao-inicio">Jogar</button>
+            <button type="button" id="creditos" class="botao-inicio">Créditos</button>
         </div>
-    </div>
+    </main>
     <script>
 
         //switch-case que controla qual pagina sera exibida ao clicar para passar o dialogo
-        function controle(cont){
-            switch(cont){
+        function controle(cont) {
+            switch (cont) {
                 case 1:
-                    document.getElementById("tela").className = "frente";
+                    document.getElementById("tela").className = "entrada";
                     document.getElementById("tela").innerHTML = `
                     <div class = "hud">
-                        <p class = "dialogo">Dialogo exemplo aaaaaaaaaaaaaaaaaadia dia dia lo lo lo lo go go go go go aaaaaaaaaaaago go go e e e ee e xem xem xem xem plo plo plo </p>
-                        <button type="button" onclick="controle(2)">Proximo</button>
+                        <p class = "dialogo">Voc~e chega em mais um dia no IFRS, com um objetivo claro em mente, se tornar </p>
+                        <button type="button" onclick="controle(2)" class="botao-passar">Proximo</button>
                     </div>
                     `
-                break;
+                    break;
                 case 2:
-                    document.getElementById("tela").className = "frente";
+                    document.getElementById("tela").className = "entrada";
                     document.getElementById("tela").innerHTML = `
                     <img src="images/sheldon.png" alt="Sheldon" class="sheldon-img">
                     <div class = "hud">
-                        <p class = "dialogo">Dialogo muito f0*4 </p>
-                        <button type="button" onclick="controle(3)">Proximo</button>
+                        <p class = "dialogo">BAZINGA</p>
+                        <button type="button" onclick="controle(3)" class="botao-passar">Proximo</button>
                     </div>
                     `
+                    break;
+
             }
         }
     </script>
 </body>
+
 </html>
