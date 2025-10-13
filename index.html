@@ -11,55 +11,58 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Metal+Mania&family=Smooch+Sans:wght@100..900&display=swap"
         rel="stylesheet">
-
 </head>
 
 <body>
     <main id="tela" class="inicio">
         <h1 id="tit_principal">Ódio Salgado</h1>
         <div class="botoes-inicio">
-            <button type="button" id="jogar" onclick="controle(1)" class="botao-inicio">Jogar</button>
-            <button type="button" id="creditos"  class="botao-inicio">Créditos</button>
+            <button type="button" id="jogar" onclick="vaiPara('cena1'); trocaFundo('entrada_if')" class="botao-inicio">Jogar</button>
+            <button type="button" id="creditos" class="botao-inicio">Créditos</button>
             <button type="button" id="personagens" class="botao-inicio">Personagens</button>
         </div>
     </main>
+
+
+
+    <div id="cena1" class="cenas">
+        <div class="hud">
+            <p class="dialogo">Você chega em mais um dia no IFRS, com um objetivo claro em mente, se tornar </p>
+            <button type="button" onclick="vaiPara('sheldon')" class="botao-passar">Proximo</button>
+        </div>
+    </div>
+
+
+
+    <div id="sheldon" class="cenas"><img src="images/sheldon.png" alt="Sheldon" class="sheldon-img">
+        <div class="hud">
+            <p class="dialogo">Saudações, eu sou o Dr. Sheldon Cooper, Ph.D, Sc.d. Antes de começarmos, é importante
+                esclarecer: não gosto de surpresas, toques ou mudanças na minha rotina. Agora, diga-me: você tem um QI
+                acima de 187 ou devo ajustar minhas expectativas?</p>
+            <div class="bot-opc">
+                <button type="button" onclick="resposta('sheldon', 1)" class="opcao">Na verdade, meu QI é bem alto.
+                    Podemos conversar de igual para igual.</button>
+                <button type="button" onclick="resposta('sheldon', 2)" class="opcao">Eu não sei meu QI, mas prometo que
+                    sou esperto o bastante para te acompanhar.</button>
+            </div>
+        </div>
+    </div>
     <script>
 
-        //switch-case que controla qual pagina sera exibida ao clicar para passar o dialogo
-        function controle(cont) {
-            switch (cont) {
-                case 1:
-                    document.getElementById("tela").className = "entrada";
-                    document.getElementById("tela").innerHTML = `
-                    <div class = "hud">
-                        <p class = "dialogo">Você chega em mais um dia no IFRS, com um objetivo claro em mente, se tornar </p>
-                        <button type="button" onclick="controle(2)" class="botao-passar">Proximo</button>
-                    </div>
-                    `
-                    break;
-                case 2:
-                    document.getElementById("tela").className = "entrada";
-                    document.getElementById("tela").innerHTML = `
-                    <img src="images/sheldon.png" alt="Sheldon" class="sheldon-img">
-                    <div class = "hud">
-                        <p class = "dialogo">Saudações, eu sou o Dr. Sheldon Cooper, Ph.D, Sc.d. Antes de começarmos, é importante esclarecer: não gosto de surpresas, toques ou mudanças na minha rotina. Agora, diga-me: você tem um QI acima de 187 ou devo ajustar minhas expectativas?</p>
-                        <div class = "bot-opc">
-                            <button type="button" onclick="resposta('sheldon', 1)" class="opcao">Na verdade, meu QI é bem alto. Podemos conversar de igual para igual.</button>
-                            <button type="button" onclick="resposta('sheldon', 2)" class="opcao">Eu não sei meu QI, mas prometo que sou esperto o bastante para te acompanhar.</button>
-                        </div>
-                    </div>
-                    `
-                    break;
-            }
+        function trocaFundo(fundo){
+            document.getElementById("tela").style=`background-image: url(images/${fundo}.png);`
         }
 
-        function resposta(pers, nivel){
-            var falas = dialogos[pers][nivel];
+        function vaiPara(cena) {
+            document.getElementById("tela").innerHTML = document.getElementById(cena).innerHTML
+        }
+
+        function resposta(pers, nivel) {
             document.getElementById("tela").innerHTML = `
             <img src="images/sheldon.png" alt="Sheldon" class="sheldon-img">
             <div class = "hud">
-                <p class = "dialogo">${falas[0]}</p>
-                <button type="button" onclick="controle(1)" class="botao-passar">Voltar ao início</button>
+                <p class = "dialogo">${dialogos[pers][nivel]}</p>
+                <button type="button" onclick="vaiPara('cena1')" class="botao-passar">Voltar ao início</button>
             `
         }
 
@@ -67,15 +70,15 @@
         //declaração de arrays com os diálogos, os números abaixo do nome do personagem são os diálogos diferentes dependendo da resposta do jogador
         //OBS: quanto maior o nível, mais rude o jogador foi com o personagem
         const dialogos = {
-            sheldon:{
-                1:[
+            sheldon: {
+                1: [
                     "Oh! Finalmente alguém com um potencial intelectual equivalente nesse lugar!",
                 ],
-                2:[
+                2: [
                     "Hmm, uma resposta diplomática. Aceitável... por enquanto.",
                 ],
             }
-            
+
         }
     </script>
 </body>

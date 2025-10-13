@@ -1,19 +1,21 @@
-*{
+/* Reset básico */
+* {
     margin: 0;
     padding: 0;
 }
 
-/*define body e html como tamanho máximo e centraliza a main*/
-body,html{
+/* Body e HTML: tamanho máximo e centralização da main */
+body, html {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
     height: 100vh;
-     background-color: rgb(166, 218, 228);
+    background-color: rgb(166, 218, 228);
 }
 
-main{
+/* Main container */
+main {
     display: flex;
     align-items: center;
     justify-content: end;
@@ -22,15 +24,17 @@ main{
     border: solid 3px rgb(99, 98, 98);
     flex-direction: column;
 }
+
+/* Botões de início */
 .botoes-inicio {
     position: absolute;
     bottom: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
-.botao-inicio{
+
+.botao-inicio {
     padding: 4px;
     font-family: "Cinzel", serif;
     font-size: 30px;
@@ -38,21 +42,34 @@ main{
     border: none;
     color: rgba(255, 255, 255, 0.952);
     font-weight: bold;
-    text-shadow: 10px 10px 15px rgba(0,0,0,0.7); /*sombra ao redor da letra*/
+    text-shadow: 10px 10px 15px rgba(0,0,0,0.7);
 }
 
-.botao-passar{
+.botao-inicio:hover {
+    cursor: pointer;
+}
+
+.botao-passar {
     padding: 4px;
-    /*font-family: ;*/
     font-size: 26px;
     background: none;
     border: none;
     color: rgba(255, 255, 255, 0.952);
     font-weight: bold;
-    text-shadow: 10px 10px 15px rgba(0,0,0,0.7); /*sombra ao redor da letra*/
+    text-shadow: 10px 10px 15px rgba(0,0,0,0.7);
 }
 
-#tit_principal{
+.botao-passar:hover {
+    cursor: pointer;
+}
+
+/* Switch case / cenas */
+.cenas {
+    display: none;
+}
+
+/* Título principal */
+#tit_principal {
     padding: 4px;
     font-family: "Cinzel", serif;
     font-size: 40pt;
@@ -60,22 +77,13 @@ main{
     border: none;
     color: rgba(255, 255, 255, 0.952);
     font-weight: bold;
-    text-shadow: 10px 10px 15px rgba(0,0,0,0.7); /*sombra ao redor da letra*/
+    text-shadow: 10px 10px 15px rgba(0,0,0,0.7);
     position: absolute;
     top: 40%;
 }
 
-.botao-inicio:hover{
-    cursor: pointer;
-}
-
-.botao-passar:hover{
-    cursor: pointer;
-}
-.opcao:hover{
-    cursor: pointer;
-}
-.opcao{
+/* Opções de diálogo */
+.opcao {
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
     border: 2px solid rgba(255, 255, 255, 0.4);
@@ -86,13 +94,18 @@ main{
     text-align: left;
 }
 
-.bot-opc{
+.opcao:hover {
+    cursor: pointer;
+}
+
+.bot-opc {
     display: flex;
-    gap: 10px;   
+    gap: 10px;
     margin: 20px 40px;
 }
 
-.hud{
+/* HUD */
+.hud {
     display: flex;
     height: 30%;
     width: 100%;
@@ -104,38 +117,40 @@ main{
     flex-direction: column;
 }
 
-.hud p{
+.hud p {
     margin: 2%;
 }
 
-.dialogo{
+.dialogo {
     margin-bottom: 30px;
 }
 
-.frente{
+/* Cenários / Backgrounds */
+.frente {
     background-image: url("images/fachada_if.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.entrada{
-    background-image: url(images/entrada_if\ \(1\).png);
+.entrada {
+    background-image: url(images/entrada_if.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.inicio{
+.inicio {
     background-image: url("images/ódio\ salgado.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
+
+/* Imagem de personagem */
 .sheldon-img {
-   position: absolute;
+    position: absolute;
     width: 65vw;
-    height: 70vh;             
+    height: 70vh;
     z-index: 1;
 }
-
