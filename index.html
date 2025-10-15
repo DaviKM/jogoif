@@ -24,18 +24,28 @@
         </div>
     </main>
 
-
-
     <div id="cena1" class="cenas">
         <div class="hud">
-            <p class="dialogo">Você chega em mais um dia no IFRS, com um objetivo claro em mente, se tornar </p>
-            <button type="button" onclick="trocaFundo('entrada_if');vaiPara('sheldon');"
-                class="botao-passar">Proximo</button>
+            <p class="dialogo">“Ao chegar no IFRS, em uma manhã ensolarada, com uma clara intenção em mente: se tornar o presidente do grêmio estudantil da escola, porém, para isso será necessário conseguir votos, assim que você entra na instituição, você nota que os lugares mais movimentados são o pátio da escola e a sala de aula</p>
+            <button type="button" onclick="trocaFundo('patio');vaiPara(aleatEntre('vinicius','messi','alanpa'));"
+                class="botao-passar">Patio</button>
+            <button type="button" onclick="trocaFundo('sala');vaiPara(aleatEntre('sheldon', 'gustavo', 'house'))"
+                class="botao-passar">Sala de aula</button>
         </div>
     </div>
 
+    <!--Personagens pátio-->
+    <div id="vinicius" class="cenas"><img src="images/vinicius.png" alt="Vinicius" class="sheldon-img">
+        <div class="hud">
+            <p class="dialogo">aidawindiwaubdnawiudbnowaibdw</p>
+            <div class="bot-opc">
+                <button type="button" onclick="resposta('vinicius', 1)" class="opcao">lorem ipsuimlorem ipsuimlorem ipsuimlorem ipsuimlorem ipsuim</button>
+                <button type="button" onclick="resposta('vinicius', 2)" class="opcao">lorem ipsuimlorem ipsuimlorem ipsuimlorem ipsuimlorem ipsuim</button>
+            </div>
+        </div>
+    </div>
 
-
+    <!--Personagens sala de aula-->
     <div id="sheldon" class="cenas"><img src="images/sheldon.png" alt="Sheldon" class="sheldon-img">
         <div class="hud">
             <p class="dialogo">Saudações, eu sou o Dr. Sheldon Cooper, Ph.D, Sc.d. Antes de começarmos, é importante
@@ -49,7 +59,44 @@
             </div>
         </div>
     </div>
+
+    <div id="gustavo" class="cenas"><img src="images/gustavo.png" alt="Gustavo" class="sheldon-img">
+        <div class="hud">
+            <p class="dialogo">Fala aí, candidato. Vai sentar aqui mesmo? Cuidado, essa fileira é território dos desinteressados.</p>
+            <div class="bot-opc">
+                <button type="button" onclick="resposta('gustavo', 1)" class="opcao">Relaxa, só tô esperando o professor começar pra fingir que presto atenção.</button>
+                <button type="button" onclick="resposta('gustavo', 2)" class="opcao">Você devia tentar prestar atenção, talvez aprenda algo novo.</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="house" class="cenas"><img src="images/house.png" alt="DrHouse" class="sheldon-img">
+        <div class="hud">
+            <p class="dialogo">Olha só... o candidato resolve estudar. Achei que já estivesse vendendo promessas pelo corredor.</p>
+            <div class="bot-opc">
+                <button type="button" onclick="resposta('house', 1)" class="opcao">Achei que você não se interessava por aulas.</button>
+                <button type="button" onclick="resposta('house', 2)" class="opcao">Tô aqui pra aprender, diferente dos meus adversários.</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        function numeroAleatorio(max){
+            return Math.floor(Math.random() * max);
+        }
+
+        function aleatEntre(p1,p2,p3){
+            aleatorio = numeroAleatorio(3);
+            if(aleatorio==0){
+                return p1;
+            }
+            if(aleatorio==1){
+                return p2;
+            }
+            else{
+                return p3;
+            }
+        }
 
         function trocaFundo(fundo) {
             document.getElementById("tela").style = `background-image: url(images/${fundo}.png);`
@@ -61,7 +108,7 @@
 
         function resposta(pers, nivel) {
             document.getElementById("tela").innerHTML = `
-            <img src="images/sheldon.png" alt="Sheldon" class="sheldon-img">
+            <img src="images/${pers}.png" alt="${pers}" class="sheldon-img">
             <div class = "hud">
                 <p class = "dialogo">${personagem[pers].dialogos[nivel]}</p>
                 <button type="button" onclick="vaiPara('cena1')" class="botao-passar">Voltar ao início</button>
@@ -92,7 +139,15 @@
             house: {
                 nome: "Dr.",
                 snome: "House",
-                relacionamento: 30
+                relacionamento: 30,
+                dialogos: {
+                    1: [
+                        "Não me interesso. Só vim ver o circo.",
+                    ],
+                    2: [
+                        "Competitivo, gostei. Só não transforme isso em discurso de campanha.",
+                    ]
+                }
             },
             davi: {
                 nome: "Davi",
@@ -124,7 +179,15 @@
             gustavo: {
                 nome: "Gustavo",
                 snome: "Gonçalves",
-                relacionamento: 70
+                relacionamento: 70,
+                dialogos: {
+                    1:[
+                        "Hah! Boa. Então somos da mesma classe social: os que sobrevivem com ironia. Quer ver um ranking das melhores cartas do clash royale?",
+                    ],
+                    2:[
+                        "Nossa... começou o discurso motivacional da semana? Relaxa, não tenho nada contra estudar. Só prefiro quando o professor não parece um NPC.",
+                    ],
+                }
             },
             enzo: {
                 nome: "Enzo",
