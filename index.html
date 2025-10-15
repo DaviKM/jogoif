@@ -17,7 +17,8 @@
     <main id="tela" class="inicio">
         <h1 id="tit_principal">Ódio Salgado</h1>
         <div class="botoes-inicio">
-            <button type="button" id="jogar" onclick="vaiPara('cena1'); trocaFundo('entrada_if')" class="botao-inicio">Jogar</button>
+            <button type="button" id="jogar" onclick="trocaFundo('entrada_if'); vaiPara('cena1')"
+                class="botao-inicio">Jogar</button>
             <button type="button" id="creditos" class="botao-inicio">Créditos</button>
             <button type="button" id="personagens" class="botao-inicio">Personagens</button>
         </div>
@@ -28,7 +29,8 @@
     <div id="cena1" class="cenas">
         <div class="hud">
             <p class="dialogo">Você chega em mais um dia no IFRS, com um objetivo claro em mente, se tornar </p>
-            <button type="button" onclick="vaiPara('sheldon')" class="botao-passar">Proximo</button>
+            <button type="button" onclick="trocaFundo('entrada_if');vaiPara('sheldon');"
+                class="botao-passar">Proximo</button>
         </div>
     </div>
 
@@ -49,8 +51,8 @@
     </div>
     <script>
 
-        function trocaFundo(fundo){
-            document.getElementById("tela").style=`background-image: url(images/${fundo}.png);`
+        function trocaFundo(fundo) {
+            document.getElementById("tela").style = `background-image: url(images/${fundo}.png);`
         }
 
         function vaiPara(cena) {
@@ -61,23 +63,74 @@
             document.getElementById("tela").innerHTML = `
             <img src="images/sheldon.png" alt="Sheldon" class="sheldon-img">
             <div class = "hud">
-                <p class = "dialogo">${dialogos[pers][nivel]}</p>
+                <p class = "dialogo">${personagem[pers].dialogos[nivel]}</p>
                 <button type="button" onclick="vaiPara('cena1')" class="botao-passar">Voltar ao início</button>
             `
         }
 
-        //nao tem nada a ver com a historia, peguei os dialogos com o chatgpt, so to tentando criar uma lógica aqui
-        //declaração de arrays com os diálogos, os números abaixo do nome do personagem são os diálogos diferentes dependendo da resposta do jogador
+        // dialogos: os números abaixo do nome do personagem são os diálogos diferentes dependendo da resposta do jogador
         //OBS: quanto maior o nível, mais rude o jogador foi com o personagem
-        const dialogos = {
+        personagem = {
             sheldon: {
-                1: [
-                    "Oh! Finalmente alguém com um potencial intelectual equivalente nesse lugar!",
-                ],
-                2: [
-                    "Hmm, uma resposta diplomática. Aceitável... por enquanto.",
-                ],
-            }
+                nome: "Sheldon",
+                snome: "Cooper",
+                relacionamento: 40,
+                dialogos: {
+                    1: [
+                        "Oh! Finalmente alguém com um potencial intelectual equivalente nesse lugar!",
+                    ],
+                    2: [
+                        "Hmm, uma resposta diplomática. Aceitável... por enquanto.",
+                    ],
+                }
+            },
+            messi: {
+                nome: "Lionel",
+                snome: "Messi",
+                relacionamento: 60
+            },
+            house: {
+                nome: "Dr.",
+                snome: "House",
+                relacionamento: 30
+            },
+            davi: {
+                nome: "Davi",
+                snome: "Brito",
+                relacionamento: 70
+            },
+            alanpa: {
+                nome: "Alan",
+                snome: "Patrick",
+                relacionamento: 60
+            },
+            bigolin: {
+                nome: "Marcio",
+                snome: "Bigolin",
+                relacionamento: 75
+            },
+            theo: {
+                nome: "Theo",
+                snome: "Petrusch",
+                relacionamento: 65
+            },
+
+            vinicius: {
+                nome: "Vinicius",
+                snome: "Colussi",
+                relacionamento: 65
+            },
+
+            gustavo: {
+                nome: "Gustavo",
+                snome: "Gonçalves",
+                relacionamento: 70
+            },
+            enzo: {
+                nome: "Enzo",
+                snome: "Ferreira",
+                relacionamento: 65
+            },
 
         }
     </script>
