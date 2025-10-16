@@ -27,9 +27,9 @@
     <div id="cena1" class="cenas">
         <div class="hud">
             <p class="dialogo">“Ao chegar no IFRS, em uma manhã ensolarada, com uma clara intenção em mente: se tornar o presidente do grêmio estudantil da escola, porém, para isso será necessário conseguir votos, assim que você entra na instituição, você nota que os lugares mais movimentados são o pátio da escola e a sala de aula</p>
-            <button type="button" onclick="trocaFundo('patio');vaiPara(aleatEntre('vinicius','messi','alanpa'));"
+            <button type="button" onclick="trocaFundo('patio');vaiPara(aleatEntre(cenas.patio));"
                 class="botao-passar">Patio</button>
-            <button type="button" onclick="trocaFundo('sala');vaiPara(aleatEntre('sheldon', 'gustavo', 'house'))"
+            <button type="button" onclick="trocaFundo('sala');vaiPara(aleatEntre(cenas.sala))"
                 class="botao-passar">Sala de aula</button>
         </div>
     </div>
@@ -85,17 +85,10 @@
             return Math.floor(Math.random() * max);
         }
 
-        function aleatEntre(p1,p2,p3){
-            aleatorio = numeroAleatorio(3);
-            if(aleatorio==0){
-                return p1;
-            }
-            if(aleatorio==1){
-                return p2;
-            }
-            else{
-                return p3;
-            }
+        
+        function aleatEntre(personagens){
+            aleatorio = numeroAleatorio(personagens.length);
+            return personagens[aleatorio]
         }
 
         function trocaFundo(fundo) {
@@ -103,7 +96,8 @@
         }
 
         function vaiPara(cena) {
-            document.getElementById("tela").innerHTML = document.getElementById(cena).innerHTML
+            document.getElementById("tela").innerHTML = document.getElementById(cena).innerHTML ;
+
         }
 
         function resposta(pers, nivel) {
@@ -195,6 +189,12 @@
                 relacionamento: 65
             },
 
+        }
+        
+        //Cenas e quais personagens aparece em cada uma delas
+        cenas = {
+            sala: ["sheldon", "gustavo", "house"],
+            patio: ["vinicius", "messi", "alanpa"]
         }
     </script>
 </body>
