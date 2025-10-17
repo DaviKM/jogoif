@@ -26,27 +26,40 @@
 
     <div id="cena1" class="cenas">
         <div class="hud">
-            <p class="dialogo">“Ao chegar no IFRS, em uma manhã ensolarada, com uma clara intenção em mente: se tornar o presidente do grêmio estudantil da escola, porém, para isso será necessário conseguir votos, assim que você entra na instituição, você nota que os lugares mais movimentados são o pátio da escola e a sala de aula</p>
+            <p class="dialogo">Ao chegar no IFRS, em uma manhã ensolarada, com uma clara intenção em mente: se tornar o
+                presidente do grêmio estudantil da escola, porém, para isso será necessário conseguir votos, assim que
+                você entra na instituição, você nota que os lugares mais movimentados são o pátio da escola e a sala de
+                aula</p>
             <button type="button" onclick="trocaFundo('patio');vaiPara(aleatEntre(cenas.patio));"
                 class="botao-passar">Patio</button>
-            <button type="button" onclick="trocaFundo('sala');vaiPara(aleatEntre(cenas.sala))"
-                class="botao-passar">Sala de aula</button>
+            <button type="button" onclick="trocaFundo('sala');vaiPara(aleatEntre(cenas.sala))" class="botao-passar">Sala
+                de aula</button>
         </div>
     </div>
 
     <!--Personagens pátio-->
-    <div id="vinicius" class="cenas"><img src="images/vinicius.png" alt="Vinicius" class="sheldon-img">
+    <div id="vinicius" class="cenas"><img src="images/vinicius.png" alt="Vinicius" class="personagem">
         <div class="hud">
             <p class="dialogo">aidawindiwaubdnawiudbnowaibdw</p>
             <div class="bot-opc">
-                <button type="button" onclick="resposta('vinicius', 1)" class="opcao">lorem ipsuimlorem ipsuimlorem ipsuimlorem ipsuimlorem ipsuim</button>
-                <button type="button" onclick="resposta('vinicius', 2)" class="opcao">lorem ipsuimlorem ipsuimlorem ipsuimlorem ipsuimlorem ipsuim</button>
+                <button type="button" onclick="resposta('vinicius', 1)" class="opcao">cu gigante</button>
+                <button type="button" onclick="resposta('vinicius', 2)" class="opcao">vitor come merda</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="messi" class="cenas"><img src="images/messi.png" alt="Messi" class="personagem">
+        <div class="hud">
+            <p class="dialogo">mesi careca</p>
+            <div class="bot-opc">
+                <button type="button" onclick="resposta('messi', 1)" class="opcao">ai meu cuzinhooooo</button>
+                <button type="button" onclick="resposta('messi', 2)" class="opcao">ai meu cuuu</button>
             </div>
         </div>
     </div>
 
     <!--Personagens sala de aula-->
-    <div id="sheldon" class="cenas"><img src="images/sheldon.png" alt="Sheldon" class="sheldon-img">
+    <div id="sheldon" class="cenas"><img src="images/sheldon.png" alt="Sheldon" class="personagem">
         <div class="hud">
             <p class="dialogo">Saudações, eu sou o Dr. Sheldon Cooper, Ph.D, Sc.d. Antes de começarmos, é importante
                 esclarecer: não gosto de surpresas, toques ou mudanças na minha rotina. Agora, diga-me: você tem um QI
@@ -60,33 +73,39 @@
         </div>
     </div>
 
-    <div id="gustavo" class="cenas"><img src="images/gustavo.png" alt="Gustavo" class="sheldon-img">
+    <div id="gustavo" class="cenas"><img src="images/gustavo.png" alt="Gustavo" class="personagem">
         <div class="hud">
-            <p class="dialogo">Fala aí, candidato. Vai sentar aqui mesmo? Cuidado, essa fileira é território dos desinteressados.</p>
+            <p class="dialogo">Fala aí, candidato. Vai sentar aqui mesmo? Cuidado, essa fileira é território dos
+                desinteressados.</p>
             <div class="bot-opc">
-                <button type="button" onclick="resposta('gustavo', 1)" class="opcao">Relaxa, só tô esperando o professor começar pra fingir que presto atenção.</button>
-                <button type="button" onclick="resposta('gustavo', 2)" class="opcao">Você devia tentar prestar atenção, talvez aprenda algo novo.</button>
+                <button type="button" onclick="resposta('gustavo', 1)" class="opcao">Relaxa, só tô esperando o professor
+                    começar pra fingir que presto atenção.</button>
+                <button type="button" onclick="resposta('gustavo', 2)" class="opcao">Você devia tentar prestar atenção,
+                    talvez aprenda algo novo.</button>
             </div>
         </div>
     </div>
 
-    <div id="house" class="cenas"><img src="images/house.png" alt="DrHouse" class="sheldon-img">
+    <div id="house" class="cenas"><img src="images/house.png" alt="DrHouse" class="personagem">
         <div class="hud">
-            <p class="dialogo">Olha só... o candidato resolve estudar. Achei que já estivesse vendendo promessas pelo corredor.</p>
+            <p class="dialogo">Olha só... o candidato resolve estudar. Achei que já estivesse vendendo promessas pelo
+                corredor.</p>
             <div class="bot-opc">
-                <button type="button" onclick="resposta('house', 1)" class="opcao">Achei que você não se interessava por aulas.</button>
-                <button type="button" onclick="resposta('house', 2)" class="opcao">Tô aqui pra aprender, diferente dos meus adversários.</button>
+                <button type="button" onclick="resposta('house', 1)" class="opcao">Achei que você não se interessava por
+                    aulas.</button>
+                <button type="button" onclick="resposta('house', 2)" class="opcao">Tô aqui pra aprender, diferente dos
+                    meus adversários.</button>
             </div>
         </div>
     </div>
 
     <script>
-        function numeroAleatorio(max){
+        function numeroAleatorio(max) {
             return Math.floor(Math.random() * max);
         }
 
-        
-        function aleatEntre(personagens){
+
+        function aleatEntre(personagens) {
             aleatorio = numeroAleatorio(personagens.length);
             return personagens[aleatorio]
         }
@@ -96,16 +115,16 @@
         }
 
         function vaiPara(cena) {
-            document.getElementById("tela").innerHTML = document.getElementById(cena).innerHTML ;
+            document.getElementById("tela").innerHTML = document.getElementById(cena).innerHTML;
 
         }
 
         function resposta(pers, nivel) {
             document.getElementById("tela").innerHTML = `
-            <img src="images/${pers}.png" alt="${pers}" class="sheldon-img">
+            <img src="images/${pers}.png" alt="${pers}" class="personagem">
             <div class = "hud">
-                <p class = "dialogo">${personagem[pers].dialogos[nivel]}</p>
-                <button type="button" onclick="vaiPara('cena1')" class="botao-passar">Voltar ao início</button>
+                ${personagem[pers].dialogos[nivel]}
+            </div>
             `
         }
 
@@ -128,7 +147,15 @@
             messi: {
                 nome: "Lionel",
                 snome: "Messi",
-                relacionamento: 60
+                relacionamento: 60,
+                dialogos: {
+                    1: [
+                        "vitorgay",
+                    ],
+                    2: [
+                        "aiaiaiaiiaia",
+                    ]
+                }
             },
             house: {
                 nome: "Dr.",
@@ -167,7 +194,15 @@
             vinicius: {
                 nome: "Vinicius",
                 snome: "Colussi",
-                relacionamento: 65
+                relacionamento: 65,
+                dialogos: {
+                    1: [
+                        "fala exemplo",
+                    ],
+                    2: [
+                        "fala exemplo2",
+                    ],
+                }
             },
 
             gustavo: {
@@ -175,13 +210,34 @@
                 snome: "Gonçalves",
                 relacionamento: 70,
                 dialogos: {
-                    1:[
-                        "Hah! Boa. Então somos da mesma classe social: os que sobrevivem com ironia. Quer ver um ranking das melhores cartas do clash royale?",
+                    0: [`
+                        <p class="dialogo">tchau</p>
+                        <button type="button" onclick="trocaFundo('patio');vaiPara(aleatEntre(cenas.patio));"
+                        class="botao-passar">Patio</button>
+                        <button type="button" onclick="trocaFundo('sala');vaiPara(aleatEntre(cenas.sala))"
+                        class="botao-passar">Sala de aula</button>
+
+                    `],
+                    1: [
+                        `<p class="dialogo">socorro socorro socorro</p>
+                        <div class="bot-opc">
+                            <button type="button" onclick="resposta('gustavo', 3)" class="opcao">exemplo2.1</button>
+                            <button type="button" onclick="resposta('gustavo', 0)" class="opcao">tchau</button>
+                        </div>`,
                     ],
-                    2:[
-                        "Nossa... começou o discurso motivacional da semana? Relaxa, não tenho nada contra estudar. Só prefiro quando o professor não parece um NPC.",
+                    2: [
+                        `
+                        <p class="dialogo">socorro1</p>
+                        <div class="bot-opc">
+                            <button type="button" onclick="resposta('gustavo', 5)" class="opcao">exemplo3.1</button>
+                            <button type="button" onclick="resposta('gustavo', 6)" class="opcao">exemplo3.2</button>
+                        </div>`,
                     ],
-                }
+                    3: [`
+                        
+                    `],
+                },
+
             },
             enzo: {
                 nome: "Enzo",
@@ -190,10 +246,10 @@
             },
 
         }
-        
+
         //Cenas e quais personagens aparece em cada uma delas
         cenas = {
-            sala: ["sheldon", "gustavo", "house"],
+            sala: ["gustavo"],
             patio: ["vinicius", "messi", "alanpa"]
         }
     </script>
