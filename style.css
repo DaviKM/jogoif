@@ -148,7 +148,7 @@ main {
 }
 
 /* Imagem de personagem */
-.sheldon-img {
+.personagem {
     position: absolute;
     width: 65vw;
     height: 70vh;
