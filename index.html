@@ -28,38 +28,78 @@
     <div class="hud">
       <p class="dialogo">Ao chegar no IFRS, em uma manhã ensolarada, com uma clara intenção em mente: se tornar o
         presidente do grêmio estudantil da escola, porém, para isso será necessário conseguir votos, assim que
-        você entra na instituição, você nota que os lugares mais movimentados são o pátio da escola e a sala de
-        aula</p>
+        você entra na instituição, você nota que o lugar mais movimentados é o pátio da escola</p>
       <button type="button" onclick="trocaFundo('patio');vaiPara(aleatEntre(cenas.patio));"
-        class="botao-passar">Patio</button>
-      <button type="button" onclick="trocaFundo('sala');vaiPara(aleatEntre(cenas.sala))" class="botao-passar">Sala
-        de aula</button>
+class="botao-passar">Patio</button>
     </div>
   </div>
+
+  <!--Cenas-->
+  <section class="cenas">
+    <div id="patio-0">
+      <div class="hud"> 
+        <p class="dialogo">Você volta para o pátio, e percebe um novo aluno que pode ser convencido a votar em você: </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('alanpa-0')" class="opcao">Alan Patrick</button>
+        </div>
+      </div>
+    </div>
+    <div id="sala">
+      <div class="hud">
+        <p class="dialogo">Você percebe que existe mais 2 pessoas disponíveis para conversar na sala: </p>
+        <button type="button" onclick="vaiPara('${nome1}-0')"><span id="nome1"></span></button>
+        <button type="button" onclick="vaiPara('${nome2}-0')"><span id="nome2"></span></button>
+      </div>
+    </div>
+  </section>
 
   <!--Personagens pátio-->
-  <div id="vinicius" class="cenas"><img src="images/vinicius.png" alt="Vinicius" class="personagem">
-    <div class="hud">
-      <p class="dialogo">aidawindiwaubdnawiudbnowaibdw</p>
-      <div class="bot-opc">
-        <button type="button" onclick="resposta('vinicius', 1)" class="opcao">cu gigante</button>
-        <button type="button" onclick="resposta('vinicius', 2)" class="opcao">vitor come merda</button>
+  <section class="messi">
+    <div id="messi-sair"><img src="images/messi.png" alt="Messi" class="personagem">
+      <div class="hud">
+        <p class="dialogo">é isso então, valeu</p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('patio')" class="opcao">Voltar para o pátio</button>
+        </div>
       </div>
     </div>
-  </div>
+    <div id="messi-0"><img src="images/messi.png" alt="Messi" class="personagem">
+      <div class="hud">
+        <p class="dialogo">aidawindiwaubdnawiudbnowaibdw</p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('messi-1')" class="opcao">cu gigante</button>
+          <button type="button" onclick="vaiPara('messi-sair')" class="opcao">vitor come merda</button>
+        </div>
+      </div>
+    </div>
+    <div id="messi-1"><img src="images/messi.png" alt="messi" class="personagem">
+      <div class="hud">
+        <p class="dialogo">cuzao enorme</p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('messi-3')" class="opcao">verdade</button>
+          <button type="button" onclick="vaiPara('messi-sair')" class="opcao">te digo mentira</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div id="messi" class="cenas"><img src="images/messi.png" alt="Messi" class="personagem">
-    <div class="hud">
-      <p class="dialogo">mesi careca</p>
-      <div class="bot-opc">
-        <button type="button" onclick="resposta('messi', 1)" class="opcao">ai meu cuzinhooooo</button>
-        <button type="button" onclick="resposta('messi', 2)" class="opcao">ai meu cuuu</button>
-      </div>
-    </div>
-  </div>
+  <!--falta o davi britto-->
 
   <!--Personagens sala de aula-->
   <section class="gustavo">
+    <div class="gustavo-sair">
+      <img src="images/gustavo.png" alt="Gustavo" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Beleza então, até mais tarde!
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('sala')">
+            Voltar para a sala
+          </button>
+        </div>
+      </div>
+    </div>
     <div id="gustavo-0" class="cenas">
       <img src="images/gustavo.png" alt="Gustavo" class="personagem" />
       <div class="hud">
@@ -82,13 +122,13 @@
     <div id="gustavo-1" class="cenas">
       <img src="images/gustavo.png" alt="Gustavo" class="personagem" />
       <div class="hud">
-        <p class="dialogo">socorro socorro socorro</p>
+        <p class="dialogo">Justo. O truque é balançar a cabeça de vez em quando e parecer interessado.</p>
         <div class="bot-opc">
           <button type="button" onclick="vaiPara('gustavo-3')" class="opcao">
-            exemplo2.1
+            É verdade, o que acha das eleições para o Grêmio Estudantil?
           </button>
-          <button type="button" onclick="vaiPara('gustavo-4')" class="opcao">
-            tchau
+          <button type="button" onclick="vaiPara('gustavo-sair')" class="opcao">
+            É mesmo, acho que o professor já está chegando, vou me sentar.
           </button>
         </div>
       </div>
@@ -108,33 +148,37 @@
   </section>
 
 
-  <div id="sheldon" class="cenas"><img src="images/sheldon.png" alt="Sheldon" class="personagem">
-    <div class="hud">
-      <p class="dialogo">Saudações, eu sou o Dr. Sheldon Cooper, Ph.D, Sc.d. Antes de começarmos, é importante
-        esclarecer: não gosto de surpresas, toques ou mudanças na minha rotina. Agora, diga-me: você tem um QI
-        acima de 187 ou devo ajustar minhas expectativas?</p>
-      <div class="bot-opc">
-        <button type="button" onclick="resposta('sheldon', 1)" class="opcao">Na verdade, meu QI é bem alto.
-          Podemos conversar de igual para igual.</button>
-        <button type="button" onclick="resposta('sheldon', 2)" class="opcao">Eu não sei meu QI, mas prometo que
-          sou esperto o bastante para te acompanhar.</button>
+  <section class="sheldon">
+    <div id="sheldon-0" class="cenas"><img src="images/sheldon.png" alt="Sheldon" class="personagem">
+      <div class="hud">
+        <p class="dialogo">Saudações, eu sou o Dr. Sheldon Cooper, Ph.D, Sc.d. Antes de começarmos, é importante
+          esclarecer: não gosto de surpresas, toques ou mudanças na minha rotina. Agora, diga-me: você tem um QI
+          acima de 187 ou devo ajustar minhas expectativas?</p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('sheldon-1')" class="opcao">Na verdade, meu QI é bem alto.
+            Podemos conversar de igual para igual.</button>
+          <button type="button" onclick="vaiPara('sheldon-2')" class="opcao">Eu não sei meu QI, mas prometo que
+            sou esperto o bastante para te acompanhar.</button>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
 
-  <div id="house" class="cenas"><img src="images/house.png" alt="DrHouse" class="personagem">
-    <div class="hud">
-      <p class="dialogo">Olha só... o candidato resolve estudar. Achei que já estivesse vendendo promessas pelo
-        corredor.</p>
-      <div class="bot-opc">
-        <button type="button" onclick="resposta('house', 1)" class="opcao">Achei que você não se interessava por
-          aulas.</button>
-        <button type="button" onclick="resposta('house', 2)" class="opcao">Tô aqui pra aprender, diferente dos
-          meus adversários.</button>
+  <section class="house">
+    <div id="house-0" class="cenas"><img src="images/house.png" alt="DrHouse" class="personagem">
+      <div class="hud">
+        <p class="dialogo">Olha só... o candidato resolve estudar. Achei que já estivesse vendendo promessas pelo
+          corredor.</p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('house-1')" class="opcao">Achei que você não se interessava por
+            aulas.</button>
+          <button type="button" onclick="vaiPara('house-2')" class="opcao">Tô aqui pra aprender, diferente dos
+            meus adversários.</button>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <script>
     function numeroAleatorio(max) {
@@ -143,7 +187,12 @@
 
     function aleatEntre(personagens) {
       aleatorio = numeroAleatorio(personagens.length);
-      return personagens[aleatorio]
+      sorteado = aleatorio;
+      return personagens[aleatorio];
+    }
+
+    function naoSorteados(){
+      
     }
 
     function trocaFundo(fundo) {
@@ -156,7 +205,6 @@
       //console.log(cena.substr(0, cena.indexOf('-')).toLowerCase())
       salvarLogJogador(cena);
       salvarLogPers(cena);
-
     }
 
     function salvarLogPers(dialogo) {
@@ -185,74 +233,50 @@
         nome: "Sheldon",
         snome: "Cooper",
         relacionamento: 40,
-        dialogos: {
-          1: [
-            "Oh! Finalmente alguém com um potencial intelectual equivalente nesse lugar!",
-          ],
-          2: [
-            "Hmm, uma resposta diplomática. Aceitável... por enquanto.",
-          ],
-        }
+        log: []
       },
       messi: {
         nome: "Lionel",
         snome: "Messi",
         relacionamento: 60,
-        dialogos: {
-          1: [
-            "vitorgay",
-          ],
-          2: [
-            "aiaiaiaiiaia",
-          ]
-        }
+        log: []
       },
       house: {
         nome: "Dr.",
         snome: "House",
         relacionamento: 30,
-        dialogos: {
-          1: [
-            "Não me interesso. Só vim ver o circo.",
-          ],
-          2: [
-            "Competitivo, gostei. Só não transforme isso em discurso de campanha.",
-          ]
-        }
+        log: []
       },
       davi: {
         nome: "Davi",
         snome: "Brito",
-        relacionamento: 70
+        relacionamento: 70,
+        log: []
       },
       alanpa: {
         nome: "Alan",
         snome: "Patrick",
-        relacionamento: 60
+        relacionamento: 60,
+        log: []
       },
       bigolin: {
         nome: "Marcio",
         snome: "Bigolin",
-        relacionamento: 75
+        relacionamento: 75,
+        log: []
       },
       theo: {
         nome: "Theo",
         snome: "Petrusch",
-        relacionamento: 65
+        relacionamento: 65,
+        log: []
       },
 
       vinicius: {
         nome: "Vinicius",
         snome: "Colussi",
         relacionamento: 65,
-        dialogos: {
-          1: [
-            "fala exemplo",
-          ],
-          2: [
-            "fala exemplo2",
-          ],
-        }
+        log: []
       },
 
       gustavo: {
@@ -264,7 +288,8 @@
       enzo: {
         nome: "Enzo",
         snome: "Ferreira",
-        relacionamento: 65
+        relacionamento: 65,
+        log: []
       },
 
     }
@@ -273,7 +298,7 @@
     //Cenas e quais personagens aparece em cada uma delas
     cenas = {
       sala: ["gustavo"],
-      patio: ["vinicius", "messi", "alanpa"]
+      patio: ["messi", "alanpa"]
     }
   </script>
 </body>
