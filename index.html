@@ -51,10 +51,8 @@
       <div class="hud">
         <p class="dialogo">Você percebe que existe mais 2 pessoas disponíveis para conversar na sala: </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara(cenas.sala[0])" class="opcao"><span
-              id="nome1"></span></button>
-          <button type="button" onclick="vaiPara(cenas.sala[1])" class="opcao"><span
-              id="nome2"></span></button>
+          <button type="button" onclick="vaiPara(cenas.sala[0])" class="opcao"><span id="nome1"></span></button>
+          <button type="button" onclick="vaiPara(cenas.sala[1])" class="opcao"><span id="nome2"></span></button>
         </div>
       </div>
     </div>
@@ -223,14 +221,22 @@
       sorteado = personagens[aleatorio];
 
       //Remove o personagem sorteado
-      personagens.splice(aleatorio, 1)
-      nome1.innerHTML = personagem[personagens[0]].nome +' '+ personagem[personagens[0]].snome
-      nome2.innerHTML = personagem[personagens[1]].nome +' '+personagem[personagens[1]].snome
+      removePersonagem(aleatorio, personagens) ;
 
       return sorteado;
-      
+
     }
-    
+
+    //Função para remover personagem das cenas e põe nome nos botões
+    function removePersonagem(personagemRemovido, personagens){
+      personagens.splice(personagemRemovido, 1) ;
+
+      console.log(personagens.length)
+      for (let i = 0; i < personagens.length; i++) {
+        document.getElementById(`nome${i + 1}`).innerHTML = personagem[personagens[i]].nome + ' ' + personagem[personagens[i]].snome ;
+      }
+    }
+
     function trocaFundo(fundo) {
       document.getElementById("tela").style = `background-image: url(images/${fundo}.png);`
     }
