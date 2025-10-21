@@ -125,10 +125,9 @@
         </p>
         <div class="bot-opc">
           <button type="button" onclick="vaiPara('messi-2'); menosRelacionamento('messi', 10)" class="opcao">
-            Tranquilo, com base nos outros candidatos, acredito que eu seja o
-            melhor.
+            Tranquilo. Já tô convencendo um por um.
           </button>
-          <button type="button" onclick="vaiPara('messi-3'); maisRelacionamento('messi', 20)" class="opcao">
+          <button type="button" onclick="vaiPara('messi-3'); maisRelacionamento('messi', 10)" class="opcao">
             Complicado, parece que os outros candidatos tem propostas
             melhores, porém que são impossíveis de serem cumpridas.
           </button>
@@ -139,12 +138,14 @@
       <img src="images/messi.png" alt="messi" class="personagem" />
       <div class="hud">
         <p class="dialogo">
-          Meio convencido, mas vamos seguindo, vou voltar a jogar que os
-          outros estão me esperando!
+          Hum… cuidado com esse “tranquila”. Quando parece fácil demais, é porque alguém tá deixando. Mas fala aí, tá nessa para ganhar ou para mostrar serviço?
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('messi-sair')" class="opcao">
-            voltar
+          <button type="button" onclick="vaiPara('messi-8'); menosRelacionamento('messi', 25)" class="opcao">
+            Pra ganhar, óbvio. Política é competição.
+          </button>
+          <button type="button" onclick="vaiPara('messi-9'); maisRelacionamento('messi', 20)" class="opcao">
+            Pra fazer algo legal, não só vencer
           </button>
         </div>
       </div>
@@ -153,16 +154,72 @@
       <img src="images/messi.png" alt="messi" class="personagem" />
       <div class="hud">
         <p class="dialogo">
-          Normal, ninguém aposta em quem está começando, mas acredito em você, com força você consegue se tornar o
-          presidente.
+          Normal, ninguém aposta em quem está começando, mas acredito em você, mas se for desistir de tudo, nem entra nessa.
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('messi-4')" class="opcao">
-            Falar é fácil pra quem é um dos melhores jogadores da escola.
+          <button type="button" onclick="vaiPara('messi-4'); menosRelacionamento('messi', 15)" class="opcao">
+            Falar é fácil pra quem já conquistou tudo.
           </button>
-          <button type="button" onclick="vaiPara('messi-sair')" class="opcao">
-            É verdade, mas pode continuar jogando aí, qualquer dia desses me chama para jogar com vocês!
+          <button type="button" onclick="vaiPara('messi-5'); maisRelacionamento('messi', 25)" class="opcao">
+            Eu não desisto, só tô cansado de carregar tudo sozinho.
           </button>
+        </div>
+      </div>
+    </div>
+    <div id="messi-4">
+      <img src="images/messi.png" alt="messi" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          É… também já me cansei. Mas eu continuei. Reclamar é a parte fácil.
+        </p>
+        <!--terminar aqui depois-->
+        <div class="bot-opc">
+          
+        </div>
+      </div>
+    </div>
+    <div id="messi-5">
+      <img src="images/messi.png" alt="messi" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Entendo. Mas ninguém faz tudo sozinho pra sempre. Às vezes, alguém aparece pra ajudar, você só não percebe.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('messi-6'); menosRelacionamento('messi',25)" class="opcao">Tomara. Já cansei de trabalhar com quem só atrapalha.</button>
+          <button type="button" onclick="vaiPara('messi-7'); maisRelacionamento('messi',30)" class="opcao">Talvez eu precise confiar mais nas pessoas.</button>
+        </div>
+      </div>
+    </div>
+    <div id="messi-6">
+      <img src="images/messi.png" alt="messi" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Hm… tá com raiva de alguém ou de tudo? Cuidado pra não virar aquele cara que acha que é melhor que o grupo.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('messi-sair'); menosRelacionamento('messi',20)" class="opcao">(despedida)</button>
+        </div>
+      </div>
+    </div>
+    <div id="messi-7">
+      <img src="images/messi.png" alt="messi" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          É, confiança faz o projeto andar. Senão, cada um trabalha só para o próprio nome.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('messi-sair'); menosRelacionamento('messi',20)" class="opcao">(despedida)</button>
+        </div>
+      </div>
+    </div>
+    <div id="messi-8">
+      <img src="images/messi.png" alt="messi" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          É… mas quem busca só a vitória esquece de aproveitar a jornada.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('messi-sair'); menosRelacionamento('messi',25)" class="opcao">(despedida)</button>
         </div>
       </div>
     </div>
