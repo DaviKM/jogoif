@@ -30,17 +30,18 @@
         presidente do grêmio estudantil da escola, porém, para isso será necessário conseguir votos, assim que
         você entra na instituição, você nota que o lugar mais movimentados é o pátio da escola</p>
       <button type="button" onclick="trocaFundo('patio');vaiPara(aleatEntre(cenas.patio));"
-    class="botao-passar">Patio</button>
-    <button type="button" onclick="trocaFundo('sala');vaiPara(aleatEntre(cenas.sala))"
-    class="botao-passar">Puta q pariu</button>
+        class="botao-passar">Patio</button>
+      <button type="button" onclick="trocaFundo('sala');vaiPara(aleatEntre(cenas.sala))" class="botao-passar">Puta q
+        pariu</button>
     </div>
   </div>
 
   <!--Cenas-->
   <section class="cenas">
     <div id="patio-0">
-      <div class="hud"> 
-        <p class="dialogo">Você volta para o pátio, e percebe um novo aluno que pode ser convencido a votar em você: </p>
+      <div class="hud">
+        <p class="dialogo">Você volta para o pátio, e percebe um novo aluno que pode ser convencido a votar em você:
+        </p>
         <div class="bot-opc">
           <button type="button" onclick="vaiPara('alanpa-0')" class="opcao">Alan Patrick</button>
         </div>
@@ -50,8 +51,10 @@
       <div class="hud">
         <p class="dialogo">Você percebe que existe mais 2 pessoas disponíveis para conversar na sala: </p>
         <div class="bot-opc">
-            <button type="button" onclick="vaiPara(naoSorteados(cenas.sala,1))" class="opcao"><span id="nome1"></span></button>
-            <button type="button" onclick="vaiPara(naoSorteados(cenas.sala,2))" class="opcao"><span id="nome2"></span></button>
+          <button type="button" onclick="vaiPara(cenas.sala[0])" class="opcao"><span
+              id="nome1"></span></button>
+          <button type="button" onclick="vaiPara(cenas.sala[1])" class="opcao"><span
+              id="nome2"></span></button>
         </div>
       </div>
     </div>
@@ -218,26 +221,16 @@
     function aleatEntre(personagens) {
       aleatorio = numeroAleatorio(personagens.length);
       sorteado = personagens[aleatorio];
-      return personagens[aleatorio];
-    }
 
-    function naoSorteados(personagens, numero){
-        listaNaoSorteados = [];
-      for(let i=0;i<personagens.length;i++){
-        if(personagens[i]!=sorteado){
-            listaNaoSorteados.push(personagens[i]);
-        }
-      }
-      if(numero==1){
-        return listaNaoSorteados[0]+"-0";
-    }
-    else if(numero==2){
-        return listaNaoSorteados[1]+"-0";
-      }
-    }
+      //Remove o personagem sorteado
+      personagens.splice(aleatorio, 1)
+      nome1.innerHTML = personagem[personagens[0]].nome +' '+ personagem[personagens[0]].snome
+      nome2.innerHTML = personagem[personagens[1]].nome +' '+personagem[personagens[1]].snome
 
+      return sorteado;
+      
+    }
     
-
     function trocaFundo(fundo) {
       document.getElementById("tela").style = `background-image: url(images/${fundo}.png);`
     }
@@ -260,12 +253,12 @@
     }
 
     function salvarLogJogador(opcao) {
-      nome = opcao.substr(0, opcao.indexOf('-')).toLowerCase() ;
-      tamanho = (personagem[nome].log).length ;
-      fala = document.querySelectorAll(`button[onclick="vaiPara('${opcao}')"]`) ;
+      nome = opcao.substr(0, opcao.indexOf('-')).toLowerCase();
+      tamanho = (personagem[nome].log).length;
+      fala = document.querySelectorAll(`button[onclick="vaiPara('${opcao}')"]`);
 
       if (fala[0] != undefined) {
-        personagem[nome].log[tamanho] = (fala[0].outerHTML.slice((fala[0].outerHTML).indexOf('>'), (fala[0].outerHTML).lastIndexOf('</'))) ;
+        personagem[nome].log[tamanho] = (fala[0].outerHTML.slice((fala[0].outerHTML).indexOf('>'), (fala[0].outerHTML).lastIndexOf('</')));
       }
     }
 
@@ -340,7 +333,7 @@
 
     //Cenas e quais personagens aparece em cada uma delas
     cenas = {
-      sala: ["gustavo","sheldon","house"],
+      sala: ["gustavo", "sheldon", "house"],
       patio: ["messi", "alanpa"]
     }
   </script>
