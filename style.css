@@ -68,6 +68,15 @@ main {
     display: none;
 }
 
+/* Barra de relacionamento */
+.barraRelacionamento{
+    background-color: violet;
+    width: 100px;
+    height: 500px;
+    position:absolute;
+    right: 10px;
+}
+
 /* Título principal */
 #tit_principal {
     padding: 4px;
@@ -153,4 +162,28 @@ main {
     width: 65vw;
     height: 70vh;
     z-index: 1;
+}
+
+#barraInterna{
+    background-color: white;
+    width: 22px;
+    height: 0px;
+    transition: ease-in-out 1s;
+}
+
+#barraExterna{
+    width: 30px;
+    height:300px;
+    padding: 5px;
+    background-color: white;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+
+#hudRelacionamento{
+    position: absolute;
+    right: 10px;
+    margin-right:30px;
 }
