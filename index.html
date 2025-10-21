@@ -30,7 +30,9 @@
         presidente do grêmio estudantil da escola, porém, para isso será necessário conseguir votos, assim que
         você entra na instituição, você nota que o lugar mais movimentados é o pátio da escola</p>
       <button type="button" onclick="trocaFundo('patio');vaiPara(aleatEntre(cenas.patio));"
-class="botao-passar">Patio</button>
+    class="botao-passar">Patio</button>
+    <button type="button" onclick="trocaFundo('sala');vaiPara(aleatEntre(cenas.sala))"
+    class="botao-passar">Puta q pariu</button>
     </div>
   </div>
 
@@ -44,11 +46,13 @@ class="botao-passar">Patio</button>
         </div>
       </div>
     </div>
-    <div id="sala">
+    <div id="sala-0">
       <div class="hud">
         <p class="dialogo">Você percebe que existe mais 2 pessoas disponíveis para conversar na sala: </p>
-        <button type="button" onclick="vaiPara('${nome1}-0')"><span id="nome1"></span></button>
-        <button type="button" onclick="vaiPara('${nome2}-0')"><span id="nome2"></span></button>
+        <div class="bot-opc">
+            <button type="button" onclick="vaiPara(naoSorteados(cenas.sala,1))" class="opcao"><span id="nome1"></span></button>
+            <button type="button" onclick="vaiPara(naoSorteados(cenas.sala,2))" class="opcao"><span id="nome2"></span></button>
+        </div>
       </div>
     </div>
   </section>
@@ -87,14 +91,14 @@ class="botao-passar">Patio</button>
 
   <!--Personagens sala de aula-->
   <section class="gustavo">
-    <div class="gustavo-sair">
+    <div id="gustavo-sair">
       <img src="images/gustavo.png" alt="Gustavo" class="personagem" />
       <div class="hud">
         <p class="dialogo">
           Beleza então, até mais tarde!
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('sala')">
+          <button type="button" onclick="vaiPara('sala-0')" class="opcao">
             Voltar para a sala
           </button>
         </div>
@@ -149,13 +153,26 @@ class="botao-passar">Patio</button>
 
 
   <section class="sheldon">
+    <div id="sheldon-sair">
+      <img src="images/sheldon.png" alt="Sheldon" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Beleza então, até mais tarde!
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('sala-0')" class="opcao">
+            Voltar para a sala
+          </button>
+        </div>
+      </div>
+    </div>
     <div id="sheldon-0" class="cenas"><img src="images/sheldon.png" alt="Sheldon" class="personagem">
       <div class="hud">
         <p class="dialogo">Saudações, eu sou o Dr. Sheldon Cooper, Ph.D, Sc.d. Antes de começarmos, é importante
           esclarecer: não gosto de surpresas, toques ou mudanças na minha rotina. Agora, diga-me: você tem um QI
           acima de 187 ou devo ajustar minhas expectativas?</p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('sheldon-1')" class="opcao">Na verdade, meu QI é bem alto.
+          <button type="button" onclick="vaiPara('sheldon-sair')" class="opcao">Na verdade, meu QI é bem alto.
             Podemos conversar de igual para igual.</button>
           <button type="button" onclick="vaiPara('sheldon-2')" class="opcao">Eu não sei meu QI, mas prometo que
             sou esperto o bastante para te acompanhar.</button>
@@ -166,12 +183,25 @@ class="botao-passar">Patio</button>
 
 
   <section class="house">
+    <div id="house-sair">
+      <img src="images/house.png" alt="DrHouse" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Beleza então, até mais tarde!
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('sala-0')" class="opcao">
+            Voltar para a sala
+          </button>
+        </div>
+      </div>
+    </div>
     <div id="house-0" class="cenas"><img src="images/house.png" alt="DrHouse" class="personagem">
       <div class="hud">
         <p class="dialogo">Olha só... o candidato resolve estudar. Achei que já estivesse vendendo promessas pelo
           corredor.</p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('house-1')" class="opcao">Achei que você não se interessava por
+          <button type="button" onclick="vaiPara('house-sair')" class="opcao">Achei que você não se interessava por
             aulas.</button>
           <button type="button" onclick="vaiPara('house-2')" class="opcao">Tô aqui pra aprender, diferente dos
             meus adversários.</button>
@@ -187,13 +217,26 @@ class="botao-passar">Patio</button>
 
     function aleatEntre(personagens) {
       aleatorio = numeroAleatorio(personagens.length);
-      sorteado = aleatorio;
+      sorteado = personagens[aleatorio];
       return personagens[aleatorio];
     }
 
-    function naoSorteados(){
-      
+    function naoSorteados(personagens, numero){
+        listaNaoSorteados = [];
+      for(let i=0;i<personagens.length;i++){
+        if(personagens[i]!=sorteado){
+            listaNaoSorteados.push(personagens[i]);
+        }
+      }
+      if(numero==1){
+        return listaNaoSorteados[0]+"-0";
     }
+    else if(numero==2){
+        return listaNaoSorteados[1]+"-0";
+      }
+    }
+
+    
 
     function trocaFundo(fundo) {
       document.getElementById("tela").style = `background-image: url(images/${fundo}.png);`
@@ -297,7 +340,7 @@ class="botao-passar">Patio</button>
 
     //Cenas e quais personagens aparece em cada uma delas
     cenas = {
-      sala: ["gustavo"],
+      sala: ["gustavo","sheldon","house"],
       patio: ["messi", "alanpa"]
     }
   </script>

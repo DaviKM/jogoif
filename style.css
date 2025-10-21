@@ -64,7 +64,7 @@ main {
 }
 
 /* Switch case / cenas */
-.cenas {
+.cenas, section {
     display: none;
 }
 
