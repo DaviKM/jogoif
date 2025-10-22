@@ -44,6 +44,11 @@ main {
     width: 40%;
     background-color: rgba(0,0,0,0.6);
 }
+
+.menu img{
+    position: absolute;
+    top: 3%;
+}
 .botao-inicio {
     padding: 4px;
     font-family: "Cinzel", serif;
@@ -77,29 +82,6 @@ main {
 /* Switch case / cenas */
 .cenas, section {
     display: none;
-}
-
-/* Barra de relacionamento */
-.barraRelacionamento{
-    background-color: violet;
-    width: 100px;
-    height: 500px;
-    position:absolute;
-    right: 10px;
-}
-
-/* Título principal */
-#tit_principal {
-    padding: 4px;
-    font-family: "Cinzel", serif;
-    font-size: 40pt;
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.952);
-    font-weight: bold;
-    text-shadow: 10px 10px 15px rgba(0,0,0,0.7);
-    position: absolute;
-    top: 40%;
 }
 
 /* Opções de diálogo */
@@ -176,11 +158,13 @@ main {
     z-index: 1;
 }
 
+/* Barra de relacionamento */
 #barraInterna{
     background-color: white;
     width: 22px;
     height: 0px;
     transition: ease-in-out 1s;
+    border-radius: 50px;
 }
 
 #barraExterna{
@@ -192,10 +176,12 @@ main {
     align-items: end;
     justify-content: center;
     overflow: hidden;
+    border-radius: 50px;
 }
 
 
 #hudRelacionamento{
+    display: none;
     position: absolute;
     display: flex;
     align-items: center;
