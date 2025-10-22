@@ -15,6 +15,7 @@
 
 <body>
   <div id="hudRelacionamento">
+    <div class="nomeBarra"><span id="nomeBarra"></span></div>
     <div id="barraExterna">
       <div id="barraInterna"></div>
     </div>
@@ -65,7 +66,7 @@
           convencido a votar em você:
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara(cenas.patio[0])" class="opcao">
+          <button type="button" onclick="vaiPara(cenas.patio[0]);exibirRelacionamento(cenas.patio[0])" class="opcao">
             <span id="nome1"></span>
           </button>
         </div>
@@ -102,6 +103,7 @@
         </div>
       </div>
     </div>
+
     <div id="messi-0">
       <img src="images/messi.png" alt="Messi" class="personagem" />
       <div class="hud">
@@ -118,6 +120,7 @@
         </div>
       </div>
     </div>
+
     <div id="messi-1">
       <img src="images/messi.png" alt="messi" class="personagem" />
       <div class="hud">
@@ -136,6 +139,7 @@
         </div>
       </div>
     </div>
+
     <div id="messi-2">
       <img src="images/messi.png" alt="messi" class="personagem" />
       <div class="hud">
@@ -152,6 +156,7 @@
         </div>
       </div>
     </div>
+
     <div id="messi-3">
       <img src="images/messi.png" alt="messi" class="personagem" />
       <div class="hud">
@@ -168,18 +173,20 @@
         </div>
       </div>
     </div>
+
     <div id="messi-4">
       <img src="images/messi.png" alt="messi" class="personagem" />
       <div class="hud">
         <p class="dialogo">
           É… também já me cansei. Mas eu continuei. Reclamar é a parte fácil.
         </p>
-        <!--terminar aqui depois-->
         <div class="bot-opc">
-          
+          <button type="button" onclick="vaiPara('messi-12'); menosRelacionamento('messi',15)" class="opcao">Entendi. Mas é difícil não olhar para o seu sucesso e sentir que a régua é impossível.</button>
+          <button type="button" onclick="vaiPara('messi-13'); maisRelacionamento('messi',20)" class="opcao">Não é inveja. Eu só sinto que a minha luta agora é invisível, diferente da sua que o mundo todo viu.</button>
         </div>
       </div>
     </div>
+
     <div id="messi-5">
       <img src="images/messi.png" alt="messi" class="personagem" />
       <div class="hud">
@@ -192,6 +199,7 @@
         </div>
       </div>
     </div>
+
     <div id="messi-6">
       <img src="images/messi.png" alt="messi" class="personagem" />
       <div class="hud">
@@ -199,10 +207,11 @@
           Hm… tá com raiva de alguém ou de tudo? Cuidado pra não virar aquele cara que acha que é melhor que o grupo.
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('messi-final'); menosRelacionamento('messi',20)" class="opcao">(despedida)</button>
+          <button type="button" onclick="vaiPara('messi-final');" class="opcao">Próximo</button>
         </div>
       </div>
     </div>
+
     <div id="messi-7">
       <img src="images/messi.png" alt="messi" class="personagem" />
       <div class="hud">
@@ -210,10 +219,11 @@
           É, confiança faz o projeto andar. Senão, cada um trabalha só para o próprio nome.
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('messi-final'); menosRelacionamento('messi',20)" class="opcao">(despedida)</button>
+          <button type="button" onclick="vaiPara('messi-final');" class="opcao">Próximo</button>
         </div>
       </div>
     </div>
+
     <div id="messi-8">
       <img src="images/messi.png" alt="messi" class="personagem" />
       <div class="hud">
@@ -221,10 +231,11 @@
           É… mas quem busca só a vitória esquece de aproveitar a jornada.
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('messi-final');" class="opcao">(despedida)</button>
+          <button type="button" onclick="vaiPara('messi-final');" class="opcao">Próximo</button>
         </div>
       </div>
     </div>
+    
     <div id="messi-9">
       <img src="images/messi.png" alt="messi" class="personagem" />
       <div class="hud">
@@ -232,11 +243,96 @@
           Aí sim. Quando a motivação é boa, o resultado vem junto.
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('messi-final');" class="opcao">(despedida)</button>
+          <button type="button" onclick="vaiPara('messi-10'); maisRelacionamento('messi', 10)" class="opcao">Mas ganhar é importante também, né?</button>
+          <button type="button" onclick="vaiPara('messi-11'); maisRelacionamento('messi', 30)" class="opcao">Nem sempre dá pra mudar as coisas ganhando.</button>
         </div>
       </div>
     </div>
     
+    <div id="messi-10">
+      <img src="images/messi.png" alt="messi" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Claro que é. Só não dá pra ser o único motivo. Senão, perde o sentido.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('messi-final');" class="opcao">Próximo</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="messi-11">
+      <img src="images/messi.png" alt="messi" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Verdade. Às vezes, perder ensina mais que vencer. Só tenta não perder o foco.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('messi-final');" class="opcao">Próximo</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="messi-12">
+      <img src="images/messi.png" alt="messi" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Dificuldade é parte do caminho. Ficar olhando a vitória dos outros não constrói a sua. Você tem que focar no seu passo. Reclamar é a parte fácil.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('messi-final');" class="opcao">Próximo</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="messi-13">
+      <img src="images/messi.png" alt="messi" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          A luta de todo mundo é invisível até que ela dê resultado. Eu respeito isso. Continue fazendo o seu.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('messi-final');" class="opcao">Próximo</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="messi-final">
+      <img src="images/messi.png" alt="messi" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          E aí, você acha que tem chance mesmo? Ou é mais um desses que fala bonito e some depois?
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('messi-final1'); menosRelacionamento('messi',30)" class="opcao">Tenho chance. E não preciso falar bonito pra isso.</button>
+          <button type="button" onclick="vaiPara('messi-final2'); maisRelacionamento('messi',30)" class="opcao">Não sei. Mas pelo menos tô tentando.</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="messi-final1">
+      <img src="images/messi.png" alt="messi" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Confiança é bom, mas cuidado pra não soar convencido.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('messi-sair');" class="opcao">Adeus</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="messi-final2">
+      <img src="images/messi.png" alt="messi" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Justo. Às vezes tentar é o que falta pra metade da galera.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('messi-sair');" class="opcao">Adeus</button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="davi">
@@ -589,6 +685,7 @@
       //usa a "gambiarra" de usar id como variável que o sor mostrou na aula
       valorRelacionamento = personagem[personagemID].relacionamento;
       barraInterna.style.height = `${valorRelacionamento}%`;
+      document.getElementById("nomeBarra").innerHTML = `${personagem[personagemID].nome} ${personagem[personagemID].snome}`;
       if(valorRelacionamento<40){
         barraInterna.style.backgroundColor = "red";
       }
