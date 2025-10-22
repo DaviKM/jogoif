@@ -20,17 +20,19 @@
     </div>
   </div>
   <main id="tela" class="inicio">
-    <h1 id="tit_principal">Ódio Salgado</h1>
-    <div class="botoes-inicio">
-      <button type="button" id="jogar" onclick="trocaFundo('entrada_if'); vaiPara('cena1')" class="botao-inicio">
-        Jogar
-      </button>
-      <button type="button" id="creditos" class="botao-inicio">
-        Créditos
-      </button>
-      <button type="button" id="personagens" class="botao-inicio">
-        Personagens
-      </button>
+    <div class="menu">
+      <h1 id="tit_principal">Ódio Salgado</h1>
+      <div class="botoes-inicio">
+        <button type="button" id="jogar" onclick="trocaFundo('entrada_if'); vaiPara('cena1')" class="botao-inicio">
+          Jogar
+        </button>
+        <button type="button" id="creditos" class="botao-inicio">
+          Créditos
+        </button>
+        <button type="button" id="personagens" class="botao-inicio">
+          Personagens
+        </button>
+      </div>
     </div>
   </main>
 
@@ -63,8 +65,8 @@
           convencido a votar em você:
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('alanpa-0')" class="opcao">
-            Alan Patrick
+          <button type="button" onclick="vaiPara(cenas.patio[0])" class="opcao">
+            <span id="nome1"></span>
           </button>
         </div>
       </div>
@@ -197,7 +199,7 @@
           Hm… tá com raiva de alguém ou de tudo? Cuidado pra não virar aquele cara que acha que é melhor que o grupo.
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('messi-sair'); menosRelacionamento('messi',20)" class="opcao">(despedida)</button>
+          <button type="button" onclick="vaiPara('messi-final'); menosRelacionamento('messi',20)" class="opcao">(despedida)</button>
         </div>
       </div>
     </div>
@@ -208,7 +210,7 @@
           É, confiança faz o projeto andar. Senão, cada um trabalha só para o próprio nome.
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('messi-sair'); menosRelacionamento('messi',20)" class="opcao">(despedida)</button>
+          <button type="button" onclick="vaiPara('messi-final'); menosRelacionamento('messi',20)" class="opcao">(despedida)</button>
         </div>
       </div>
     </div>
@@ -219,13 +221,224 @@
           É… mas quem busca só a vitória esquece de aproveitar a jornada.
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('messi-sair'); menosRelacionamento('messi',25)" class="opcao">(despedida)</button>
+          <button type="button" onclick="vaiPara('messi-final');" class="opcao">(despedida)</button>
         </div>
       </div>
     </div>
+    <div id="messi-9">
+      <img src="images/messi.png" alt="messi" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Aí sim. Quando a motivação é boa, o resultado vem junto.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('messi-final');" class="opcao">(despedida)</button>
+        </div>
+      </div>
+    </div>
+    
   </section>
 
-  <!--falta o davi britto-->
+  <section id="davi">
+    <div id="davi-0">
+      <img src="images/davi.png" alt="Davi Britto" class="personagem" />
+      <div class="hud">
+        <p class ="dialogo">
+          opa meu comparsa
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('davi-1')" class="opcao">
+            coxenha é mlr que brigadeiro
+          </button>
+          <button type="button" onclick="vaiPara('davi-2')" class="opcao">
+            vou implementar o socialismo
+          </button>
+        </div>
+    </div>
+    </div>
+    <!--cadeia1-->
+    <div id="davi-1">
+       <img src="images/davi.png" alt="Davi Britto" class="personagem" />
+      <div class="hud">
+        <p class ="dialogo">
+          muito true, only fatos
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('davi-3')" class="opcao">
+            Quero melhorar o ambiente da escola. Fazer uma campanha limpa
+          </button>
+          <button type="button" onclick="vaiPara('davi-4')" class="opcao">
+           Quero mudar tudo. Ser lembrado como o melhor presidente do grêmio.
+          </button>  
+    </div>
+    </div>
+    </div>
+    <!--cadeia1.1-->
+    <div id="davi-3">
+        <img src="images/davi.png" alt="Davi Britto" class="personagem" />
+        <div class="hud">
+          <p class ="dialogo">
+            boa, gostei de ouvir isso, escola toda carcomida, puida
+          </p>
+          <div class="bot-opc">
+            <button type="button" onclick="vaiPara('davi-5')" class="opcao">
+              é nem lanche tem, to passando fome
+            </button>
+            <button type="button" onclick="vaiPara('davi-6')" class="opcao">
+              limpar é copisa de mulher
+            </button>
+          </div>
+    </div>
+    </div>
+    <!--cadeia1.1.1-->
+    <div id="davi-5">
+        <img src="images/davi.png" alt="Davi Britto" class="personagem" />
+        <div class="hud">
+          <p class ="dialogo">
+            é isso ai, tamo junto candidato
+          </p>
+          <div class="bot-opc">
+            <button type="button" onclick="vaiPara('patio-0')" class="opcao">
+              valeu davi, até mais
+            </button>
+          </div>
+    </div>
+    </div>
+      <!--cadeia1.1.2-->
+    <div id="davi-6">
+        <img src="images/davi.png" alt="Davi Britto" class="personagem" />
+        <div class="hud">
+          <p class ="dialogo">
+            papa meio estranho esse ai, a gente se ve
+          </p>
+          <div class="bot-opc">
+            <button type="button" onclick="vaiPara('patio-0')" class="opcao">
+              valeu davi, até mais
+            </button>
+          </div>
+    </div>
+    </div>
+    <!--cadeia1.2.1-->
+  <div id="davi-4">
+  <div src="images/davi.png" alt="Davi Britto" class="personagem">
+        <div class="hud">
+          <p class ="dialogo">
+            mimimimim, tchau
+          </p>
+          <div class="bot-opc">
+            <button type="button" onclick="vaiPara('patio-0')" class="opcao">
+              valeu davi, até mais
+            </button>
+          </div>
+    </div>
+  </div>
+  </div>
+    <!--cadeia2-->
+  <div id="davi-2">
+       <img src="images/davi.png" alt="Davi Britto" class="personagem" />
+   <div class="hud">
+        <p class ="dialogo">
+          ah é? e como vai fazer isso?
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('davi-7')" class="opcao">
+            redistribuindo a riqueza
+          </button>
+          <button type="button" onclick="vaiPara('davi-8')" class="opcao">
+            nacionalizando os lanches
+          </button>
+        </div>
+    </div>
+   </div>
+    <!--cadeia2.1-->
+  <div id="davi-7">
+       <img src="images/davi.png" alt="Davi Britto" class="personagem" />
+   <div class="hud">
+        <p class ="dialogo">
+         justissimo, mas quem vai pagar a conta?
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('davi-9')" class="opcao">
+            meu pau
+          </button>
+          <button type="button" onclick="vaiPara('davi-10')" class="opcao">
+            irineu, voce nao sabe nem eu
+          </button>
+        </div>
+    </div>
+   </div>
+   <div id="davi-9">
+        <img src="images/davi.png" alt="Davi Britto" class="personagem" />  
+        <div class="hud">
+            <p class ="dialogo">
+            Faz sentido. Só tenta não virar aquele cara que faz qualquer coisa pra vencer, tá?
+            </p>
+            <div class="bot-opc">
+              <button type="button" onclick="vaiPara('patio-0')" class="opcao">
+                conselho dos brabos
+              </button>
+            </div>
+   </div>
+   </div>
+   <div id="davi-10">
+        <img src="images/davi.png" alt="Davi Britto" class="personagem" />  
+        <div class="hud">
+            <p class ="dialogo">
+            todo indecisinho acaba perdendo no final das contas
+            </p>
+            <div class="bot-opc">
+              <button type="button" onclick="vaiPara('patio-0')" class="opcao">
+                conselho dos brabos
+              </button>
+          </div>
+        </div>
+    </div>
+    <!--cadeia2.2-->
+  <div id="davi-8">
+       <img src="images/davi.png" alt="Davi Britto" class="personagem" />
+    <div class="hud">
+        <p class ="dialogo">
+         interessante, mas e a qualidade dos lanches?
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('davi-11')" class="opcao">
+            qualidade é um conceito burguês
+          </button>
+          <button type="button" onclick="vaiPara('davi-12')" class="opcao">
+            vou contratar um chef
+          </button>
+        </div>
+    </div>
+   </div>
+   <div id="davi-11">
+        <img src="images/davi.png" alt="Davi Britto" class="personagem" />
+        <div class="hud">
+            <p class ="dialogo">
+            Po,ai tu tem argumento, até as eleições
+            </p>
+            <div class="bot-opc">
+              <button type="button" onclick="vaiPara('patio-0')" class="opcao">
+                tamo junto
+              </button>
+            </div>  
+    </div>
+    </div>
+   <div id="davi-12">
+        <img src="images/davi.png" alt="Davi Britto" class="personagem" />
+        <div class="hud">
+            <p class ="dialogo">
+            Chef? tu é burguês ou quer ser presidente?  
+            </p>
+            <div class="bot-opc">
+              <button type="button" onclick="vaiPara('patio-0')" class="opcao">
+                ai tu complicou né, flw
+              </button>
+            </div>  
+    </div>
+    </div>
+
+
+  </section>
 
   <!--Personagens sala de aula-->
   <section class="gustavo">
@@ -526,7 +739,7 @@
     //Cenas e quais personagens aparece em cada uma delas
     cenas = {
       sala: ["gustavo", "sheldon", "house"],
-      patio: ["messi", "alanpa"],
+      patio: ["messi", "davi"],
     };
   </script>
 </body>

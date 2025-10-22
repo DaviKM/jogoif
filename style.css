@@ -23,6 +23,7 @@ main {
     height: 80vh;
     border: solid 3px rgb(99, 98, 98);
     flex-direction: column;
+   
 }
 
 /* Botões de início */
@@ -32,8 +33,17 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100vh;
 }
 
+.menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 40%;
+    background-color: rgba(0,0,0,0.6);
+}
 .botao-inicio {
     padding: 4px;
     font-family: "Cinzel", serif;
@@ -62,6 +72,7 @@ main {
 .botao-passar:hover {
     cursor: pointer;
 }
+
 
 /* Switch case / cenas */
 .cenas, section {
@@ -154,6 +165,7 @@ main {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    
 }
 
 /* Imagem de personagem */
