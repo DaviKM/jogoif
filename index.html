@@ -75,7 +75,7 @@
          Você escuta o sinal da escola, é o horário da aula, mas sempre há tempo para convencer mais pessoas
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="trocaFundo('sala');vaiPara(aleatEntre('sala',cenas.sala));exibirRelacionamento(`${sorteado}`)" class="opcao">
+          <button type="button" onclick="contCen=0;trocaFundo('sala');vaiPara(aleatEntre('sala',cenas.sala));exibirRelacionamento(`${sorteado}`)" class="opcao">
             Ir para sala
           </button>
         </div>
@@ -100,14 +100,14 @@
       </div>
     </div>
 
-    <div id="sala-0">
+    <div id="sala-1">
       <div class="hud">
         <p class="dialogo">
           Ainda há tempo de tentar convencer mais um antes do professor chegar:
         </p>
         <div class="bot-opc">
           <button type="button" onclick="vaiPara(cenas.sala[0]); exibirRelacionamento(cenas.sala[0])" class="opcao">
-            <span id="sala-nome1"></span>
+            <span id="sala-nome3"></span>
           </button>
         </div>
       </div>
@@ -121,7 +121,7 @@
       <div class="hud">
         <p class="dialogo">É isso. Boa sorte aí. Não perca tempo discutindo quem tá certo; use o tempo pra fazer campanha. A gente se vê.</p>
         <div class="bot-opc">
-          <button type="button" onclick="trocaCena('patio')" class="opcao">
+          <button type="button" onclick="limpaBarra();trocaCena('patio')" class="opcao">
             Voltar para o pátio
           </button>
         </div>
@@ -415,7 +415,7 @@
                 Olha, se tu conseguir fazer o básico, já tem meu voto. Gosto de quem bota a mão na massa.
             </p>
             <div class="bot-opc">
-                <button type="button" onclick="trocaCena('patio')" class="opcao">
+                <button type="button" onclick="limpaBarra();trocaCena('patio')" class="opcao">
                     Obrigado, Davi. Até mais.
                 </button>
             </div>
@@ -428,7 +428,7 @@
                 Projeto complexo? Cuidado para não prometer demais e não entregar nada. Pensa simples.
             </p>
             <div class="bot-opc">
-                <button type="button" onclick="trocaCena('patio')" class="opcao">
+                <button type="button" onclick="limpaBarra();trocaCena('patio')" class="opcao">
                     Entendi a dica. Até mais.
                 </button>
             </div>
@@ -441,7 +441,7 @@
                 Virar uma lenda, né? Eu já vi esse filme. O ego atrapalha mais que ajuda.
             </p>
             <div class="bot-opc">
-                <button type="button" onclick="trocaCena('patio')" class="opcao">
+                <button type="button" onclick="limpaBarra();trocaCena('patio')" class="opcao">
                     Vou pensar nisso. Falou.
                 </button>
             </div>
@@ -487,7 +487,7 @@
                 Foco no planejamento. Ideia boa, mas precisa de base sólida para não ser só promessa.
             </p>
             <div class="bot-opc">
-                <button type="button" onclick="trocaCena('patio')" class="opcao">
+                <button type="button" onclick="limpaBarra();trocaCena('patio')" class="opcao">
                     Obrigado pelo conselho.
                 </button>
             </div>
@@ -500,7 +500,7 @@
                 Quem não sabe o método acaba perdendo o controle no final. Pense nisso.
             </p>
             <div class="bot-opc">
-                <button type="button" onclick="trocaCena('patio')" class="opcao">
+                <button type="button" onclick="limpaBarra();trocaCena('patio')" class="opcao">
                     Você tem um ponto.
                 </button>
             </div>
@@ -529,7 +529,7 @@
                 Foco total na base, entendi. Bom argumento. Até as eleições.
             </p>
             <div class="bot-opc">
-                <button type="button" onclick="trocaCena('patio')" class="opcao">
+                <button type="button" onclick="limpaBarra();trocaCena('patio')" class="opcao">
                     Tamo junto.
                 </button>
             </div>
@@ -542,7 +542,7 @@
                 Comitê? Isso é gestão! Aí sim, pensando como presidente.
             </p>
             <div class="bot-opc">
-                <button type="button" onclick="trocaCena('patio')" class="opcao">
+                <button type="button" onclick="limpaBarra();trocaCena('patio')" class="opcao">
                     Vou indo nessa, falou!
                 </button>
             </div>
@@ -559,7 +559,7 @@
       <div class="hud">
         <p class="dialogo">Beleza então, até mais tarde!</p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('sala-0')" class="opcao">
+          <button type="button" onclick="vaiPara('sala-0');trocaCena('sala')" class="opcao">
             Voltar para a sala
           </button>
         </div>
@@ -624,7 +624,7 @@
       <div class="hud">
         <p class="dialogo">Beleza então, até mais tarde!</p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('sala-0')" class="opcao">
+          <button type="button" onclick="vaiPara('sala-0');trocaCena('sala')" class="opcao">
             Voltar para a sala
           </button>
         </div>
@@ -659,7 +659,7 @@
       <div class="hud">
         <p class="dialogo">Beleza então, até mais tarde!</p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('sala-0')" class="opcao">
+          <button type="button" onclick="trocaCena('sala');vaiPara('sala-0')" class="opcao">
             Voltar para a sala
           </button>
         </div>
@@ -699,13 +699,14 @@
     function exibirRelacionamento(personagemID) {
       //armazena o valor do relacionamento em uma variavel
       //usa a "gambiarra" de usar id como variável que o sor mostrou na aula
+      document.getElementById("barraExterna").style.backgroundColor = "white";
       valorRelacionamento = personagem[personagemID].relacionamento;
       barraInterna.style.height = `${valorRelacionamento}%`;
       document.getElementById("nomeBarra").innerHTML = `${personagem[personagemID].nome} ${personagem[personagemID].snome}`;
       if(valorRelacionamento<40){
         barraInterna.style.backgroundColor = "red";
       }
-      else if(valorRelacionamento>40 && valorRelacionamento<70){
+      else if(valorRelacionamento>=40 && valorRelacionamento<70){
         barraInterna.style.backgroundColor = "yellow";
       }
       else{
@@ -713,6 +714,7 @@
       }
     }
 
+    
 
     function numeroAleatorio(max) {
       return Math.floor(Math.random() * max);
@@ -731,7 +733,6 @@
     //Função para remover personagem das cenas e põe nome nos botões
     function removePersonagem(cena,personagemRemovido, personagens) {
       personagens.splice(personagemRemovido, 1);
-
       console.log(personagens.length);
       for (let i = 0; i < personagens.length; i++) {
         document.getElementById(cena+"-"+`nome${i+1}`).innerHTML =
@@ -768,6 +769,13 @@
       //console.log(cena.substr(0, cena.indexOf('-')).toLowerCase())
       salvarLogJogador(cena);
       salvarLogPers(cena);
+    }
+
+    function limpaBarra(){
+      document.getElementById("barraExterna").style.backgroundColor = "rgb(166, 218, 228)";
+      document.getElementById("nomeBarra").innerHTML = "";
+      document.getElementById("barraInterna").style.height = "0px";
+      document.getElementById("barraInterna").style.backgroundColor = "white";
     }
 
     function salvarLogPers(dialogo) {
