@@ -47,7 +47,7 @@
         escola
       </p>
       <button type="button"
-        onclick="trocaFundo('patio');vaiPara(aleatEntre('patio',cenas.patio));exibirRelacionamento(`${sorteado}`);"
+        onclick="trocaFundo('patio');vaiPara(aleatEntre(cenas.patio));exibirRelacionamento(`${sorteado}`);nomeBotao('patio',cenas.patio)"
         class="botao-passar">
         Patio
       </button>
@@ -63,7 +63,7 @@
           convencido a votar em você:
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara(cenas.patio[0]);exibirRelacionamento(cenas.patio[0])" class="opcao">
+          <button type="button" onclick="vaiPara(cenas.patio[0]);exibirRelacionamento(cenas.patio[0]);nomeBotao('sala',cenas.sala)" class="opcao">
             <span id="patio-nome1"></span>
           </button>
         </div>
@@ -75,7 +75,7 @@
          Você escuta o sinal da escola, é o horário da aula, mas sempre há tempo para convencer mais pessoas
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="contCen=0;trocaFundo('sala');vaiPara(aleatEntre('sala',cenas.sala));exibirRelacionamento(`${sorteado}`)" class="opcao">
+          <button type="button" onclick="contCen=0;trocaFundo('sala');vaiPara(aleatEntre(cenas.sala));exibirRelacionamento(`${sorteado}`)" class="opcao">
             Ir para sala
           </button>
         </div>
@@ -86,15 +86,11 @@
     <div id="sala-0">
       <div class="hud">
         <p class="dialogo">
-          Você percebe que existe mais 2 pessoas disponíveis para conversar na
-          sala:
+          Ao terminar essa conversa, você percebe outra pessoa chegando: 
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara(cenas.sala[0]); exibirRelacionamento(cenas.sala[0])" class="opcao">
+          <button type="button" onclick="vaiPara(aleatEntre(cenas.sala)); exibirRelacionamento(`${sorteado}`);" class="opcao">
             <span id="sala-nome1"></span>
-          </button>
-          <button type="button" onclick="vaiPara(cenas.sala[1]); exibirRelacionamento(cenas.sala[1])" class="opcao">
-            <span id="sala-nome2"></span>
           </button>
         </div>
       </div>
@@ -107,7 +103,7 @@
         </p>
         <div class="bot-opc">
           <button type="button" onclick="vaiPara(cenas.sala[0]); exibirRelacionamento(cenas.sala[0])" class="opcao">
-            <span id="sala-nome3"></span>
+            <span id="sala-nome2"></span>
           </button>
         </div>
       </div>
@@ -559,7 +555,7 @@
       <div class="hud">
         <p class="dialogo">Beleza então, até mais tarde!</p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('sala-0');trocaCena('sala')" class="opcao">
+          <button type="button" onclick="trocaCena('sala');vaiPara('sala-0')" class="opcao">
             Voltar para a sala
           </button>
         </div>
@@ -624,7 +620,7 @@
       <div class="hud">
         <p class="dialogo">Beleza então, até mais tarde!</p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('sala-0');trocaCena('sala')" class="opcao">
+          <button type="button" onclick="trocaCena('sala');vaiPara('sala-0')" class="opcao">
             Voltar para a sala
           </button>
         </div>
@@ -720,20 +716,23 @@
       return Math.floor(Math.random() * max);
     }
 
-    function aleatEntre(cena,personagens) {
+    function aleatEntre(personagens) {
       aleatorio = numeroAleatorio(personagens.length);
       sorteado = personagens[aleatorio];
 
       //Remove o personagem sorteado
-      removePersonagem(cena,aleatorio, personagens);
+      removePersonagem(aleatorio, personagens);
 
       return sorteado;
     }
 
     //Função para remover personagem das cenas e põe nome nos botões
-    function removePersonagem(cena,personagemRemovido, personagens) {
+    function removePersonagem(personagemRemovido, personagens) {
       personagens.splice(personagemRemovido, 1);
       console.log(personagens.length);
+    }
+
+    function nomeBotao(cena,personagens){
       for (let i = 0; i < personagens.length; i++) {
         document.getElementById(cena+"-"+`nome${i+1}`).innerHTML =
           personagem[personagens[i]].nome +
