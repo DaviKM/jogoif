@@ -47,7 +47,7 @@
         escola
       </p>
       <button type="button"
-        onclick="trocaFundo('patio');vaiPara(aleatEntre(cenas.patio));exibirRelacionamento(`${sorteado}`);nomeBotao('patio',cenas.patio)"
+        onclick="trocaFundo('patio');vaiPara(aleatEntre(cenas.patio));exibirRelacionamento(`${sorteado}`);nomeBotao('patio', cenas.patio)"
         class="botao-passar">
         Patio
       </button>
@@ -63,8 +63,8 @@
           convencido a votar em você:
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara(cenas.patio[0]);exibirRelacionamento(cenas.patio[0]);nomeBotao('sala',cenas.sala)" class="opcao">
-            <span id="patio-nome1"></span>
+          <button type="button" onclick="vaiPara(cenas.patio[0]);exibirRelacionamento(cenas.patio[0])" class="opcao">
+            <span id="patio-nome0"></span>
           </button>
         </div>
       </div>
@@ -75,7 +75,7 @@
          Você escuta o sinal da escola, é o horário da aula, mas sempre há tempo para convencer mais pessoas
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="contCen=0;trocaFundo('sala');vaiPara(aleatEntre(cenas.sala));exibirRelacionamento(`${sorteado}`)" class="opcao">
+          <button type="button" onclick="contCen=0;trocaFundo('sala');vaiPara(cenas.sala[0]);exibirRelacionamento(`${sorteado}`); nomeBotao('sala',cenas.sala)" class="opcao">
             Ir para sala
           </button>
         </div>
@@ -89,7 +89,7 @@
           Ao terminar essa conversa, você percebe outra pessoa chegando: 
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara(aleatEntre(cenas.sala)); exibirRelacionamento(`${sorteado}`);" class="opcao">
+          <button type="button" onclick="vaiPara(cenas.sala[1]); exibirRelacionamento(cenas.sala[1]);" class="opcao">
             <span id="sala-nome1"></span>
           </button>
         </div>
@@ -102,7 +102,7 @@
           Ainda há tempo de tentar convencer mais um antes do professor chegar:
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara(cenas.sala[0]); exibirRelacionamento(cenas.sala[0])" class="opcao">
+          <button type="button" onclick="vaiPara(cenas.sala[2]);exibirRelacionamento(cenas.sala[2])" class="opcao">
             <span id="sala-nome2"></span>
           </button>
         </div>
@@ -555,7 +555,7 @@
       <div class="hud">
         <p class="dialogo">Beleza então, até mais tarde!</p>
         <div class="bot-opc">
-          <button type="button" onclick="trocaCena('sala');vaiPara('sala-0')" class="opcao">
+          <button type="button" onclick="trocaCena('sala');nomeBotao('sala',cenas.sala);"class="opcao">
             Voltar para a sala
           </button>
         </div>
@@ -620,7 +620,7 @@
       <div class="hud">
         <p class="dialogo">Beleza então, até mais tarde!</p>
         <div class="bot-opc">
-          <button type="button" onclick="trocaCena('sala');vaiPara('sala-0')" class="opcao">
+          <button type="button" onclick="trocaCena('sala'); nomeBotao('sala',cenas.sala);" class="opcao">
             Voltar para a sala
           </button>
         </div>
@@ -655,7 +655,7 @@
       <div class="hud">
         <p class="dialogo">Beleza então, até mais tarde!</p>
         <div class="bot-opc">
-          <button type="button" onclick="trocaCena('sala');vaiPara('sala-0')" class="opcao">
+          <button type="button" onclick="trocaCena('sala'); nomeBotao('sala',cenas.sala);" class="opcao">
             Voltar para a sala
           </button>
         </div>
@@ -733,13 +733,25 @@
     }
 
     function nomeBotao(cena,personagens){
-      for (let i = 0; i < personagens.length; i++) {
-        document.getElementById(cena+"-"+`nome${i+1}`).innerHTML =
+      if(cena=="sala"){
+        for (let i = 0; i < personagens.length; i++) {
+          document.getElementById(cena+"-"+`nome${i+1}`).innerHTML =
+          personagem[personagens[i+1]].nome +
+          " " +
+          personagem[personagens[i+1]].snome;
+        }
+      }
+      else{
+        for (let i = 0; i < personagens.length; i++) {
+          document.getElementById(cena+"-"+`nome${i}`).innerHTML =
           personagem[personagens[i]].nome +
           " " +
           personagem[personagens[i]].snome;
+        }
       }
     }
+
+    
 
     contCen=0;
     function trocaCena(cena){
