@@ -172,9 +172,7 @@ main {
     transition: ease-in-out 1s;
     border-radius: 50px;
     /*a ideia é fazer ele se repetir pela barrinha q nem amor doce e d=fica mais transparente(vou ter que desligar o pc)*/
-    background-image:
-      linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),
-     url("images/Relhudimg.png");
+    background-image: url("images/Relhudimg.png");
     background-size: contain, contain;
     background-repeat: repeat, repeat;
     background-position: center, center;
