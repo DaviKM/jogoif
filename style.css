@@ -5,13 +5,27 @@
 }
 
 /* Body e HTML: tamanho máximo e centralização da main */
-body, html {
+body,
+html {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    background-color: rgb(166, 218, 228);
+}
+
+body {
+
+    --s: 60px;
+    --c1: #a6dae4;
+    --c2: #749aa1;
+    --_g: radial-gradient(25% 25% at 25% 25%,
+            var(--c1) 99%,
+            rgba(0, 0, 0, 0) 101%);
+    background: var(--_g) var(--s) var(--s) / calc(2 * var(--s)) calc(2 * var(--s)),
+        var(--_g) 0 0 / calc(2 * var(--s)) calc(2 * var(--s)),
+        radial-gradient(50% 50%, var(--c2) 98%, rgba(0, 0, 0, 0)) 0 0 / var(--s) var(--s),
+        repeating-conic-gradient(var(--c2) 0 50%, var(--c1) 0 100%) calc(0.5 * var(--s)) 0 / calc(2 * var(--s)) var(--s);
 }
 
 /* Main container */
@@ -23,7 +37,11 @@ main {
     height: 80vh;
     border: solid 3px rgb(99, 98, 98);
     flex-direction: column;
-   
+    border-radius: 10px;
+    background-image: url("images/hud/ódio\ salgado.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* Botões de início */
@@ -36,19 +54,20 @@ main {
     width: 100vh;
 }
 
-.menu{
+.menu {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     width: 40%;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
-.menu img{
+.menu img {
     position: absolute;
     top: 3%;
 }
+
 .botao-inicio {
     padding: 4px;
     font-family: "Cinzel", serif;
@@ -57,12 +76,13 @@ main {
     border: none;
     color: rgba(255, 255, 255, 0.952);
     font-weight: bold;
-    text-shadow: 10px 10px 15px rgba(0,0,0,0.7);
+    text-shadow: 10px 10px 15px rgba(0, 0, 0, 0.7);
 }
-.menu a:hover{
+
+.menu a:hover {
     color: rgb(51, 134, 202);
 
- }
+}
 
 .botao-inicio:hover {
     cursor: pointer;
@@ -76,7 +96,7 @@ main {
     border: none;
     color: rgba(255, 255, 255, 0.952);
     font-weight: bold;
-    text-shadow: 10px 10px 15px rgba(0,0,0,0.7);
+    text-shadow: 10px 10px 15px rgba(0, 0, 0, 0.7);
 }
 
 .botao-passar:hover {
@@ -85,7 +105,8 @@ main {
 
 
 /* Switch case / cenas */
-.cenas, section {
+.cenas,
+section {
     display: none;
 }
 
@@ -132,29 +153,6 @@ main {
     margin-bottom: 30px;
 }
 
-/* Cenários / Backgrounds */
-.frente {
-    background-image: url("images/fachada_if.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.entrada {
-    background-image: url(images/entrada_if.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.inicio {
-    background-image: url("images/ódio\ salgado.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    
-}
-
 /* Imagem de personagem */
 .personagem {
     position: absolute;
@@ -164,7 +162,7 @@ main {
 }
 
 /* Barra de relacionamento */
-#barraInterna{
+#barraInterna {
     position: relative;
     background-color: white;
     width: 22px;
@@ -172,30 +170,32 @@ main {
     transition: ease-in-out 1s;
     border-radius: 50px;
     /*a ideia é fazer ele se repetir pela barrinha q nem amor doce e d=fica mais transparente(vou ter que desligar o pc)*/
-    background-image: url("images/Relhudimg.png");
+    background-image: url("images/hud/Relhudimg.png");
     background-size: contain, contain;
     background-repeat: repeat, repeat;
     background-position: center, center;
 }
 
-#barraExterna{
+#barraExterna {
     width: 30px;
-    height:300px;
+    height: 300px;
     padding: 5px;
-    background-color: rgb(166, 218, 228);
+    background-color: #ffffff00;
     display: flex;
     align-items: end;
     justify-content: center;
     overflow: hidden;
     border-radius: 50px;
+    transition: ease-in-out 0.5s;
 }
 
-.nomeBarra{
+.nomeBarra {
     width: 100%;
     height: 20px;
     text-align: center;
 }
-#hudRelacionamento{
+
+#hudRelacionamento {
     position: fixed;
     display: flex;
     align-items: center;
@@ -203,18 +203,23 @@ main {
     flex-direction: column;
     width: 9%;
     right: 0px;
-    
+
 }
-#HorasHud img{
+
+#HorasHud img {
     display: flex;
     justify-self: center;
     width: 50px;
     height: 50px;
+
 }
-#HorasHud{
-    margin-bottom: 30px;;
+
+#HorasHud {
+    margin-bottom: 30px;
+
 }
-a{
+
+a {
     text-decoration: none;
     color: inherit;
 }
