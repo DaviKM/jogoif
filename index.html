@@ -14,7 +14,13 @@
 </head>
 
 <body>
+ 
   <div id="hudRelacionamento">
+     
+     <div id="HorasHud">
+      
+      <span id="horas"></span>
+    </div>
     <div class="nomeBarra"><span id="nomeBarra"></span></div>
     <div id="barraExterna">
       <div id="barraInterna"></div>
@@ -25,13 +31,13 @@
       <img src="images/odiosalgado.png" alt="Titulo">
       <div class="botoes-inicio">
         <button type="button" id="jogar" onclick="trocaFundo('entrada_if'); vaiPara('cena1')" class="botao-inicio">
-          Jogar
+          <a href="#">Jogar</a>
         </button>
         <button type="button" id="creditos" class="botao-inicio">
-          Créditos
+          <a href="#">Créditos</a>
         </button>
         <button type="button" id="personagens" class="botao-inicio">
-          Personagens
+          <a href="personagens.html">Personagens</a>
         </button>
       </div>
     </div>
@@ -47,7 +53,7 @@
         escola
       </p>
       <button type="button"
-        onclick="trocaFundo('patio');vaiPara(aleatEntre(cenas.patio));exibirRelacionamento(`${sorteado}`);nomeBotao('patio', cenas.patio)"
+        onclick="trocaFundo('patio');vaiPara(aleatEntre(cenas.patio));exibirRelacionamento(`${sorteado}`);nomeBotao('patio', cenas.patio); horasComp(0)"
         class="botao-passar">
         Patio
       </button>
@@ -108,7 +114,22 @@
         </div>
       </div>
     </div>
-  </section>
+  
+
+  <div id="sala-2">
+    <div class="hud">
+      <p class="dialogo">
+        O professor chegou, hora de prestar atenção na aula.
+      </p>
+      <div class="bot-opc">
+      <button type="button" onclick="vaiPara(cenas.sala[3]);exibirRelacionamento(cenas.sala[3])" class="opcao">
+        Próximo
+      </button>
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <!--Personagens pátio-->
   <section class="messi">
@@ -549,13 +570,57 @@
 
 
   <!--Personagens sala de aula-->
+
+  <section class="bigolin">
+    <div id="bigolin-sair">
+      <img src="images/bigolin.png" alt="Bigolin" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">Beleza então, até mais tarde!</p>
+        <div class="bot-opc">
+          <button type="button" onclick="" class="opcao">
+            Voltar para a sala
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="bigolin-0" class="cenas">
+      <img src="images/bigolin.png" alt="Bigolin" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Buenas people que começem os Jogos
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('bigolin-1')" class="opcao">
+            Próximo
+          </button>
+        </div>
+      </div>
+      </div>
+    <div id="bigolin-1" class="cenas">
+      <img src="images/bigolin.png" alt="Bigolin" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          como centralizar uma div
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('bigolin-sair');maisRelacionamento('bigolin',15);horasComp(10)" class="opcao">
+            depende
+          </button>
+          <button type="button" onclick="vaiPara('bigolin-sair');menosRelacionamento('bigolin',15)" class="opcao">
+            não sei
+          </button>
+        </div>
+    </div>
+    </div>
+
+    </section>
   <section class="gustavo">
     <div id="gustavo-sair">
       <img src="images/gustavo.png" alt="Gustavo" class="personagem" />
       <div class="hud">
         <p class="dialogo">Beleza então, até mais tarde!</p>
         <div class="bot-opc">
-          <button type="button" onclick="trocaCena('sala');nomeBotao('sala',cenas.sala);"class="opcao">
+          <button type="button" onclick="trocaCena('sala')"class="opcao">
             Voltar para a sala
           </button>
         </div>
@@ -620,7 +685,7 @@
       <div class="hud">
         <p class="dialogo">Beleza então, até mais tarde!</p>
         <div class="bot-opc">
-          <button type="button" onclick="trocaCena('sala'); nomeBotao('sala',cenas.sala);" class="opcao">
+          <button type="button" onclick="trocaCena('sala')" class="opcao">
             Voltar para a sala
           </button>
         </div>
@@ -655,7 +720,7 @@
       <div class="hud">
         <p class="dialogo">Beleza então, até mais tarde!</p>
         <div class="bot-opc">
-          <button type="button" onclick="trocaCena('sala'); nomeBotao('sala',cenas.sala);" class="opcao">
+          <button type="button" onclick="trocaCena('sala')" class="opcao">
             Voltar para a sala
           </button>
         </div>
@@ -710,7 +775,10 @@
       }
     }
 
-    
+    function horasComp(horas){
+      jogador.horas_com += horas;
+      document.getElementById('horas').innerHTML = '<img src="images/horasHud.png" /> <br> Horas complemantares: ' + jogador.horas_com;
+    }
 
     function numeroAleatorio(max) {
       return Math.floor(Math.random() * max);
@@ -759,8 +827,11 @@
         contCen++;
         vaiPara(cena+'-0');
       } else if(contCen == 1){
+        contCen++;
         vaiPara(cena+'-1');
-        contCen=0;
+      } else if(contCen == 2){
+        contCen++;
+        vaiPara(cena+'-2');
       }
 
     }
@@ -813,6 +884,9 @@
       }
     }
 
+    jogador = {
+      horas_com:0,
+    }
     // dialogos: os números abaixo do nome do personagem são os diálogos diferentes dependendo da resposta do jogador
     //OBS: quanto maior o nível, mais rude o jogador foi com o personagem
     personagem = {
@@ -882,7 +956,7 @@
 
     //Cenas e quais personagens aparece em cada uma delas
     cenas = {
-      sala: ["gustavo", "sheldon", "house"],
+      sala: ["gustavo", "sheldon", "house","bigolin"],
       patio: ["messi", "davi"],
     };
   </script>

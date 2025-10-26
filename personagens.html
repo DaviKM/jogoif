@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>personagens_odiosalgado</title>
+    <style>
+       body, html {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgb(166, 218, 228);
+}
+        main{
+            display: flex;
+            align-items: space-between;
+            font-family: Arial, sans-serif;
+        }
+        header, footer{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            background-color: #262533;
+            color: white;
+            width: 100vw;
+            height: 10vh;
+        }
+        header{  
+            align-items: flex-start;
+        }
+        footer{  
+            align-items: flex-end;
+        }
+        #personagens{
+            display: flex;
+            background-color: #ffffff;
+            justify-content: center;
+            align-items: center;
+            justify-self: center;
+            height: 80vh;
+            width: 80vw;
+        }
+        .personagem{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+        }
+        
+        img{
+            border-radius: 10px;
+            margin-bottom: 10px;
+            width: 180px;
+            height: 150px;
+        }
+        #conteiner-pers{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <header>
+            <h1>Personagens de Ódio Salgado</h1>
+        </header>
+        <div id="personagens">
+            <div id="conteiner-pers">
+                <div class="personagem">
+                    <img src="images/bigolin.png" alt="Bigolin">
+                    <a href="#">Marcio Bigolin</a>
+                </div>
+                <div class="personagem">
+                    <img src="images/davi.png" alt="Davi">
+                    <a href="#">Davi Brito</a>
+                </div>
+                <div class="personagem">
+                    <img src="images/gustavo.png" alt="Gustavo">
+                    <a href="#">Gustavo Gonçalves</a>
+                </div>
+                <div class="personagem">
+                    <img src="images/house.png" alt="House">
+                    <a href="#">Dr. House</a>
+                </div>
+                <div class="personagem">
+                    <img src="images/messi.png" alt="Messi">
+                    <a href="#">Lionel Messi</a>
+                </div>
+                <div class="personagem">
+                    <img src="images/sheldon.png" alt="sheldon">
+                    <a href="#">Sheldon Cooper</a>
+                </div>
+                <div class="personagem">
+                    <img src="images/vinicius.png" alt="Zé Pequeno">
+                    <a href="#">Vinicius</a>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>© 2025 Ódio Salgado. Todos os direitos reservados.</p>
+        </footer>
+
+    </div>
+</body>
+</html>

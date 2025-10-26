@@ -59,9 +59,14 @@ main {
     font-weight: bold;
     text-shadow: 10px 10px 15px rgba(0,0,0,0.7);
 }
+.menu a:hover{
+    color: rgb(51, 134, 202);
+
+ }
 
 .botao-inicio:hover {
     cursor: pointer;
+    font-size: 36px;
 }
 
 .botao-passar {
@@ -166,6 +171,13 @@ main {
     height: 0px;
     transition: ease-in-out 1s;
     border-radius: 50px;
+    /*a ideia é fazer ele se repetir pela barrinha q nem amor doce e d=fica mais transparente(vou ter que desligar o pc)*/
+    background-image:
+      linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),
+     url("images/Relhudimg.png");
+    background-size: contain, contain;
+    background-repeat: repeat, repeat;
+    background-position: center, center;
 }
 
 #barraExterna{
@@ -193,4 +205,18 @@ main {
     flex-direction: column;
     width: 9%;
     right: 0px;
+    
+}
+#HorasHud img{
+    display: flex;
+    justify-self: center;
+    width: 50px;
+    height: 50px;
+}
+#HorasHud{
+    margin-bottom: 30px;;
+}
+a{
+    text-decoration: none;
+    color: inherit;
 }
