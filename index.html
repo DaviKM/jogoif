@@ -883,19 +883,46 @@
       <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
       <div class="hud">
         <p class="dialogo">
-          Saudações, eu sou o Dr. Sheldon Cooper, Ph.D, Sc.d. Antes de
-          começarmos, é importante esclarecer: não gosto de surpresas, toques
-          ou mudanças na minha rotina. Agora, diga-me: você tem um QI acima de
-          187 ou devo ajustar minhas expectativas?
+          Finalmente, alguém com potencial intelectual sentou por aqui. Ou você só veio colar de mim?
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('sheldon-sair')" class="opcao">
-            Na verdade, meu QI é bem alto. Podemos conversar de igual para
-            igual.
+          <button type="button" onclick="vaiPara('sheldon-1');maisRelacionamento('sheldon',15)" class="opcao">
+            Relaxa, só quero estudar tranquilo.
           </button>
-          <button type="button" onclick="vaiPara('sheldon-2')" class="opcao">
-            Eu não sei meu QI, mas prometo que sou esperto o bastante para te
-            acompanhar.
+          <button type="button" onclick="vaiPara('sheldon-2');menosRelacionamento('sheldon',10)" class="opcao">
+            Na verdade, eu queria saber o que um gênio pensa sobre política.
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="sheldon-1">
+      <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Tranquilidade é um estado quântico instável numa sala cheia de adolescentes. Mas... vou permitir que sua presença não interfira no meu campo de concentração. E, se você ficar quieto, talvez consiga absorver 0,03% da minha genialidade por osmose. Mas aviso: o processo é lento e frustrante.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('sheldon-3')" class="opcao">
+            Valeu, eu prometo não perturbar o seu... campo quântico.
+          </button>
+          <button type="button" onclick="vaiPara('sheldon-4')" class="opcao">
+
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="sheldon-2">
+      <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Ah! Finalmente, uma pergunta digna de ser respondida por alguém com QI acima da temperatura ambiente. A política é uma simulação social defeituosa: egos em conflito, alianças instáveis e promessas que desafiam qualquer princípio lógico. É basicamente a versão humana de um sistema operacional mal programado.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara('sheldon-5')" class="opcao">
+            Então você acha que não existe lógica na política?
+          </button>
+          <button type="button" onclick="vaiPara('sheldon-6')" class="opcao">
+            
           </button>
         </div>
       </div>
