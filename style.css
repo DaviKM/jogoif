@@ -297,10 +297,43 @@ section {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    gap: 10px;
     background-color: transparent;
     padding: 10px;
     color: white;
-    transition: ease-in-out 1s;
+    width: 10px;
+    height: 10px;
+    transition: ease-in-out 0.2s;
+    border-radius: 10px;
+    border: 5px solid transparent;
+}
+
+.nomeItens{
+    font-size: 20pt;
+    color: aquamarine;
+}
+
+.botItem{
+    margin-top: 20px;
+    padding: 8px;
+    font-size: 16pt;
+    border-radius: 10px;
+    background-color: rgba(59, 183, 240, 0.7);
+    color: rgb(255, 255, 255);
+}
+
+.botItem:hover{
+    cursor: pointer;
+    background-color: #0e434d;
+    transition: ease-in-out 0.2s;
+}
+
+.textoItens{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 
 a {
