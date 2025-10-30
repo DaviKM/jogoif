@@ -17,7 +17,7 @@
 
 </head>
 
-<body id="body">
+<body>
 
   <div id="hudRelacionamento">
     <div id="HorasHud">
@@ -163,6 +163,19 @@
     </div>
   </section>
 
+  <!--Itens-->
+  <section id="itens">
+    <div id="papel" class="item">
+      <img src="images/itens/papel.png" alt="Papel de fórmulas">
+      <div id="textoPapel" class="textoItens">
+        <span id="npapel" class="nomeItens"></span>
+        <span id="dpapel" class="descItens"></span>
+      </div>
+      <button type="button" onclick="excluirCena('hud-itens');trocaCena('sala'); limpaBarra()" class="botItem">
+          Continuar
+      </button>
+    </div>
+  </section>
 
   <!--Personagens pátio-->
   <section class="messi">
@@ -1156,15 +1169,6 @@
         </div>
       </div>
     </div>
-<!--ta com erro e to indo pra aula acho q hj aiinda arrumo 30/10-->
-    <div id="papel" class="item">
-      <img src="images/itens/papel.png" alt="Papel de fórmulas">
-      <span id="npapel"></span>
-      <span id="dpapel"></span>
-      <button type="button" onclick="excluirCena('papel'); limpaBarra()" class="opcao">
-          Continuar
-      </button>
-    </div>
   </section>
 
   <section class="house">
@@ -1321,8 +1325,12 @@
 
     //Função que exibe o item na tela
     function item(idItem,nomeItem,descItem,npersonagem){
-      document.getElementById("hud-itens").style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-      document.getElementById("hud-itens").innerHTML += document.getElementById(idItem).innerHTML;
+      hud = document.getElementById("hud-itens")
+      hud.style.height = "70vh";
+      hud.style.width = "70vw";
+      hud.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+      hud.style.borderColor = "white";
+      hud.innerHTML += document.getElementById(idItem).innerHTML;
       document.getElementById("n"+idItem).innerHTML = itens[npersonagem].Inome;
       document.getElementById("d"+idItem).innerHTML = itens[npersonagem].DescItem;
       console.log("Chamou item")
