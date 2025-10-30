@@ -18,7 +18,7 @@
 </head>
 
 <body>
-
+ <div id="hudInv"></div>
   <div id="hudRelacionamento">
     <div id="HorasHud">
       <span id="horas"></span>
@@ -30,9 +30,8 @@
       </div>
     </div>
      <div class="nomeBarra"><span id="nomeBarra"></span></div>
-      
   </div>
-
+  
   <!--Barra de menu-->
   <nav>
     <ol>
@@ -57,7 +56,7 @@
     <div class="menu">
       <img src="images/hud/odiosalgado.png" alt="Titulo">
       <div class="botoes-inicio">
-        <button type="button" id="jogar" onclick="trocaFundo('entrada_if'); vaiPara('cena1')" class="botao-inicio">
+        <button type="button" id="jogar" onclick="trocaFundo('entrada_if'); chamaInv(); vaiPara('cena1')" class="botao-inicio">
           <a href="#">Jogar</a>
         </button>
         <button type="button" id="creditos" class="botao-inicio">
@@ -171,12 +170,21 @@
         <span id="npapel" class="nomeItens"></span>
         <span id="dpapel" class="descItens"></span>
       </div>
-      <button type="button" onclick="excluirCena('hud-itens');trocaCena('sala'); limpaBarra()" class="botItem">
+      <button type="button" onclick="excluirCena('hud-itens'); addInvent('papel');trocaCena('sala'); limpaBarra()" class="botItem">
           Continuar
       </button>
     </div>
   </section>
 
+  <section id="inv">
+     <div id="hudinventario">
+        <ol>
+          <i class="fa-solid fa-bag-shopping"></i>
+          <li id="items">
+          </li>
+        </ol>
+  </div>
+  </section>
   <!--Personagens pátio-->
   <section class="messi">
     <div id="messi-sair">
@@ -1325,7 +1333,7 @@
 
     //Função que exibe o item na tela
     function item(idItem,nomeItem,descItem,npersonagem){
-      hud = document.getElementById("hud-itens")
+      hud = document.getElementById("hud-itens");
       hud.style.height = "70vh";
       hud.style.width = "70vw";
       hud.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
@@ -1336,6 +1344,15 @@
       console.log("Chamou item")
     }
 
+    function addInvent(item){
+      document.getElementById("items").innerHTML += '<img src="images/itens/'+item+'.png" alt="'+item+'" class="itemInvent" id="'+item+'"/>';
+      console.log("Chamou a funcao invent");
+    }
+    
+    function chamaInv(){
+      document.getElementById("hudInv").innerHTML = document.getElementById("inv").innerHTML;
+      console.log("Chamou a funcao chamaInv");
+    }
     function excluirCena(nomecena){
       document.getElementById(nomecena).remove();
     }
