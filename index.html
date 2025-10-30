@@ -17,18 +17,20 @@
 
 </head>
 
-<body>
+<body id="body">
 
   <div id="hudRelacionamento">
-
     <div id="HorasHud">
-
       <span id="horas"></span>
     </div>
-    <div class="nomeBarra"><span id="nomeBarra"></span></div>
+   
     <div id="barraExterna">
-      <div id="barraInterna"></div>
+      <div id="maxBarra">
+        <div id="barraInterna"></div>
+      </div>
     </div>
+
+     <div class="nomeBarra"><span id="nomeBarra"></span></div>
   </div>
 
   <!--Barra de menu-->
@@ -868,96 +870,336 @@
 
 
   <section class="sheldon">
-    <div id="sheldon-sair">
+    <div id="sheldon-sair0">
+    <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+    <div class="hud">
+      <p class="dialogo">
+        Muito bem, experiência social concluída. Eu voltarei às minhas atividades intelectualmente superiores — como organizar meus bonecos do Star Trek por ordem de relevância científica.
+      </p>
+      <div class="bot-opc">
+        <button type="button" onclick="trocaCena('sala'); limpaBarra()" class="opcao">
+          Até mais, doutor das ironias.
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="sheldon-sair1">
+    <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+    <div class="hud">
+      <p class="dialogo">
+        Interessante conversa. Estatisticamente, 92% dos diálogos que tenho são menos toleráveis. Parabéns por estar no top 8%.
+      </p>
+      <div class="bot-opc">
+        <button type="button" onclick="trocaCena('sala'); limpaBarra()" class="opcao">
+          Sempre bom aprender com o melhor.
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="sheldon-0" class="cenas">
+    <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+    <div class="hud">
+      <p class="dialogo">
+        Finalmente, alguém com potencial intelectual sentou por aqui. Ou você só veio colar de mim?
+      </p>
+      <div class="bot-opc">
+        <button type="button" onclick="vaiPara('sheldon-1');maisRelacionamento('sheldon',15)" class="opcao">
+          Relaxa, só quero estudar tranquilo.
+        </button>
+        <button type="button" onclick="vaiPara('sheldon-2');menosRelacionamento('sheldon',10)" class="opcao">
+          Na verdade, eu queria saber o que um gênio pensa sobre política.
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="sheldon-1">
+    <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+    <div class="hud">
+      <p class="dialogo">
+        Tranquilidade é um estado quântico instável numa sala cheia de adolescentes. Mas... vou permitir que sua presença não interfira no meu campo de concentração. E, se você ficar quieto, talvez consiga absorver 0,03% da minha genialidade por osmose. Mas aviso: o processo é lento e frustrante.
+      </p>
+      <div class="bot-opc">
+        <button type="button" onclick="vaiPara('sheldon-3');maisRelacionamento('sheldon',10)" class="opcao">
+          Valeu, eu prometo não perturbar o seu... campo quântico.
+        </button>
+        <button type="button" onclick="vaiPara('sheldon-4');menosRelacionamento('sheldon',10)" class="opcao">
+          Tranquilo. Enquanto isso, talvez você absorva um pouco de socialização por osmose também.
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="sheldon-2">
+    <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+    <div class="hud">
+      <p class="dialogo">
+        Ah! Finalmente, uma pergunta digna de ser respondida por alguém com QI acima da temperatura ambiente. A política é uma simulação social defeituosa: egos em conflito, alianças instáveis e promessas que desafiam qualquer princípio lógico. É basicamente a versão humana de um sistema operacional mal programado.
+      </p>
+      <div class="bot-opc">
+        <button type="button" onclick="vaiPara('sheldon-5');maisRelacionamento('sheldon',10)" class="opcao">
+          Então você acha que não existe lógica na política?
+        </button>
+        <button type="button" onclick="vaiPara('sheldon-6');maisRelacionamento('sheldon',15)" class="opcao">
+          Ou talvez a política seja o teste final pra ver se a lógica ainda funciona entre humanos.
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="sheldon-3">
+    <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+    <div class="hud">
+      <p class="dialogo">
+        Hmph. Ao menos você entende o conceito de campo quântico, ainda que de forma primitiva. Isso já te coloca acima da média estatística dos seus colegas.
+      </p>
+      <div class="bot-opc">
+        <button type="button" onclick="vaiPara('sheldon-7');maisRelacionamento('sheldon',10)" class="opcao">
+          Pode deixar, não vou mexer em nada.
+        </button>
+        <button type="button" onclick="vaiPara('sheldon-8');menosRelacionamento('sheldon',10)" class="opcao">
+          Relaxa, não acho que o universo dependa das suas canetas.
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="sheldon-4">
+    <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+    <div class="hud">
+      <p class="dialogo">
+        Engraçado. Humor defensivo é a primeira reação de quem percebe a própria inferioridade intelectual. Mas... ponto pela ousadia.
+      </p>
+      <div class="bot-opc">
+        <button type="button" onclick="vaiPara('sheldon-9');maisRelacionamento('sheldon',10)" class="opcao">
+          Ou talvez eu só esteja tentando acompanhar o seu nível de sarcasmo.
+        </button>
+        <button type="button" onclick="vaiPara('sheldon-10');menosRelacionamento('sheldon',5)" class="opcao">
+          Inferioridade intelectual? Achei que você gostasse de desafios.
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="sheldon-5">
+    <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+    <div class="hud">
+      <p class="dialogo">
+        Lógica na política? Isso seria como esperar coerência em uma reunião de familiares. A lógica é imutável, a política é mutável... e frequentemente irritante.
+      </p>
+      <div class="bot-opc">
+        <button type="button" onclick="vaiPara('sheldon-11');maisRelacionamento('sheldon',10)" class="opcao">
+          Então, pra você, política é irracional por natureza?
+        </button>
+        <button type="button" onclick="vaiPara('sheldon-12');maisRelacionamento('sheldon',15)" class="opcao">
+          Interessante... mas sem política, como alguém imporia regras — digo, leis — lógicas?
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="sheldon-6">
+    <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+    <div class="hud">
+      <p class="dialogo">
+        Hah! Uma hipótese ousada! Mas temo que a humanidade falhe nesse teste há milênios. Se a lógica fosse um critério de sobrevivência, estaríamos extintos.
+      </p>
+      <div class="bot-opc">
+        <button type="button" onclick="vaiPara('sheldon-13');maisRelacionamento('sheldon',10)" class="opcao">
+          Bom ponto... então o caos é inevitável?
+        </button>
+        <button type="button" onclick="vaiPara('sheldon-14');menosRelacionamento('sheldon',5)" class="opcao">
+          Então você desistiu de acreditar na humanidade?
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="sheldon-7">
+    <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+    <div class="hud">
+      <p class="dialogo">
+        Excelente. Se todos fossem tão conscientes quanto você, talvez eu não precisasse trancar minhas canetas científicas em um cofre à prova de burrice. Agora, silêncio: a genialidade precisa de espaço.
+      </p>
+      <div class="bot-opc">
+        <button type="button" onclick="vaiPara(calculaSair('sheldon',60));maisRelacionamento('sheldon',10)" class="opcao">
+          Entendido, mestre da concentração.
+        </button>
+        <button type="button" onclick="vaiPara(calculaSair('sheldon',60));maisRelacionamento('sheldon',5)" class="opcao">
+          Certo, boa sorte salvando o universo das distrações.
+        </button>
+      </div>
+    </div>
+  </div>
+<div id="sheldon-8">
       <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
       <div class="hud">
-        <p class="dialogo">Beleza então, até mais tarde!</p>
+        <p class="dialogo">
+          Ah, sarcasmo. O último refúgio dos intelectualmente medianos. Só espero que o universo não dependa do seu humor... senão estamos todos condenados.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara(calculaSair('sheldon',60));menosRelacionamento('sheldon',10)" class="opcao">
+            Touché, Sheldon. Até a próxima.
+          </button>
+          <button type="button" onclick="vaiPara(calculaSair('sheldon',60));menosRelacionamento('sheldon',5)" class="opcao">
+            Vou considerar isso um elogio... de algum jeito.
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="sheldon-9">
+      <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Hm, interessante. Um ser humano tentando me igualar em sarcasmo. Admiro a coragem, ainda que a execução precise de... ajustes. Continue tentando — talvez um dia alcance o nível de ironia do meu café da manhã.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara(calculaSair('sheldon',60));maisRelacionamento('sheldon',10)" class="opcao">
+            Prometo treinar até dominar o sarcasmo avançado.
+          </button>
+          <button type="button" onclick="vaiPara(calculaSair('sheldon',60));maisRelacionamento('sheldon',5)" class="opcao">
+            Pode deixar, mestre do humor quântico.
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="sheldon-10">
+      <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Desafios intelectuais são bem-vindos. Mas a linha entre “ousado” e “autodestrutivo” é tênue. E você está... perigosamente perto dela. Impressionante — e um pouco preocupante.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara(calculaSair('sheldon',60));maisRelacionamento('sheldon',10)" class="opcao">
+            Considere isso parte do meu experimento social.
+          </button>
+          <button type="button" onclick="vaiPara(calculaSair('sheldon',60));menosRelacionamento('sheldon',5)" class="opcao">
+            Eu gosto de viver perigosamente, professor.
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="sheldon-11">
+      <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Exatamente. A política é o caos tentando usar terno e gravata. Enquanto a ciência busca verdades universais, os políticos disputam quem mente com mais elegância.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara(calculaSair('sheldon',60));maisRelacionamento('sheldon',15)" class="opcao">
+            Uau, isso foi quase poético.
+          </button>
+          <button type="button" onclick="vaiPara(calculaSair('sheldon',60));maisRelacionamento('sheldon',10)" class="opcao">
+            Então, basicamente, política é teatro com estatísticas?
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="sheldon-12">
+      <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Ah, o velho dilema entre ordem e liberdade. Sem política, teríamos anarquia. Com política, temos... anarquia organizada. O ser humano é um paradoxo fascinante — e cansativo.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara(calculaSair('sheldon',60));menosRelacionamento('sheldon',5)" class="opcao">
+            Então estamos condenados de qualquer forma.
+          </button>
+          <button type="button" onclick="vaiPara(calculaSair('sheldon',60));maisRelacionamento('sheldon',10)" class="opcao">
+            Fascinante mesmo... e você ainda conversa com eles.
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="sheldon-13">
+      <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Inevitável e previsível, como o colapso de uma função de onda. O caos é o padrão natural do universo — e a tentativa humana de controlá-lo é... adoravelmente fútil.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara(calculaSair('sheldon',60));maisRelacionamento('sheldon',10)" class="opcao">
+            Então a esperança é uma ilusão bem embalada?
+          </button>
+          <button type="button" onclick="vaiPara(calculaSair('sheldon',60));maisRelacionamento('sheldon',5)" class="opcao">
+            Adoravelmente fútil... parece o slogan da humanidade.
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="sheldon-14">
+      <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+          Desistir implica que eu algum dia acreditei. Eu apenas observo — como um cientista diante de um experimento que insiste em explodir. A diferença é que, neste caso, a explosão vota.
+        </p>
+        <div class="bot-opc">
+          <button type="button" onclick="vaiPara(calculaSair('sheldon',60));maisRelacionamento('sheldon',10)" class="opcao">
+            Justo. O importante é manter distância segura da explosão.
+          </button>
+          <button type="button" onclick="vaiPara(calculaSair('sheldon',60));maisRelacionamento('sheldon',5)" class="opcao">
+            Essa foi a metáfora mais Sheldon possível.
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="house">
+    <div id="house-sair0">
+      <img src="images/personagens/house.png" alt="DrHouse" class="personagem" />
+      <div class="hud">
+        <p class="dialogo">
+
+        </p>
         <div class="bot-opc">
           <button type="button" onclick="trocaCena('sala')" class="opcao">
-            Voltar para a sala
-          </button>
-        </div>
-      </div>
-    </div>
-    <div id="sheldon-0" class="cenas">
-      <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          Finalmente, alguém com potencial intelectual sentou por aqui. Ou você só veio colar de mim?
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('sheldon-1');maisRelacionamento('sheldon',15)" class="opcao">
-            Relaxa, só quero estudar tranquilo.
-          </button>
-          <button type="button" onclick="vaiPara('sheldon-2');menosRelacionamento('sheldon',10)" class="opcao">
-            Na verdade, eu queria saber o que um gênio pensa sobre política.
-          </button>
-        </div>
-      </div>
-    </div>
-    <div id="sheldon-1">
-      <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          Tranquilidade é um estado quântico instável numa sala cheia de adolescentes. Mas... vou permitir que sua presença não interfira no meu campo de concentração. E, se você ficar quieto, talvez consiga absorver 0,03% da minha genialidade por osmose. Mas aviso: o processo é lento e frustrante.
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('sheldon-3')" class="opcao">
-            Valeu, eu prometo não perturbar o seu... campo quântico.
-          </button>
-          <button type="button" onclick="vaiPara('sheldon-4')" class="opcao">
-
-          </button>
-        </div>
-      </div>
-    </div>
-    <div id="sheldon-2">
-      <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          Ah! Finalmente, uma pergunta digna de ser respondida por alguém com QI acima da temperatura ambiente. A política é uma simulação social defeituosa: egos em conflito, alianças instáveis e promessas que desafiam qualquer princípio lógico. É basicamente a versão humana de um sistema operacional mal programado.
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('sheldon-5')" class="opcao">
-            Então você acha que não existe lógica na política?
-          </button>
-          <button type="button" onclick="vaiPara('sheldon-6')" class="opcao">
             
           </button>
         </div>
       </div>
     </div>
-  </section>
 
-  <section class="house">
-    <div id="house-sair">
+    <div id="house-sair1">
       <img src="images/personagens/house.png" alt="DrHouse" class="personagem" />
       <div class="hud">
-        <p class="dialogo">Beleza então, até mais tarde!</p>
+        <p class="dialogo">
+
+        </p>
         <div class="bot-opc">
           <button type="button" onclick="trocaCena('sala')" class="opcao">
-            Voltar para a sala
+            
           </button>
         </div>
       </div>
     </div>
+
     <div id="house-0" class="cenas">
       <img src="images/personagens/house.png" alt="DrHouse" class="personagem" />
       <div class="hud">
         <p class="dialogo">
-          Olha só... o candidato resolve estudar. Achei que já estivesse
-          vendendo promessas pelo corredor.
+          
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara('house-sair')" class="opcao">
-            Achei que você não se interessava por aulas.
+          <button type="button" onclick="vaiPara('house-sair1')" class="opcao">
+            
           </button>
-          <button type="button" onclick="vaiPara('house-2')" class="opcao">
-            Tô aqui pra aprender, diferente dos meus adversários.
+          <button type="button" onclick="vaiPara('house-sair0')" class="opcao">
+            
           </button>
         </div>
       </div>
     </div>
+ <!--mavinyx disse que vai fazer essa parte-->
   </section>
 
   <script>
@@ -981,18 +1223,19 @@
     function exibirRelacionamento(personagemID) {
       //armazena o valor do relacionamento em uma variavel
       //usa a "gambiarra" de usar id como variável que o sor mostrou na aula
+      document.getElementById("hudRelacionamento").style.backgroundColor = "rgb(0, 70, 128)";
       document.getElementById("barraExterna").style.backgroundColor = "rgb(255, 255, 255, 1)";
       valorRelacionamento = personagem[personagemID].relacionamento;
       barraInterna.style.height = `${valorRelacionamento}%`;
       document.getElementById("nomeBarra").innerHTML = `${personagem[personagemID].nome} ${personagem[personagemID].snome}`;
       if (valorRelacionamento < 40) {
-        barraInterna.style.backgroundColor = "red";
+        barraInterna.style.backgroundColor = "rgba(255,0,0,0.7)";
       }
       else if (valorRelacionamento >= 40 && valorRelacionamento < 70) {
-        barraInterna.style.backgroundColor = "yellow";
+        barraInterna.style.backgroundColor = "rgba(255,255,0,0.7)";
       }
       else {
-        barraInterna.style.backgroundColor = "green";
+        barraInterna.style.backgroundColor = "rgba(0,255,0,0.7)";
       }
     }
 
@@ -1021,7 +1264,7 @@
 
     function horasComp(horas) {
       jogador.horas_com += horas;
-      document.getElementById('horas').innerHTML = '<img src="images/hud/horasHud.png" /> <br> Horas complemantares: ' + jogador.horas_com;
+      document.getElementById('horas').innerHTML = '<i class="fa-regular fa-alarm-clock" style="color: #ffffff;"></i><span id="nhoras">  ' + jogador.horas_com + "</span>";
     }
 
     function numeroAleatorio(max) {
