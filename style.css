@@ -290,6 +290,19 @@ section {
 
 }
 
+#hud-itens{
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: transparent;
+    padding: 10px;
+    color: white;
+    transition: ease-in-out 1s;
+}
+
 a {
     text-decoration: none;
     color: inherit;

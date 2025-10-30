@@ -29,8 +29,8 @@
         <div id="barraInterna"></div>
       </div>
     </div>
-
      <div class="nomeBarra"><span id="nomeBarra"></span></div>
+      
   </div>
 
   <!--Barra de menu-->
@@ -51,6 +51,7 @@
     </ol>
   </nav>
 
+<div id="hud-itens"></div>
 
   <main id="tela" class="inicio">
     <div class="menu">
@@ -83,6 +84,9 @@
         class="botao-passar">
         Patio
       </button>
+      <button type="button" onclick="vaiPara('sheldon-sair1');exibirRelacionamento(cenas.sala[3]); maisRelacionamento('sheldon', 100)" class="opcao">
+            debug itens
+          </button>
     </div>
   </div>
 
@@ -153,6 +157,7 @@
           <button type="button" onclick="vaiPara(cenas.sala[3]);exibirRelacionamento(cenas.sala[3])" class="opcao">
             Próximo
           </button>
+          
         </div>
       </div>
     </div>
@@ -888,11 +893,11 @@
     <img src="images/personagens/sheldon.png" alt="Sheldon" class="personagem" />
     <div class="hud">
       <p class="dialogo">
-        Interessante conversa. Estatisticamente, 92% dos diálogos que tenho são menos toleráveis. Parabéns por estar no top 8%.
+        Interessante conversa. Estatisticamente, 92% dos diálogos que tenho são menos toleráveis. Parabéns por estar no top 8%. Além do mais, aqui está uma recompensa por estar no meu top 8%.
       </p>
       <div class="bot-opc">
-        <button type="button" onclick="trocaCena('sala'); limpaBarra()" class="opcao">
-          Sempre bom aprender com o melhor.
+        <button type="button" onclick="item(itens['sheldon'].IDitem,itens['sheldon'].Inome,itens['sheldon'].DescItem,'sheldon')" class="opcao">
+          Pegar o papel
         </button>
       </div>
     </div>
@@ -1151,7 +1156,15 @@
         </div>
       </div>
     </div>
-
+<!--ta com erro e to indo pra aula acho q hj aiinda arrumo 30/10-->
+    <div id="papel" class="item">
+      <img src="images/itens/papel.png" alt="Papel de fórmulas">
+      <span id="npapel"></span>
+      <span id="dpapel"></span>
+      <button type="button" onclick="excluirCena('papel'); limpaBarra()" class="opcao">
+          Continuar
+      </button>
+    </div>
   </section>
 
   <section class="house">
@@ -1306,20 +1319,40 @@
       }
     }
 
+    //Função que exibe o item na tela
+    function item(idItem,nomeItem,descItem,npersonagem){
+      document.getElementById("hud-itens").style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+      document.getElementById("hud-itens").innerHTML += document.getElementById(idItem).innerHTML;
+      document.getElementById("n"+idItem).innerHTML = itens[npersonagem].Inome;
+      document.getElementById("d"+idItem).innerHTML = itens[npersonagem].DescItem;
+      console.log("Chamou item")
+    }
 
+    function excluirCena(nomecena){
+      document.getElementById(nomecena).remove();
+    }
 
     contCen = 0;
     function trocaCena(cena) {
-      if (contCen == 0) {
-        contCen++;
-        vaiPara(cena + '-0');
-      } else if (contCen == 1) {
-        contCen++;
-        vaiPara(cena + '-1');
-      } else if (contCen == 2) {
-        contCen++;
-        vaiPara(cena + '-2');
-      }
+      switch (contCen){
+        case 0:
+          contCen++;
+          vaiPara(cena + '-0');
+          break;
+
+        case 1:
+          contCen++;
+          vaiPara(cena + '-1');
+          break;
+
+        case 2:
+          contCen++;
+          vaiPara(cena + '-2');
+          break;
+
+        default:
+          console.log("Erro na função 'trocaCena()'");
+    }
 
     }
 
@@ -1441,6 +1474,14 @@
       },
     };
 
+    //itens que são dados como recompensa por terminar um diálogo com um bom relacionamento com o personagem
+    itens = {
+      sheldon:{
+        IDitem: "papel",
+        Inome: "Papel de Fórmulas",
+        DescItem: "Um papel contendo a maioria das fórmulas de física quântica, concede bônus para personagens que precisem de nota",
+      }
+    }
     //Cenas e quais personagens aparece em cada uma delas
     cenas = {
       sala: ["gustavo", "sheldon", "house", "bigolin"],
