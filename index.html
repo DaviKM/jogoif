@@ -79,7 +79,7 @@
         escola
       </p>
       <button type="button"
-        onclick="trocaFundo('patio');vaiPara(aleatEntre(cenas.patio));exibirRelacionamento(`${sorteado}`);nomeBotao('patio', cenas.patio); horasComp(0)"
+        onclick="trocaFundo('patio');vaiPara(cenas.patio[0]);trocaDialogo('messi',0);exibirRelacionamento(`${sorteado}`);nomeBotao('patio', cenas.patio); horasComp(0)"
         class="botao-passar">
         Patio
       </button>
@@ -185,6 +185,7 @@
         </ol>
   </div>
   </section>
+
   <!--Personagens pátio-->
   <section class="messi">
     <div id="messi-sair">
@@ -204,14 +205,11 @@
       <img src="images/personagens/messi.png" alt="Messi" class="personagem" />
       <div class="hud">
         <p class="dialogo">
-          Logo que você entra na escola, percebe que uma bola de futebol para
-          bem perto na frente de seus pés, quando isso acontece, você percebe
-          que alguém está vindo buscar ela, e ele estende a mão para te
-          cumprimentar.
+          <span id="dialogo-messi-0"></span>
         </p>
         <div class="bot-opc">
           <button type="button" onclick="vaiPara('messi-1')" class="opcao">
-            Apertar a mão dele
+            <span id="botao-messi-0-0"></span>
           </button>
         </div>
       </div>
@@ -659,7 +657,7 @@
             </div>
         </div>
     </div>
-</section>
+  </section>
 
 
 
@@ -708,7 +706,6 @@
       </div>
     </div>
   </section>
-
   
   <section class="gustavo">
     <div id="gustavo-sair0">
@@ -893,7 +890,6 @@
       </div>
     </div>
   </section>
-
 
   <section class="sheldon">
     <div id="sheldon-sair0">
@@ -1238,7 +1234,14 @@
       salvarLogJogador(cena);
       salvarLogPers(cena);
     }
-    
+
+    function trocaDialogo(personagem,id){
+      document.getElementById("dialogo-"+personagem+"-"+id).innerHTML = dialogos[personagem][id];
+      for(let i=0;i<dialogobotao[personagem].length;i++){
+        document.getElementById("botao-"+personagem+"-"+0+"-"+i).innerHTML = dialogobotao[personagem][i];
+      }
+    }
+
     //funções de relacionamento/fofoca, etc
     function maisRelacionamento(personagemID, relacionamento) {
       personagem[personagemID].relacionamento += relacionamento;
@@ -1519,6 +1522,16 @@
         Inome: "Papel de Fórmulas",
         DescItem: "Um papel contendo a maioria das fórmulas de física quântica, concede bônus para personagens que precisem de nota",
       }
+    }
+    dialogos = {
+      messi:[
+          "Logo que você entra na escola, percebe que uma bola de futebol para bem perto na frente de seus pés, quando isso acontece, você percebe que alguém está vindo buscar ela, e ele estende a mão para te cumprimentar."
+      ]
+    }
+    dialogobotao = {
+      messi:[
+        "Apertar a mão dele"
+      ]
     }
     //Cenas e quais personagens aparece em cada uma delas
     cenas = {
