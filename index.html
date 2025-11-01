@@ -170,13 +170,13 @@
         <span id="npapel" class="nomeItens"></span>
         <span id="dpapel" class="descItens"></span>
       </div>
-      <button type="button" onclick="excluirCena('hud-itens'); addInvent('papel');trocaCena('sala'); limpaBarra()" class="botItem">
+      <button type="button" onclick="excluirCena('hud-itens'); addInvent('papel');maisRelacionamentoItem(grupos['papel'],15);trocaCena('sala'); limpaBarra()" class="botItem">
           Continuar
       </button>
     </div>
   </section>
 
-  <section id="inv">
+  <section id="inventario">
      <div id="hudinventario">
         <ol>
           <i class="fa-solid fa-bag-shopping"></i>
@@ -879,7 +879,7 @@
       </div>
     </div>
 
-    <div id="gustavo-9" classenas>
+    <div id="gustavo-9" class="cenas">
       <img src="images/personagens/gustavo.png" alt="Gustavo" class="personagem" />
       <div class="hud">
         <p class="dialogo">
@@ -1228,6 +1228,17 @@
   </section>
 
   <script>
+    function vaiPara(cena) {
+      if (cena.indexOf("-") == -1) {
+        cena += "-0";
+      }
+      document.getElementById("tela").innerHTML =
+        document.getElementById(cena).innerHTML;
+      //console.log(cena.substr(0, cena.indexOf('-')).toLowerCase())
+      salvarLogJogador(cena);
+      salvarLogPers(cena);
+    }
+    
     //funções de relacionamento/fofoca, etc
     function maisRelacionamento(personagemID, relacionamento) {
       personagem[personagemID].relacionamento += relacionamento;
@@ -1261,6 +1272,18 @@
       }
       else {
         barraInterna.style.backgroundColor = "rgba(0,255,0,0.7)";
+      }
+    }
+
+    //recebe um vetor de personagens e aumenta o relacionamento com eles
+    function maisRelacionamentoItem(gPersonagem, vAumento){
+      for(let i=0;i<gPersonagem.length;i++){
+        let id = gPersonagem[i];
+        personagem[id].relacionamento += vAumento;
+        if(personagem[id].relacionamento > 100){
+          personagem[id].relacionamento = 100;
+        }
+        console.log(`${personagem[id].relacionamento}`);
       }
     }
 
@@ -1350,9 +1373,10 @@
     }
     
     function chamaInv(){
-      document.getElementById("hudInv").innerHTML = document.getElementById("inv").innerHTML;
+      document.getElementById("hudInv").innerHTML = document.getElementById("inventario").innerHTML;
       console.log("Chamou a funcao chamaInv");
     }
+
     function excluirCena(nomecena){
       document.getElementById(nomecena).remove();
     }
@@ -1385,17 +1409,6 @@
       document.getElementById(
         "tela"
       ).style = `background-image: url(images/cenarios/${fundo}.png);`;
-    }
-
-    function vaiPara(cena) {
-      if (cena.indexOf("-") == -1) {
-        cena += "-0";
-      }
-      document.getElementById("tela").innerHTML =
-        document.getElementById(cena).innerHTML;
-      //console.log(cena.substr(0, cena.indexOf('-')).toLowerCase())
-      salvarLogJogador(cena);
-      salvarLogPers(cena);
     }
 
     function limpaBarra() {
@@ -1511,6 +1524,11 @@
     cenas = {
       sala: ["gustavo", "sheldon", "house", "bigolin"],
       patio: ["messi", "davi"],
+    };
+
+    //grupos de personagens que serão afetados pelos itens
+    grupos = {
+      papel: ["gustavo","messi","enzo"],
     };
   </script>
 </body>
