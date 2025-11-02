@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ódio Salgado</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -63,7 +63,7 @@
           <a href="#">Créditos</a>
         </button>
         <button type="button" id="personagens" class="botao-inicio">
-          <a href="personagens.html">Personagens</a>
+          <a href="personagens/index_personagens.html">Personagens</a>
         </button>
       </div>
     </div>
@@ -79,7 +79,7 @@
         escola
       </p>
       <button type="button"
-        onclick="trocaFundo('patio');vaiPara(cenas.patio[0]);trocaDialogo('messi',0);exibirRelacionamento(`${sorteado}`);nomeBotao('patio', cenas.patio); horasComp(0)"
+        onclick="trocaFundo('patio');vaiPara(cenas.patio[0]);trocaDialogo('messi',0);exibirRelacionamento(`${sorteado}`); horasComp(0)"
         class="botao-passar">
         Patio
       </button>
@@ -98,8 +98,8 @@
           convencido a votar em você:
         </p>
         <div class="bot-opc">
-          <button type="button" onclick="vaiPara(cenas.patio[0]);exibirRelacionamento(cenas.patio[0])" class="opcao">
-            <span id="patio-nome0"></span>
+          <button type="button" onclick="vaiPara(cenas.patio[1]);exibirRelacionamento(cenas.patio[1])" class="opcao">
+            Davi Brito
           </button>
         </div>
       </div>
@@ -1315,7 +1315,7 @@
 
     function horasComp(horas) {
       jogador.horas_com += horas;
-      document.getElementById('horas').innerHTML = '<i class="fa-regular fa-alarm-clock" style="color: #ffffff;"></i><span id="nhoras">  ' + jogador.horas_com + "</span>";
+      document.getElementById('horas').innerHTML = '<i class="fa-regular fa-clock" style="color: #ffffff;"></i><span id="nhoras">  ' + jogador.horas_com + "</span>";
     }
 
     function numeroAleatorio(max) {

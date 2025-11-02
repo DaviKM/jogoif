@@ -1,0 +1,147 @@
+body {
+  --s: 60px;
+  --c1: #a6dae4;
+  --c2: #749aa1;
+  --_g: radial-gradient(
+    25% 25% at 25% 25%,
+    var(--c1) 99%,
+    rgba(0, 0, 0, 0) 101%
+  );
+  background: var(--_g) var(--s) var(--s) / calc(2 * var(--s))
+      calc(2 * var(--s)),
+    var(--_g) 0 0 / calc(2 * var(--s)) calc(2 * var(--s)),
+    radial-gradient(50% 50%, var(--c2) 98%, rgba(0, 0, 0, 0)) 0 0 / var(--s)
+      var(--s),
+    repeating-conic-gradient(var(--c2) 0 50%, var(--c1) 0 100%)
+      calc(0.5 * var(--s)) 0 / calc(2 * var(--s)) var(--s);
+}
+/*Menu*/
+nav {
+    position: fixed;
+    background-color: rgb(0, 70, 128);
+    width: 100%;
+    height: 8vh;
+    top: 0;
+}
+
+nav ol {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    height: 70%;
+    align-items: center;
+}
+
+i {
+    font-size: 28pt;
+}
+
+li:hover {
+    padding-right: 155px;
+    transition: all ease 0.8s;
+}
+
+li {
+    color: rgb(255, 238, 238);
+    position: relative;
+    padding-left: 0;
+    width: 45px;
+    overflow: hidden;
+    transition: all ease 0.8s;
+}
+
+li a {
+    display: flex;
+    width: 180px;
+
+}
+
+li span {
+    margin-left: 10px;
+    text-align: end;
+    align-content: center;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  
+}
+header {
+  display: flex;
+  justify-content: center;
+  background-color: #262533;
+  color: white;
+  width: 100vw;
+  height: 10vh;
+}
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 16pt;
+}
+.personagem img {
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 150px;
+}
+.personagem:hover{
+  transform: scale(1.5);
+  transition: ease-in-out 0.4s;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  background-color: #ffffff;
+}
+#conteiner-pers {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  background-color: #ffffff;
+  height: 92vh;
+  width: 80vw;
+}
+.personagem {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 20px;
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+}
+.botao_voltar {
+  text-align: center;
+  margin-top: 5%;
+}
+.botao_voltar a{
+    background-color: #95dbe7;
+    border: 2px solid rgb(3, 135, 243);
+    padding: 8px;
+    color: black;
+    border-radius: 10px;
+}
+.botao_voltar a:hover{
+    background-color: #527980;
+    transition: ease-in-out 0.5s;
+}
+.titulo{
+    text-align: center;
+}
+.row{
+    width: 100%;
+    height: 30%;
+    display: flex;
+}
