@@ -131,7 +131,7 @@ main {
     text-shadow: 10px 10px 15px rgba(0, 0, 0, 0.7);
 }
 
-.menu a:hover {
+.menu button:hover {
     color: rgb(51, 134, 202);
 
 }
@@ -292,6 +292,7 @@ section {
 
 #hud-itens{
     position: absolute;
+    display: none;
     z-index: 10;
     display: flex;
     align-items: center;
