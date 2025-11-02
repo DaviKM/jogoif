@@ -10,12 +10,21 @@
       //salvarLogPers(cena);
     }
 
-    function trocaDialogo(personagem,id){
-      document.getElementById("dialogo-"+personagem+"-"+id).innerHTML = dialogos[personagem][id];
-      for(let i=0;i<dialogobotao[personagem].length;i++){
-        document.getElementById("botao-"+personagem+"-"+0+"-"+i).innerHTML = dialogobotao[personagem][i];
-      }
+    function inicializatela(){
+      document.getElementById("tela").innerHTML =
+        document.getElementById("inicial").innerHTML;
     }
+
+    function trocaDialogo(personagem,id){
+      document.getElementById("dialogos").innerHTML += document.getElementById("dialogo-"+personagem+"-"+id).innerHTML;
+      document.getElementById("botoes").innerHTML += document.getElementById("botoes-"+personagem+"-"+id).innerHTML;
+    }
+
+    function chamafoto(personagem){
+      foto = document.getElementById('imgpersonagem');
+      foto.innerHTML = '<img src="images/personagens/'+ personagem +'.png" alt="'+ personagem +'" class="personagem" />';
+    }
+    
 
     //funções de relacionamento/fofoca, etc
     function maisRelacionamento(personagemID, relacionamento) {
@@ -304,16 +313,8 @@
         DescItem: "Óculos escuros muito legais, concedem mais relacionamento com todas as pessoas que você conversar",
       }
     }
-    dialogos = {
-      messi:[
-          "Logo que você entra na escola, percebe que uma bola de futebol para bem perto na frente de seus pés, quando isso acontece, você percebe que alguém está vindo buscar ela, e ele estende a mão para te cumprimentar."
-      ]
-    }
-    dialogobotao = {
-      messi:[
-        "Apertar a mão dele"
-      ]
-    }
+  
+    
     //Cenas e quais personagens aparece em cada uma delas
     cenas = {
       sala: ["gustavo", "sheldon", "house", "bigolin"],

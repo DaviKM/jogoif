@@ -199,10 +199,11 @@ section {
 
 .hud p {
     margin: 2%;
+    z-index: 2;
 }
 
 .dialogo {
-    margin-bottom: 30px;
+    margin: 30px;
 }
 
 /* Imagem de personagem */
@@ -213,6 +214,13 @@ section {
     z-index: 1;
 }
 
+#tela1 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+   align-items: end;
+   justify-content: center;
+}
 /* Barra de relacionamento */
 #barraInterna {
     position: relative;
@@ -371,4 +379,3 @@ a {
     text-decoration: none;
     color: inherit;
 }
-

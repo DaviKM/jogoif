@@ -69,6 +69,7 @@
     </div>
   </main>
 
+
   <div id="cena1-0" class="cenas">
     <div class="hud">
       <p class="dialogo">
@@ -79,16 +80,23 @@
         escola
       </p>
       <button type="button"
-        onclick="trocaFundo('patio');vaiPara(cenas.patio[0]);trocaDialogo(cenas.patio[0],0);exibirRelacionamento(cenas.patio[0]); horasComp(0)"
+        onclick="inicializatela(); trocaFundo('patio');trocaDialogo(cenas.patio[0],0); chamafoto(cenas.patio[0]);exibirRelacionamento(cenas.patio[0]); horasComp(0)"
         class="botao-passar">
         Patio
-      </button>
-      <button type="button" onclick="vaiPara('sheldon-sair1');exibirRelacionamento(cenas.sala[3]); maisRelacionamento('sheldon', 100)" class="opcao">
-            debug itens
-          </button>
+    </button>
     </div>
   </div>
 
+  <section id="inicial"> 
+    <div id="tela1">
+      <span id="imgpersonagem" class="personagem"></span>
+      <div id="hud" class="hud">
+        <span id="dialogos" class="dialogo" ></span>
+        <span id="botoes" class="bot-opc" ></span>
+      </div>
+    </div>
+  </section>
+  
   <!--Cenas-->
   <section class="cenas">
     <div id="patio-0">
@@ -161,7 +169,7 @@
       </div>
     </div>
   </section>
-
+  
   <!--Itens-->
   <section id="itens">
     <div id="papel" class="item">
@@ -212,17 +220,14 @@
     </div>
 
     <div id="messi-0">
-      <img src="images/personagens/messi.png" alt="Messi" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          <span id="dialogo-messi-0"></span>
-        </p>
-        <div class="bot-opc">
+          <p id="dialogo-messi-0" class="dialogo">
+            Logo que você entra na escola, percebe que uma bola de futebol para bem perto na frente de seus pés, quando isso acontece, você percebe que alguém está vindo buscar ela, e ele estende a mão para te cumprimentar.
+          </p>
+          <div id="botoes-messi-0" class="bot-opc">
           <button type="button" onclick="vaiPara('messi-1')" class="opcao">
-            <span id="botao-messi-0-0"></span>
+             Apertar a mão dele
           </button>
-        </div>
-      </div>
+          </div>
     </div>
 
     <div id="messi-1">
@@ -1190,7 +1195,7 @@
       <img src="images/personagens/house.png" alt="DrHouse" class="personagem" />
       <div class="hud">
         <p class="dialogo">
-
+    
         </p>
         <div class="bot-opc">
           <button type="button" onclick="trocaCena('sala')" class="opcao">
