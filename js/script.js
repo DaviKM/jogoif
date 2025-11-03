@@ -18,9 +18,14 @@
 
     function chamafoto(personagem){
       foto = document.getElementById('imgpersonagem');
-      foto.innerHTML = '<img src="images/personagens/'+ personagem +'.png" alt="'+ personagem +'" class="personagem" />';
+      if(personagem){
+        foto.style.display = "block";
+        foto.innerHTML = '<img src="images/personagens/'+ personagem +'.png" alt="'+ personagem +'" class="personagem" />';
+      }
+      else{
+        foto.style.display = "none";
+      }
     }
-    
 
     //funções de relacionamento/fofoca, etc
     function maisRelacionamento(personagemID, relacionamento) {

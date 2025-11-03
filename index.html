@@ -95,46 +95,41 @@
   <!--Cenas-->
   <section class="cenas">
     
-        <p id="" class="dialogo">
-          Você volta para o pátio, e percebe um novo aluno que pode ser
-          convencido a votar em você:
-        </p>
-        <div id="botoes" class="bot-opc">
-          <button type="button" onclick="trocaDialogo(cenas.patio[1],0);chamafoto(cenas.patio[1]);exibirRelacionamento(cenas.patio[1])" class="opcao">
-            Davi Brito
-          </button>
-        </div>
+    <p id="dialogo-patio-0" class="dialogo">
+        Você volta para o pátio, e percebe um novo aluno que pode ser convencido a votar em você:
+    </p>
+    <div id="botoes-patio-0" class="bot-opc">
+      <button type="button" onclick="trocaDialogo(cenas.patio[1],0);chamafoto(cenas.patio[1]);exibirRelacionamento(cenas.patio[1])" class="opcao">
+         Davi Brito
+      </button>
+    </div>
       
-    <div id="patio-1">
-      <div id="imgpersonagem" class="personagem"></div>
-      <div class="hud">
-        <p class="dialogo">
-          Você escuta o sinal da escola, é o horário da aula, mas sempre há tempo para convencer mais pessoas
-        </p>
-        <div class="bot-opc">
-          <button type="button"
-            onclick="contCen=0;trocaFundo('sala');vaiPara(cenas.sala[0]);exibirRelacionamento(cenas.sala[0]); nomeBotao('sala',cenas.sala)"
-            class="opcao">
-            Ir para sala
-          </button>
-        </div>
-      </div>
+    <p id="dialogo-patio-1" class="dialogo">
+        Você escuta o sinal da escola, é o horário da aula, mas sempre há tempo para convencer mais pessoas
+    </p>
+    <div id="botoes-patio-1" class="bot-opc">
+      <button type="button" onclick="trocaFundo('sala'); trocaDialogo(cenas.sala[0],0);chamafoto(cenas.sala[0]);exibirRelacionamento(cenas.sala[0])" class="opcao">
+         Ir para sala
+      </button>
     </div>
 
-
-    <div id="sala-0">
-      <div class="hud">
-        <p class="dialogo">
-          Ao terminar essa conversa, você percebe outra pessoa chegando:
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara(cenas.sala[1]); exibirRelacionamento(cenas.sala[1]);" class="opcao">
-            <span id="sala-nome1"></span>
-          </button>
-        </div>
-      </div>
+    <p id="dialogo-sala-0" class="dialogo">
+        Ao terminar essa conversa, você percebe outra pessoa chegando:
+    </p>
+    <div id="botoes-sala-0" class="bot-opc">
+      <button type="button" onclick="trocaDialogo(cenas.sala[1],0);chamafoto(cenas.sala[1]);exibirRelacionamento(cenas.sala[1])" class="opcao">
+         Sheldon
+      </button>
     </div>
 
+    <p id="dialogo-sala-1" class="dialogo">
+        Ainda há tempo de tentar convencer mais um antes do professor chegar:
+    </p>
+    <div id="botoes-sala-1" class="bot-opc">
+      <button type="button" onclick="trocaDialogo(cenas.sala[2],0);chamafoto(cenas.sala[2]);exibirRelacionamento(cenas.sala[2])" class="opcao">
+         Dr. House
+      </button>
+    </div>
     <div id="sala-1">
       <div class="hud">
         <p class="dialogo">
@@ -142,7 +137,7 @@
         </p>
         <div class="bot-opc">
           <button type="button" onclick="vaiPara(cenas.sala[2]);exibirRelacionamento(cenas.sala[2])" class="opcao">
-            <span id="sala-nome2"></span>
+            Dr. House
           </button>
         </div>
       </div>
@@ -211,7 +206,7 @@
     <p id="dialogo-messi-sair">É isso. Boa sorte aí. Não perca tempo discutindo quem tá certo; use o tempo pra fazer
       campanha. A gente se vê.</p>
     <div id="botoes-messi-sair">
-      <button type="button" onclick="limpaBarra();trocaDialogo('patio',0)" class="opcao">
+      <button type="button" onclick="limpaBarra();trocaDialogo('patio',0),chamafoto('')" class="opcao">
         Voltar para o pátio
       </button>
     </div>
@@ -434,19 +429,19 @@
   <section id="davi">
 
     <!-- ========================= -->
-    <!-- Messi - Diálogo de saída -->
+    <!-- Davi - Diálogo de saída -->
     <!-- ========================= -->
     <p id="dialogo-davi-sair">
       É isso cara, obrigado pela conversa!
     </p>
     <div id="botoes-davi-sair">
-      <button type="button" onclick="limpaBarra();trocaCena('patio')" class="opcao">
+      <button type="button" onclick="limpaBarra();trocaDialogo('patio',1);chamafoto('')" class="opcao">
           Adeus.
       </button>
     </div>
 
     <!-- ========================= -->
-    <!-- Davi - Entrada -->
+    <!-- Davi Brito - 0 (entrada) -->
     <!-- ========================= -->
     <p id="dialogo-davi-0">
       E aí, candidato! Chegou na hora certa. Tô aqui vendo o caos no pátio. Qual é a sua prioridade? Arrumar as coisas por partes ou prometer uma revolução total?
