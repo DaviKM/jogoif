@@ -130,32 +130,14 @@
          Dr. House
       </button>
     </div>
-    <div id="sala-1">
-      <div class="hud">
-        <p class="dialogo">
-          Ainda há tempo de tentar convencer mais um antes do professor chegar:
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara(cenas.sala[2]);exibirRelacionamento(cenas.sala[2])" class="opcao">
-            Dr. House
-          </button>
-        </div>
-      </div>
-    </div>
 
-
-    <div id="sala-2">
-      <div class="hud">
-        <p class="dialogo">
-          O professor chegou, hora de prestar atenção na aula.
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara(cenas.sala[3]);exibirRelacionamento(cenas.sala[3])" class="opcao">
-            Próximo
-          </button>
-
-        </div>
-      </div>
+    <p id="dialogo-sala-2" class="dialogo">
+        O professor chegou, hora de prestar atenção na aula.
+    </p>
+    <div id="botoes-sala-2" class="bot-opc">
+      <button type="button" onclick="trocaDialogo(cenas.sala[3],0);chamafoto(cenas.sala[3]);exibirRelacionamento(cenas.sala[3])" class="opcao">
+         Continuar
+      </button>
     </div>
   </section>
 
