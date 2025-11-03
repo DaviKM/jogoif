@@ -94,20 +94,19 @@
 
   <!--Cenas-->
   <section class="cenas">
-    <div id="patio-0">
-      <div class="hud">
-        <p class="dialogo">
+    
+        <p id="" class="dialogo">
           Você volta para o pátio, e percebe um novo aluno que pode ser
           convencido a votar em você:
         </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara(cenas.patio[1]);exibirRelacionamento(cenas.patio[1])" class="opcao">
+        <div id="botoes" class="bot-opc">
+          <button type="button" onclick="trocaDialogo(cenas.patio[1],0);chamafoto(cenas.patio[1]);exibirRelacionamento(cenas.patio[1])" class="opcao">
             Davi Brito
           </button>
         </div>
-      </div>
-    </div>
+      
     <div id="patio-1">
+      <div id="imgpersonagem" class="personagem"></div>
       <div class="hud">
         <p class="dialogo">
           Você escuta o sinal da escola, é o horário da aula, mas sempre há tempo para convencer mais pessoas
@@ -212,7 +211,7 @@
     <p id="dialogo-messi-sair">É isso. Boa sorte aí. Não perca tempo discutindo quem tá certo; use o tempo pra fazer
       campanha. A gente se vê.</p>
     <div id="botoes-messi-sair">
-      <button type="button" onclick="limpaBarra();trocaCena('patio')" class="opcao">
+      <button type="button" onclick="limpaBarra();trocaDialogo('patio',0)" class="opcao">
         Voltar para o pátio
       </button>
     </div>
@@ -433,222 +432,109 @@
   </section>
 
   <section id="davi">
-    <div id="davi-0">
-      <img src="images/personagens/davi.png" alt="Davi Britto" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          E aí, candidato! Chegou na hora certa. Tô aqui vendo o caos no pátio. Qual é a sua prioridade? Arrumar as
-          coisas por partes ou prometer uma revolução total?
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('davi-1'); maisRelacionamento('davi', 10)" class="opcao">
-            Focar em projetos menores, mas que funcionam de imediato.
-          </button>
-          <button type="button" onclick="vaiPara('davi-2')" class="opcao">
-            Mudar a estrutura toda da escola, começando de cima.
-          </button>
-        </div>
-      </div>
+
+    <!-- ========================= -->
+    <!-- Messi - Diálogo de saída -->
+    <!-- ========================= -->
+    <p id="dialogo-davi-sair">
+      É isso cara, obrigado pela conversa!
+    </p>
+    <div id="botoes-davi-sair">
+      <button type="button" onclick="limpaBarra();trocaCena('patio')" class="opcao">
+          Adeus.
+      </button>
     </div>
 
-    <div id="davi-sair">
-      <img src="images/personagens/davi.png" alt="Davi Britto" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          Beleza então, valeu. A gente se fala por aí.
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="limpaBarra();trocaCena('patio')" class="opcao">
-            Voltar para o pátio
-          </button>
-        </div>
-      </div>
+    <!-- ========================= -->
+    <!-- Davi - Entrada -->
+    <!-- ========================= -->
+    <p id="dialogo-davi-0">
+      E aí, candidato! Chegou na hora certa. Tô aqui vendo o caos no pátio. Qual é a sua prioridade? Arrumar as coisas por partes ou prometer uma revolução total?
+    </p>
+    <div id="botoes-davi-0">
+      <button type="button" onclick="trocaDialogo('davi', 1)" class="opcao">
+        Focar em projetos menores, mas que funcionam de imediato.
+      </button>
+      <button type="button" onclick="trocaDialogo('davi', 2)" class="opcao">
+        Mudar a estrutura toda da escola, começando de cima.
+      </button>
     </div>
 
-
-    <div id="davi-1">
-      <img src="images/personagens/davi.png" alt="Davi Britto" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          Gosto de quem pensa no básico. Mas, no fim, você quer resolver problemas ou ganhar fama?
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('davi-3'); maisRelacionamento('davi', 5)" class="opcao">
-            Quero melhorar o ambiente e ser um representante limpo.
-          </button>
-          <button type="button" onclick="vaiPara('davi-4'); menosRelacionamento('davi', 15)" class="opcao">
-            Quero ser lembrado como o presidente que mudou a história do grêmio.
-          </button>
-        </div>
-      </div>
+    <!-- ========================= -->
+    <!-- Davi Brito - Dialogo 1 -->
+    <!-- ========================= -->
+    <p id="dialogo-davi-1">
+      Gosto de quem pensa no básico. Mas, no fim, você quer resolver problemas ou ganhar fama?
+    </p>
+    <div id="botoes-davi-1">
+      <button type="button" onclick="trocaDialogo('davi', 3); maisRelacionamento('davi', 5)" class="opcao">
+        Quero melhorar o ambiente e ser um representante limpo.
+      </button>
+      <button type="button" onclick="trocaDialogo('davi', 'sair'); menosRelacionamento('davi', 15)" class="opcao">
+        Quero ser lembrado como o presidente que mudou a história do grêmio.
+      </button>
     </div>
 
-    <div id="davi-3">
-      <img src="images/personagens/davi.png" alt="Davi Britto" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          Justo. A escola tem muita coisa boa, mas os espaços estão mal cuidados. Por onde você começa?
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('davi-5'); maisRelacionamento('davi', 20)" class="opcao">
-            Arrumar o lixo e a bagunça no pátio e nas salas.
-          </button>
-          <button type="button" onclick="vaiPara('davi-6'); menosRelacionamento('davi', 5)" class="opcao">
-            Criar um projeto de reciclagem complexo e oficial.
-          </button>
-        </div>
-      </div>
+    <!-- ========================= -->
+    <!-- Davi Brito - Dialogo 2 -->
+    <!-- ========================= -->
+    <p id="dialogo-davi-2">
+      Mudar tudo? E qual seria a sua grande bandeira para essa revolução?
+    </p>
+    <div id="botoes-davi-2">
+      <button type="button" onclick="trocaDialogo('davi', 'sair'); maisRelacionamento('davi', 5)" class="opcao">
+        Transparência total e redistribuição de recursos do grêmio.
+      </button>
+      <button type="button" onclick="trocaDialogo('davi', 'sair'); menosRelacionamento('davi', 5)" class="opcao">
+        Democratizar a gestão dos lanches e da cantina.
+      </button>
     </div>
 
-    <div id="davi-5">
-      <img src="images/personagens/davi.png" alt="Davi Britto" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          Olha, se tu conseguir fazer o básico, já tem meu voto. Gosto de quem bota a mão na massa.
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('davi-sair')" class="opcao">
-            Obrigado, Davi. Até mais.
-          </button>
-        </div>
-      </div>
+    <!-- ========================= -->
+    <!-- Davi Brito - Dialogo 3 -->
+    <!-- ========================= -->
+    <p id="dialogo-davi-3">
+      Justo. A escola tem muita coisa boa, mas os espaços estão mal cuidados. Por onde você começa?
+    </p>
+    <div id="botoes-davi-3">
+      <button type="button" onclick="trocaDialogo('davi', 'sair'); maisRelacionamento('davi', 20)" class="opcao">
+        Arrumar o lixo e a bagunça no pátio e nas salas.
+      </button>
+      <button type="button" onclick="trocaDialogo('davi', 'sair'); menosRelacionamento('davi', 5)" class="opcao">
+        Criar um projeto de reciclagem complexo e oficial.
+      </button>
     </div>
 
-    <div id="davi-6">
-      <img src="images/personagens/davi.png" alt="Davi Britto" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          Projeto complexo? Cuidado para não prometer demais e não entregar nada. Pensa simples.
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('davi-sair')" class="opcao">
-            Entendi a dica. Até mais.
-          </button>
-        </div>
-      </div>
+    <!-- ========================= -->
+    <!-- Davi Brito - Dialogo 4 -->
+    <!-- ========================= -->
+    <p id="dialogo-davi-4">
+      Justíssimo, mas a parte burocrática é a mais chata. Como você garante que todos os alunos vão participar e fiscalizar?
+    </p>
+    <div id="botoes-davi-4">
+      <button type="button" onclick="trocaDialogo('davi', 'sair'); maisRelacionamento('davi', 15)" class="opcao">
+        Vou criar um aplicativo de votação e fiscalização.
+      </button>
+      <button type="button" onclick="trocaDialogo('davi', 'sair'); menosRelacionamento('davi', 10)" class="opcao">
+        Ainda não sei o método, mas a ideia é essa.
+      </button>
     </div>
 
-    <div id="davi-4">
-      <img src="images/personagens/davi.png" alt="Davi Britto" class="personagem">
-      <div class="hud">
-        <p class="dialogo">
-          Virar uma lenda, né? Eu já vi esse filme. O ego atrapalha mais que ajuda.
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('davi-sair')" class="opcao">
-            Vou pensar nisso. Falou.
-          </button>
-        </div>
-      </div>
+    <!-- ========================= -->
+    <!-- Davi Brito - Dialogo 5 -->
+    <!-- ========================= -->
+    <p id="dialogo-davi-5">
+      Interessante. Mas e a variedade e qualidade do que é servido na cantina?
+    </p>
+    <div id="botoes-davi-5">
+      <button type="button" onclick="trocaDialogo('davi', 'sair'); menosRelacionamento('davi', 15)" class="opcao">
+        O importante é ser acessível para todos, a qualidade é secundária.
+      </button>
+      <button type="button" onclick="trocaDialogo('davi', 'sair'); maisRelacionamento('davi', 25)" class="opcao">
+        Vou criar um comitê de alunos para fiscalizar e garantir a qualidade.
+      </button>
     </div>
 
-    <div id="davi-2">
-      <img src="images/personagens/davi.png" alt="Davi Britto" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          Mudar tudo? E qual seria a sua grande bandeira para essa revolução?
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('davi-7'); maisRelacionamento('davi', 5)" class="opcao">
-            Transparência total e redistribuição de recursos do grêmio.
-          </button>
-          <button type="button" onclick="vaiPara('davi-8'); menosRelacionamento('davi', 5)" class="opcao">
-            Democratizar a gestão dos lanches e da cantina.
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div id="davi-7">
-      <img src="images/personagens/davi.png" alt="Davi Britto" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          Justíssimo, mas a parte burocrática é a mais chata. Como você garante que todos os alunos vão participar e
-          fiscalizar?
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('davi-9'); maisRelacionamento('davi', 15)" class="opcao">
-            Vou criar um aplicativo de votação e fiscalização.
-          </button>
-          <button type="button" onclick="vaiPara('davi-10'); menosRelacionamento('davi', 10)" class="opcao">
-            Ainda não sei o método, mas a ideia é essa.
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div id="davi-9">
-      <img src="images/personagens/davi.png" alt="Davi Britto" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          Foco no planejamento. Ideia boa, mas precisa de base sólida para não ser só promessa.
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('davi-sair')" class="opcao">
-            Obrigado pelo conselho.
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div id="davi-10">
-      <img src="images/personagens/davi.png" alt="Davi Britto" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          Quem não sabe o método acaba perdendo o controle no final. Pense nisso.
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('davi-sair')" class="opcao">
-            Você tem um ponto.
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div id="davi-8">
-      <img src="images/personagens/davi.png" alt="Davi Britto" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          Interessante. Mas e a variedade e qualidade do que é servido na cantina?
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('davi-11'); menosRelacionamento('davi', 15)" class="opcao">
-            O importante é ser acessível para todos, a qualidade é secundária.
-          </button>
-          <button type="button" onclick="vaiPara('davi-12'); maisRelacionamento('davi', 25)" class="opcao">
-            Vou criar um comitê de alunos para fiscalizar e garantir a qualidade.
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div id="davi-11">
-      <img src="images/personagens/davi.png" alt="Davi Britto" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          Foco total na base, entendi. Bom argumento. Até as eleições.
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('davi-sair')" class="opcao">
-            Tamo junto.
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div id="davi-12">
-      <img src="images/personagens/davi.png" alt="Davi Britto" class="personagem" />
-      <div class="hud">
-        <p class="dialogo">
-          Comitê? Isso é gestão! Aí sim, pensando como presidente.
-        </p>
-        <div class="bot-opc">
-          <button type="button" onclick="vaiPara('davi-sair')" class="opcao">
-            Vou indo nessa, falou!
-          </button>
-        </div>
-      </div>
-    </div>
   </section>
 
 
