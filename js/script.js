@@ -10,14 +10,10 @@
       //salvarLogPers(cena);
     }
 
-    function inicializatela(){
-      document.getElementById("tela").innerHTML =
-        document.getElementById("inicial").innerHTML;
-    }
 
     function trocaDialogo(personagem,id){
-      document.getElementById("dialogos").innerHTML += document.getElementById("dialogo-"+personagem+"-"+id).innerHTML;
-      document.getElementById("botoes").innerHTML += document.getElementById("botoes-"+personagem+"-"+id).innerHTML;
+      document.getElementById("dialogos").innerHTML = document.getElementById("dialogo-"+personagem+"-"+id).innerHTML;
+      document.getElementById("botoes").innerHTML = document.getElementById("botoes-"+personagem+"-"+id).innerHTML;
     }
 
     function chamafoto(personagem){
