@@ -91,10 +91,10 @@
       //atribui o relacionamento para uma variável para evitar escrever esse monte de texto
       relacionamento = personagem[nomePersonagem].relacionamento
       if(relacionamento<=minRel){
-        return nomePersonagem+"-sair"+0;
+        return "sair"+0;
       }
       else{
-        return nomePersonagem+"-sair"+1;
+        return "sair"+1;
       }
     }
 
@@ -121,25 +121,6 @@
     function removePersonagem(personagemRemovido, personagens) {
       personagens.splice(personagemRemovido, 1);
       console.log(personagens.length);
-    }
-
-    function nomeBotao(cena, personagens) {
-      if (cena == "sala") {
-        for (let i = 0; i < personagens.length; i++) {
-          document.getElementById(cena + "-" + `nome${i + 1}`).innerHTML =
-            personagem[personagens[i + 1]].nome +
-            " " +
-            personagem[personagens[i + 1]].snome;
-        }
-      }
-      else {
-        for (let i = 0; i < personagens.length; i++) {
-          document.getElementById(cena + "-" + `nome${i}`).innerHTML =
-            personagem[personagens[i]].nome +
-            " " +
-            personagem[personagens[i]].snome;
-        }
-      }
     }
 
     //Função que exibe o item na tela
@@ -320,6 +301,7 @@
     cenas = {
       sala: ["gustavo", "sheldon", "house", "bigolin"],
       patio: ["messi", "davi"],
+      intervalo: ["enzo","theo","vinicius"],
     };
 
     //grupos de personagens que serão afetados pelos itens
