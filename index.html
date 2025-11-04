@@ -84,8 +84,18 @@
       <div id="botoes" class="bot-opc">
         <button type="button"
           onclick="trocaFundo('patio');trocaDialogo(cenas.patio[0],0); chamafoto(cenas.patio[0]);exibirRelacionamento(cenas.patio[0]); horasComp(0)"
-          class="botao-passar">
+          class="opcao">
           Patio
+        </button>
+        <button type="button"
+          onclick="trocaDialogo('cantina',0);trocaFundo('cantina')"
+          class="opcao">
+          cantina
+        </button>
+        <button type="button"
+          onclick="trocaDialogo('intervalo',0);trocaFundo('biblioteca')"
+          class="opcao">
+          intervalo
         </button>
       </div>
     </div>
@@ -93,73 +103,142 @@
 
 
   <!--Cenas-->
-  <section class="cenas">
-    <p id="dialogo-patio-0" class="dialogo">
-      Você volta para o pátio, e percebe um novo aluno que pode ser convencido a votar em você:
-    </p>
-    <div id="botoes-patio-0" class="bot-opc">
-      <button type="button"
-        onclick="trocaDialogo(cenas.patio[1],0);chamafoto(cenas.patio[1]);exibirRelacionamento(cenas.patio[1])"
-        class="opcao">
-        Davi Brito
-      </button>
-    </div>
 
-    <p id="dialogo-patio-1" class="dialogo">
-      Você escuta o sinal da escola, é o horário da aula, mas sempre há tempo para convencer mais pessoas
-    </p>
-    <div id="botoes-patio-1" class="bot-opc">
-      <button type="button"
-        onclick="trocaFundo('sala'); trocaDialogo(cenas.sala[0],0);chamafoto(cenas.sala[0]);exibirRelacionamento(cenas.sala[0])"
-        class="opcao">
-        Ir para sala
-      </button>
-    </div>
+    <section class="patio">
+      <p id="dialogo-patio-0" class="dialogo">
+        Você volta para o pátio, e percebe um novo aluno que pode ser convencido a votar em você:
+      </p>
+      <div id="botoes-patio-0" class="bot-opc">
+        <button type="button"
+          onclick="trocaDialogo(cenas.patio[1],0);chamafoto(cenas.patio[1]);exibirRelacionamento(cenas.patio[1])"
+          class="opcao">
+          Davi Brito
+        </button>
+      </div>
+      <p id="dialogo-patio-1" class="dialogo">
+        Você escuta o sinal da escola, é o horário da aula, mas sempre há tempo para convencer mais pessoas
+      </p>
+      <div id="botoes-patio-1" class="bot-opc">
+        <button type="button"
+          onclick="trocaFundo('sala'); trocaDialogo(cenas.sala[0],0);chamafoto(cenas.sala[0]);exibirRelacionamento(cenas.sala[0])"
+          class="opcao">
+          Ir para sala
+        </button>
+      </div>
+    </section>
 
-    <p id="dialogo-sala-0" class="dialogo">
-      Ao terminar essa conversa, você percebe outra pessoa chegando:
-    </p>
-    <div id="botoes-sala-0" class="bot-opc">
-      <button type="button"
-        onclick="trocaDialogo(cenas.sala[1],0);chamafoto(cenas.sala[1]);exibirRelacionamento(cenas.sala[1])"
-        class="opcao">
-        Sheldon
-      </button>
-    </div>
+    <section class="sala">
+      <p id="dialogo-sala-0" class="dialogo">
+        Ao terminar essa conversa, você percebe outra pessoa chegando:
+      </p>
+      <div id="botoes-sala-0" class="bot-opc">
+        <button type="button"
+          onclick="trocaDialogo(cenas.sala[1],0);chamafoto(cenas.sala[1]);exibirRelacionamento(cenas.sala[1])"
+          class="opcao">
+          Sheldon
+        </button>
+      </div>
+      <p id="dialogo-sala-1" class="dialogo">
+        Ainda há tempo de tentar convencer mais um antes do professor chegar:
+      </p>
+      <div id="botoes-sala-1" class="bot-opc">
+        <button type="button"
+          onclick="trocaDialogo(cenas.sala[2],0);chamafoto(cenas.sala[2]);exibirRelacionamento(cenas.sala[2])"
+          class="opcao">
+          Dr. House
+        </button>
+      </div>
+      <p id="dialogo-sala-2" class="dialogo">
+        O professor chegou, hora de prestar atenção na aula.
+      </p>
+      <div id="botoes-sala-2" class="bot-opc">
+        <button type="button"
+          onclick="trocaDialogo(cenas.sala[3],0);chamafoto(cenas.sala[3]);exibirRelacionamento(cenas.sala[3])"
+          class="opcao">
+          Continuar
+        </button>
+      </div>
+      <p id="dialogo-sala-3" class="dialogo">
+        Você escuta o sinal da escola, é hora do intervalo.
+      </p>
+      <div id="botoes-sala-3" class="bot-opc">
+        <button type="button"
+          onclick="trocaDialogo('intervalo',0)"
+          class="opcao">
+          Continuar
+        </button>
+      </div>
+    </section>
 
-    <p id="dialogo-sala-1" class="dialogo">
-      Ainda há tempo de tentar convencer mais um antes do professor chegar:
-    </p>
-    <div id="botoes-sala-1" class="bot-opc">
-      <button type="button"
-        onclick="trocaDialogo(cenas.sala[2],0);chamafoto(cenas.sala[2]);exibirRelacionamento(cenas.sala[2])"
-        class="opcao">
-        Dr. House
-      </button>
-    </div>
+    <section class="intervalo">
+      <p id="dialogo-intervalo-0" class="dialogo">
+        Assim que você sai da sala para iniciar o intervalo, você percebe 2 lugares onde podem ter pessoas que devem ser convencidas a votarem em você.
+      </p>
+      <div id="botoes-intervalo-0">
+        <button type="button" onclick="trocaDialogo('biblioteca',0);trocaFundo('biblioteca'); areaNaoEscolhida('biblioteca')" class="opcao">Biblioteca</button>
+        <button type="button" onclick="trocaDialogo('cantina',0);trocaFundo('cantina'); areaNaoEscolhida('cantina')" class="opcao">Cantina</button>
+      </div>
 
-    <p id="dialogo-sala-2" class="dialogo">
-      O professor chegou, hora de prestar atenção na aula.
-    </p>
-    <div id="botoes-sala-2" class="bot-opc">
-      <button type="button"
-        onclick="trocaDialogo(cenas.sala[3],0);chamafoto(cenas.sala[3]);exibirRelacionamento(cenas.sala[3])"
-        class="opcao">
-        Continuar
-      </button>
-    </div>
+      <p id="dialogo-intervalo-1" class="dialogo">
+        Agora só restou ir para o outro lugar:
+      </p>
+      <div id="botoes-intervalo-1">
+        <button type="button" onclick="trocaDialogo(`${nEscolhida}`,0);trocaFundo(`${nEscolhida}`)" class="opcao"><span id="areaNaoEscolhida"></span></button>
+      </div>
 
-    <p id="dialogo-sala-3" class="dialogo">
-      Você escuta o sinal da escola, é hora do intervalo.
-    </p>
-    <div id="botoes-sala-3" class="bot-opc">
-      <button type="button"
-        onclick="trocaDialogo(cenas.intervalo[0],0);chamafoto(cenas.intervalo[0]);exibirRelacionamento(cenas.intervalo[0])"
-        class="opcao">
-        Continuar
-      </button>
-    </div>
-  </section>
+      <p id="dialogo-intervalo-2" class="dialogo">
+        O intervalo acaba, é hora do resultado das eleições
+      </p>
+      <div id="botoes-intervalo-2">
+        <button type="button" onclick="">Continuar</button>
+      </div>
+    </section>
+
+    <section class="biblioteca">
+      <p id="dialogo-biblioteca-0" class="dialogo">
+        Quando você entra na biblioteca, logo vê que uma pessoa está vindo na sua direção com um celular na mão.
+      </p>
+      <div id="botoes-biblioteca-0">
+        <button type="button" onclick="trocaDialogo(cenas.biblioteca[0],0);exibirRelacionamento(cenas.biblioteca[0]);chamafoto(cenas.biblioteca[0])" class="opcao">Enzo</button>
+      </div>
+
+      <p id="dialogo-biblioteca-1" class="dialogo">
+        Assim que o Enzo sai da biblioteca, você vê outra pessoa chegando.
+      </p>
+      <div id="botoes-biblioteca-1">
+        <button type="button" onclick="trocaDialogo(cenas.biblioteca[1],0);exibirRelacionamento(cenas.biblioteca[1]);chamafoto(cenas.biblioteca[1])" class="opcao">Theo</button>
+      </div>
+
+      <p id="dialogo-biblioteca-2" class="dialogo">
+        Não há mais ninguém para conversar aqui, melhor voltar
+      </p>
+      <div id="botoes-biblioteca-2">
+        <button type="button" onclick="trocaDialogo('intervalo',`${controle}`)" class="opcao">Voltar</button>
+      </div>
+    </section>
+
+    <section class="cantina">
+      <p id="dialogo-cantina-0" class="dialogo">
+        Assim que você chega na cantina, percebe que o Vinícius está conversando com algumas outras, parece que ele está falando algo sobre um cassino, você não consegue ouvir direito, assim que ele te vê, o Vinícius vem na sua direção.
+      </p>
+      <div id="botoes-cantina-0">
+        <button type="button" onclick="trocaDialogo(cenas.cantina[0],0);exibirRelacionamento(cenas.cantina[0]);chamafoto(cenas.cantina[0])" class="opcao">Vinicius</button>
+      </div>
+
+      <p id="dialogo-cantina-1" class="dialogo">
+        Logo depois dessa conversa peculiar, você vê outra pessoa se aproximando
+      </p>
+      <div id="botoes-cantina-1">
+        <button type="button" onclick="trocaDialogo(cenas.cantina[1],0);exibirRelacionamento(cenas.cantina[1]);chamafoto(cenas.cantina[1])" class="opcao">Alan Patrick</button>
+      </div>
+
+      <p id="dialogo-cantina-2" class="dialogo">
+        Não há mais ninguém para conversar aqui
+      </p>
+      <div id="botoes-cantina-2">
+        <button type="button" onclick="trocaDialogo('intervalo',`${controle}`)" class="opcao">Voltar</button>
+      </div>
+    </section>
 
   <!--Itens-->
   <!--OBS: eles continuam no "sistema antigo", porque não é utilizada a função vaiPara()-->
@@ -248,7 +327,7 @@
     <!-- Messi - Diálogo 2 -->
     <!-- ========================= -->
     <p id="dialogo-messi-2" class="dialogo">
-      Hum… cuidado com esse “tranquilo”. Quando parece fácil demais, é porque alguém tá deixando. Mas fala aí, tá
+      Hum… cuidado com esse tranquilo. Quando parece fácil demais, é porque alguém tá deixando. Mas fala aí, tá
       nessa para ganhar ou para mostrar serviço?
     </p>
     <div id="botoes-messi-2">
@@ -821,7 +900,7 @@
     <!-- Sheldon - Dialogo de saída 0 -->
     <!-- ========================= -->
     <p id="dialogo-sheldon-sair0" class="dialogo">
-      Muito bem, experiência social concluída. Eu voltarei às minhas atividades intelectualmente superiores — como
+      Muito bem, experiência social concluída. Eu voltarei às minhas atividades intelectualmente superiores como
       organizar meus bonecos do Star Trek por ordem de relevância científica.
     </p>
     <div id="botoes-sheldon-sair0" class="bot-opc">
@@ -934,7 +1013,7 @@
         Então, pra você, política é irracional por natureza?
       </button>
       <button type="button" onclick="trocaDialogo('sheldon',12);maisRelacionamento('sheldon',15)" class="opcao">
-        Interessante... mas sem política, como alguém imporia regras — digo, leis — lógicas?
+        Interessante... mas sem política, como alguém imporia regras digo, leis lógicas?
       </button>
     </div>
 
@@ -990,7 +1069,7 @@
     <!-- ========================= -->
     <p id="dialogo-sheldon-9" class="dialogo"> 
       Hm, interessante. Um ser humano tentando me igualar em sarcasmo. Admiro a coragem, ainda que a execução
-      precise de... ajustes. Continue tentando — talvez um dia alcance o nível de ironia do meu café da manhã.
+      precise de... ajustes. Continue tentando talvez um dia alcance o nível de ironia do meu café da manhã.
     </p>
     <div id="botoes-sheldon-9" class="bot-opc"> 
        <button type="button" onclick="trocaDialogo('sheldon',calculaSair('sheldon'));maisRelacionamento('sheldon',10)" class="opcao">
@@ -1005,8 +1084,8 @@
     <!-- Sheldon - Dialogo 10 -->
     <!-- ========================= -->
     <p id="dialogo-sheldon-10" class="dialogo">
-        Desafios intelectuais são bem-vindos. Mas a linha entre “ousado” e “autodestrutivo” é tênue. E você está...
-      perigosamente perto dela. Impressionante — e um pouco preocupante.
+        Desafios intelectuais são bem-vindos. Mas a linha entre ousado e autodestrutivo é tênue. E você está...
+      perigosamente perto dela. Impressionante e um pouco preocupante.
     </p>
     <div id="botoes-sheldon-10" class="bot-opc">
        <button type="button" onclick="trocaDialogo('sheldon',calculaSair('sheldon'));maisRelacionamento('sheldon',10)" class="opcao">
@@ -1038,7 +1117,7 @@
     <!-- ========================= -->
     <p id="dialogo-sheldon-12" class="dialogo">
         Ah, o velho dilema entre ordem e liberdade. Sem política, teríamos anarquia. Com política, temos... anarquia
-      organizada. O ser humano é um paradoxo fascinante — e cansativo.
+      organizada. O ser humano é um paradoxo fascinante e cansativo.
     </p>
     <div id="botoes-sheldon-12" class="bot-opc">
        <button type="button" onclick="trocaDialogo('sheldon',calculaSair('sheldon'));menosRelacionamento('sheldon',10)" class="opcao">
@@ -1053,7 +1132,7 @@
     <!-- Sheldon - Dialogo 13 -->
     <!-- ========================= -->
     <p id="dialogo-sheldon-13" class="dialogo">
-        Inevitável e previsível, como o colapso de uma função de onda. O caos é o padrão natural do universo — e a
+        Inevitável e previsível, como o colapso de uma função de onda. O caos é o padrão natural do universo e a
       tentativa humana de controlá-lo é... adoravelmente fútil.
     </p>
     <div id="botoes-sheldon-13" class="bot-opc">
@@ -1069,7 +1148,7 @@
     <!-- Sheldon - Dialogo 14 -->
     <!-- ========================= -->
     <p id="dialogo-sheldon-14" class="dialogo">
-        Desistir implica que eu algum dia acreditei. Eu apenas observo — como um cientista diante de um experimento
+        Desistir implica que eu algum dia acreditei. Eu apenas observo como um cientista diante de um experimento
       que insiste em explodir. A diferença é que, neste caso, a explosão vota.
     </p>
     <div id="botoes-sheldon-14" class="bot-opc">
@@ -1213,7 +1292,7 @@
     <!-- House - Diálogo 8 (do Desafio a) -->
     <!-- ========================= -->
     <p id="dialogo-house-8" class="dialogo">
-        Ah, competência… raro e delicioso. Mas atenção: ninguém vota só pelo que você sabe. Querem ver resultado. Qual seria seu exemplo de “resultado real” aqui no IFRS?
+        Ah, competência… raro e delicioso. Mas atenção: ninguém vota só pelo que você sabe. Querem ver resultado. Qual seria seu exemplo de resultado real aqui no IFRS?
     </p>
     <div id="botoes-house-8" class="bot-opc">
         <button type="button" onclick="trocaDialogo('house', 10); menosRelacionamento('house',10)" class="opcao">
@@ -1290,29 +1369,525 @@
 </section>
 
 
-<!--Personagens intervalo-->
+<!--Personagens bilioteca-->
 <section class="enzo">
-  <!-- ========================= -->
+    <!-- ========================= -->
     <!-- Enzo - Dialogo de saída -->
     <!-- ========================= -->
-     <p id="dialogo-enzo-sair" class="dialogo"></p>
-      <div id="botoes-enzo-sair" class="bot-opc">
-        <button type="button" class="opcao" onclick="trocaDialogo('intervalo',1)">
+    <p id="dialogo-enzo-sair" class="dialogo">Obrigado pela conversa, acho que eu vou indo.</p>
+    <div id="botoes-enzo-sair" class="bot-opc">
+      <button type="button" class="opcao" onclick="trocaDialogo('biblioteca',1);chamafoto('')">Continuar
+      </button>
+    </div>
 
-        </button>
-      </div>
     <!-- ========================= -->
-    <!-- Enzo - Dialogo 0 (entrada) -->
+    <!-- Enzo - Dialogo de entrada -->
     <!-- ========================= -->
-     <p id="dialogo-enzo-0" class="dialogo"></p>
-      <div id="botoes-enzo-0" class="bot-opc">
-        <button type="button" class="opcao" onclick="trocaDialogo('enzo',1)">
+    <p id="dialogo-enzo-0" class="dialogo">Olá, candidato… Veio estudar ou só fugir da correria do refeitório?</p>
+    <div id="botoes-enzo-0" class="bot-opc">
+      <button type="button" class="opcao" onclick="trocaDialogo('enzo',1)">
+        Tô tentando estudar, mas a conversa boa é sempre mais interessante.
+      </button>
+      <button type="button" class="opcao" onclick="trocaDialogo('enzo',6)">
+        Fugi da correria… e acabei encontrando você.
+      </button>
+    </div>
 
-        </button>
-        <button type="button" class="opcao" onclick="trocaDialogo('enzo',2)">
+    <!-- Enzo - Dialogo 1 -->
+    <p id="dialogo-enzo-1" class="dialogo">
+      Hahaha, clássico! O candidato sabe onde encontrar conhecimento… ou pelo menos diversão no meio dos livros.<br>
+      Mas me diz: prefere estudar sério ou improvisar e aprender na marra?
+    </p>
+    <div id="botoes-enzo-1" class="bot-opc">
+      <button type="button" class="opcao" onclick="trocaDialogo('enzo',2)">
+        Aprender na marra, sempre rende mais histórias pra contar.
+      </button>
+      <button type="button" class="opcao" onclick="trocaDialogo('enzo',4)">
+        Estudar sério, nada como disciplina pra não se perder depois.
+      </button>
+    </div>
 
-        </button>
-      </div>
+    <!-- Enzo - Dialogo 2 -->
+    <p id="dialogo-enzo-2" class="dialogo">
+      Hahaha, gostei! Nerd fudido que sabe se virar… isso já me conquista.
+    </p>
+    <div id="botoes-enzo-2" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('enzo',15); trocaDialogo('enzo',3)">
+        Quer me mostrar algum truque de organização dos seus livros?
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('enzo',5); trocaDialogo('enzo',3)">
+        Prefiro observar antes de bagunçar tudo aqui.
+      </button>
+    </div>
+
+    <!-- Enzo - Dialogo 3 -->
+    <p id="dialogo-enzo-3" class="dialogo">
+      Boa! Mostra iniciativa… agora você tá no caminho certo pro meu voto.
+    </p>
+    <div id="botoes-enzo-3" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('enzo',5); trocaDialogo('enzo','sair')">
+        Continuar
+      </button>
+    </div>
+
+    <!-- Enzo - Dialogo 4 -->
+    <p id="dialogo-enzo-4" class="dialogo">
+      Ok, disciplina é respeitável… mas cuidado pra não ficar chato.
+    </p>
+    <div id="botoes-enzo-4" class="bot-opc">
+      <button type="button" class="opcao" onclick="trocaDialogo('enzo',5)">
+        Posso equilibrar estudo e diversão, sem problema.
+      </button>
+      <button type="button" class="opcao" onclick="trocaDialogo('enzo',5)">
+        Prefiro focar só na matéria por enquanto.
+      </button>
+    </div>
+
+    <!-- Enzo - Dialogo 5 -->
+    <p id="dialogo-enzo-5" class="dialogo">
+      Agora sim, candidato completo. Gosto de gente que sabe equilibrar.
+    </p>
+    <div id="botoes-enzo-5" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('enzo',10); trocaDialogo('enzo','sair')">
+        Continuar
+      </button>
+    </div>
+
+    <!-- Enzo - Dialogo 6 -->
+    <p id="dialogo-enzo-6" class="dialogo">
+      Ah, então você veio se esconder… gosto do estilo. Mas não dá pra fugir do mundo totalmente, hein?<br>
+      Me diz: prefere passar o tempo sozinho estudando ou misturar com gente legal?
+    </p>
+    <div id="botoes-enzo-6" class="bot-opc">
+      <button type="button" class="opcao" onclick="menosRelacionamento('enzo',5); trocaDialogo('enzo',7)">
+        Sozinho, foco total.
+      </button>
+      <button type="button" class="opcao" onclick="maisRelacionamento('enzo',10); trocaDialogo('enzo',9)">
+        Misturar com gente legal, sempre rende boas histórias.
+      </button>
+    </div>
+
+    <!-- Enzo - Dialogo 7 -->
+    <p id="dialogo-enzo-7" class="dialogo">
+      Hm, nerd solitário… típico e eficiente. Mas meu voto? Ainda não ganhou.
+    </p>
+    <div id="botoes-enzo-7" class="bot-opc">
+      <button type="button" class="opcao" onclick="menosRelacionamento('enzo',5); trocaDialogo('enzo',8)">
+        Então me ensina umas manhas pra sobreviver na biblioteca?
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('enzo',10); trocaDialogo('enzo',8)">
+        Prefiro só observar como você sobrevive aqui.
+      </button>
+    </div>
+
+    <!-- Enzo - Dialogo 8 -->
+    <p id="dialogo-enzo-8" class="dialogo">
+      Hahaha, só observando? Sem risco, sem conquista. Ainda vai ter que suar pra conseguir meu voto.
+    </p>
+    <div id="botoes-enzo-8" class="bot-opc">
+      <button type="button" class="opcao" onclick="menosRelacionamento('enzo',5); trocaDialogo('enzo','sair')">
+        Continuar
+      </button>
+    </div>
+
+    <!-- Enzo - Dialogo 9 -->
+    <p id="dialogo-enzo-9" class="dialogo">
+      Hahaha, finalmente alguém que entende! Sociável, mas ainda nerd… tá no caminho certo.
+    </p>
+    <div id="botoes-enzo-9" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('enzo',15); trocaDialogo('enzo',10)">
+        Então me ensina umas manhas pra sobreviver na biblioteca?
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('enzo',5); trocaDialogo('enzo',11)">
+        Prefiro só observar como você sobrevive aqui.
+      </button>
+    </div>
+
+    <!-- Enzo - Dialogo 10 -->
+    <p id="dialogo-enzo-10" class="dialogo">
+      Ótimo, isso sim é iniciativa. Agora você tá ganhando pontos comigo!
+    </p>
+    <div id="botoes-enzo-10" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('enzo',10); trocaDialogo('enzo','sair')">
+        Continuar
+      </button>
+    </div>
+
+    <!-- Enzo - Dialogo 11 -->
+    <p id="dialogo-enzo-11" class="dialogo">
+      Hahaha, só observando? Sem risco, sem conquista. Ainda vai ter que suar pra conseguir meu voto.
+    </p>
+    <div id="botoes-enzo-11" class="bot-opc">
+      <button type="button" class="opcao" onclick="menosRelacionamento('enzo',5); trocaDialogo('enzo','sair')">
+        Continuar
+      </button>
+    </div>
+
+</section>
+
+<section class="theo">
+    <!-- ========================= -->
+    <!-- Theo - Dialogo de saída -->
+    <!-- ========================= -->
+    <p id="dialogo-theo-sair" class="dialogo">Tchau</p>
+    <div id="botoes-theo-sair" class="bot-opc">
+      <button type="button" class="opcao" onclick="trocaDialogo('biblioteca',2);chamafoto('')">
+        Sair da conversa
+      </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Theo - Dialogo 0 (entrada) -->
+    <!-- ========================= -->
+    <p id="dialogo-theo-0" class="dialogo">Theo cruza os braços, sorrindo de lado. — E aí, candidato. Veio pra dominar o campus ou ainda tá tentando descobrir onde fica a sala de aula?</p>
+    <div id="botoes-theo-0" class="bot-opc">
+      <button type="button" class="opcao" onclick="trocaDialogo('theo',1)">
+        Dominar, óbvio. Já cheguei com estratégia.
+      </button>
+      <button type="button" class="opcao" onclick="trocaDialogo('theo',2)">
+        Tô mais perdido que calouro em semana de prova.
+      </button>
+    </div>
+
+    <!-- Theo - Dialogo 1 -->
+    <p id="dialogo-theo-1" class="dialogo">Theo ri. — Gosto de confiança. Analítico e determinado… já comecei a simpatizar.</p>
+    <div id="botoes-theo-1" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('theo',15);trocaDialogo('theo',3)">
+        Sempre confio no meu plano, mesmo que improvise no meio.
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('theo',5);trocaDialogo('theo',4)">
+        Às vezes falo mais do que consigo cumprir.
+      </button>
+    </div>
+
+    <!-- Theo - Dialogo 2 -->
+    <p id="dialogo-theo-2" class="dialogo">Theo dá uma risada curta. — Pelo menos é honesto. Mas calma, aqui o mapa é mais psicológico que físico.</p>
+    <div id="botoes-theo-2" class="bot-opc">
+      <button type="button" class="opcao" onclick="trocaDialogo('theo',5)">
+        Então me ajuda a entender esse mapa.
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('theo',5);trocaDialogo('theo',6)">
+        Acho que prefiro me perder um pouco mais, é divertido.
+      </button>
+    </div>
+
+    <!-- Theo - Dialogo 3 -->
+    <p id="dialogo-theo-3" class="dialogo">— Improvisar com lógica... isso é raro. Gostei do estilo.</p>
+    <div id="botoes-theo-3" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('theo',5);trocaDialogo('theo',7)">
+        Analiso rápido, ajo mais rápido ainda.
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('theo',5);trocaDialogo('theo',8)">
+        Na real, falo isso só pra parecer esperto.
+      </button>
+    </div>
+
+    <!-- Theo - Dialogo 4 -->
+    <p id="dialogo-theo-4" class="dialogo">— Hm… então é do tipo que fala antes de pensar. Interessante, mas perigoso.</p>
+    <div id="botoes-theo-4" class="bot-opc">
+      <button type="button" class="opcao" onclick="menosRelacionamento('theo',15);trocaDialogo('theo',9)">
+        É, costumo me complicar por isso.
+      </button>
+      <button type="button" class="opcao" onclick="trocaDialogo('theo',9)">
+        Depende da situação. Às vezes é vantagem.
+      </button>
+    </div>
+
+    <!-- Theo - Dialogo 5 -->
+    <p id="dialogo-theo-5" class="dialogo">— Boa, gosto de quem pede ajuda, mas pensa junto. Cooperação é inteligência social.</p>
+    <div id="botoes-theo-5" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('theo',5);trocaDialogo('theo',11)">
+        Aprendo mais trocando ideia com gente esperta.
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('theo',5);trocaDialogo('theo',11)">
+        Só tô querendo sobreviver mesmo.
+      </button>
+    </div>
+
+    <!-- Theo - Dialogo 6 -->
+    <p id="dialogo-theo-6" class="dialogo">— Hahaha, beleza, aventureiro. Só cuidado pra não virar o próprio enigma.</p>
+    <div id="botoes-theo-6" class="bot-opc">
+      <button type="button" class="opcao" onclick="menosRelacionamento('theo',15);trocaDialogo('theo',12)">
+        Já sou um enigma, e nem eu entendo.
+      </button>
+      <button type="button" class="opcao" onclick="maisRelacionamento('theo',5);trocaDialogo('theo',12)">
+        Faz parte do charme, não acha?
+      </button>
+    </div>
+
+    <!-- Theo - Dialogo 7 -->
+    <p id="dialogo-theo-7" class="dialogo">Só cuidado para não se precipitar</p>
+    <div id="botoes-theo-7" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('theo',15);trocaDialogo('theo',13)">
+        Gosto de causar boas impressões.
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('theo',5);trocaDialogo('theo',13)">
+        Tem dias que não consigo causar boas impressões, por mais que eu tente.
+      </button>
+    </div>
+
+    <!-- Theo - Dialogo 8 -->
+    <p id="dialogo-theo-8" class="dialogo">Theo ergue uma sobrancelha. — Hahaha, pelo menos é sincero. Mas cuidado, sinceridade sem filtro pode ser queda livre.</p>
+    <div id="botoes-theo-8" class="bot-opc">
+      <button type="button" class="opcao" onclick="menosRelacionamento('theo',5);trocaDialogo('theo',10)">
+        É, costumo cair de cara mesmo.
+      </button>
+      <button type="button" class="opcao" onclick="maisRelacionamento('theo',5);trocaDialogo('theo',10)">
+        Melhor cair tentando do que ficar parado.
+      </button>
+    </div>
+
+    <!-- Theo - Dialogo 9 -->
+    <p id="dialogo-theo-9" class="dialogo">Theo ri. — Ok, vou admitir, tem coragem. Isso conta pontos comigo.</p>
+    <div id="botoes-theo-9" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('theo',5);trocaDialogo('theo',14)">
+        Então anota aí, candidato corajoso.
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('theo',5);trocaDialogo('theo',14)">
+        Só espero que isso não me cause problemas.
+      </button>
+    </div>
+
+    <!-- Theo - Dialogo 10 -->
+    <p id="dialogo-theo-10" class="dialogo">— Gostei da atitude. Sabe, às vezes o que falta aqui é gente que encara as coisas com humor.</p>
+    <div id="botoes-theo-10" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('theo',15);trocaDialogo('theo','sair')">
+        Humor é meu método de sobrevivência.
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('theo',5);trocaDialogo('theo','sair')">
+        Humor não paga nota, infelizmente.
+      </button>
+    </div>
+
+    <!-- Theo - Dialogo 11 -->
+    <p id="dialogo-theo-11" class="dialogo">Theo sorri. — Inteligente e sociável. A combinação certa pra se destacar.</p>
+    <div id="botoes-theo-11" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('theo',15);trocaDialogo('theo','sair')">
+        Fico feliz que alguém note.
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('theo',5);trocaDialogo('theo','sair')">
+        Nem todo mundo vê isso, infelizmente.
+      </button>
+    </div>
+
+    <!-- Theo - Dialogo 12 -->
+    <p id="dialogo-theo-12" class="dialogo">Theo encosta na mesa, rindo. — Carisma de sobra, hein? Me lembra minha fase de calouro.</p>
+    <div id="botoes-theo-12" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('theo',5);trocaDialogo('theo','sair')">
+        E aí, vai me dar umas dicas ou só elogiar?
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('theo',5);trocaDialogo('theo','sair')">
+        É, fase boa, pena que passa.
+      </button>
+    </div>
+
+    <!-- Theo - Dialogo 13 -->
+    <p id="dialogo-theo-13" class="dialogo">— Sabe o que eu gosto? De gente que fala olhando nos olhos. E você tem esse hábito.</p>
+    <div id="botoes-theo-13" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('theo',15);trocaDialogo('theo','sair')">
+        Costumo olhar onde quero acertar.
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('theo',5);trocaDialogo('theo','sair')">
+        É costume de quem observa demais.
+      </button>
+    </div>
+
+    <!-- Theo - Dialogo 14 -->
+    <p id="dialogo-theo-14" class="dialogo">Theo sorri de canto. — Acho que vou lembrar de você, candidato. E isso é bom sinal.</p>
+    <div id="botoes-theo-14" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('theo',15);trocaDialogo('theo','sair')">
+        Espero estar na lista dos bons sinais.
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('theo',5);trocaDialogo('theo','sair')">
+        Isso pode ser ameaça ou elogio?
+      </button>
+    </div>
+
+</section>
+
+<!--Personagens cantina-->
+<section class="vinicius">
+    <!-- ========================= -->
+    <!-- Vinicius - Dialogo de saída -->
+    <!-- ========================= -->
+    <p id="dialogo-vinicius-sair" class="dialogo">Obrigado pela conversa mano, tchau.</p>
+    <div id="botoes-vinicius-sair" class="bot-opc">
+      <button type="button" class="opcao" onclick="trocaDialogo('cantina',1); chamafoto('')">
+        Sair da conversa
+      </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Vinicius - Dialogo 0 (entrada) -->
+    <!-- ========================= -->
+    <p id="dialogo-vinicius-0" class="dialogo">E aí, candidato. Vai sentar e observar ou tentar se enturmar? Primeiro teste: coxinha ou pão de queijo?</p>
+    <div id="botoes-vinicius-0" class="bot-opc">
+      <button type="button" class="opcao" onclick="trocaDialogo('vinicius',1)">
+        Coxinha, clássico dos eleitores
+      </button>
+      <button type="button" class="opcao" onclick="trocaDialogo('vinicius',2)">
+        Pão de queijo, tradição mineira
+      </button>
+    </div>
+
+    <!-- Vinicius - Dialogo 1 -->
+    <p id="dialogo-vinicius-1" class="dialogo">Certo, coxinha. Todo mundo gosta. Mas só comida não garante voto. O que mais você traria pro grêmio? Alguma ideia fora do comum?</p>
+    <div id="botoes-vinicius-1" class="bot-opc">
+      <button type="button" class="opcao" onclick="trocaDialogo('vinicius',3)">
+        Eventos e mais diversão para todo mundo
+      </button>
+      <button type="button" class="opcao" onclick="trocaDialogo('vinicius',4)">
+        Organização e disciplina. O grêmio precisa funcionar direito
+      </button>
+    </div>
+
+    <!-- Vinicius - Dialogo 2 -->
+    <p id="dialogo-vinicius-2" class="dialogo">Pão de queijo, beleza… mas não é minha favorita. E você é do tipo que faz ou do tipo que só fala?</p>
+    <div id="botoes-vinicius-2" class="bot-opc">
+      <button type="button" class="opcao" onclick="trocaDialogo('vinicius',5)">
+        Falo e faço. Palavras precisam de ação
+      </button>
+      <button type="button" class="opcao" onclick="trocaDialogo('vinicius',6)">
+        Depende… tem hora pra falar e hora pra agir
+      </button>
+    </div>
+
+    <!-- Vinicius - Dialogo 3 -->
+    <p id="dialogo-vinicius-3" class="dialogo">Show. E olha… em vez do restaurante universitário, dava pra ter um mini cassino no IF, só pra fazer algo diferente.</p>
+    <div id="botoes-vinicius-3" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('vinicius',5);trocaDialogo('vinicius',7)">
+        Pode ser divertido, tipo evento mesmo
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('vinicius',5);trocaDialogo('vinicius',7)">
+        Cassino? Não acho uma boa ideia
+      </button>
+    </div>
+
+    <!-- Vinicius - Dialogo 4 -->
+    <p id="dialogo-vinicius-4" class="dialogo">Organização é bom… mas talvez só isso não empolgue o pessoal. Tipo, podia inventar umas coisas malucas, tipo mini cassino no IF.</p>
+    <div id="botoes-vinicius-4" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('vinicius',5);trocaDialogo('vinicius',8)">
+        Posso organizar e ainda deixar divertido
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('vinicius',5);trocaDialogo('vinicius',8)">
+        Prefiro focar só em resultados sólidos
+      </button>
+    </div>
+
+    <!-- Vinicius - Dialogo 5 -->
+    <p id="dialogo-vinicius-5" class="dialogo">Certo, faz sentido. Ação é importante. E talvez a gente pudesse inventar algo maluco no IF, tipo um mini cassino pra campanha, só pra ver a reação da galera.</p>
+    <div id="botoes-vinicius-5" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('vinicius',15);trocaDialogo('vinicius',9)">
+        Posso te mostrar meu plano de campanha
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('vinicius',5);trocaDialogo('vinicius',9)">
+        Prefiro observar os outros primeiro
+      </button>
+    </div>
+
+    <!-- Vinicius - Dialogo 6 -->
+    <p id="dialogo-vinicius-6" class="dialogo">Estratégia faz sentido, mas só pensar não resolve. Tava pensando, dava pra tentar umas ideias malucas tipo cassino no IF, só pra quebrar o padrão.</p>
+    <div id="botoes-vinicius-6" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('vinicius',5);trocaDialogo('vinicius',10)">
+        Vou agir e mostrar resultados logo
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('vinicius',5);trocaDialogo('vinicius',10)">
+        Vou observar mais um pouco antes de me mexer
+      </button>
+    </div>
+
+    <!-- Vinicius - Dialogo 7 -->
+    <p id="dialogo-vinicius-7" class="dialogo">Exato, pensei alto mesmo. Vale a pena tentar algo diferente.</p>
+    <div id="botoes-vinicius-7" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('vinicius',15);trocaDialogo('vinicius',11)">
+        Ideias ousadas são as que marcam
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('vinicius',5);trocaDialogo('vinicius',11)">
+        Nem tudo que é diferente funciona
+      </button>
+    </div>
+
+    <!-- Vinicius - Dialogo 8 -->
+    <p id="dialogo-vinicius-8" class="dialogo">Beleza, aí sim, dá pra fazer as duas coisas ao mesmo tempo.</p>
+    <div id="botoes-vinicius-8" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('vinicius',15);trocaDialogo('vinicius',12)">
+        Equilíbrio é o segredo pra tudo
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('vinicius',5);trocaDialogo('vinicius',12)">
+        Prefiro manter o foco só no que é necessário
+      </button>
+    </div>
+
+    <!-- Vinicius - Dialogo 9 -->
+    <p id="dialogo-vinicius-9" class="dialogo">Legal, bora ver se o plano funciona na prática.</p>
+    <div id="botoes-vinicius-9" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('vinicius',15);trocaDialogo('vinicius',13)">
+        Vai funcionar, confia
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('vinicius',5);trocaDialogo('vinicius',13)">
+        Se não funcionar, pelo menos tentamos
+      </button>
+    </div>
+
+    <!-- Vinicius - Dialogo 10 -->
+    <p id="dialogo-vinicius-10" class="dialogo">Isso, é assim que as coisas acontecem de verdade.</p>
+    <div id="botoes-vinicius-10" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('vinicius',15);trocaDialogo('vinicius',14)">
+        Fazer é melhor que planejar demais
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('vinicius',5);trocaDialogo('vinicius',14)">
+        Planejar é mais seguro
+      </button>
+    </div>
+
+    <!-- Vinicius - Dialogo 11 -->
+    <p id="dialogo-vinicius-11" class="dialogo">Ah, beleza. Só falei por falar. Mas ia ser engraçado ver a reação da galera.</p>
+    <div id="botoes-vinicius-11" class="bot-opc">
+      <button type="button" class="opcao" onclick="menosRelacionamento('vinicius',5);trocaDialogo('vinicius','sair')">
+        Concordo, mas é melhor não arriscar tanto
+      </button>
+      <button type="button" class="opcao" onclick="maisRelacionamento('vinicius',5);trocaDialogo('vinicius','sair')">
+        Concordo, seria hilário
+      </button>
+    </div>
+
+    <!-- Vinicius - Dialogo 12 -->
+    <p id="dialogo-vinicius-12" class="dialogo">Tudo bem, mas vai perder a chance de surpreender a galera.</p>
+    <div id="botoes-vinicius-12" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('vinicius',5);trocaDialogo('vinicius','sair')">
+        Surpresas boas exigem o momento certo
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('vinicius',5);trocaDialogo('vinicius','sair')">
+        Prefiro não arriscar, menos dor de cabeça
+      </button>
+    </div>
+
+    <!-- Vinicius - Dialogo 13 -->
+    <p id="dialogo-vinicius-13" class="dialogo">Ok, mas esperar demais pode fazer o pessoal perder interesse.</p>
+    <div id="botoes-vinicius-13" class="bot-opc">
+      <button type="button" class="opcao" onclick="menosRelacionamento('vinicius',5);trocaDialogo('vinicius','sair')">
+        Verdade, acho que demorei demais
+      </button>
+      <button type="button" class="opcao" onclick="maisRelacionamento('vinicius',15);trocaDialogo('vinicius','sair')">
+        Então é hora de agir
+      </button>
+    </div>
+
+    <!-- Vinicius - Dialogo 14 -->
+    <p id="dialogo-vinicius-14" class="dialogo">Beleza, mas quem não se move acaba ficando pra trás.</p>
+    <div id="botoes-vinicius-14" class="bot-opc">
+      <button type="button" class="opcao" onclick="maisRelacionamento('vinicius',15);trocaDialogo('vinicius','sair')">
+        Concordo, não quero ficar pra trás
+      </button>
+      <button type="button" class="opcao" onclick="menosRelacionamento('vinicius',5);trocaDialogo('vinicius','sair')">
+        Às vezes é bom dar um tempo
+      </button>
+    </div>
+
+</section>
+
+<section class="alanpa">
+
 </section>
   <script src="js/script.js"></script>
 </body>

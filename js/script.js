@@ -10,7 +10,6 @@
       //salvarLogPers(cena);
     }
 
-
     function trocaDialogo(personagem,id){
       document.getElementById("dialogos").innerHTML = document.getElementById("dialogo-"+personagem+"-"+id).innerHTML;
       document.getElementById("botoes").innerHTML = document.getElementById("botoes-"+personagem+"-"+id).innerHTML;
@@ -26,6 +25,21 @@
         foto.style.display = "none";
       }
     }
+
+    //Função utilizada para adicionar a area não escolhida na parte do intervalo, sim é a coisa mais tosca já vista, mas funcioan especificamente para o único lugar que vai ter escolha pra onde ir no jogo
+    //OBS: só funciona pra cena com 2 áreas
+    function areaNaoEscolhida(areaEscolhida){
+      controle = 1;
+      if(areaEscolhida == 'biblioteca'){
+        document.getElementById("areaNaoEscolhida").innerHTML = "cantina";
+        nEscolhida = "cantina";
+      }
+      else{
+        document.getElementById("areaNaoEscolhida").innerHTML = "biblioteca";
+        nEscolhida = "biblioteca";
+      }
+    }
+
 
     //funções de relacionamento/fofoca, etc
     function maisRelacionamento(personagemID, relacionamento) {
@@ -107,22 +121,6 @@
       return Math.floor(Math.random() * max);
     }
 
-    function aleatEntre(personagens) {
-      aleatorio = numeroAleatorio(personagens.length);
-      sorteado = personagens[aleatorio];
-
-      //Remove o personagem sorteado
-      removePersonagem(aleatorio, personagens);
-
-      return sorteado;
-    }
-
-    //Função para remover personagem das cenas e põe nome nos botões
-    function removePersonagem(personagemRemovido, personagens) {
-      personagens.splice(personagemRemovido, 1);
-      console.log(personagens.length);
-    }
-
     //Função que exibe o item na tela
     function item(idItem,npersonagem){
       hud = document.getElementById("hud-itens");
@@ -149,30 +147,6 @@
 
     function limpaItem(){
       document.getElementById("hud-itens").style.display="none";
-    }
-
-    contCen = 0;
-    function trocaCena(cena) {
-      switch (contCen){
-        case 0:
-          contCen++;
-          vaiPara(cena + '-0');
-          break;
-
-        case 1:
-          contCen++;
-          vaiPara(cena + '-1');
-          break;
-
-        case 2:
-          contCen++;
-          vaiPara(cena + '-2');
-          break;
-
-        default:
-          console.log("Erro na função 'trocaCena()'");
-    }
-
     }
 
     function trocaFundo(fundo) {
@@ -301,7 +275,8 @@
     cenas = {
       sala: ["gustavo", "sheldon", "house", "bigolin"],
       patio: ["messi", "davi"],
-      intervalo: ["enzo","theo","vinicius"],
+      biblioteca: ["enzo","theo"],
+      cantina: ["vinicius","alanpa"],
     };
 
     //grupos de personagens que serão afetados pelos itens
