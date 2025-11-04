@@ -183,14 +183,14 @@
         Agora só restou ir para o outro lugar:
       </p>
       <div id="botoes-intervalo-1">
-        <button type="button" onclick="trocaDialogo(`${nEscolhida}`,0);trocaFundo(`${nEscolhida}`)" class="opcao"><span id="areaNaoEscolhida"></span></button>
+        <button type="button" onclick="controle++;trocaDialogo(`${nEscolhida}`,0);trocaFundo(`${nEscolhida}`)" class="opcao"><span id="areaNaoEscolhida"></span></button>
       </div>
 
       <p id="dialogo-intervalo-2" class="dialogo">
-        O intervalo acaba, é hora do resultado das eleições
+        O intervalo acaba, é hora do debate decisivo para a eleição do grêmio estudantil.
       </p>
       <div id="botoes-intervalo-2">
-        <button type="button" onclick="">Continuar</button>
+        <button type="button" onclick="trocaDialogo('lula',0); trocaFundo('auditorio'); chamafoto('lula'); exibirRelacionamento('jogador')" class="opcao">Ir para o debate</button>
       </div>
     </section>
 
@@ -1162,7 +1162,7 @@
 
   </section>
 
-  <section id="house">
+  <section class="house">
 
     <!-- ========================= -->
     <!-- House - Diálogo de saída -->
@@ -1887,6 +1887,245 @@
 </section>
 
 <section class="alanpa">
+
+    <!-- ========================= -->
+    <!-- Alan Patrick - Sair -->
+    <!-- ========================= -->
+    <p id="dialogo-alanpa-sair" class="dialogo">
+        Valeu pela conversa. É bom saber que alguém pensa fora da caixa... ou pelo menos, fora da caixa de brigadeiros. Vou nessa.
+    </p>
+    <div id="botoes-alanpa-sair" class="bot-opc">
+        <button type="button" class="opcao" onclick="limpaBarra();trocaDialogo('cantina', 2);chamafoto('')">
+            Sair da conversa
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Alan Patrick - Dialogo 0 (Entrada) -->
+    <!-- ========================= -->
+    <p id="dialogo-alanpa-0" class="dialogo">
+        E aí, candidato! Tá pronto pra fazer história no IF ou só veio dar uma olhada nas opções de lanche?
+    </p>
+    <div id="botoes-alanpa-0" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('alanpa', 1)">
+            Tô pronto pra fazer história!
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('alanpa', 2)">
+            Só vim ver o que tem pra comer mesmo.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Alan Patrick - Dialogo 1 (Resposta: Fazer história) -->
+    <!-- ========================= -->
+    <p id="dialogo-alanpa-1" class="dialogo">
+        História? A única história que vejo sendo escrita é a do Lula, distribuindo brigadeiro na saída. Qual a tua estratégia contra o açúcar?
+    </p>
+    <div id="botoes-alanpa-1" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('alanpa', 3)">
+            Vou focar em propostas sérias, o pessoal sabe o que é melhor.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('alanpa', 4)">
+            Vou criar algo comestível melhor que o brigadeiro dele.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Alan Patrick - Dialogo 2 (Resposta: Lanche) -->
+    <!-- ========================= -->
+    <p id="dialogo-alanpa-2" class="dialogo">
+        Eu entendo. Mas se tu quer lanche bom, tem que parar o Lula. Ele tá comprando voto com brigadeiro gourmet. O que tu faria?
+    </p>
+    <div id="botoes-alanpa-2" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('alanpa', 5)">
+            É corrupção, vou denunciar!
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('alanpa', 6)">
+            Se ele pode, eu também posso dar brindes.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Alan Patrick - Dialogo 3 (Sério/Ingênuo) -->
+    <!-- ========================= -->
+    <p id="dialogo-alanpa-3" class="dialogo">
+        Proposta? Ninguém lê. O eleitor tá pensando no próximo brigadeiro. Como tu tira o doce da boca dele?
+    </p>
+    <div id="botoes-alanpa-3" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('alanpa', 'sair'); menosRelacionamento('alanpa', 5)">
+            Prometo um dia de pizza grátis para quem votar em mim.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('alanpa', 'sair'); maisRelacionamento('alanpa', 10)">
+            Vou fazer uma pesquisa para entender o que eles realmente querem antes de prometer.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Alan Patrick - Dialogo 4 (Competitivo) -->
+    <!-- ========================= -->
+    <p id="dialogo-alanpa-4" class="dialogo">
+        Gostei! Competitividade! O que seria essa "arma secreta" alimentar para bater o brigadeiro?
+    </p>
+    <div id="botoes-alanpa-4" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('alanpa', 'sair'); maisRelacionamento('alanpa', 15)">
+            Pão de queijo quentinho no intervalo.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('alanpa', 'sair'); menosRelacionamento('alanpa', 5)">
+            Barras de cereal saudáveis e veganas.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Alan Patrick - Dialogo 5 (Idealista) -->
+    <!-- ========================= -->
+    <p id="dialogo-alanpa-5" class="dialogo">
+        Denunciar? Ele vai dizer que é 'inclusão social em forma de doce'. Tu tem que ganhar no voto. Como faz isso?
+    </p>
+    <div id="botoes-alanpa-5" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('alanpa', 'sair'); maisRelacionamento('alanpa', 15)">
+            Crio uma campanha viral mostrando o custo real de cada brigadeiro.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('alanpa', 'sair'); menosRelacionamento('alanpa', 5)">
+            Esqueço os brigadeiros e foco nas melhorias da quadra.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Alan Patrick - Dialogo 6 (Pragmático/Receptivo a Brindes) -->
+    <!-- ========================= -->
+    <p id="dialogo-alanpa-6" class="dialogo">
+        Brindes. Certo. Mas ele tem uma fábrica de brigadeiro. O que tu distribui que é mais barato e atinge mais gente?
+    </p>
+    <div id="botoes-alanpa-6" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('alanpa', 'sair'); maisRelacionamento('alanpa', 10)">
+            Adesivos da campanha com memes da escola.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('alanpa', 'sair'); menosRelacionamento('alanpa', 5)">
+            Distribuir canetas personalizadas.
+        </button>
+    </div>
+
+</section>
+
+<!--Persoangens auditorio-->
+<section id="lula">
+
+    <!-- ========================= -->
+    <!-- Lula - Sair -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-sair" class="dialogo">
+        Obrigado pelo papo, candidato. É bom ver que o debate está vivo! Agora, vou seguir o trabalho.
+    </p>
+    <div id="botoes-lula-sair" class="bot-opc">
+        <button type="button" class="opcao" onclick="limpaBarra();trocaDialogo('patio',1);chamafoto('')">
+            Sair da conversa
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Lula - Dialogo 0  -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-0" class="dialogo">
+        Amigos do IFRS! Sei que muitos estão cansados de promessas vazias. Por isso, minha campanha tem uma mensagem simples: pequenos gestos fazem diferença. Esses brigadeiros não são só doces. São um símbolo de atenção real: cada voto que eu peço vem acompanhado do compromisso de ouvir cada um e agir na organização do grêmio e eventos da escola.
+    </p>
+    <div id="botoes-lula-0" class="bot-opc">
+        <!-- PRIMEIRA ESCOLHA -->
+        <button type="button" class="opcao" onclick="trocaDialogo('lula', 1); menosRelacionamento('jogador', 10)">
+            Apoiar gesto simbólico: “Distribuir brigadeiros é simbólico, mas mostra atenção real. Quem se importa com o povo lidera melhor.”
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('lula', 2)">
+            Criticar gesto simbólico: “Só doce não faz liderança. Precisamos de ações concretas e mensuráveis.”
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Lula - Dialogo 1 (Resposta: Apoio) -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-1" class="dialogo">
+        Exatamente! Um líder precisa mostrar cuidado e agir. A atenção é o primeiro passo para a mudança.
+    </p>
+    <div id="botoes-lula-1" class="bot-opc">
+        <!-- ESCOLHA A -->
+        <button type="button" class="opcao" onclick="trocaDialogo('lula', 3);maisRelacionamento('jogador', 10)">
+            Complementar explicando ação: “E com planejamento, podemos garantir resultados junto com o cuidado.”
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('lula', 4); menosRelacionamento('jogador', 10)">
+            Aprofundar empatia: “O gesto mostra que nos importamos, e isso já é meio caminho andado.”
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Lula - Dialogo 2 (Resposta: Crítica) -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-2" class="dialogo">
+        Gestos pequenos contam. Empatia faz parte da liderança, mesmo para quem critica. O que é mais importante para você?
+    </p>
+    <div id="botoes-lula-2" class="bot-opc">
+        <!-- ESCOLHA B -->
+        <button type="button" class="opcao" onclick="trocaDialogo('lula', 5)">
+            Defender resultados: “Gestos são bons, mas resultados concretos são prioridade.”
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('lula', 6); maisRelacionamento('jogador', 20)">
+            **PROPOSTA COXINHA:** “Melhor que brigadeiro é coxinhas! Vou distribuir coxinhas para disputar voto!”
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Lula - Dialogo 3 (A1 - Complementar ação) -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-3" class="dialogo">
+        Isso! Planejamento e ação caminham juntos. É assim que lideramos de verdade, pensando em como o cuidado se torna resultado.
+    </p>
+    <div id="botoes-lula-3" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('lula', 'sair')">
+            Destacar eficiência: “Planejar e agir garante que ninguém fique sem atenção.”
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('lula', 'sair'); maisRelacionamento('jogador', 10)">
+            Destacar inclusão: “Planejar e agir garante que todos participem dos eventos, sem exceção.”
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Lula - Dialogo 4 (A2 - Aprofundar empatia) -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-4" class="dialogo">
+        Verdade. Empatia é o alicerce de qualquer liderança. Quem sente, age melhor.
+    </p>
+    <div id="botoes-lula-4" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('lula', 'sair'); maisRelacionamento('jogador', 5)">
+            Destacar cuidado contínuo: “Gestos devem ser constantes, não só na campanha.”
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('lula', 'sair'); maisRelacionamento('jogador', 10)">
+            Destacar atenção individual: “Cada estudante merece ser ouvido, não só o grupo.”
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Lula - Dialogo 5 (B1 - Defender resultados) -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-5" class="dialogo">
+        Gestos pequenos contam. Empatia faz parte da liderança, mesmo para quem critica. Mas concordo, resultados precisam vir.
+    </p>
+    <div id="botoes-lula-5" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('lula', 'sair'); maisRelacionamento('jogador', 10)">
+            Confrontar diretamente Lula: “Se não houver resultados, empatia não basta.”
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('lula', 'sair'); maisRelacionamento('jogador', 5)">
+            Destacar planejamento: “Gestos sem plano são superficiais; resultados precisam de estratégia.”
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Lula - Dialogo 6 (B2 - Proposta Coxinha) -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-6" class="dialogo">
+        Coxinha? Meu amigo, isso é inovação pura! Se for para disputar com comida, que seja boa! Liderança também é sobre criatividade.
+    </p>
+    <div id="botoes-lula-6" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('lula', 'sair'); maisRelacionamento('jogador',15)">
+            Propor equilíbrio: “Podemos unir coxinhas e ações mensuráveis. Não precisa escolher um só.”
+        </button>
+    </div>
 
 </section>
   <script src="js/script.js"></script>
