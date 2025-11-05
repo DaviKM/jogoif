@@ -30,6 +30,7 @@
       </div>
     </div>
     <div class="nomeBarra"><span id="nomeBarra"></span></div>
+    <div id="hud-votos"></div>
   </div>
 
   <!--Barra de menu-->
@@ -93,9 +94,9 @@
           cantina
         </button>
         <button type="button"
-          onclick="trocaDialogo('intervalo',0);trocaFundo('biblioteca')"
+          onclick="trocaDialogo('intervalo',2);trocaFundo('biblioteca')"
           class="opcao">
-          intervalo
+          intervalo 2
         </button>
       </div>
     </div>
@@ -190,7 +191,7 @@
         O intervalo acaba, é hora do debate decisivo para a eleição do grêmio estudantil.
       </p>
       <div id="botoes-intervalo-2">
-        <button type="button" onclick="trocaDialogo('lula',0); trocaFundo('auditorio'); chamafoto('lula'); exibirRelacionamento('jogador')" class="opcao">Ir para o debate</button>
+        <button type="button" onclick="trocaDialogo('auditorio',0); trocaFundo('auditorio'); chamafoto('')" class="opcao">Ir para o debate</button>
       </div>
     </section>
 
@@ -240,8 +241,23 @@
       </div>
     </section>
 
+    <section class="auditorio">
+      <p id="dialogo-auditorio-0">
+        Você entra no auditório e vê que o Lula está preparando seu discurso, ao lado dos papéis dele, tem vários brigadeiros de festa. 
+      </p>
+      <div id="botoes-auditorio-0">
+        <button type="button" onclick="trocaDialogo('lula',0);calculaVotos();chamafoto('lula');exibirRelacionamento('jogador')" class="opcao">Começar o debate</button>
+      </div>
+
+      <p id="dialogo-auditorio-1">
+        Assim que você termina o primeiro debate das eleições, você escuta alguém abrindo a porta do auditório: 
+      </p>
+      <div id="botoes-auditorio-1">
+        <button type="button" onclick="trocaDialogo('nicolas',0);chamafoto('nicolas')" class="opcao">Nicolas Ferreira</button>
+      </div>
+    </section>
+
   <!--Itens-->
-  <!--OBS: eles continuam no "sistema antigo", porque não é utilizada a função vaiPara()-->
   <section id="itens">
     <div id="papel" class="item">
       <img src="images/itens/papel.png" alt="Papel de fórmulas">
@@ -255,6 +271,7 @@
         Continuar
       </button>
     </div>
+
     <div id="oculos" class="item">
       <img src="images/itens/oculos.png" alt="Óculos escuros">
       <div class="textoItens">
@@ -2014,120 +2031,461 @@
     <!-- Lula - Sair -->
     <!-- ========================= -->
     <p id="dialogo-lula-sair" class="dialogo">
-        Obrigado pelo papo, candidato. É bom ver que o debate está vivo! Agora, vou seguir o trabalho.
+        Foi um bom debate, candidato. Nem sempre concordar é o que faz crescer, mas pensar diferente move o jogo.
     </p>
     <div id="botoes-lula-sair" class="bot-opc">
-        <button type="button" class="opcao" onclick="limpaBarra();trocaDialogo('patio',1);chamafoto('')">
+        <button type="button" class="opcao" onclick="limpaBarra();trocaDialogo('auditorio',1);chamafoto('')">
             Sair da conversa
         </button>
     </div>
 
     <!-- ========================= -->
-    <!-- Lula - Dialogo 0  -->
+    <!-- Lula - Dialogo 0 -->
     <!-- ========================= -->
     <p id="dialogo-lula-0" class="dialogo">
-        Amigos do IFRS! Sei que muitos estão cansados de promessas vazias. Por isso, minha campanha tem uma mensagem simples: pequenos gestos fazem diferença. Esses brigadeiros não são só doces. São um símbolo de atenção real: cada voto que eu peço vem acompanhado do compromisso de ouvir cada um e agir na organização do grêmio e eventos da escola.
+        Companheiro, vejo que você também quer mudar o IF. Mas me diga, vai falar bonito ou botar a mão na massa? Porque discurso sem prática é só barulho.
     </p>
     <div id="botoes-lula-0" class="bot-opc">
-        <!-- PRIMEIRA ESCOLHA -->
-        <button type="button" class="opcao" onclick="trocaDialogo('lula', 1); menosRelacionamento('jogador', 10)">
-            Apoiar gesto simbólico: “Distribuir brigadeiros é simbólico, mas mostra atenção real. Quem se importa com o povo lidera melhor.”
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',1);maisRelacionamento('jogador',5)">
+            Palavra e ação caminham juntas. Eu ajo e mostro resultado.
         </button>
-        <button type="button" class="opcao" onclick="trocaDialogo('lula', 2)">
-            Criticar gesto simbólico: “Só doce não faz liderança. Precisamos de ações concretas e mensuráveis.”
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',2);menosRelacionamento('jogador',5)">
+            Primeiro vem o discurso, depois a execução. Um passo de cada vez.
         </button>
     </div>
 
     <!-- ========================= -->
-    <!-- Lula - Dialogo 1 (Resposta: Apoio) -->
+    <!-- Lula - Dialogo 1 -->
     <!-- ========================= -->
     <p id="dialogo-lula-1" class="dialogo">
-        Exatamente! Um líder precisa mostrar cuidado e agir. A atenção é o primeiro passo para a mudança.
+        Gostei. Falar e agir juntos é coisa de quem lidera de verdade. Mas me diga: você trabalha pelo grupo ou pelo ego?
     </p>
     <div id="botoes-lula-1" class="bot-opc">
-        <!-- ESCOLHA A -->
-        <button type="button" class="opcao" onclick="trocaDialogo('lula', 3);maisRelacionamento('jogador', 10)">
-            Complementar explicando ação: “E com planejamento, podemos garantir resultados junto com o cuidado.”
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',3);maisRelacionamento('jogador',5)">
+            Pelo grupo. Um líder sem equipe não muda nada.
         </button>
-        <button type="button" class="opcao" onclick="trocaDialogo('lula', 4); menosRelacionamento('jogador', 10)">
-            Aprofundar empatia: “O gesto mostra que nos importamos, e isso já é meio caminho andado.”
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',4);menosRelacionamento('jogador',5)">
+            Pelo ego, talvez. Às vezes o reconhecimento é o que motiva.
         </button>
     </div>
 
     <!-- ========================= -->
-    <!-- Lula - Dialogo 2 (Resposta: Crítica) -->
+    <!-- Lula - Dialogo 2 -->
     <!-- ========================= -->
     <p id="dialogo-lula-2" class="dialogo">
-        Gestos pequenos contam. Empatia faz parte da liderança, mesmo para quem critica. O que é mais importante para você?
+        É por isso que muita ideia morre antes de sair do papel. Enquanto você fala, outro já está agindo. E quando vê, perdeu o voto.
     </p>
     <div id="botoes-lula-2" class="bot-opc">
-        <!-- ESCOLHA B -->
-        <button type="button" class="opcao" onclick="trocaDialogo('lula', 5)">
-            Defender resultados: “Gestos são bons, mas resultados concretos são prioridade.”
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',5);maisRelacionamento('jogador',5)">
+            Prefiro planejar e depois agir com força.
         </button>
-        <button type="button" class="opcao" onclick="trocaDialogo('lula', 6); maisRelacionamento('jogador', 20)">
-            **PROPOSTA COXINHA:** “Melhor que brigadeiro é coxinhas! Vou distribuir coxinhas para disputar voto!”
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',6);menosRelacionamento('jogador',5)">
+            Às vezes é melhor esperar do que agir errado.
         </button>
     </div>
 
     <!-- ========================= -->
-    <!-- Lula - Dialogo 3 (A1 - Complementar ação) -->
+    <!-- Lula - Dialogo 3 -->
     <!-- ========================= -->
     <p id="dialogo-lula-3" class="dialogo">
-        Isso! Planejamento e ação caminham juntos. É assim que lideramos de verdade, pensando em como o cuidado se torna resultado.
+        O coletivo é o que sustenta qualquer movimento. Mas cuidado, o grupo também cobra. Você aguenta pressão?
     </p>
     <div id="botoes-lula-3" class="bot-opc">
-        <button type="button" class="opcao" onclick="trocaDialogo('lula', 'sair')">
-            Destacar eficiência: “Planejar e agir garante que ninguém fique sem atenção.”
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',7);maisRelacionamento('jogador',5)">
+            Sempre. Crítica me faz crescer.
         </button>
-        <button type="button" class="opcao" onclick="trocaDialogo('lula', 'sair'); maisRelacionamento('jogador', 10)">
-            Destacar inclusão: “Planejar e agir garante que todos participem dos eventos, sem exceção.”
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',8);menosRelacionamento('jogador',5)">
+            Prefiro fazer as coisas no meu ritmo, sem cobrança.
         </button>
     </div>
 
     <!-- ========================= -->
-    <!-- Lula - Dialogo 4 (A2 - Aprofundar empatia) -->
+    <!-- Lula - Dialogo 4 -->
     <!-- ========================= -->
     <p id="dialogo-lula-4" class="dialogo">
-        Verdade. Empatia é o alicerce de qualquer liderança. Quem sente, age melhor.
+        Reconhecimento é bom, mas o ego sozinho destrói o projeto. O povo sente quando a ambição passa do limite.
     </p>
     <div id="botoes-lula-4" class="bot-opc">
-        <button type="button" class="opcao" onclick="trocaDialogo('lula', 'sair'); maisRelacionamento('jogador', 5)">
-            Destacar cuidado contínuo: “Gestos devem ser constantes, não só na campanha.”
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',9);maisRelacionamento('jogador',5)">
+            Concordo. Ambição sem propósito vira vaidade.
         </button>
-        <button type="button" class="opcao" onclick="trocaDialogo('lula', 'sair'); maisRelacionamento('jogador', 10)">
-            Destacar atenção individual: “Cada estudante merece ser ouvido, não só o grupo.”
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',10);menosRelacionamento('jogador',5)">
+            Todo mundo quer destaque, não dá pra negar.
         </button>
     </div>
 
     <!-- ========================= -->
-    <!-- Lula - Dialogo 5 (B1 - Defender resultados) -->
+    <!-- Lula - Dialogo 5 -->
     <!-- ========================= -->
     <p id="dialogo-lula-5" class="dialogo">
-        Gestos pequenos contam. Empatia faz parte da liderança, mesmo para quem critica. Mas concordo, resultados precisam vir.
+        Planejar é bom, mas quem planeja demais corre o risco de nunca começar. Às vezes o caos é o motor da mudança.
     </p>
     <div id="botoes-lula-5" class="bot-opc">
-        <button type="button" class="opcao" onclick="trocaDialogo('lula', 'sair'); maisRelacionamento('jogador', 10)">
-            Confrontar diretamente Lula: “Se não houver resultados, empatia não basta.”
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',11);maisRelacionamento('jogador',5)">
+            O caos pode inspirar, mas a disciplina mantém a vitória.
         </button>
-        <button type="button" class="opcao" onclick="trocaDialogo('lula', 'sair'); maisRelacionamento('jogador', 5)">
-            Destacar planejamento: “Gestos sem plano são superficiais; resultados precisam de estratégia.”
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',12);menosRelacionamento('jogador',5)">
+            Então bora agir sem pensar, ver o que dá.
         </button>
     </div>
 
     <!-- ========================= -->
-    <!-- Lula - Dialogo 6 (B2 - Proposta Coxinha) -->
+    <!-- Lula - Dialogo 6 -->
     <!-- ========================= -->
     <p id="dialogo-lula-6" class="dialogo">
-        Coxinha? Meu amigo, isso é inovação pura! Se for para disputar com comida, que seja boa! Liderança também é sobre criatividade.
+        Esperar demais é luxo de quem não quer mudar nada. O povo não espera, o relógio gira.
     </p>
     <div id="botoes-lula-6" class="bot-opc">
-        <button type="button" class="opcao" onclick="trocaDialogo('lula', 'sair'); maisRelacionamento('jogador',15)">
-            Propor equilíbrio: “Podemos unir coxinhas e ações mensuráveis. Não precisa escolher um só.”
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',11);maisRelacionamento('jogador',5)">
+            Tem razão. Ação vale mais que discurso.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',12);menosRelacionamento('jogador',5)">
+            Prefiro analisar do que me precipitar.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Lula - Dialogo 7 -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-7" class="dialogo">
+        Isso é o que diferencia um líder de um candidato. Quem aguenta o peso da escolha, ganha o respeito dos outros.
+    </p>
+    <div id="botoes-lula-7" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',13);maisRelacionamento('jogador',10)">
+            Prefiro respeito a aplausos.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('lula',14);menosRelacionamento('jogador',5)">
+            Eu quero os dois, respeito e aplausos.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Lula - Dialogo 8 -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-8" class="dialogo">
+        Quem foge de cobrança não lidera, se esconde. E quem se esconde perde o rumo. É assim que o IF continua igual.
+    </p>
+    <div id="botoes-lula-8" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('lula','sair');menosRelacionamento('jogador',10)">
+            Então que venham as cobranças. Eu aguento.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Lula - Dialogo 9 -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-9" class="dialogo">
+        Boa fala. Ambição é o combustível, mas o freio é o propósito. Um sem o outro, o carro bate.
+    </p>
+    <div id="botoes-lula-9" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('lula','sair');maisRelacionamento('jogador',10)">
+            Então vamos acelerar com propósito.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Lula - Dialogo 10 -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-10" class="dialogo">
+        O destaque cega rápido. Quem busca luz demais acaba queimado pelos holofotes.
+    </p>
+    <div id="botoes-lula-10" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('lula','sair');menosRelacionamento('jogador',10)">
+            Prefiro arriscar e brilhar do que passar despercebido.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Lula - Dialogo 11 -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-11" class="dialogo">
+        Você tem visão. Equilíbrio entre ação e reflexão é o segredo. É o que diferencia impulso de estratégia.
+    </p>
+    <div id="botoes-lula-11" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('lula','sair');maisRelacionamento('jogador',10)">
+            Estratégia e coragem andam juntas.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Lula - Dialogo 12 -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-12" class="dialogo">
+        Agir sem pensar é pular de paraquedas sem mochila. O impacto é rápido… e dói.
+    </p>
+    <div id="botoes-lula-12" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('lula','sair');menosRelacionamento('jogador',10)">
+            Às vezes é o único jeito de fazer história.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Lula - Dialogo 13 -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-13" class="dialogo">
+        É isso! Respeito é o que sustenta o legado. Aplauso passa, mas o nome fica.
+    </p>
+    <div id="botoes-lula-13" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('lula','sair');maisRelacionamento('jogador',15)">
+            Então vamos fazer o nome valer.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Lula - Dialogo 14 -->
+    <!-- ========================= -->
+    <p id="dialogo-lula-14" class="dialogo">
+        Cuidado com a vaidade, candidato. O povo sente quando a ambição ultrapassa o propósito. E aí, nem a coxinha salva.
+    </p>
+    <div id="botoes-lula-14" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('lula','sair');menosRelacionamento('jogador',15)">
+            Se for pra mudar o jogo, aceito o risco.
         </button>
     </div>
 
 </section>
+
+<section class="nicolas">
+
+    <!-- ========================= -->
+    <!-- Nicolas - Sair -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-sair" class="dialogo">
+        Hah! Debate bom é aquele que deixa rastro. Mas já falei demais, tenho campanha pra tocar.
+    </p>
+    <div id="botoes-nicolas-sair" class="bot-opc">
+        <button type="button" class="opcao" onclick="limpaBarra();trocaDialogo('auditorio',1);chamafoto('')">
+            Sair da conversa
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Nicolas - Dialogo 0 -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-0" class="dialogo">
+        A escola tá cheia de candidato que promete revolução, mas não sabe nem organizar uma fila. Me diz aí: você é mais um desses ou tem coragem de falar a verdade?
+    </p>
+    <div id="botoes-nicolas-0" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 1); maisRelacionamento('jogador', 8)">
+            Coragem é o que não me falta. E eu não fujo de debate.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 2); menosRelacionamento('jogador', 8)">
+            Acho que o importante é respeitar todo mundo e evitar conflito.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Nicolas - Dialogo 1 -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-1" class="dialogo">
+        É assim que se fala! Líder que tem medo de desagradar não muda nada. Mas coragem sem propósito é só barulho.
+    </p>
+    <div id="botoes-nicolas-1" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 3); maisRelacionamento('jogador', 8)">
+            Meu propósito é fazer o grêmio funcionar de verdade, sem enrolação.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 4); menosRelacionamento('jogador', 8)">
+            Propósito é ouvir todos e tentar agradar a maioria.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Nicolas - Dialogo 2 -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-2" class="dialogo">
+        Respeito é bom, mas aqui ninguém precisa de discurso fofo. Liderança se mostra na firmeza, não no “todo mundo tem razão”.
+    </p>
+    <div id="botoes-nicolas-2" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 5); maisRelacionamento('jogador',8)">
+            Firmeza é essencial. Quem tenta agradar todo mundo não agrada ninguém.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 6); menosRelacionamento('jogador', 8)">
+            Acho que é possível liderar sem precisar confrontar sempre.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Nicolas - Dialogo 3 -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-3" class="dialogo">
+        Boa. Gosto de quem fala em resultado, não em sentimento. Política de grêmio não é terapia de grupo.
+    </p>
+    <div id="botoes-nicolas-3" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 7); maisRelacionamento('jogador', 8)">
+            Concordo. É gestão e responsabilidade, não choradeira.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 8); menosRelacionamento('jogador', 8)">
+            Um pouco de empatia também não faz mal.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Nicolas - Dialogo 4 -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-4" class="dialogo">
+        Agradar maioria? É assim que o grêmio vira bagunça. Líder não segue multidão, ele guia.
+    </p>
+    <div id="botoes-nicolas-4" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 9); maisRelacionamento('jogador', 8)">
+            Guiar é responsabilidade, não popularidade.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 10); menosRelacionamento('jogador', 8)">
+            Às vezes, seguir o grupo evita conflito desnecessário.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Nicolas - Dialogo 5 -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-5" class="dialogo">
+        Agora sim! Você entende o básico da liderança: firmeza e resultado. Mas me diga, é firme com todos ou só com quem discorda?
+    </p>
+    <div id="botoes-nicolas-5" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 11); maisRelacionamento('jogador', 8)">
+            Com todos. Justiça não escolhe lado.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 12); menosRelacionamento('jogador', 8)">
+            Tento evitar atritos com quem pensa parecido comigo.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Nicolas - Dialogo 6 -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-6" class="dialogo">
+        Liderar sem confronto é impossível. Quem tem medo de desagradar vira fantoche de grupo.
+    </p>
+    <div id="botoes-nicolas-6" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 13); maisRelacionamento('jogador',8)">
+            Confronto é parte do progresso. Sem debate, não há avanço.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 14); menosRelacionamento('jogador', 8)">
+            Às vezes, evitar conflito é a melhor forma de manter a paz.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Nicolas - Dialogo 7 -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-7" class="dialogo">
+        É isso aí. Quem aguenta pressão se destaca. E quem foge dela, acaba reclamando no corredor.
+    </p>
+    <div id="botoes-nicolas-7" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); maisRelacionamento('jogador', 10)">
+            Eu encaro pressão de frente, pode apostar.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); menosRelacionamento('jogador', 8)">
+            Às vezes é melhor evitar desgaste.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Nicolas - Dialogo 8 -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-8" class="dialogo">
+        Empatia é bom, mas não pode virar desculpa pra indecisão. Líder que quer agradar a todos não agrada ninguém.
+    </p>
+    <div id="botoes-nicolas-8" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); maisRelacionamento('jogador', 10)">
+            Exato. Liderança é decisão, não hesitação.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); menosRelacionamento('jogador', 10)">
+            Empatia é o que mantém as pessoas unidas.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Nicolas - Dialogo 9 -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-9" class="dialogo">
+        Responsabilidade, isso sim é palavra que pouca gente entende hoje. Todo mundo quer status, ninguém quer peso.
+    </p>
+    <div id="botoes-nicolas-9" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); maisRelacionamento('jogador',10)">
+            Carregar o peso faz parte do papel de quem lidera.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); menosRelacionamento('jogador',10)">
+            Status ajuda a convencer os outros também.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Nicolas - Dialogo 10 -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-10" class="dialogo">
+        Evitar conflito é o mesmo que deixar o problema crescer escondido. E depois, quem paga o preço é o grupo.
+    </p>
+    <div id="botoes-nicolas-10" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); maisRelacionamento('jogador', 8)">
+            Concordo, o confronto certo evita caos depois.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); menosRelacionamento('jogador', 8)">
+            Às vezes o grupo precisa de calma, não tensão.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Nicolas - Dialogo 11 -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-11" class="dialogo">
+        Justiça pra todos? Isso eu respeito. O que falta hoje é gente que trate mérito como valor.
+    </p>
+    <div id="botoes-nicolas-11" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); maisRelacionamento('jogador',10)">
+            Mérito é essencial. O esforço precisa ser recompensado.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); menosRelacionamento('jogador',10)">
+            Às vezes mérito não mostra tudo. Circunstâncias também pesam.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Nicolas - Dialogo 12 -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-12" class="dialogo">
+        Fugir de confronto é o primeiro passo pra perder respeito. O grêmio precisa de pulso, não de plateia.
+    </p>
+    <div id="botoes-nicolas-12" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); maisRelacionamento('jogador',8)">
+            Respeito se conquista com atitude.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); menosRelacionamento('jogador',8)">
+            Às vezes liderança é mais sobre diálogo do que pulso.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Nicolas - Dialogo 13 -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-13" class="dialogo">
+        Finalmente alguém que fala em progresso sem medo de parecer “duro”. Isso é o que falta aqui.
+    </p>
+    <div id="botoes-nicolas-13" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); maisRelacionamento('jogador',10)">
+            Ser firme é respeito com quem acredita na mudança.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); menosRelacionamento('jogador',10)">
+            Às vezes ser duro afasta as pessoas.
+        </button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- Nicolas - Dialogo 14 -->
+    <!-- ========================= -->
+    <p id="dialogo-nicolas-14" class="dialogo">
+        Paz é boa, mas sem força ela dura pouco. Quem lidera precisa aguentar pancada.
+    </p>
+    <div id="botoes-nicolas-14" class="bot-opc">
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); maisRelacionamento('jogador',10)">
+            Eu aguento. A liderança vem com o peso da cobrança.
+        </button>
+        <button type="button" class="opcao" onclick="trocaDialogo('nicolas', 'sair'); menosRelacionamento('jogador',10)">
+            Nem todo mundo precisa aguentar tudo o tempo todo.
+        </button>
+    </div>
+
+</section>
+
   <script src="js/script.js"></script>
 </body>
 

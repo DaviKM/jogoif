@@ -10,6 +10,22 @@
       //salvarLogPers(cena);
     }
 
+    function calculaVotos(){
+      for (let id in personagem) {
+        let aux = personagem[id].relacionamento;
+        if(aux == "jogador"){
+          console.log("Chamou a função calculaVoto()");
+        }
+        else{
+          let naleat = numeroAleatorio(100);
+          if(naleat<=aux){
+          personagem["jogador"].votos++;
+          personagem["jogador"].relacionamento += 8;
+          }
+        }
+      }
+    }
+
     function trocaDialogo(personagem,id){
       document.getElementById("dialogos").innerHTML = document.getElementById("dialogo-"+personagem+"-"+id).innerHTML;
       document.getElementById("botoes").innerHTML = document.getElementById("botoes-"+personagem+"-"+id).innerHTML;
@@ -196,6 +212,13 @@
     // dialogos: os números abaixo do nome do personagem são os diálogos diferentes dependendo da resposta do jogador
     //OBS: quanto maior o nível, mais rude o jogador foi com o personagem
     personagem = {
+      //objeto do jogador controla a quantidade de votos finais da cena do debate
+      jogador:{
+        nome: "Voto",
+        snome: "Público",
+        relacionamento: 0,
+        votos: 0,
+      },
       sheldon: {
         nome: "Sheldon",
         snome: "Cooper",
