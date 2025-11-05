@@ -28,8 +28,9 @@
 
     //Função utilizada para adicionar a area não escolhida na parte do intervalo, sim é a coisa mais tosca já vista, mas funcioan especificamente para o único lugar que vai ter escolha pra onde ir no jogo
     //OBS: só funciona pra cena com 2 áreas
+    controle = 0;
     function areaNaoEscolhida(areaEscolhida){
-      controle = 1;
+      controle++;
       if(areaEscolhida == 'biblioteca'){
         document.getElementById("areaNaoEscolhida").innerHTML = "cantina";
         nEscolhida = "cantina";
@@ -38,8 +39,11 @@
         document.getElementById("areaNaoEscolhida").innerHTML = "biblioteca";
         nEscolhida = "biblioteca";
       }
+      
     }
+  
 
+    
 
     //funções de relacionamento/fofoca, etc
     function maisRelacionamento(personagemID, relacionamento) {
@@ -188,7 +192,7 @@
 
     jogador = {
       horas_com: 0,
-    }
+    };
     // dialogos: os números abaixo do nome do personagem são os diálogos diferentes dependendo da resposta do jogador
     //OBS: quanto maior o nível, mais rude o jogador foi com o personagem
     personagem = {
@@ -254,6 +258,15 @@
         relacionamento: 50,
         log: [],
       },
+      lula: {
+        nome: "Luiz",
+        snome: "Lula",
+    },
+      nicolas: {
+        nome: "Nicolas",
+        snome: "ferreira",
+      },
+      
     };
 
     //itens que são dados como recompensa por terminar um diálogo com um bom relacionamento com o personagem
@@ -277,6 +290,7 @@
       patio: ["messi", "davi"],
       biblioteca: ["enzo","theo"],
       cantina: ["vinicius","alanpa"],
+      auditorio: ["lula","nicolas"],
     };
 
     //grupos de personagens que serão afetados pelos itens
