@@ -1,322 +1,340 @@
-    function vaiPara(cena) {
-      if (cena.indexOf("-") == -1) {
-        cena += "-0";
-      }
-      document.getElementById("tela").innerHTML =
-        document.getElementById(cena).innerHTML;
-      //console.log(cena.substr(0, cena.indexOf('-')).toLowerCase())
-      //comentei o log pq tava dando erro pra krl
-      //salvarLogJogador(cena);
-      //salvarLogPers(cena);
-    }
+function vaiPara(cena) {
+  if (cena.indexOf("-") == -1) {
+    cena += "-0";
+  }
+  document.getElementById("tela").innerHTML =
+    document.getElementById(cena).innerHTML;
+  //console.log(cena.substr(0, cena.indexOf('-')).toLowerCase())
+  //comentei o log pq tava dando erro pra krl
+  //salvarLogJogador(cena);
+  //salvarLogPers(cena);
+}
 
-    function calculaVotos(){
-      for (let id in personagem) {
-        let aux = personagem[id].relacionamento;
-        if(aux == "jogador"){
-          console.log("Chamou a função calculaVoto()");
-        }
-        else{
-          let naleat = numeroAleatorio(100);
-          if(naleat<=aux){
-          personagem["jogador"].votos++;
-          personagem["jogador"].relacionamento += 8;
-          }
-        }
+function calculaVotos() {
+  for (let id in personagem) {
+    let aux = personagem[id].relacionamento;
+    if (aux == "jogador") {
+      console.log("Chamou a função calculaVoto()");
+    }
+    else {
+      let naleat = numeroAleatorio(100);
+      if (naleat <= aux) {
+        personagem["jogador"].votos++;
+        personagem["jogador"].relacionamento += 8;
       }
     }
+  }
+}
 
-    function trocaDialogo(personagem,id){
-      document.getElementById("dialogos").innerHTML = document.getElementById("dialogo-"+personagem+"-"+id).innerHTML;
-      document.getElementById("botoes").innerHTML = document.getElementById("botoes-"+personagem+"-"+id).innerHTML;
+function trocaDialogo(personagem, id) {
+  dialogo = `dialogo-${personagem}-${id}`;
+  respostas = `botoes-${personagem}-${id}`;
+
+
+  document.getElementById("dialogos").innerHTML = document.getElementById(dialogo).innerHTML;
+  document.getElementById("botoes").innerHTML = document.getElementById(respostas).innerHTML;
+
+  if (id != 0) {
+    salvarLogJogador(personagem, id);
+  }
+  salvarLogPers(dialogo);
+}
+
+function chamafoto(personagem) {
+  foto = document.getElementById('imgpersonagem');
+  if (personagem) {
+    foto.style.display = "block";
+    foto.innerHTML = '<img src="images/personagens/' + personagem + '.png" alt="' + personagem + '" class="personagem" />';
+  }
+  else {
+    foto.style.display = "none";
+  }
+}
+
+//Função utilizada para adicionar a area não escolhida na parte do intervalo, sim é a coisa mais tosca já vista, mas funcioan especificamente para o único lugar que vai ter escolha pra onde ir no jogo
+//OBS: só funciona pra cena com 2 áreas
+controle = 0;
+function areaNaoEscolhida(areaEscolhida) {
+  controle++;
+  if (areaEscolhida == 'biblioteca') {
+    document.getElementById("areaNaoEscolhida").innerHTML = "cantina";
+    nEscolhida = "cantina";
+  }
+  else {
+    document.getElementById("areaNaoEscolhida").innerHTML = "biblioteca";
+    nEscolhida = "biblioteca";
+  }
+
+}
+
+
+
+
+//funções de relacionamento/fofoca, etc
+function maisRelacionamento(personagemID, relacionamento) {
+  personagem[personagemID].relacionamento += relacionamento;
+  exibirRelacionamento(personagemID);
+  if (personagem[personagemID].relacionamento > 100) {
+    personagem[personagemID].relacionamento = 100;
+  }
+}
+
+function menosRelacionamento(personagemID, relacionamento) {
+  personagem[personagemID].relacionamento -= relacionamento;
+  exibirRelacionamento(personagemID);
+  if (personagem[personagemID].relacionamento < 0) {
+    personagem[personagemID].relacionamento = 0;
+  }
+}
+
+function exibirRelacionamento(personagemID) {
+  //armazena o valor do relacionamento em uma variavel
+  //usa a "gambiarra" de usar id como variável que o sor mostrou na aula
+  document.getElementById("hudRelacionamento").style.backgroundColor = "rgb(0, 70, 128)";
+  document.getElementById("barraExterna").style.backgroundColor = "rgb(255, 255, 255, 1)";
+  valorRelacionamento = personagem[personagemID].relacionamento;
+  barraInterna.style.height = `${valorRelacionamento}%`;
+  document.getElementById("nomeBarra").innerHTML = `${personagem[personagemID].nome} ${personagem[personagemID].snome}`;
+  if (valorRelacionamento < 40) {
+    barraInterna.style.backgroundColor = "rgba(255,0,0,0.7)";
+  }
+  else if (valorRelacionamento >= 40 && valorRelacionamento < 70) {
+    barraInterna.style.backgroundColor = "rgba(255,255,0,0.7)";
+  }
+  else {
+    barraInterna.style.backgroundColor = "rgba(0,255,0,0.7)";
+  }
+}
+
+//recebe um vetor de personagens e aumenta o relacionamento com eles
+function maisRelacionamentoItem(gPersonagem, vAumento) {
+  for (let i = 0; i < gPersonagem.length; i++) {
+    let id = gPersonagem[i];
+    personagem[id].relacionamento += vAumento;
+    if (personagem[id].relacionamento > 100) {
+      personagem[id].relacionamento = 100;
     }
+    console.log(`${personagem[id].relacionamento}`);
+  }
+}
 
-    function chamafoto(personagem){
-      foto = document.getElementById('imgpersonagem');
-      if(personagem){
-        foto.style.display = "block";
-        foto.innerHTML = '<img src="images/personagens/'+ personagem +'.png" alt="'+ personagem +'" class="personagem" />';
-      }
-      else{
-        foto.style.display = "none";
-      }
+//aumenta o relacionamento com todos
+function maisRelacionamentoTodos(vAumento) {
+  //id recebe as chaves de texto: 'messi', 'sheldon', 'gustavo', etc.
+  for (let id in personagem) {
+    personagem[id].relacionamento += vAumento;
+    if (personagem[id].relacionamento > 100) {
+      personagem[id].relacionamento = 100;
     }
+  }
+}
 
-    //Função utilizada para adicionar a area não escolhida na parte do intervalo, sim é a coisa mais tosca já vista, mas funcioan especificamente para o único lugar que vai ter escolha pra onde ir no jogo
-    //OBS: só funciona pra cena com 2 áreas
-    controle = 0;
-    function areaNaoEscolhida(areaEscolhida){
-      controle++;
-      if(areaEscolhida == 'biblioteca'){
-        document.getElementById("areaNaoEscolhida").innerHTML = "cantina";
-        nEscolhida = "cantina";
-      }
-      else{
-        document.getElementById("areaNaoEscolhida").innerHTML = "biblioteca";
-        nEscolhida = "biblioteca";
-      }
-      
-    }
-  
+//função que calcula qual div sair que o jogador vai obter, quanto maior o número, maiores as recompensas que o fim do diálogo vai proporcionar
+function calculaSair(nomePersonagem, minRel) {
+  //atribui o relacionamento para uma variável para evitar escrever esse monte de texto
+  relacionamento = personagem[nomePersonagem].relacionamento
+  if (relacionamento <= minRel) {
+    return "sair" + 0;
+  }
+  else {
+    return "sair" + 1;
+  }
+}
 
-    
+function horasComp(horas) {
+  jogador.horas_com += horas;
+  document.getElementById('horas').innerHTML = '<i class="fa-regular fa-clock" style="color: #ffffff;"></i><span id="nhoras">  ' + jogador.horas_com + "</span>";
+}
 
-    //funções de relacionamento/fofoca, etc
-    function maisRelacionamento(personagemID, relacionamento) {
-      personagem[personagemID].relacionamento += relacionamento;
-      exibirRelacionamento(personagemID);
-      if (personagem[personagemID].relacionamento > 100) {
-            personagem[personagemID].relacionamento = 100;
-      }
-    }
+function numeroAleatorio(max) {
+  return Math.floor(Math.random() * max);
+}
 
-    function menosRelacionamento(personagemID, relacionamento) {
-      personagem[personagemID].relacionamento -= relacionamento;
-      exibirRelacionamento(personagemID);
-      if (personagem[personagemID].relacionamento < 0) {
-            personagem[personagemID].relacionamento = 0;
-      }
-    }
+//Função que exibe o item na tela
+function item(idItem, npersonagem) {
+  hud = document.getElementById("hud-itens");
+  hud.style.display = "flex";
+  hud.style.height = "70vh";
+  hud.style.width = "70vw";
+  hud.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+  hud.style.borderColor = "white";
+  hud.innerHTML = document.getElementById(idItem).innerHTML;
+  document.getElementById("n" + idItem).innerHTML = itens[npersonagem].Inome;
+  document.getElementById("d" + idItem).innerHTML = itens[npersonagem].DescItem;
+  console.log("Chamou item")
+}
 
-    function exibirRelacionamento(personagemID) {
-      //armazena o valor do relacionamento em uma variavel
-      //usa a "gambiarra" de usar id como variável que o sor mostrou na aula
-      document.getElementById("hudRelacionamento").style.backgroundColor = "rgb(0, 70, 128)";
-      document.getElementById("barraExterna").style.backgroundColor = "rgb(255, 255, 255, 1)";
-      valorRelacionamento = personagem[personagemID].relacionamento;
-      barraInterna.style.height = `${valorRelacionamento}%`;
-      document.getElementById("nomeBarra").innerHTML = `${personagem[personagemID].nome} ${personagem[personagemID].snome}`;
-      if (valorRelacionamento < 40) {
-        barraInterna.style.backgroundColor = "rgba(255,0,0,0.7)";
-      }
-      else if (valorRelacionamento >= 40 && valorRelacionamento < 70) {
-        barraInterna.style.backgroundColor = "rgba(255,255,0,0.7)";
-      }
-      else {
-        barraInterna.style.backgroundColor = "rgba(0,255,0,0.7)";
-      }
-    }
+function addInvent(item) {
+  document.getElementById("items").innerHTML += '<img src="images/itens/' + item + '.png" alt="' + item + '" class="itemInvent" id="' + item + '"/>';
+  console.log("Chamou a funcao invent");
+}
 
-    //recebe um vetor de personagens e aumenta o relacionamento com eles
-    function maisRelacionamentoItem(gPersonagem, vAumento){
-      for(let i=0;i<gPersonagem.length;i++){
-        let id = gPersonagem[i];
-        personagem[id].relacionamento += vAumento;
-        if(personagem[id].relacionamento > 100){
-          personagem[id].relacionamento = 100;
-        }
-        console.log(`${personagem[id].relacionamento}`);
-      }
-    }
+function chamaInv() {
+  document.getElementById("hudInv").innerHTML = document.getElementById("inventario").innerHTML;
+  console.log("Chamou a funcao chamaInv");
+}
 
-    //aumenta o relacionamento com todos
-    function maisRelacionamentoTodos(vAumento){
-    //id recebe as chaves de texto: 'messi', 'sheldon', 'gustavo', etc.
-    for (let id in personagem) {
-            personagem[id].relacionamento += vAumento;
-            if (personagem[id].relacionamento > 100) {
-                personagem[id].relacionamento = 100;
-            }
-      }
-    }
+function limpaItem() {
+  document.getElementById("hud-itens").style.display = "none";
+}
 
-    //função que calcula qual div sair que o jogador vai obter, quanto maior o número, maiores as recompensas que o fim do diálogo vai proporcionar
-    function calculaSair(nomePersonagem, minRel){
-      //atribui o relacionamento para uma variável para evitar escrever esse monte de texto
-      relacionamento = personagem[nomePersonagem].relacionamento
-      if(relacionamento<=minRel){
-        return "sair"+0;
-      }
-      else{
-        return "sair"+1;
-      }
-    }
+function trocaFundo(fundo) {
+  document.getElementById(
+    "tela"
+  ).style = `background-image: url(images/cenarios/${fundo}.png);`;
+}
 
-    function horasComp(horas) {
-      jogador.horas_com += horas;
-      document.getElementById('horas').innerHTML = '<i class="fa-regular fa-clock" style="color: #ffffff;"></i><span id="nhoras">  ' + jogador.horas_com + "</span>";
-    }
+function limpaBarra() {
+  document.getElementById("barraExterna").style.backgroundColor = "rgba(255, 255, 255, 0)";
+  document.getElementById("nomeBarra").innerHTML = "";
+  document.getElementById("barraInterna").style.height = "0px";
+  document.getElementById("barraInterna").style.backgroundColor = "white";
+}
 
-    function numeroAleatorio(max) {
-      return Math.floor(Math.random() * max);
-    }
+function salvarLogPers(dialogo) {
+  nome = dialogo.slice(dialogo.indexOf("-") + 1, dialogo.lastIndexOf("-")).toLowerCase();
+  tamanho = personagem[nome].log.length;
+  fala = document.getElementById(dialogo).outerHTML;
+  fala = fala.split('">')[1];
 
-    //Função que exibe o item na tela
-    function item(idItem,npersonagem){
-      hud = document.getElementById("hud-itens");
-      hud.style.display = "flex";
-      hud.style.height = "70vh";
-      hud.style.width = "70vw";
-      hud.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
-      hud.style.borderColor = "white";
-      hud.innerHTML = document.getElementById(idItem).innerHTML;
-      document.getElementById("n"+idItem).innerHTML = itens[npersonagem].Inome;
-      document.getElementById("d"+idItem).innerHTML = itens[npersonagem].DescItem;
-      console.log("Chamou item")
-    }
+  personagem[nome].log[tamanho] = fala.slice(0, fala.lastIndexOf("</p>"));
+}
 
-    function addInvent(item){
-      document.getElementById("items").innerHTML += '<img src="images/itens/'+item+'.png" alt="'+item+'" class="itemInvent" id="'+item+'"/>';
-      console.log("Chamou a funcao invent");
-    }
-    
-    function chamaInv(){
-      document.getElementById("hudInv").innerHTML = document.getElementById("inventario").innerHTML;
-      console.log("Chamou a funcao chamaInv");
-    }
+function salvarLogJogador(nome, nivel) {
+  tamanho = personagem[nome].log.length;
+  console.log(nivel)
 
-    function limpaItem(){
-      document.getElementById("hud-itens").style.display="none";
-    }
+  if (typeof nivel === 'number') {
+    fala = document.querySelector(
+      `button[onclick*="trocaDialogo('${nome}', ${nivel})"]`
+    ).outerHTML;
 
-    function trocaFundo(fundo) {
-      document.getElementById(
-        "tela"
-      ).style = `background-image: url(images/cenarios/${fundo}.png);`;
-    }
+  }
 
-    function limpaBarra() {
-      document.getElementById("barraExterna").style.backgroundColor = "rgba(255, 255, 255, 0)";
-      document.getElementById("nomeBarra").innerHTML = "";
-      document.getElementById("barraInterna").style.height = "0px";
-      document.getElementById("barraInterna").style.backgroundColor = "white";
-    }
+  else {
+    fala = document.querySelector(
+      `button[onclick*="trocaDialogo('${nome}', '${nivel}')"]`
+    ).outerHTML;
+  }
 
-    function salvarLogPers(dialogo) {
-      nome = dialogo.substr(0, dialogo.indexOf("-")).toLowerCase();
-      tamanho = personagem[nome].log.length;
-      fala = document.getElementById(dialogo).outerHTML;
-      fala = fala.split('class="dialogo">')[1];
+  if (fala != undefined) {
+    personagem[nome].log[tamanho] = fala.slice(fala.indexOf(">"), fala.lastIndexOf("</"));
+  }
 
-      personagem[nome].log[tamanho] = fala.slice(0, fala.lastIndexOf("</p>"));
-    }
 
-    function salvarLogJogador(opcao) {
-      nome = opcao.substr(0, opcao.indexOf("-")).toLowerCase();
-      tamanho = personagem[nome].log.length;
-      fala = document.querySelectorAll(
-        `button[onclick="vaiPara('${opcao}')"]`
-      );
+}
 
-      if (fala[0] != undefined) {
-        personagem[nome].log[tamanho] = fala[0].outerHTML.slice(
-          fala[0].outerHTML.indexOf(">"),
-          fala[0].outerHTML.lastIndexOf("</")
-        );
-      }
-    }
+jogador = {
+  horas_com: 0,
+};
+// dialogos: os números abaixo do nome do personagem são os diálogos diferentes dependendo da resposta do jogador
+//OBS: quanto maior o nível, mais rude o jogador foi com o personagem
+personagem = {
+  //objeto do jogador controla a quantidade de votos finais da cena do debate
+  jogador: {
+    nome: "Voto",
+    snome: "Público",
+    relacionamento: 0,
+    votos: 0,
+  },
+  sheldon: {
+    nome: "Sheldon",
+    snome: "Cooper",
+    relacionamento: 50,
+    log: [],
+  },
+  messi: {
+    nome: "Lionel",
+    snome: "Messi",
+    relacionamento: 50,
+    log: [],
+  },
+  house: {
+    nome: "Dr.",
+    snome: "House",
+    relacionamento: 30,
+    log: [],
+  },
+  davi: {
+    nome: "Davi",
+    snome: "Brito",
+    relacionamento: 50,
+    log: [],
+  },
+  alanpa: {
+    nome: "Alan",
+    snome: "Patrick",
+    relacionamento: 50,
+    log: [],
+  },
+  bigolin: {
+    nome: "Marcio",
+    snome: "Bigolin",
+    relacionamento: 50,
+    log: [],
+  },
+  theo: {
+    nome: "Theo",
+    snome: "Petrusch",
+    relacionamento: 50,
+    log: [],
+  },
 
-    jogador = {
-      horas_com: 0,
-    };
-    // dialogos: os números abaixo do nome do personagem são os diálogos diferentes dependendo da resposta do jogador
-    //OBS: quanto maior o nível, mais rude o jogador foi com o personagem
-    personagem = {
-      //objeto do jogador controla a quantidade de votos finais da cena do debate
-      jogador:{
-        nome: "Voto",
-        snome: "Público",
-        relacionamento: 0,
-        votos: 0,
-      },
-      sheldon: {
-        nome: "Sheldon",
-        snome: "Cooper",
-        relacionamento: 50,
-        log: [],
-      },
-      messi: {
-        nome: "Lionel",
-        snome: "Messi",
-        relacionamento: 50,
-        log: [],
-      },
-      house: {
-        nome: "Dr.",
-        snome: "House",
-        relacionamento: 30,
-        log: [],
-      },
-      davi: {
-        nome: "Davi",
-        snome: "Brito",
-        relacionamento: 50,
-        log: [],
-      },
-      alanpa: {
-        nome: "Alan",
-        snome: "Patrick",
-        relacionamento: 50,
-        log: [],
-      },
-      bigolin: {
-        nome: "Marcio",
-        snome: "Bigolin",
-        relacionamento: 50,
-        log: [],
-      },
-      theo: {
-        nome: "Theo",
-        snome: "Petrusch",
-        relacionamento: 50,
-        log: [],
-      },
+  vinicius: {
+    nome: "Vinicius",
+    snome: "Colussi",
+    relacionamento: 50,
+    log: [],
+  },
 
-      vinicius: {
-        nome: "Vinicius",
-        snome: "Colussi",
-        relacionamento: 50,
-        log: [],
-      },
+  gustavo: {
+    nome: "Gustavo",
+    snome: "Gonçalves",
+    relacionamento: 50,
+    log: [],
+  },
+  enzo: {
+    nome: "Enzo",
+    snome: "Ferreira",
+    relacionamento: 50,
+    log: [],
+  },
+  lula: {
+    nome: "Luiz",
+    snome: "Lula",
+  },
+  nicolas: {
+    nome: "Nicolas",
+    snome: "ferreira",
+  },
 
-      gustavo: {
-        nome: "Gustavo",
-        snome: "Gonçalves",
-        relacionamento: 50,
-        log: [],
-      },
-      enzo: {
-        nome: "Enzo",
-        snome: "Ferreira",
-        relacionamento: 50,
-        log: [],
-      },
-      lula: {
-        nome: "Luiz",
-        snome: "Lula",
-    },
-      nicolas: {
-        nome: "Nicolas",
-        snome: "ferreira",
-      },
-      
-    };
+};
 
-    //itens que são dados como recompensa por terminar um diálogo com um bom relacionamento com o personagem
-    itens = {
-      sheldon:{
-        IDitem: "papel",
-        Inome: "Papel de Fórmulas",
-        DescItem: "Um papel contendo a maioria das fórmulas de física quântica, concede bônus para personagens que precisem de nota",
-      },
-      gustavo:{
-        IDitem: "oculos",
-        Inome: "Óculos Escuros",
-        DescItem: "Óculos escuros muito legais, concedem mais relacionamento com todas as pessoas que você conversar",
-      }
-    }
-  
-    
-    //Cenas e quais personagens aparece em cada uma delas
-    cenas = {
-      sala: ["gustavo", "sheldon", "house", "bigolin"],
-      patio: ["messi", "davi"],
-      biblioteca: ["enzo","theo"],
-      cantina: ["vinicius","alanpa"],
-      auditorio: ["lula","nicolas"],
-    };
+//itens que são dados como recompensa por terminar um diálogo com um bom relacionamento com o personagem
+itens = {
+  sheldon: {
+    IDitem: "papel",
+    Inome: "Papel de Fórmulas",
+    DescItem: "Um papel contendo a maioria das fórmulas de física quântica, concede bônus para personagens que precisem de nota",
+  },
+  gustavo: {
+    IDitem: "oculos",
+    Inome: "Óculos Escuros",
+    DescItem: "Óculos escuros muito legais, concedem mais relacionamento com todas as pessoas que você conversar",
+  }
+}
 
-    //grupos de personagens que serão afetados pelos itens
-    grupos = {
-      papel: ["gustavo","messi","enzo"],
-    };
+
+//Cenas e quais personagens aparece em cada uma delas
+cenas = {
+  sala: ["gustavo", "sheldon", "house", "bigolin"],
+  patio: ["messi", "davi"],
+  biblioteca: ["enzo", "theo"],
+  cantina: ["vinicius", "alanpa"],
+  auditorio: ["lula", "nicolas"],
+};
+
+//grupos de personagens que serão afetados pelos itens
+grupos = {
+  papel: ["gustavo", "messi", "enzo"],
+};
