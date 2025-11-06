@@ -193,11 +193,15 @@ function limpaBarra() {
 
 function salvarLogPers(dialogo) {
   nome = dialogo.slice(dialogo.indexOf("-") + 1, dialogo.lastIndexOf("-")).toLowerCase();
-  tamanho = personagem[nome].log.length;
-  fala = document.getElementById(dialogo).outerHTML;
-  fala = fala.split('">')[1];
 
-  personagem[nome].log[tamanho] = fala.slice(0, fala.lastIndexOf("</p>"));
+  if (nome in personagem) {
+    tamanho = personagem[nome].log.length;
+    fala = document.getElementById(dialogo).outerHTML;
+    fala = fala.split('">')[1];
+
+
+    personagem[nome].log[tamanho] = fala.slice(0, fala.lastIndexOf("</p>"));
+  }
 }
 
 function salvarLogJogador(nome, nivel) {
