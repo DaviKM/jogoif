@@ -22,28 +22,28 @@ function calculaVotos() {
   }
 }
 
-function calculaFinal(){
+function calculaFinal() {
   chamafoto('');
   var votosFinal = personagem["jogador"].relacionamento;
   vencedor = document.getElementById("vencedor");
-  if(votosFinal < 35){
+  if (votosFinal < 35) {
     trocaFundo('final-nikolas');
     console.log("Nikolas Ferreira");
     vencedor.innerHTML = 'Nikolas Ferreira!';
   }
-  else if(votosFinal >= 35 && votosFinal<65){
+  else if (votosFinal >= 35 && votosFinal < 65) {
     trocaFundo('final-lula');
     console.log("Lula");
     vencedor.innerHTML = 'Lula!'
   }
-  else{
+  else {
     trocaFundo('final-jogador');
     console.log("Jogador");
     vencedor.innerHTML = 'Você!!!!'
   }
 }
 
-function trocaDialogo(personagem, id) {
+function trocaDialogo(elementoBotao, personagem, id) {
   dialogo = `dialogo-${personagem}-${id}`;
   respostas = `botoes-${personagem}-${id}`;
 
@@ -52,9 +52,9 @@ function trocaDialogo(personagem, id) {
   document.getElementById("botoes").innerHTML = document.getElementById(respostas).innerHTML;
 
   if (id != 0) {
-    //salvarLogJogador(personagem, id);
+    salvarLogJogador(personagem, id, elementoBotao);
   }
-  //salvarLogPers(dialogo);
+  salvarLogPers(personagem, dialogo);
 }
 
 function chamafoto(personagem) {
@@ -208,41 +208,25 @@ function limpaBarra() {
   document.getElementById("barraInterna").style.backgroundColor = "white";
 }
 
-function salvarLogPers(dialogo) {
-  nome = dialogo.slice(dialogo.indexOf("-") + 1, dialogo.lastIndexOf("-")).toLowerCase();
-
+function salvarLogPers(nome, dialogo) {
   if (nome in personagem) {
     tamanho = personagem[nome].log.length;
-    fala = document.getElementById(dialogo).outerHTML;
-    fala = fala.split('">')[1];
+    fala = document.getElementById(dialogo).innerHTML.trim();
 
 
-    personagem[nome].log[tamanho] = fala.slice(0, fala.lastIndexOf("</p>"));
+    personagem[nome].log[tamanho] = fala
   }
 }
 
-function salvarLogJogador(nome, nivel) {
-  tamanho = personagem[nome].log.length;
-  console.log(nivel)
+function salvarLogJogador(nome, nivel, botao) {
+  if (nome in personagem) {
+    tamanho = personagem[nome].log.length;
+    console.log(nivel)
 
-  if (typeof nivel === 'number') {
-    fala = document.querySelector(
-      `button[onclick*="trocaDialogo('${nome}', ${nivel})"]`
-    ).outerHTML;
+    fala = botao.innerHTML.trim()
 
+    personagem[nome].log[tamanho] = fala;
   }
-
-  else {
-    fala = document.querySelector(
-      `button[onclick*="trocaDialogo('${nome}', '${nivel}')"]`
-    ).outerHTML;
-  }
-
-  if (fala != undefined) {
-    personagem[nome].log[tamanho] = fala.slice(fala.indexOf(">"), fala.lastIndexOf("</"));
-  }
-
-
 }
 
 jogador = {
