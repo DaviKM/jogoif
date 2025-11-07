@@ -4,10 +4,6 @@ function vaiPara(cena) {
   }
   document.getElementById("tela").innerHTML =
     document.getElementById(cena).innerHTML;
-  //console.log(cena.substr(0, cena.indexOf('-')).toLowerCase())
-  //comentei o log pq tava dando erro pra krl
-  //salvarLogJogador(cena);
-  //salvarLogPers(cena);
 }
 
 function calculaVotos() {
@@ -26,6 +22,27 @@ function calculaVotos() {
   }
 }
 
+function calculaFinal(){
+  chamafoto('');
+  var votosFinal = personagem["jogador"].relacionamento;
+  vencedor = document.getElementById("vencedor");
+  if(votosFinal < 35){
+    trocaFundo('final-nikolas');
+    console.log("Nikolas Ferreira");
+    vencedor.innerHTML = 'Nikolas Ferreira!';
+  }
+  else if(votosFinal >= 35 && votosFinal<65){
+    trocaFundo('final-lula');
+    console.log("Lula");
+    vencedor.innerHTML = 'Lula!'
+  }
+  else{
+    trocaFundo('final-jogador');
+    console.log("Jogador");
+    vencedor.innerHTML = 'Você!!!!'
+  }
+}
+
 function trocaDialogo(personagem, id) {
   dialogo = `dialogo-${personagem}-${id}`;
   respostas = `botoes-${personagem}-${id}`;
@@ -35,9 +52,9 @@ function trocaDialogo(personagem, id) {
   document.getElementById("botoes").innerHTML = document.getElementById(respostas).innerHTML;
 
   if (id != 0) {
-    salvarLogJogador(personagem, id);
+    //salvarLogJogador(personagem, id);
   }
-  salvarLogPers(dialogo);
+  //salvarLogPers(dialogo);
 }
 
 function chamafoto(personagem) {
@@ -244,13 +261,13 @@ personagem = {
   sheldon: {
     nome: "Sheldon",
     snome: "Cooper",
-    relacionamento: 50,
+    relacionamento: 30,
     log: [],
   },
   messi: {
     nome: "Lionel",
     snome: "Messi",
-    relacionamento: 50,
+    relacionamento: 30,
     log: [],
   },
   house: {
@@ -262,54 +279,56 @@ personagem = {
   davi: {
     nome: "Davi",
     snome: "Brito",
-    relacionamento: 50,
+    relacionamento: 30,
     log: [],
   },
   alanpa: {
     nome: "Alan",
     snome: "Patrick",
-    relacionamento: 50,
+    relacionamento: 30,
     log: [],
   },
   bigolin: {
     nome: "Marcio",
     snome: "Bigolin",
-    relacionamento: 50,
+    relacionamento: 30,
     log: [],
   },
   theo: {
     nome: "Theo",
     snome: "Petrusch",
-    relacionamento: 50,
+    relacionamento: 30,
     log: [],
   },
 
   vinicius: {
     nome: "Vinicius",
     snome: "Colussi",
-    relacionamento: 50,
+    relacionamento: 30,
     log: [],
   },
 
   gustavo: {
     nome: "Gustavo",
     snome: "Gonçalves",
-    relacionamento: 50,
+    relacionamento: 30,
     log: [],
   },
   enzo: {
     nome: "Enzo",
     snome: "Ferreira",
-    relacionamento: 50,
+    relacionamento: 30,
     log: [],
   },
   lula: {
     nome: "Luiz",
     snome: "Lula",
+    log: [],
   },
-  nicolas: {
-    nome: "Nicolas",
+  nikolas: {
+    nome: "Nikolas",
     snome: "ferreira",
+    log: [],
   },
 
 };
@@ -327,16 +346,6 @@ itens = {
     DescItem: "Óculos escuros muito legais, concedem mais relacionamento com todas as pessoas que você conversar",
   }
 }
-
-
-//Cenas e quais personagens aparece em cada uma delas
-cenas = {
-  sala: ["gustavo", "sheldon", "house", "bigolin"],
-  patio: ["messi", "davi"],
-  biblioteca: ["enzo", "theo"],
-  cantina: ["vinicius", "alanpa"],
-  auditorio: ["lula", "nicolas"],
-};
 
 //grupos de personagens que serão afetados pelos itens
 grupos = {
