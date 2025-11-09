@@ -101,9 +101,9 @@
             Patio
           </button>
           <button type="button"
-            onclick="trocaDialogo(this, 'cantina',0);trocaFundo('cantina')"
+            onclick="vaiPara('mataBaratas');trocaFundo('minigame')"
             class="opcao">
-            cantina
+            minigame
           </button>
           <button type="button"
             onclick="trocaDialogo(this, 'intervalo',2);trocaFundo('biblioteca')"
@@ -114,6 +114,21 @@
       </div>
     </div>
 
+    <div id="fim-minigame" class="cenas">
+      <div id="imgpersonagem" class="personagem"></div>
+      <div id="hud" class="hud">
+        <p id="dialogos" class="dialogo">
+          <span id="fim-enzo"></span>
+        </p>
+        <div id="botoes" class="bot-opc">
+          <button type="button"
+            onclick="trocaFundo('biblioteca');trocaDialogo(this, 'biblioteca',1); chamafoto('');limpaBarra()"
+            class="opcao">
+            Continuar
+          </button>
+        </div>
+      </div>
+    </div>
 
     <!--Cenas-->
 
@@ -290,33 +305,72 @@
       </div>
       </section>
 
+    <!--Minigame-->
+    <section id="mataBaratas-0">
+      <div id="minigame">
+        <div id="texto-minigame">
+          <h1 class="titulo-minigame">Mata Baratas</h1>
+          <p id="desc-minigame">O Enzo te pediu para matar as baratas da biblioteca, você está equipado com um poderoso inseticida, seu objetivo é clicar nas baratas o mais rápido possível antes que o tempo acabe</p>
+          <button type="button" onclick="iniciarMinigame()" id="botao-minigame">Iniciar o Minigame</button>
+        </div>
+      </div>
+      <div id="spawnBarata"><div id="temporizador"><span id="tempo"></span></div></div>
+    </section>
+
     <!--Itens-->
     <section id="itens">
-      <div id="papel" class="item">
-        <img src="images/itens/papel.png" alt="Papel de fórmulas">
+      <div id="bola" class="item">
+        <img src="images/itens/bola.png" alt="Bola de Futebol" class="imgItens">
         <div class="textoItens">
-          <span id="npapel" class="nomeItens"></span>
-          <span id="dpapel" class="descItens"></span>
+          <span id="nbola" class="nomeItens"></span>
+          <span id="dbola" class="descItens"></span>
         </div>
         <button type="button"
-          onclick="limpaItem(); addInvent('papel');maisRelacionamentoItem(grupos['papel'],15);trocaDialogo(this, 'house',0); limpaBarra(); chamafoto('house'); exibirRelacionamento('house')"
+          onclick="limpaItem(); addInvent('bola');maisRelacionamentoItem(grupos['bola'],15);trocaDialogo(this, 'patio',1); limpaBarra(); chamafoto('');"
           class="botItem">
           Continuar
         </button>
       </div>
 
       <div id="oculos" class="item">
-        <img src="images/itens/oculos.png" alt="Óculos escuros">
+        <img src="images/itens/oculos.png" alt="Óculos escuros" class="imgItens">
         <div class="textoItens">
           <span id="noculos" class="nomeItens"></span>
           <span id="doculos" class="descItens"></span>
         </div>
         <button type="button"
-          onclick="limpaItem(); addInvent('oculos');maisRelacionamentoTodos(15);trocaDialogo(this, 'sheldon',0); limpaBarra(); chamafoto('sheldon'); exibirRelacionamento('sheldon')"
+          onclick="limpaItem(); addInvent('oculos');maisRelacionamentoTodos(15);trocaDialogo(this, 'sala',0); limpaBarra(); chamafoto('');"
           class="botItem">
           Continuar
         </button>
       </div>
+
+      <div id="papel" class="item">
+        <img src="images/itens/papel.png" alt="Papel de fórmulas" class="imgItens">
+        <div class="textoItens">
+          <span id="npapel" class="nomeItens"></span>
+          <span id="dpapel" class="descItens"></span>
+        </div>
+        <button type="button"
+          onclick="limpaItem(); addInvent('papel');maisRelacionamentoItem(grupos['papel'],15);trocaDialogo(this, 'sala',1); limpaBarra(); chamafoto('');"
+          class="botItem">
+          Continuar
+        </button>
+      </div>
+
+      <div id="inseticida" class="item">
+        <img src="images/itens/inseticida.png" alt="Inseticida" class="imgItens">
+        <div class="textoItens">
+          <span id="ninseticida" class="nomeItens"></span>
+          <span id="dinseticida" class="descItens"></span>
+        </div>
+        <button type="button"
+          onclick="limpaItem(); addInvent('inseticida');vaiPara('mataBaratas'); limpaBarra(); chamafoto(''); trocaFundo('minigame')"
+          class="botItem">
+          Continuar
+        </button>
+      </div>
+
     </section>
 
     <section id="inventario">
@@ -335,11 +389,18 @@
       <!-- ========================= -->
       <!-- Messi - Diálogo de saída -->
       <!-- ========================= -->
-      <p id="dialogo-messi-sair">É isso. Boa sorte aí. Não perca tempo discutindo quem tá certo; use o tempo pra fazer
+      <p id="dialogo-messi-sair0">É isso. Boa sorte aí. Não perca tempo discutindo quem tá certo; use o tempo pra fazer
         campanha. A gente se vê.</p>
-      <div id="botoes-messi-sair">
+      <div id="botoes-messi-sair0">
         <button type="button" onclick="limpaBarra();trocaDialogo(this, 'patio',0),chamafoto('')" class="opcao">
           Voltar para o pátio
+        </button>
+      </div>
+
+      <p id="dialogo-messi-sair1">Aí cara, gostei de você, pega um presente, pode ajudar nas eleições, pelo menos com quem gosta de esportes.</p>
+      <div id="botoes-messi-sair1">
+        <button type="button" onclick="item(itens['messi'].IDitem,'messi')" class="opcao">
+          Bola de Futebol
         </button>
       </div>
 
@@ -543,7 +604,7 @@
         Confiança é bom, mas cuidado pra não soar convencido.
       </p>
       <div id="botoes-messi-final1">
-        <button type="button" onclick="trocaDialogo(this, 'messi', 'sair');" class="opcao">Adeus</button>
+        <button type="button" onclick="trocaDialogo(this, 'messi', calculaSair('messi',75));" class="opcao">Adeus</button>
       </div>
 
       <!-- ========================= -->
@@ -553,7 +614,7 @@
         Justo. Às vezes tentar é o que falta pra metade da galera.
       </p>
       <div id="botoes-messi-final2">
-        <button type="button" onclick="trocaDialogo(this, 'messi', 'sair');" class="opcao">Adeus</button>
+        <button type="button" onclick="trocaDialogo(this, 'messi', calculaSair('messi',75));" class="opcao">Adeus</button>
       </div>
 
     </section>
@@ -780,7 +841,7 @@
         Acho que daqui a pouco a aula vai começar, vou indo para o meu lugar.
       </p>
       <div id="botoes-gustavo-sair0" class="bot-opc">
-        <button type="button" onclick="limpaBarra(); trocaDialogo(this, 'sala', 0)" class="opcao">
+        <button type="button" onclick="limpaBarra(); trocaDialogo(this, 'sala', 0); chamafoto('')" class="opcao">
           Ok
         </button>
       </div>
@@ -792,7 +853,7 @@
         Ei, você foi legal comigo, toma, tenho isso aqui que pode te ajudar a conseguir alguns votos.
       </p>
       <div id="botoes-gustavo-sair1" class="bot-opc">
-        <button type="button" onclick="item(itens['gustavo'].IDitem,'gustavo');limpaBarra();trocaDialogo(this, 'sala', 0)"
+        <button type="button" onclick="item(itens['gustavo'].IDitem,'gustavo');"
           class="opcao">
           Pegar
         </button>
@@ -1424,9 +1485,9 @@
       <!-- ========================= -->
       <!-- Enzo - Dialogo de saída -->
       <!-- ========================= -->
-      <p id="dialogo-enzo-sair" class="dialogo">Obrigado pela conversa, acho que eu vou indo.</p>
+      <p id="dialogo-enzo-sair" class="dialogo">Olha, eu sei que pode parecer estranho, mas na sala que eu estava estudando ali, tem algumas baratas, e eu achei esse inseticida, queria que você matasse elas para eu poder continuar estudando, talvez te renda algumas horas complementares</p>
       <div id="botoes-enzo-sair" class="bot-opc">
-        <button type="button" class="opcao" onclick="trocaDialogo(this, 'biblioteca',1);chamafoto('')">Continuar
+        <button type="button" class="opcao" onclick="item(itens['enzo'].IDitem,'enzo')">Continuar
         </button>
       </div>
 
@@ -1581,7 +1642,7 @@
       <!-- ========================= -->
       <p id="dialogo-theo-sair" class="dialogo">Tchau</p>
       <div id="botoes-theo-sair" class="bot-opc">
-        <button type="button" class="opcao" onclick="trocaDialogo(this, 'biblioteca',2);chamafoto('')">
+        <button type="button" class="opcao" onclick="trocaDialogo(this, 'biblioteca',2);chamafoto(''); limpaBarra()">
           Sair da conversa
         </button>
       </div>
@@ -1762,7 +1823,7 @@
       <!-- ========================= -->
       <p id="dialogo-vinicius-sair" class="dialogo">Obrigado pela conversa mano, tchau.</p>
       <div id="botoes-vinicius-sair" class="bot-opc">
-        <button type="button" class="opcao" onclick="trocaDialogo(this, 'cantina',1); chamafoto('')">
+        <button type="button" class="opcao" onclick="trocaDialogo(this, 'cantina',1); chamafoto(''); limpaBarra()">
           Sair da conversa
         </button>
       </div>

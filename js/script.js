@@ -84,8 +84,61 @@ function areaNaoEscolhida(areaEscolhida) {
 
 }
 
+timer = 15;
+function iniciarMinigame(){
+  document.getElementById('hudinventario').style.display = 'none';
+  document.getElementById('temporizador').style.display = 'block'
+  atualizaTempo();
+  document.getElementById('minigame').remove();
+  ponteirotempo = setInterval(diminuiTempo,1000);
+  ponteirobarata = setInterval(apareceBarata,1500);
+}
 
+contBarata = 1;
+baratasMortas = 0;
+function apareceBarata(){
+  document.getElementById('spawnBarata').innerHTML += `
+      <img src = "images/minigame/barata.gif" onclick="mataBarata(${contBarata})" class="barata" id="barata${contBarata}">
+      `
+    document.getElementById('barata'+contBarata).style.top = numeroAleatorio(90)+'%';
+    document.getElementById('barata'+contBarata).style.right = numeroAleatorio(90)+'%';
+    document.getElementById('barata'+contBarata).style.left = numeroAleatorio(90)+'%';
+    document.getElementById('barata'+contBarata).style.bottom = numeroAleatorio(90)+'%';
+    contBarata++;
+}
 
+function diminuiTempo(){
+  timer--;
+  if(timer==0 && baratasMortas<6){
+    clearInterval(ponteirobarata);
+    clearInterval(ponteirotempo);
+    vaiPara('fim-minigame');
+    document.getElementById('hudinventario').style.display = 'flex';
+    document.getElementById('fim-enzo').innerHTML = 'Vejo que você matou algumas baratas, mas não o suficiente, não gosto desses políticos que só falam.';
+    chamafoto('enzo');
+    menosRelacionamento('enzo',30);
+  }
+  else if(timer==0 && baratasMortas>=6){
+    clearInterval(ponteirobarata);
+    clearInterval(ponteirotempo);
+    document.getElementById('hudinventario').style.display = 'flex';
+    vaiPara('fim-minigame');
+    document.getElementById('fim-enzo').innerHTML = 'Nossa, nem sei como te agradecer, mas meu voto em você já está garantido';
+    maisRelacionamento('enzo',30);
+    chamafoto('enzo');
+  }
+  atualizaTempo();
+}
+
+function atualizaTempo(){
+  document.getElementById('tempo').innerHTML = timer;
+}
+
+function mataBarata(contbarata){
+  baratasMortas++;
+  document.getElementById('barata'+contbarata).remove();
+  horasComp(5);
+}
 
 //funções de relacionamento/fofoca, etc
 function maisRelacionamento(personagemID, relacionamento) {
@@ -315,7 +368,7 @@ personagem = {
   gustavo: {
     nome: "Gustavo",
     snome: "Gonçalves",
-    relacionamento: 30,
+    relacionamento: 50,
     log: [],
   },
   enzo: {
@@ -348,10 +401,21 @@ itens = {
     IDitem: "oculos",
     Inome: "Óculos Escuros",
     DescItem: "Óculos escuros muito legais, concedem mais relacionamento com todas as pessoas que você conversar",
+  },
+  messi: {
+    IDitem: "bola",
+    Inome: "Bola de Futebol",
+    DescItem: "Uma bola de futebol entregada e autografada pelo Messi, concede bônus em relacionamento com pessoas que gostam do esporte"
+  },
+  enzo: {
+    IDitem: "inseticida",
+    Inome: "Inseticida",
+    DescItem: "Uma garrafa de spray de inseticida, pode ser usado para matar baratas"
   }
 }
 
 //grupos de personagens que serão afetados pelos itens
 grupos = {
   papel: ["gustavo", "messi", "enzo"],
+  bola: ["alanpa", "theo", "davi"]
 };
