@@ -208,6 +208,26 @@ function limpaBarra() {
   document.getElementById("barraInterna").style.backgroundColor = "white";
 }
 
+function confirmaReinicio(){
+  document.querySelector("main").classList.add("disabled")
+  document.querySelector("nav").classList.add("disabled")  
+
+  confirmacaoReiniciar.style.display = "flex"
+  setTimeout(() => {
+    confirmacaoReiniciar.style.opacity = "1" ;
+    confirmacaoReiniciar.style.transform = "scale(1)"
+  }, 1)
+}
+
+function cancelaReinicio(){
+  confirmacaoReiniciar.style.opacity = "0" ;
+  confirmacaoReiniciar.style.transform = "scale(0.85)"
+  setTimeout(() => {
+    confirmacaoReiniciar.style.display = "none"
+  }, 0.26 *1000)
+  document.querySelector("main").classList.remove("disabled")
+  document.querySelector("nav").classList.remove("disabled")
+}
 function salvarLogPers(nome, dialogo) {
   if (nome in personagem) {
     tamanho = personagem[nome].log.length;

@@ -37,7 +37,7 @@
     <nav>
       <ol>
         <li>
-          <a href="index.html">
+          <a href="#" onclick="confirmaReinicio()">
             <i class="fa-solid fa-house" title="Voltar ao início"></i>
             <span>Voltar ao início</span>
           </a>
@@ -50,6 +50,18 @@
         </li>
       </ol>
     </nav>
+
+    <section id="confirmacaoReiniciar">
+      <div>
+        <p> &#x26A0; Atenção!<br>
+          Ao clicar no botão "Voltar ao início", seu progresso atual não será salvo.<br>
+          Tem certeza de que deseja continuar?</p>
+      </div>
+      <div>
+        <a href="index.html"><button type="button">Voltar mesmo assim</button></a>
+        <a href="#" onclick="cancelaReinicio()"><button type="button">Continuar jogando</button></a>
+      </div>
+    </section>
 
     <div id="hud-itens"></div>
 

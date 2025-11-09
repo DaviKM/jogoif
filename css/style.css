@@ -27,9 +27,17 @@ body {
         repeating-conic-gradient(var(--c2) 0 50%, var(--c1) 0 100%) calc(0.5 * var(--s)) 0 / calc(2 * var(--s)) var(--s);
 }
 
+/*Classe que desativa a interação com mouse*/
+.disabled {
+    pointer-events: none;
+}
+.disabled button, .disabled a {
+    opacity: 0.5;
+    transition: all 0.25 ease;
+}
 nav {
     position: fixed;
-    background-color: rgb(0, 70, 128);
+    background-color: #004680;
     width: 95%;
     height: 60px;
     top: 0;
@@ -380,3 +388,57 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+/*Menu de confirmação para voltar ao menu*/
+
+#confirmacaoReiniciar{
+    color: white;
+    background-color: #001323;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-weight: bold;
+    width: 36%;
+    z-index: 11;
+    position: absolute;
+    border-radius: 6px;
+    transform: scale(0.85);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    opacity: 0;
+}
+
+
+#confirmacaoReiniciar div{
+    margin: 16px 0;
+}
+#confirmacaoReiniciar div:first-child {
+    text-align: center;
+}
+
+#confirmacaoReiniciar div:last-child{
+    display: flex;
+    gap: 14px;
+}
+#confirmacaoReiniciar button {
+    background-color: white;
+    color: #001323;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#confirmacaoReiniciar button:hover {
+    transform: scale(1.1);
+    background-color: #e8e8e8;
+    transition: transform 0.5s ease, background-color 0.1s ease;
+}
+
+#confirmacaoReiniciar button:active {
+    transform: scale(0.975);
+    transition: all 0.2s ease;
+}
+
+
+
