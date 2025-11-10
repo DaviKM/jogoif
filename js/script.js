@@ -85,58 +85,61 @@ function areaNaoEscolhida(areaEscolhida) {
 }
 
 timer = 15;
-function iniciarMinigame(){
+function iniciarMinigame() {
   document.getElementById('hudinventario').style.display = 'none';
   document.getElementById('temporizador').style.display = 'block'
   atualizaTempo();
   document.getElementById('minigame').remove();
-  ponteirotempo = setInterval(diminuiTempo,1000);
-  ponteirobarata = setInterval(apareceBarata,1500);
+  ponteirotempo = setInterval(diminuiTempo, 1000);
+  ponteirobarata = setInterval(apareceBarata, 1500);
 }
 
 contBarata = 1;
 baratasMortas = 0;
-function apareceBarata(){
+function apareceBarata() {
   document.getElementById('spawnBarata').innerHTML += `
       <img src = "images/minigame/barata.gif" onclick="mataBarata(${contBarata})" class="barata" id="barata${contBarata}">
       `
-    document.getElementById('barata'+contBarata).style.top = numeroAleatorio(90)+'%';
-    document.getElementById('barata'+contBarata).style.right = numeroAleatorio(90)+'%';
-    document.getElementById('barata'+contBarata).style.left = numeroAleatorio(90)+'%';
-    document.getElementById('barata'+contBarata).style.bottom = numeroAleatorio(90)+'%';
-    contBarata++;
+  document.getElementById('barata' + contBarata).style.top = numeroAleatorio(90) + '%';
+  document.getElementById('barata' + contBarata).style.right = numeroAleatorio(90) + '%';
+  document.getElementById('barata' + contBarata).style.left = numeroAleatorio(90) + '%';
+  document.getElementById('barata' + contBarata).style.bottom = numeroAleatorio(90) + '%';
+  contBarata++;
 }
 
-function diminuiTempo(){
+function diminuiTempo() {
   timer--;
-  if(timer==0 && baratasMortas<6){
+  if (timer == 0) {
     clearInterval(ponteirobarata);
     clearInterval(ponteirotempo);
     vaiPara('fim-minigame');
     document.getElementById('hudinventario').style.display = 'flex';
-    document.getElementById('fim-enzo').innerHTML = 'Vejo que você matou algumas baratas, mas não o suficiente, não gosto desses políticos que só falam.';
     chamafoto('enzo');
-    menosRelacionamento('enzo',30);
+    if (baratasMortas == 0) {
+      document.getElementById('fim-enzo').innerHTML = 'Seu filho da puta, inutil do caralho';
+      menosRelacionamento('enzo', 30);
+
+    }
+    else if (baratasMortas < 6) {
+      document.getElementById('fim-enzo').innerHTML = 'Vejo que você matou algumas baratas, mas não o suficiente, não gosto desses políticos que só falam.';
+      menosRelacionamento('enzo', 30);
+    }
+    else if (baratasMortas >= 6) {
+      document.getElementById('fim-enzo').innerHTML = 'Nossa, nem sei como te agradecer, mas meu voto em você já está garantido';
+      maisRelacionamento('enzo', 30);
+    }
   }
-  else if(timer==0 && baratasMortas>=6){
-    clearInterval(ponteirobarata);
-    clearInterval(ponteirotempo);
-    document.getElementById('hudinventario').style.display = 'flex';
-    vaiPara('fim-minigame');
-    document.getElementById('fim-enzo').innerHTML = 'Nossa, nem sei como te agradecer, mas meu voto em você já está garantido';
-    maisRelacionamento('enzo',30);
-    chamafoto('enzo');
-  }
+
   atualizaTempo();
 }
 
-function atualizaTempo(){
+function atualizaTempo() {
   document.getElementById('tempo').innerHTML = timer;
 }
 
-function mataBarata(contbarata){
+function mataBarata(contbarata) {
   baratasMortas++;
-  document.getElementById('barata'+contbarata).remove();
+  document.getElementById('barata' + contbarata).remove();
   horasComp(5);
 }
 
@@ -248,21 +251,21 @@ function chamaLoja() {
   console.log("Chamou a funcao chamaLoja");
 }
 
-function mostraloja(){
-  document.getElementById("tela").innerHTML +=  document.getElementById("itensLoja").innerHTML;
+function mostraloja() {
+  document.getElementById("tela").innerHTML += document.getElementById("itensLoja").innerHTML;
   document.getElementById("hud-loja").style.display = "none";
 }
 
-function comprar(itemID, preco){
-  if(jogador.horas_com >= preco){
+function comprar(itemID, preco) {
+  if (jogador.horas_com >= preco) {
     addInvent(itemID);
     horasComp(-preco);
-  }else{
+  } else {
     document.getElementById("semmoney").innerHTML = "Você não tem horas de comunicação suficientes para comprar este item!";
   }
 }
 
-function fecharLoja(){
+function fecharLoja() {
   document.getElementById("quadrado-loja").remove();
   document.getElementById("hud-loja").style.display = "block";
 }
@@ -283,23 +286,23 @@ function limpaBarra() {
   document.getElementById("barraInterna").style.backgroundColor = "white";
 }
 
-function confirmaReinicio(){
+function confirmaReinicio() {
   document.querySelector("main").classList.add("disabled")
-  document.querySelector("nav").classList.add("disabled")  
+  document.querySelector("nav").classList.add("disabled")
 
   confirmacaoReiniciar.style.display = "flex"
   setTimeout(() => {
-    confirmacaoReiniciar.style.opacity = "1" ;
+    confirmacaoReiniciar.style.opacity = "1";
     confirmacaoReiniciar.style.transform = "scale(1)"
   }, 1)
 }
 
-function cancelaReinicio(){
-  confirmacaoReiniciar.style.opacity = "0" ;
+function cancelaReinicio() {
+  confirmacaoReiniciar.style.opacity = "0";
   confirmacaoReiniciar.style.transform = "scale(0.85)"
   setTimeout(() => {
     confirmacaoReiniciar.style.display = "none"
-  }, 0.26 *1000)
+  }, 0.26 * 1000)
   document.querySelector("main").classList.remove("disabled")
   document.querySelector("nav").classList.remove("disabled")
 }
