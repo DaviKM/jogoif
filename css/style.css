@@ -43,11 +43,12 @@ body,button {
 nav {
     position: fixed;
     background-color: #004680;
-    width: 95%;
+    width: 35%;
     height: 60px;
     top: 0;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
+    z-index: 1;
 }
 
 nav ol {
@@ -66,7 +67,7 @@ i {
 }
 
 li:hover {
-    padding-right: 155px;
+    width: 180px;
     transition: all ease 0.8s;
 }
 
@@ -75,6 +76,8 @@ li {
     position: relative;
     padding-left: 0;
     width: 45px;
+    height: 80%;
+    align-content: center;
     overflow: hidden;
     transition: all ease 0.8s;
 }
