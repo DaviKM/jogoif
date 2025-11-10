@@ -243,7 +243,29 @@ function chamaInv() {
   document.getElementById("hudInv").innerHTML = document.getElementById("inventario").innerHTML;
   console.log("Chamou a funcao chamaInv");
 }
+function chamaLoja() {
+  document.getElementById("hud-loja").innerHTML = document.getElementById("lojinha").innerHTML;
+  console.log("Chamou a funcao chamaLoja");
+}
 
+function mostraloja(){
+  document.getElementById("tela").innerHTML +=  document.getElementById("itensLoja").innerHTML;
+  document.getElementById("hud-loja").style.display = "none";
+}
+
+function comprar(itemID, preco){
+  if(jogador.horas_com >= preco){
+    addInvent(itemID);
+    horasComp(-preco);
+  }else{
+    document.getElementById("semmoney").innerHTML = "Você não tem horas de comunicação suficientes para comprar este item!";
+  }
+}
+
+function fecharLoja(){
+  document.getElementById("quadrado-loja").remove();
+  document.getElementById("hud-loja").style.display = "block";
+}
 function limpaItem() {
   document.getElementById("hud-itens").style.display = "none";
 }

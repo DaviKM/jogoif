@@ -25,8 +25,13 @@ body {
         var(--_g) 0 0 / calc(2 * var(--s)) calc(2 * var(--s)),
         radial-gradient(50% 50%, var(--c2) 98%, rgba(0, 0, 0, 0)) 0 0 / var(--s) var(--s),
         repeating-conic-gradient(var(--c2) 0 50%, var(--c1) 0 100%) calc(0.5 * var(--s)) 0 / calc(2 * var(--s)) var(--s);
+   
 }
 
+body,button {
+    font-size: 15pt;
+    font-family: "Delius", cursive;
+}
 /*Classe que desativa a interação com mouse*/
 .disabled {
     pointer-events: none;
@@ -201,7 +206,7 @@ section {
     border: solid 1px rgb(0, 17, 255);
     background-color: rgba(15, 42, 82, 0.7);
     color: white;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   
     z-index: 5;
     flex-direction: column;
 }
@@ -370,6 +375,67 @@ section {
     background-color: #0b2f34e1;
 }
 
+#hud-loja{
+    position: absolute;
+    color: rgb(255, 255, 255);
+    left: 13%;
+    top: 13%;
+}
+#itensLoja{
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
+.botaocomprar{
+    background-color: rgb(51, 134, 202);
+    width: 100px;
+    height: 30px;
+    color: white;
+}
+.botaocomprar:hover, #sairbotaoloja:hover{
+    background-color: rgb(20, 90, 140);
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+    transform: scale(1.3);
+    border-radius: 20px;
+}
+#sairbotaoloja{
+    background-color: rgb(51, 134, 202);
+    width: 25%;
+    height: 5%;
+    color: white;
+}
+#quadrado-loja{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    top: 20%;
+    bottom: 10%;
+    left: 30%;
+    width: 40%;
+    height: 60%;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    z-index: 15;
+    color: white;
+    gap: 20px;
+}
+#quadrado-loja h2{
+    font-size: 60pt;
+    height: 10%;
+}
+.imgLoja img{
+    width: 180px;
+    height: 180px;
+}
+.imgLoja{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
 .itemInvent{
     width: 58px;
     height: 50px;

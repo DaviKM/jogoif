@@ -14,16 +14,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
       integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Delius&family=Metal+Mania&family=Raleway:ital,wght@0,100..900;1,100..900&family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet">
   </head>
 
   <body>
+    <!--HUDS-->
     <div id="hudInv"></div>
     <div id="hudRelacionamento">
       <div id="HorasHud">
         <span id="horas"></span>
       </div>
-
+    
       <div id="barraExterna">
         <div id="maxBarra">
           <div id="barraInterna"></div>
@@ -64,12 +67,13 @@
     </section>
 
     <div id="hud-itens"></div>
+    <div id="hud-loja"></div>
 
     <main id="tela" class="inicio">
       <div class="menu">
         <img src="images/hud/odiosalgado.png" alt="Titulo">
         <div class="botoes-inicio">
-          <button type="button" id="jogar" onclick="trocaFundo('entrada_if'); chamaInv(); vaiPara('start')"
+          <button type="button" id="jogar" onclick="trocaFundo('entrada_if'); chamaInv(); vaiPara('start'); chamaLoja()"
             class="botao-inicio">
             Jogar
           </button>
@@ -382,7 +386,27 @@
         </ol>
       </div>
     </section>
+    <section id="loja">
+      <div id="lojinha">
+          <i class="fa-solid fa-store" onclick="mostraloja()"></i>
+      </div>
+      <div id="itensLoja">
+        <div id="quadrado-loja">
+          <h2>Cantina do If</h2>
+          <div id="menu-loja">
 
+          <div id="coxinha" class="imgLoja">
+            <img src="images/itens/coxinha.png" alt="Coxinha"> 
+            Coxenha [10 Horas]
+            <button type="button" onclick="comprar('coxinha',10)" class="botaocomprar">Comprar</button>
+          </div>
+
+          </div>
+          <span id="semmoney"></span>
+          <button type="button" onclick="fecharLoja()" id="sairbotaoloja">Fechar Loja</button>
+        </div>
+      </div>
+    </section>
     <!--Personagens pátio-->
     <section class="messi">
 
