@@ -55,7 +55,16 @@ function trocaDialogo(elementoBotao, personagem, id) {
     salvarLogJogador(personagem, id, elementoBotao);
   }
   salvarLogPers(personagem, dialogo);
+
+  if (id == 0){
+    adicionaLogPers(personagem)
+  }
 }
+
+function adicionaLogPers(pers){
+  document.getElementById("listaPersonagens").innerHTML += `<li><img src="images/personagens/${pers}.png" alt="${personagem[pers].nome} ${personagem[pers].snome}">
+  ${personagem[pers].nome} ${personagem[pers].snome}</li>` 
+} 
 
 function chamafoto(personagem) {
   foto = document.getElementById('imgpersonagem');

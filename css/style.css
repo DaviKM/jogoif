@@ -66,12 +66,12 @@ i {
     font-size: 28pt;
 }
 
-li:hover {
+nav li:hover {
     width: 180px;
     transition: all ease 0.8s;
 }
 
-li {
+nav li {
     color: rgb(255, 238, 238);
     position: relative;
     padding-left: 0;
@@ -82,13 +82,13 @@ li {
     transition: all ease 0.8s;
 }
 
-li a {
+nav li a {
     display: flex;
     width: 180px;
 
 }
 
-li span {
+nav li span {
     margin-left: 10px;
     text-align: end;
     align-content: center;
@@ -171,7 +171,6 @@ main {
 .botao-passar:hover {
     cursor: pointer;
 }
-
 
 /* Switch case / cenas */
 .cenas,
@@ -551,6 +550,7 @@ a {
     gap: 4px;
     font-weight: bold;
     width: 36%;
+    height: auto;
     z-index: 11;
     position: absolute;
     border-radius: 6px;
@@ -591,5 +591,35 @@ a {
     transition: all 0.2s ease;
 }
 
+/*Menu do log dos personagens*/
 
+#logPersonagens{
+    position: absolute;
+    background-color: #0b1014;
+    display: none;
+    color: white;
+    width: 22%;
+    height: 70%;
+    z-index: 11;
+    border-radius: 20px;
+    overflow: hidden;
+}
+#listaPersonagens{
+    list-style-type: none ;
+}
+#logHeader{
+    background-color: #1a2127;
+    display: flex;
+    justify-content: space-around;
+}
 
+#logHeader .icons i {
+    font-size:larger;
+    color: #21c162;
+    padding: 6px 0;
+}
+
+#listaPersonagens img {
+    height: 50px;
+    width: 50px;
+}
