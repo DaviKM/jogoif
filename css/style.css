@@ -192,6 +192,7 @@ section {
 
 .opcao:hover {
     cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.226);
 }
 
 .bot-opc {
@@ -203,7 +204,7 @@ section {
 /* HUD */
 .hud {
     display: flex;
-    height: 30%;
+    height: 32%;
     width: 100%;
     border: solid 1px rgb(0, 17, 255);
     background-color: rgba(15, 42, 82, 0.7);
@@ -215,11 +216,8 @@ section {
 
 .hud p {
     margin: 2%;
+    margin-bottom: 1%;
     z-index: 2;
-}
-
-.dialogo {
-    margin: 30px;
 }
 
 /* Imagem de personagem */
@@ -317,7 +315,7 @@ section {
 #hud-itens, #menu-relacionamento{
     position: absolute;
     display: none;
-    z-index: 10;
+    z-index: -1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -326,9 +324,8 @@ section {
     background-color: transparent;
     padding: 2%;
     color: white;
-    width: 10px;
-    height: 10px;
-    transition: ease-in-out 0.2s;
+    width: 70vw;
+    height: 70vh;
     border-radius: 10px;
     border: 5px solid transparent;
 }
@@ -342,6 +339,13 @@ section {
     gap: 30px;
 }
 
+#vencedor{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    font-size: 20pt;
+}
+
 .icone{
     cursor: pointer;
 }
@@ -351,6 +355,7 @@ section {
     flex-wrap: wrap;
     gap: 50px;
     flex-direction: column;
+    z-index: 10;
 }
 
 .hud-personagem{
@@ -359,7 +364,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+}   
 
 .barra-hud{
     background-color: white;
@@ -374,9 +379,15 @@ section {
     height: 150px;
 }
 
-.linha{
+.linha-menu-rel{
     display: flex;
     gap: 80px;
+}
+
+#linha2{
+    border-top: 1px solid white;
+    margin-top: -30px;
+    padding-top: 10px;
 }
 
 .nomeItens{
@@ -431,31 +442,47 @@ section {
 }
 .botaocomprar{
     background-color: rgb(51, 134, 202);
-    width: 100px;
-    height: 30px;
+    width: 100%;
+    height: 35px;
     color: white;
+    border-radius: 10px;
 }
-.botaocomprar:hover, #sairbotaoloja:hover{
-    background-color: rgb(20, 90, 140);
+.botaocomprar:hover{
+    background-color: #004680;
     cursor: pointer;
     transition: ease-in-out 0.3s;
-    transform: scale(1.3);
-    border-radius: 20px;
+    transform: scale(1.2);
 }
-#sairbotaoloja{
+
+.botao-fechar-menu{
     background-color: rgb(51, 134, 202);
     width: 25%;
-    height: 5%;
+    height: 6%;
+    border-radius: 10px;
     color: white;
+    height: 5%;
+    width: 20%;
+    border: 1px solid black;
 }
+
+#fechar-loja{
+    height: 40px;
+}
+
+.botao-fechar-menu:hover{
+    transition: ease-in-out 0.4s;
+    transform: scale(1.3);
+    cursor: pointer;
+    background-color: #004680;
+}
+
 #quadrado-loja{
     display: flex;
     position: absolute;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    top: 20%;
-    bottom: 10%;
+    top: 15%;
     left: 30%;
     width: 40%;
     height: 60%;

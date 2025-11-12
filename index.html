@@ -39,7 +39,10 @@
   </div>
 
     <div id="menu-relacionamento">
-      <div id="linha1" class="linha">
+      <h1 class="titulo-menu-rel">
+        Lista de relação com cada personagem
+      </h1>
+      <div id="linha1" class="linha-menu-rel">
         <div id="hud-sheldon" class="hud-personagem">
           <span id="nome-hud-sheldon"></span>
           <div id="barra-sheldon" class="barra-hud"></div>
@@ -63,7 +66,7 @@
           <div id="barra-alanpa" class="barra-hud"></div>
         </div>
       </div>
-      <div id="linha2" class="linha">
+      <div id="linha2" class="linha-menu-rel">
         <div id="hud-bigolin" class="hud-personagem"><span id="nome-hud-bigolin"></span>
           <div id="barra-bigolin" class="barra-hud"></div>
         </div>
@@ -80,7 +83,7 @@
           <div id="barra-enzo" class="barra-hud"></div>
         </div>
       </div>
-      <button type="button" class="botaocomprar" onclick="fechaMenuPer()">Voltar</button>
+      <button type="button" class="botao-fechar-menu" onclick="fechaMenuPer()">Voltar</button>
     </div>
   <div id="hud-itens"></div>
   <div id="hud-loja"></div>
@@ -166,9 +169,6 @@
         </button>
         <button type="button" id="creditos" class="botao-inicio">
           <a href="creditos.html">Créditos</a>
-        </button>
-        <button type="button" id="personagens" class="botao-inicio">
-          <a href="personagens/index_personagens.html">Personagens</a>
         </button>
       </div>
     </div>
@@ -401,7 +401,6 @@
       <span id="vencedor"></span>
     </p>
     <div id="botoes-auditorio-4">
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'auditorio',4)">Continuar</button>
     </div>
   </section>
 
@@ -429,7 +428,7 @@
         <span id="dbola" class="descItens"></span>
       </div>
       <button type="button"
-        onclick="limpaItem(); addInvent('bola');maisRelacionamentoItem(grupos['bola'],15);trocaDialogo(this, 'patio',1); limpaBarra(); chamafoto('');"
+        onclick="limpaItem('bola'); addInvent('bola');maisRelacionamentoItem(grupos['bola'],15);trocaDialogo(this, 'patio',1); limpaBarra(); chamafoto('');"
         class="botItem">
         Continuar
       </button>
@@ -442,7 +441,7 @@
         <span id="doculos" class="descItens"></span>
       </div>
       <button type="button"
-        onclick="limpaItem(); addInvent('oculos');maisRelacionamentoTodos(15);trocaDialogo(this, 'sala',0); limpaBarra(); chamafoto('');"
+        onclick="limpaItem('oculos'); addInvent('oculos');maisRelacionamentoTodos(15);trocaDialogo(this, 'sala',0); limpaBarra(); chamafoto('');"
         class="botItem">
         Continuar
       </button>
@@ -455,7 +454,7 @@
         <span id="dpapel" class="descItens"></span>
       </div>
       <button type="button"
-        onclick="limpaItem(); addInvent('papel');maisRelacionamentoItem(grupos['papel'],15);trocaDialogo(this, 'sala',1); limpaBarra(); chamafoto('');"
+        onclick="limpaItem('papel'); addInvent('papel');maisRelacionamentoItem(grupos['papel'],15);trocaDialogo(this, 'sala',1); limpaBarra(); chamafoto('');"
         class="botItem">
         Continuar
       </button>
@@ -468,7 +467,7 @@
         <span id="dinseticida" class="descItens"></span>
       </div>
       <button type="button"
-        onclick="limpaItem(); addInvent('inseticida');vaiPara('mataBaratas'); limpaBarra(); chamafoto(''); trocaFundo('minigame')"
+        onclick="limpaItem('inseticida'); addInvent('inseticida');vaiPara('mataBaratas'); limpaBarra(); chamafoto(''); trocaFundo('minigame')"
         class="botItem">
         Continuar
       </button>
@@ -490,7 +489,7 @@
 
         </div>
         <span id="semmoney"></span>
-        <button type="button" onclick="fecharLoja()" id="sairbotaoloja">Fechar Loja</button>
+        <button type="button" onclick="fecharLoja()" class="botao-fechar-menu" id="fechar-loja">Fechar Loja</button>
       </div>
     </div>
   </section>

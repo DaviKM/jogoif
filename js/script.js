@@ -294,6 +294,7 @@ function numeroAleatorio(max) {
 function item(idItem, npersonagem) {
   let hud = document.getElementById("hud-itens");
   hud.style.display = "flex";
+  hud.style.zIndex = "10";
   hud.style.height = "70vh";
   hud.style.width = "70vw";
   hud.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
@@ -302,6 +303,11 @@ function item(idItem, npersonagem) {
   document.getElementById("n" + idItem).innerHTML = itens[npersonagem].Inome;
   document.getElementById("d" + idItem).innerHTML = itens[npersonagem].DescItem;
   console.log("Chamou item")
+}
+
+function limpaItem(nomeitem) {
+  document.getElementById("hud-itens").style.zIndex = "-1";
+  document.getElementById("hud-itens").style.display = "none";
 }
 
 function addInvent(item) {
@@ -325,8 +331,8 @@ function comprar(itemID, preco) {
     addInvent(itemID);
     horasComp(-preco);
   } else {
-    document.getElementById("semmoney").innerHTML = "Você não tem horas de comunicação suficientes para comprar este item!";
-  }
+    document.getElementById("semmoney").innerHTML = "Você não tem horas complementares suficientes para comprar este item!";
+  } 
 }
 
 function fecharLoja() {
@@ -334,9 +340,6 @@ function fecharLoja() {
   document.getElementById("icone-relacionamento").classList.remove("disabled");
   document.getElementById("quadrado-loja").remove();
   document.getElementById("hud-loja").style.display = "block";
-}
-function limpaItem() {
-  document.getElementById("hud-itens").style.display = "none";
 }
 
 function trocaFundo(fundo) {
