@@ -105,9 +105,17 @@ function trocaDialogo(elementoBotao, personagem, id) {
   salvarLogPers(personagem, dialogo);
 
   if (String(id).indexOf("sair") == 0) {
-    hora = new Date()
-    
-    document.getElementById(`horario-${personagem}`).innerHTML = `${hora.getHours()}:${hora.getMinutes()}`
+    data = new Date();
+    horas = String(data.getHours())
+    if (horas.lenght == 0) {
+      horas = "0" + horas
+    }
+    minutos = String(data.getMinutes())
+    if (minutos.lenght == 0) {
+      minutos = "0" + minutos
+    }
+
+    document.getElementById(`horario-${personagem}`).innerHTML = `${horas}:${minutos}`
   }
 }
 
@@ -332,7 +340,7 @@ function comprar(itemID, preco) {
     horasComp(-preco);
   } else {
     document.getElementById("semmoney").innerHTML = "Você não tem horas complementares suficientes para comprar este item!";
-  } 
+  }
 }
 
 function fecharLoja() {

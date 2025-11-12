@@ -636,7 +636,7 @@ a {
 }
 
 #confirmacaoReiniciar div:last-child{
-    display: flex;
+    display: none;
     gap: 14px;
 }
 #confirmacaoReiniciar button {
@@ -659,8 +659,7 @@ a {
     transition: all 0.2s ease;
 }
 
-/*Menu do log dos personagens*/
-
+/* Menu do log dos personagens */
 #logPersonagens {
     position: absolute;
     background-color: #0b1014;
@@ -685,6 +684,7 @@ a {
 #logMenu {
     height: 100%;
     width: 100%;
+    display: block;
 }
 
 #logHeader {
@@ -701,10 +701,10 @@ a {
     font-size: larger;
     color: #21c162;
     padding: 6px 0;
-
 }
 
-#listaPersonagens img {
+#listaPersonagens img,
+#logConversa img {
     height: 60px;
     width: 60px;
     justify-self: end;
@@ -719,7 +719,6 @@ a {
 
 .linha {
     height: 2px;
-
     width: 100%;
     background-color: #1e1f20;
 }
@@ -731,7 +730,6 @@ a {
     align-items: center;
     grid-template-rows: 1fr;
     grid-template-columns: 90px auto 100px;
-
 }
 
 #listaPersonagens li:hover {
@@ -758,4 +756,51 @@ a {
 
 #listaPersonagens::-webkit-scrollbar {
     display: none;
+}
+
+/* CSS da página da conversa em si */
+#logConversa {
+    display: none;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+#conversaHeader {
+    background-color: green;
+    width: 100%;
+    height: 5rem;
+    border-radius: 20px 20px 0 0;
+    align-content: center;
+}
+
+#conversaHeader div {
+    text-indent: 12pt;
+    text-wrap: nowrap;
+    font-weight: bold;
+    display: grid;
+    align-items: center;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr 4fr 3fr;
+}
+
+#conversaHeader span {
+    text-align: start;
+}
+
+#conversaHeader .icons {
+    display: flex;
+    gap: 20px;
+}
+
+#conversaHeader .icons i {
+    font-size: 21pt;
+}
+
+#conversaLog {
+    background-color: gray;
+}
+
+#conversaHeader i {
+    font-size: 32pt;
 }
