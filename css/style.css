@@ -634,33 +634,101 @@ a {
 
 /*Menu do log dos personagens*/
 
-#logPersonagens{
+#logPersonagens {
     position: absolute;
     background-color: #0b1014;
     display: none;
     color: white;
-    width: 22%;
-    height: 70%;
+    width: 28%;
+    height: 78%;
     z-index: 11;
     border-radius: 20px;
-    overflow: hidden;
+    transform: scale(0.85);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    opacity: 0;
 }
-#listaPersonagens{
-    list-style-type: none ;
+
+#listaPersonagens {
+    max-height: 92%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
-#logHeader{
+
+#logMenu {
+    height: 100%;
+    width: 100%;
+}
+
+#logHeader {
     background-color: #1a2127;
     display: flex;
     justify-content: space-around;
+    gap: 40%;
+    align-items: center;
+    height: 8%;
+    border-radius: 20px 20px 0 0;
 }
 
 #logHeader .icons i {
-    font-size:larger;
+    font-size: larger;
     color: #21c162;
     padding: 6px 0;
+
 }
 
 #listaPersonagens img {
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
+    justify-self: end;
+    border-radius: 50px;
+}
+
+#listaPersonagens span {
+    align-content: center;
+    text-indent: 7%;
+    padding-bottom: 6px;
+}
+
+.linha {
+    height: 2px;
+
+    width: 100%;
+    background-color: #1e1f20;
+}
+
+#listaPersonagens li {
+    display: grid;
+    height: 68px;
+    padding: 4px 0;
+    align-items: center;
+    grid-template-rows: 1fr;
+    grid-template-columns: 90px auto 100px;
+
+}
+
+#listaPersonagens li:hover {
+    background-color: #181f24;
+    cursor: pointer;
+}
+
+#listaPersonagens li:first-child {
+    margin-top: 22px;
+}
+
+#x {
+    color: white;
+    background-color: red;
+    transform: scale(0.5);
+    position: absolute;
+    border: none;
+    padding: 10px 6px;
+    border-radius: 100%;
+    left: 94%;
+    top: -3%;
+    cursor: pointer;
+}
+
+#listaPersonagens::-webkit-scrollbar {
+    display: none;
 }

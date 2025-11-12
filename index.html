@@ -88,7 +88,7 @@
   <nav>
     <ol>
       <li>
-        <a href="#" onclick="confirmaReinicio()">
+        <a href="#" onclick="abreMenu('confirmacaoReiniciar')">
           <i class="fa-solid fa-house" title="Voltar ao início"></i>
           <span>Voltar ao início</span>
         </a>
@@ -107,6 +107,12 @@
           <span>Configurações</span>
         </a>
       </li>
+      <li>
+        <a href="#" onclick="abreMenu('logPersonagens')">
+          <i class="fa-solid fa-gear"></i>
+          <span>botao teste log</span>
+        </a>
+      </li>
     </ol>
   </nav>
 
@@ -118,11 +124,12 @@
     </div>
     <div>
       <a href="index.html"><button type="button">Voltar mesmo assim</button></a>
-      <a href="#" onclick="cancelaReinicio()"><button type="button">Continuar jogando</button></a>
+      <a href="#" onclick="fechaMenu('confirmacaoReiniciar')"><button type="button">Continuar jogando</button></a>
     </div>
   </section>
 
   <section id="logPersonagens">
+    <button type="button" id="x" onclick="fechaMenu('logPersonagens')"><i class="fa-solid fa-x"></i></button>
     <div id="logMenu">
       <div id="logHeader">
         <h4>Zapzap</h4>
@@ -132,50 +139,7 @@
         </div>
       </div>
       <ol id="listaPersonagens">
-        <li>
-          <img src="images/personagens/messi.png" alt="Lionel Messi">
-          Lionel Messi
-        </li>
-        <li>
-          <img src="images/personagens/messi.png" alt="Lionel Messi">
-          Lionel Messi
-        </li>
-        <li>
-          <img src="images/personagens/messi.png" alt="Lionel Messi">
-          Lionel Messi
-        </li>
-        <li>
-          <img src="images/personagens/messi.png" alt="Lionel Messi">
-          Lionel Messi
-        </li>
-        <li>
-          <img src="images/personagens/messi.png" alt="Lionel Messi">
-          Lionel Messi
-        </li>
-        <li>
-          <img src="images/personagens/messi.png" alt="Lionel Messi">
-          Lionel Messi
-        </li>
-        <li>
-          <img src="images/personagens/messi.png" alt="Lionel Messi">
-          Lionel Messi
-        </li>
-        <li>
-          <img src="images/personagens/messi.png" alt="Lionel Messi">
-          Lionel Messi
-        </li>
-        <li>
-          <img src="images/personagens/messi.png" alt="Lionel Messi">
-          Lionel Messi
-        </li>
-        <li>
-          <img src="images/personagens/messi.png" alt="Lionel Messi">
-          Lionel Messi
-        </li>
-        <li>
-          <img src="images/personagens/messi.png" alt="Lionel Messi">
-          Lionel Messi
-        </li>
+        
       </ol>
     </div>
 

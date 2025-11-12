@@ -95,19 +95,31 @@ function trocaDialogo(elementoBotao, personagem, id) {
   document.getElementById("dialogos").innerHTML = document.getElementById(dialogo).innerHTML;
   document.getElementById("botoes").innerHTML = document.getElementById(respostas).innerHTML;
 
+  if (id == 0) {
+    adicionaLogPers(personagem)
+  }
+
   if (id != 0) {
     salvarLogJogador(personagem, id, elementoBotao);
   }
   salvarLogPers(personagem, dialogo);
 
-  if (id == 0) {
-    adicionaLogPers(personagem)
+  if (String(id).indexOf("sair") == 0) {
+    hora = new Date()
+    
+    document.getElementById(`horario-${personagem}`).innerHTML = `${hora.getHours()}:${hora.getMinutes()}`
   }
 }
 
 function adicionaLogPers(pers) {
-  document.getElementById("listaPersonagens").innerHTML += `<li><img src="images/personagens/${pers}.png" alt="${personagem[pers].nome} ${personagem[pers].snome}">
-  ${personagem[pers].nome} ${personagem[pers].snome}</li>`
+  if (pers in personagem) {
+    document.getElementById("listaPersonagens").innerHTML += `
+        <li>
+          <img src="images/logPersonagens/${pers}.png" alt="${personagem[pers].nome} ${personagem[pers].snome}">
+          <span>${personagem[pers].nome} ${personagem[pers].snome}</span>
+          <span id="horario-${pers}"></span>
+        </li>
+        <div class="linha"></div>`}
 }
 
 function chamafoto(personagem) {
@@ -340,26 +352,27 @@ function limpaBarra() {
   document.getElementById("barraInterna").style.backgroundColor = "white";
 }
 
-function confirmaReinicio() {
+function abreMenu(menu) {
   document.querySelector("main").classList.add("disabled")
   document.querySelector("nav").classList.add("disabled")
 
-  confirmacaoReiniciar.style.display = "flex"
+  document.getElementById(menu).style.display = "flex"
   setTimeout(() => {
-    confirmacaoReiniciar.style.opacity = "1";
-    confirmacaoReiniciar.style.transform = "scale(1)"
+    document.getElementById(menu).style.opacity = "1";
+    document.getElementById(menu).style.transform = "scale(1)"
   }, 1)
 }
 
-function cancelaReinicio() {
-  confirmacaoReiniciar.style.opacity = "0";
-  confirmacaoReiniciar.style.transform = "scale(0.85)"
+function fechaMenu(menu) {
+  document.getElementById(menu).style.opacity = "0";
+  document.getElementById(menu).style.transform = "scale(0.85)"
   setTimeout(() => {
-    confirmacaoReiniciar.style.display = "none"
+    document.getElementById(menu).style.display = "none"
   }, 0.26 * 1000)
   document.querySelector("main").classList.remove("disabled")
   document.querySelector("nav").classList.remove("disabled")
 }
+
 function salvarLogPers(nome, dialogo) {
   if (nome in personagem) {
     tamanho = personagem[nome].log.length;
