@@ -38,6 +38,52 @@
     <div id="hud-votos"></div>
   </div>
 
+    <div id="menu-relacionamento">
+      <div id="linha1" class="linha">
+        <div id="hud-sheldon" class="hud-personagem">
+          <span id="nome-hud-sheldon"></span>
+          <div id="barra-sheldon" class="barra-hud"></div>
+        </div>
+        <div id="hud-messi" class="hud-personagem">
+          <span id="nome-hud-messi"></span>
+          <div id="barra-messi" class="barra-hud">
+          </div>
+        </div>
+        <div id="hud-house" class="hud-personagem">
+          <span id="nome-hud-house"></span>
+          <div id="barra-house" class="barra-hud">
+          </div>
+        </div>
+        <div id="hud-davi" class="hud-personagem">
+          <span id="nome-hud-davi"></span>
+          <div id="barra-davi" class="barra-hud">
+          </div>
+        </div>
+        <div id="hud-alanpa" class="hud-personagem"><span id="nome-hud-alanpa"></span>
+          <div id="barra-alanpa" class="barra-hud"></div>
+        </div>
+      </div>
+      <div id="linha2" class="linha">
+        <div id="hud-bigolin" class="hud-personagem"><span id="nome-hud-bigolin"></span>
+          <div id="barra-bigolin" class="barra-hud"></div>
+        </div>
+        <div id="hud-theo" class="hud-personagem"><span id="nome-hud-theo"></span>
+          <div id="barra-theo" class="barra-hud"></div>
+        </div>
+        <div id="hud-vinicius" class="hud-personagem"><span id="nome-hud-vinicius"></span>
+          <div id="barra-vinicius" class="barra-hud"></div>
+        </div>
+        <div id="hud-gustavo" class="hud-personagem"><span id="nome-hud-gustavo"></span>
+          <div id="barra-gustavo" class="barra-hud"></div>
+        </div>
+        <div id="hud-enzo" class="hud-personagem"><span id="nome-hud-enzo"></span>
+          <div id="barra-enzo" class="barra-hud"></div>
+        </div>
+      </div>
+      <button type="button" class="botaocomprar" onclick="fechaMenuPer()">Voltar</button>
+    </div>
+  <div id="hud-itens"></div>
+  <div id="hud-loja"></div>
   <!--Barra de menu-->
   <nav>
     <ol>
@@ -135,14 +181,22 @@
 
   </section>
 
-  <div id="hud-itens"></div>
-  <div id="hud-loja"></div>
-
+  <div id="menu-icones">
+    <i class="fa-solid fa-user icone" style="color: white;" onclick="exibeMenuPer()" id="icone-relacionamento"></i>
+    <i class="fa-solid fa-store icone" onclick="mostraloja()" id="icone-loja"></i>
+    <div id="hudinventario">
+      <ol>
+        <i class="fa-solid fa-bag-shopping icone"></i>
+        <li id="items">
+        </li>
+      </ol>
+    </div>
+  </div>
   <main id="tela" class="inicio">
     <div class="menu">
       <img src="images/hud/odiosalgado.png" alt="Titulo">
       <div class="botoes-inicio">
-        <button type="button" id="jogar" onclick="trocaFundo('entrada_if'); chamaInv(); vaiPara('start'); chamaLoja()"
+        <button type="button" id="jogar" onclick="trocaFundo('entrada_if');mostraIcones(); vaiPara('start')"
           class="botao-inicio">
           Jogar
         </button>
@@ -458,19 +512,7 @@
 
   </section>
 
-  <section id="inventario">
-    <div id="hudinventario">
-      <ol>
-        <i class="fa-solid fa-bag-shopping"></i>
-        <li id="items">
-        </li>
-      </ol>
-    </div>
-  </section>
   <section id="loja">
-    <div id="lojinha">
-      <i class="fa-solid fa-store" onclick="mostraloja()"></i>
-    </div>
     <div id="itensLoja">
       <div id="quadrado-loja">
         <h2>Cantina do If</h2>

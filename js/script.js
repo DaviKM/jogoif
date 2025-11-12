@@ -22,6 +22,50 @@ function calculaVotos() {
   }
 }
 
+function atualizaRelacionamento() {
+  for (let id in personagem) {
+    let relpersonagem = personagem[id].relacionamento;
+    let barra = document.getElementById('barra-' + id);
+    if (!barra) continue;
+
+    barra.style.width = `${relpersonagem}%`;
+
+    if (relpersonagem < 40) {
+      barra.style.backgroundColor = 'red';
+    } else if (relpersonagem < 70) {
+      barra.style.backgroundColor = 'yellow';
+    } else {
+      barra.style.backgroundColor = 'green';
+    }
+  }
+}
+
+contMenuPer = 0;
+function exibeMenuPer() {
+  let menu = document.getElementById('menu-relacionamento');
+  menu.style.display = "flex";
+  menu.style.height = "80%";
+  menu.style.width = "80%";
+  menu.style.borderColor = 'white';
+  menu.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+
+  if (contMenuPer === 0) {
+    for (let id in personagem) {
+      if (id != 'jogador' && id != 'lula' && id != 'nikolas') {
+        document.getElementById('hud-' + id).innerHTML += `<img src="images/personagens/${id}.png" class="img-hud">`;
+        document.getElementById('nome-hud-' + id).innerHTML = `${personagem[id].nome} ${personagem[id].snome}`;
+      }
+    }
+    contMenuPer++;
+  }
+
+  atualizaRelacionamento();
+}
+
+function fechaMenuPer() {
+  document.getElementById('menu-relacionamento').style.display = 'none';
+}
+
 function calculaFinal() {
   chamafoto('');
   var votosFinal = personagem["jogador"].relacionamento;
@@ -56,15 +100,15 @@ function trocaDialogo(elementoBotao, personagem, id) {
   }
   salvarLogPers(personagem, dialogo);
 
-  if (id == 0){
+  if (id == 0) {
     adicionaLogPers(personagem)
   }
 }
 
-function adicionaLogPers(pers){
+function adicionaLogPers(pers) {
   document.getElementById("listaPersonagens").innerHTML += `<li><img src="images/personagens/${pers}.png" alt="${personagem[pers].nome} ${personagem[pers].snome}">
-  ${personagem[pers].nome} ${personagem[pers].snome}</li>` 
-} 
+  ${personagem[pers].nome} ${personagem[pers].snome}</li>`
+}
 
 function chamafoto(personagem) {
   foto = document.getElementById('imgpersonagem');
@@ -96,6 +140,8 @@ function areaNaoEscolhida(areaEscolhida) {
 timer = 15;
 function iniciarMinigame() {
   document.getElementById('hudinventario').style.display = 'none';
+  document.getElementById('icone-relacionamento').style.display = 'none';
+  document.getElementById('icone-loja').style.display = 'none';
   document.getElementById('temporizador').style.display = 'block'
   atualizaTempo();
   document.getElementById('minigame').remove();
@@ -234,7 +280,7 @@ function numeroAleatorio(max) {
 
 //Função que exibe o item na tela
 function item(idItem, npersonagem) {
-  hud = document.getElementById("hud-itens");
+  let hud = document.getElementById("hud-itens");
   hud.style.display = "flex";
   hud.style.height = "70vh";
   hud.style.width = "70vw";
@@ -251,16 +297,13 @@ function addInvent(item) {
   console.log("Chamou a funcao invent");
 }
 
-function chamaInv() {
-  document.getElementById("hudInv").innerHTML = document.getElementById("inventario").innerHTML;
-  console.log("Chamou a funcao chamaInv");
-}
-function chamaLoja() {
-  document.getElementById("hud-loja").innerHTML = document.getElementById("lojinha").innerHTML;
-  console.log("Chamou a funcao chamaLoja");
+function mostraIcones() {
+  document.getElementById("menu-icones").style.display = 'flex';
 }
 
 function mostraloja() {
+  document.getElementById("icone-relacionamento").classList.add("disabled");
+  document.getElementById("icone-loja").classList.add("disabled");
   document.getElementById("tela").innerHTML += document.getElementById("itensLoja").innerHTML;
   document.getElementById("hud-loja").style.display = "none";
 }
@@ -275,6 +318,8 @@ function comprar(itemID, preco) {
 }
 
 function fecharLoja() {
+  document.getElementById("icone-loja").classList.remove("disabled");
+  document.getElementById("icone-relacionamento").classList.remove("disabled");
   document.getElementById("quadrado-loja").remove();
   document.getElementById("hud-loja").style.display = "block";
 }
