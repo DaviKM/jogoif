@@ -352,7 +352,6 @@ section {
 
 #menu-relacionamento{
     display: none;
-    flex-wrap: wrap;
     gap: 50px;
     flex-direction: column;
     z-index: 10;
@@ -364,7 +363,14 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }   
+
+#texto-menu-per{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
 
 .barra-hud{
     background-color: white;
@@ -372,6 +378,7 @@ section {
     align-self: start;
     border-radius: 10px;
     display: flex;
+    transition: ease-in-out 0.5s;
 }
 
 .img-hud{
@@ -379,13 +386,27 @@ section {
     height: 150px;
 }
 
+.img-hud:hover{
+    cursor: pointer;
+}
+
 .linha-menu-rel{
     display: flex;
     gap: 80px;
 }
 
+.sem-coxinha{
+    display: block;
+    position: absolute;
+    top: 80%;
+    color: white;
+    z-index: 12;
+    height: 30px;
+    width: 210px;
+    transition: ease-in-out 1.5s;
+}
+
 #linha2{
-    border-top: 1px solid white;
     margin-top: -30px;
     padding-top: 10px;
 }

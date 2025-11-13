@@ -42,6 +42,7 @@ function atualizaRelacionamento() {
 
 contMenuPer = 0;
 function exibeMenuPer() {
+  let contLinha=0;
   let menu = document.getElementById('menu-relacionamento');
   menu.style.display = "flex";
   menu.style.height = "80%";
@@ -51,15 +52,55 @@ function exibeMenuPer() {
 
   if (contMenuPer === 0) {
     for (let id in personagem) {
-      if (id != 'jogador' && id != 'lula' && id != 'nikolas') {
-        document.getElementById('hud-' + id).innerHTML += `<img src="images/personagens/${id}.png" class="img-hud">`;
+      if (id != 'jogador' && id != 'lula' && id != 'nikolas') {   
+        if(contLinha<=4){
+          document.getElementById('linha1').innerHTML += `
+          <div id="hud-${id}" class="hud-personagem">
+            <span id="nome-hud-${id}"></span>
+            <div id="barra-${id}" class="barra-hud"></div>
+          </div>
+        `;
+        }
+        else{
+          document.getElementById('linha2').innerHTML += `
+          <div id="hud-${id}" class="hud-personagem">
+            <span id="nome-hud-${id}"></span>
+            <div id="barra-${id}" class="barra-hud"></div>
+          </div>
+        `;
+        }
+        document.getElementById('hud-' + id).innerHTML += `<img src="images/personagens/${id}.png" class="img-hud" onclick="darCoxinha('${id}')">`;
         document.getElementById('nome-hud-' + id).innerHTML = `${personagem[id].nome} ${personagem[id].snome}`;
+        contLinha++
       }
     }
     contMenuPer++;
   }
-
   atualizaRelacionamento();
+}
+
+function darCoxinha(nome){
+  if(jogador.coxinha > 0){
+    document.getElementById('coxinha' + jogador.coxinha).remove();
+    personagem[nome].relacionamento += 10;
+    if(personagem[nome].relacionamento>100){
+      personagem[nome].relacionamento = 100;
+    }
+    atualizaRelacionamento();
+    jogador.coxinha--;
+  }
+  else{
+    document.getElementById('body').innerHTML += `<span id='sem-coxinha-${nome}' class='sem-coxinha'">Você não tem coxinhas</span>`
+    setTimeout(() => {
+      document.getElementById('sem-coxinha-'+nome).style.top = "50%";
+    }, 1);
+    setTimeout(() => {
+      document.getElementById('sem-coxinha-'+nome).style.opacity = '0';
+    }, 10);
+    setTimeout(() => {
+      document.getElementById('sem-coxinha-'+nome).remove();
+    }, 1500);
+  }
 }
 
 function fechaMenuPer() {
@@ -319,7 +360,13 @@ function limpaItem(nomeitem) {
 }
 
 function addInvent(item) {
-  document.getElementById("items").innerHTML += '<img src="images/itens/' + item + '.png" alt="' + item + '" class="itemInvent" id="' + item + '"/>';
+  if(item=="coxinha"){
+    jogador.coxinha++;
+    document.getElementById("items").innerHTML += '<img src="images/itens/' + item + '.png" alt="' + item + '" class="itemInvent" id="' + item + jogador.coxinha +'"/>';
+  }
+  else{
+    document.getElementById("items").innerHTML += '<img src="images/itens/' + item + '.png" alt="' + item + '" class="itemInvent" id="' + item + '"/>';
+  }
   console.log("Chamou a funcao invent");
 }
 
@@ -406,7 +453,8 @@ function salvarLogJogador(nome, nivel, botao) {
 }
 
 jogador = {
-  horas_com: 0,
+  horas_com: 100,
+  coxinha: 0,
 };
 // dialogos: os números abaixo do nome do personagem são os diálogos diferentes dependendo da resposta do jogador
 //OBS: quanto maior o nível, mais rude o jogador foi com o personagem

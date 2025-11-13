@@ -1,0 +1,102 @@
+ * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            align-content: center;
+            justify-items: center;
+            background-color: rgb(77, 80, 82);
+            font-family: Delius, sans-serif;
+            color: rgb(0, 4, 8);
+            font-weight: 590;
+        }
+
+        main {
+            height: 98vh;
+            width: 880px;
+            border-radius: 2.5%;
+            overflow: hidden;
+            padding: 2%;
+            font-size: 15pt;
+            --s: 60px;
+  --c1: #73a3be;
+  --c2: #5e778f;
+  --_g: radial-gradient(
+    25% 25% at 25% 25%,
+    var(--c1) 99%,
+    rgba(0, 0, 0, 0) 101%
+  );
+  background: var(--_g) var(--s) var(--s) / calc(2 * var(--s))
+      calc(2 * var(--s)),
+    var(--_g) 0 0 / calc(2 * var(--s)) calc(2 * var(--s)),
+    radial-gradient(50% 50%, var(--c2) 98%, rgba(0, 0, 0, 0)) 0 0 / var(--s)
+      var(--s),
+    repeating-conic-gradient(var(--c2) 0 50%, var(--c1) 0 100%)
+      calc(0.5 * var(--s)) 0 / calc(2 * var(--s)) var(--s);
+        }
+
+        .topo {
+            height: 36%;
+            width: 100%;
+            display: flex;
+            border-radius: 20px;
+            background-color: rgb(147, 169, 192);
+            justify-content: space-around;
+        }
+
+        img{
+            height: 98%;
+            width: 100%;
+            object-fit: cover; 
+            border: dotted 3px rgb(69, 91, 116);
+             border-radius: 10px;
+        }
+
+        .lista {
+            height: 100%;
+            width: 64%;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 80px;
+        }
+
+        ul li {
+            margin: 30px 0;
+        }
+
+        .historia {
+            margin-top: 50px;
+            justify-self: center;
+            width: 93%;
+            height: 50%;
+            padding: 30px;
+            background-color: rgb(147, 169, 192);
+            border-radius: 20px;
+        }
+
+        a {
+            position: absolute;
+            margin: 10px 60px;
+        }
+
+        button {
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 20px;
+            background-color: rgb(55, 221, 55);
+            color: white;
+            text-shadow:
+                0 1px 2px rgb(0, 0, 0),
+                0 0 6px rgb(0, 0, 0);
+        }
+
+        button:hover {
+            background-color: rgb(13, 179, 13);
+            transform: scale(1.3);
+            transition: ease-in-out 0.3s;
+        }
+       
