@@ -137,7 +137,7 @@ function trocaDialogo(elementoBotao, personagem, id) {
   document.getElementById("botoes").innerHTML = document.getElementById(respostas).innerHTML;
 
   if (id == 0) {
-    adicionaLogPers(personagem)
+    addLogPers(personagem)
   }
 
   if (id != 0) {
@@ -148,11 +148,11 @@ function trocaDialogo(elementoBotao, personagem, id) {
   if (String(id).indexOf("sair") == 0) {
     data = new Date();
     horas = String(data.getHours())
-    if (horas.lenght == 0) {
+    if (horas.length == 1) {
       horas = "0" + horas
     }
     minutos = String(data.getMinutes())
-    if (minutos.lenght == 0) {
+    if (minutos.length == 1) {
       minutos = "0" + minutos
     }
 
@@ -160,10 +160,10 @@ function trocaDialogo(elementoBotao, personagem, id) {
   }
 }
 
-function adicionaLogPers(pers) {
+function addLogPers(pers) {
   if (pers in personagem) {
     document.getElementById("listaPersonagens").innerHTML += `
-        <li>
+        <li onclick="abreConversa('${pers}')">
           <img src="images/logPersonagens/${pers}.png" alt="${personagem[pers].nome} ${personagem[pers].snome}">
           <span>${personagem[pers].nome} ${personagem[pers].snome}</span>
           <span id="horario-${pers}"></span>
@@ -413,6 +413,7 @@ function limpaBarra() {
 function abreMenu(menu) {
   document.querySelector("main").classList.add("disabled")
   document.querySelector("nav").classList.add("disabled")
+  document.getElementById("menu-icones").classList.add("disabled")
 
   document.getElementById(menu).style.display = "flex"
   setTimeout(() => {
@@ -429,8 +430,34 @@ function fechaMenu(menu) {
   }, 0.26 * 1000)
   document.querySelector("main").classList.remove("disabled")
   document.querySelector("nav").classList.remove("disabled")
+  document.getElementById("menu-icones").classList.remove("disabled")
 }
 
+function abreConversa(pers){
+  document.getElementById("log-img-conversa").innerHTML = `<img src="images/logPersonagens/${pers}.png">`
+  console.log("chamou")
+  document.getElementById("log-nome-conversa").innerHTML = `${personagem[pers].nome} ${personagem[pers].snome}`
+
+  for(let i = 0; i < personagem[pers].log.length; i++){
+    if (i%2 == 0){
+      document.getElementById("conversaLog").innerHTML += `<div class="log-npc">${personagem[pers].log[i]}</div>`
+    }
+    else{
+      document.getElementById("conversaLog").innerHTML += `<div class="log-player">${personagem[pers].log[i]}</div>`
+    }
+  }
+
+  document.getElementById("logMenu").style.display = 'none'
+  document.getElementById("logConversa").style.display = 'block'
+}
+
+function fechaConversa(){
+  document.getElementById("logMenu").style.display = 'block'
+  document.getElementById("logConversa").style.display = 'none'
+
+  document.getElementById("conversaLog").innerHTML = ''
+
+}
 function salvarLogPers(nome, dialogo) {
   if (nome in personagem) {
     tamanho = personagem[nome].log.length;
