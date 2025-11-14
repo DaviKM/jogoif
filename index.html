@@ -47,7 +47,6 @@
         Clique na foto para entregar uma coxinha
       </h3>
     </div>
-
     <div id="linha1" class="linha-menu-rel"></div>
     <div id="linha2" class="linha-menu-rel"></div>
     <button type="button" class="botao-fechar-menu" onclick="fechaMenuPer()">Voltar</button>
@@ -136,11 +135,12 @@
     <div id="hudinventario">
       <ol>
         <i class="fa-solid fa-bag-shopping icone"></i>
-        <li id="items">
+        <li id="inventario">
         </li>
       </ol>
     </div>
   </div>
+
   <main id="tela" class="inicio">
     <div class="menu">
       <img src="images/hud/odiosalgado.png" alt="Titulo">
@@ -176,28 +176,14 @@
         <button type="button" onclick="vaiPara('mataBaratas');trocaFundo('minigame')" class="opcao">
           minigame
         </button>
-        <button type="button" onclick="trocaDialogo(this, 'intervalo',2);trocaFundo('biblioteca')" class="opcao">
-          intervalo 2
+        <button type="button" onclick="trocaDialogo(this, 'theo','sair');trocaFundo('biblioteca')" class="opcao">
+          teo
         </button>
       </div>
     </div>
   </div>
 
-  <div id="fim-minigame" class="cenas">
-    <div id="imgpersonagem" class="personagem"></div>
-    <div id="hud" class="hud">
-      <p id="dialogos" class="dialogo">
-        <span id="fim-enzo"></span>
-      </p>
-      <div id="botoes" class="bot-opc">
-        <button type="button"
-          onclick="trocaFundo('biblioteca');trocaDialogo(this, 'biblioteca',1); chamafoto('');limpaBarra()"
-          class="opcao">
-          Continuar
-        </button>
-      </div>
-    </div>
-  </div>
+  
 
   <!--Cenas-->
 
@@ -399,6 +385,22 @@
     <div id="spawnBarata">
       <div id="temporizador"><span id="tempo"></span></div>
     </div>
+
+    <div id="fim-minigame" class="cenas">
+      <div id="imgpersonagem" class="personagem"></div>
+      <div id="hud" class="hud">
+        <p id="dialogos" class="dialogo">
+          <span id="fim-enzo"></span>
+        </p>
+        <div id="botoes" class="bot-opc">
+          <button type="button"
+            onclick="trocaFundo('biblioteca');mostraIcones();trocaDialogo(this, 'biblioteca',1); chamafoto('');limpaBarra()"
+            class="opcao">
+            Continuar
+          </button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!--Itens-->
@@ -460,13 +462,19 @@
   <section id="loja">
     <div id="itensLoja">
       <div id="quadrado-loja">
-        <h2>Cantina do If</h2>
+        <h2>Lojinha do IF</h2>
         <div id="menu-loja">
 
           <div id="coxinha" class="imgLoja">
             <img src="images/itens/coxinha.png" alt="Coxinha">
             Coxenha [10 Horas]
             <button type="button" onclick="comprar('coxinha',10)" class="botaocomprar">Comprar</button>
+          </div>
+
+          <div id="pacote_pokemon" class="imgLoja">
+            <img src="images/itens/pacote_pokemon.png" alt="Pacote de cartas Pokemon">
+            Pacotes de cartas Pokemon [30 Horas]
+            <button type="button" onclick="comprar('pacote_pokemon',30)" class="botaocomprar">Comprar</button>
           </div>
 
         </div>
@@ -1788,7 +1796,17 @@
     <p id="dialogo-theo-sair" class="dialogo">Tchau</p>
     <div id="botoes-theo-sair" class="bot-opc">
       <button type="button" class="opcao" onclick="trocaDialogo(this, 'biblioteca',2);chamafoto(''); limpaBarra()">
-        Sair da conversa
+        Continuar
+      </button>
+      <button type="button" class="opcao" onclick="darItem('pacote_pokemon','theo',20)">
+        Dar pacote de cartinha de Pokémon
+      </button>
+    </div>
+
+    <p id="dialogo-theo-15" class="dialogo">Muito obrigado!</p>
+    <div id="botoes-theo-15" class="bot-opc">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'biblioteca',2);chamafoto(''); limpaBarra()">
+        Continuar
       </button>
     </div>
 

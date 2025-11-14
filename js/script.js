@@ -69,7 +69,7 @@ function exibeMenuPer() {
           </div>
         `;
         }
-        document.getElementById('hud-' + id).innerHTML += `<img src="images/personagens/${id}.png" class="img-hud" onclick="darCoxinha('${id}')">`;
+        document.getElementById('hud-' + id).innerHTML += `<img src="images/personagens/${id}.png" class="img-hud" onclick="darItem('coxinha','${id}',10)">`;
         document.getElementById('nome-hud-' + id).innerHTML = `${personagem[id].nome} ${personagem[id].snome}`;
         contLinha++
       }
@@ -79,26 +79,37 @@ function exibeMenuPer() {
   atualizaRelacionamento();
 }
 
-function darCoxinha(nome){
-  if(jogador.coxinha > 0){
-    document.getElementById('coxinha' + jogador.coxinha).remove();
-    personagem[nome].relacionamento += 10;
+function darItem(item,nome,rel){
+  var itemspan = item;
+  if(item!="coxinha" && jogador[item]==0){
+      itemspan = "pacote de cartinhas"
+  }
+  if(jogador[item] > 0){
     if(personagem[nome].relacionamento>100){
       personagem[nome].relacionamento = 100;
     }
+    document.getElementById(item).remove();
+    jogador[item]--;
+    if(item!="coxinha"){
+      itemspan = "Pacote de cartinhas";
+      maisRelacionamento(nome,50);
+      trocaDialogo(this, nome,15);
+    }
+    else{
+    personagem[nome].relacionamento += rel;
     atualizaRelacionamento();
-    jogador.coxinha--;
+    }
   }
   else{
-    document.getElementById('body').innerHTML += `<span id='sem-coxinha-${nome}' class='sem-coxinha'">Você não tem coxinhas</span>`
+    document.getElementById('body').innerHTML += `<span id='sem-${item}-${nome}' class='sem-coxinha'">Você não tem ${itemspan}</span>`
     setTimeout(() => {
-      document.getElementById('sem-coxinha-'+nome).style.top = "50%";
+      document.getElementById('sem-'+item+'-'+nome).style.top = "50%";
     }, 1);
     setTimeout(() => {
-      document.getElementById('sem-coxinha-'+nome).style.opacity = '0';
+      document.getElementById('sem-'+item+'-'+nome).style.opacity = '0';
     }, 10);
     setTimeout(() => {
-      document.getElementById('sem-coxinha-'+nome).remove();
+      document.getElementById('sem-'+item+'-'+nome).remove();
     }, 1500);
   }
 }
@@ -198,10 +209,9 @@ function areaNaoEscolhida(areaEscolhida) {
 
 }
 
-timer = 15;
+timer = 1;
 function iniciarMinigame() {
-  document.getElementById('hudinventario').style.display = 'none';
-  document.getElementById('icone-relacionamento').style.display = 'none';
+  document.getElementById('menu-icones').style.display = 'none';
   document.getElementById('icone-loja').style.display = 'none';
   document.getElementById('temporizador').style.display = 'block'
   atualizaTempo();
@@ -262,6 +272,7 @@ function mataBarata(contbarata) {
 //funções de relacionamento/fofoca, etc
 function maisRelacionamento(personagemID, relacionamento) {
   personagem[personagemID].relacionamento += relacionamento;
+  console.log("socorro")
   exibirRelacionamento(personagemID);
   if (personagem[personagemID].relacionamento > 100) {
     personagem[personagemID].relacionamento = 100;
@@ -360,18 +371,13 @@ function limpaItem(nomeitem) {
 }
 
 function addInvent(item) {
-  if(item=="coxinha"){
-    jogador.coxinha++;
-    document.getElementById("items").innerHTML += '<img src="images/itens/' + item + '.png" alt="' + item + '" class="itemInvent" id="' + item + jogador.coxinha +'"/>';
-  }
-  else{
-    document.getElementById("items").innerHTML += '<img src="images/itens/' + item + '.png" alt="' + item + '" class="itemInvent" id="' + item + '"/>';
-  }
+    document.getElementById("inventario").innerHTML += '<img src="images/itens/' + item + '.png" alt="' + item + '" class="itemInvent" id="' + item + '"/>';
   console.log("Chamou a funcao invent");
 }
 
 function mostraIcones() {
   document.getElementById("menu-icones").style.display = 'flex';
+  document.getElementById("icone-loja").style.display = 'flex';
 }
 
 function mostraloja() {
@@ -382,6 +388,7 @@ function mostraloja() {
 }
 
 function comprar(itemID, preco) {
+  jogador[itemID]++;
   if (jogador.horas_com >= preco) {
     addInvent(itemID);
     horasComp(-preco);
@@ -463,7 +470,6 @@ function salvarLogPers(nome, dialogo) {
     tamanho = personagem[nome].log.length;
     fala = document.getElementById(dialogo).innerHTML.trim();
 
-
     personagem[nome].log[tamanho] = fala
   }
 }
@@ -480,8 +486,9 @@ function salvarLogJogador(nome, nivel, botao) {
 }
 
 jogador = {
-  horas_com: 100,
+  horas_com: 1000,
   coxinha: 0,
+  pacote_pokemon: 0,
 };
 // dialogos: os números abaixo do nome do personagem são os diálogos diferentes dependendo da resposta do jogador
 //OBS: quanto maior o nível, mais rude o jogador foi com o personagem

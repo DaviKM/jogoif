@@ -435,7 +435,7 @@ section {
 }
 
 
-#items{
+#inventario{
     position: relative;
     left: -40%;
     z-index: 10;
@@ -443,11 +443,23 @@ section {
     height: 200px;
     width: 200px;
     gap: 10px;
-    justify-content: start;
+    justify-content: space-between;
     padding: 8px;
     border-radius: 8px;
     flex-wrap: wrap;            
     background-color: #0b2f34e1;
+    overflow: hidden;
+}
+
+#hudinventario:hover #inventario {
+    display: flex;
+}
+
+.itemInvent{
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    
 }
 
 #hud-loja{
@@ -463,7 +475,7 @@ section {
 }
 .botaocomprar{
     background-color: rgb(51, 134, 202);
-    width: 100%;
+    width: 150px;
     height: 35px;
     color: white;
     border-radius: 10px;
@@ -502,21 +514,26 @@ section {
     position: absolute;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     top: 15%;
-    left: 30%;
-    width: 40%;
+    width: 60%;
     height: 60%;
+    border-radius: 6px;
     background-color: rgba(0, 0, 0, 0.6);
     padding: 40px;
     z-index: 15;
     color: white;
-    gap: 20px;
+    gap: 10%;
 }
 #quadrado-loja h2{
-    font-size: 60pt;
+    font-size: 40pt;
     height: 10%;
 }
+#menu-loja{
+    display: flex;
+    gap: 20%;
+    
+}
+
 .imgLoja img{
     width: 180px;
     height: 180px;
@@ -526,11 +543,9 @@ section {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    transform: scale(0.9);
 }
-.itemInvent{
-    width: 58px;
-    height: 50px;
-}
+
 
 #minigame{
     height: 100%;
@@ -605,10 +620,6 @@ section {
     cursor: pointer;
 }
 
-#hudinventario:hover #items {
-    display: flex;
-}
-
 .botItem:hover{
     cursor: pointer;
     background-color: #0e434d;
@@ -657,7 +668,7 @@ a {
 }
 
 #confirmacaoReiniciar div:last-child{
-    display: none;
+    display: flex;
     gap: 14px;
 }
 #confirmacaoReiniciar button {
