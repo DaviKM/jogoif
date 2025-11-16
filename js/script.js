@@ -82,22 +82,29 @@ function exibeMenuPer() {
 function darItem(item,nome,rel){
   var itemspan = item;
   if(item!="coxinha" && jogador[item]==0){
-      itemspan = "pacote de cartinhas"
+      if(item=="pacote_pokemon"){
+        itemspan = "pacote de cartinhas"
+      }
+      else if(item=="mini_megafone"){
+        itemspan = "mini megafone";
+      }
   }
   if(jogador[item] > 0){
-    if(personagem[nome].relacionamento>100){
-      personagem[nome].relacionamento = 100;
-    }
     document.getElementById(item).remove();
     jogador[item]--;
-    if(item!="coxinha"){
-      itemspan = "Pacote de cartinhas";
-      maisRelacionamento(nome,50);
+    if(item=="pacote_pokemon"){
+      maisRelacionamento(nome,rel);
       trocaDialogo(this, nome,15);
+    }
+    if(item=="mini_megafone"){
+      trocaDialogo(this, 'lula', 0);
     }
     else{
     personagem[nome].relacionamento += rel;
     atualizaRelacionamento();
+    }
+    if(personagem[nome].relacionamento>100){
+      personagem[nome].relacionamento = 100;
     }
   }
   else{
@@ -209,7 +216,7 @@ function areaNaoEscolhida(areaEscolhida) {
 
 }
 
-timer = 1;
+timer = 15;
 function iniciarMinigame() {
   document.getElementById('menu-icones').style.display = 'none';
   document.getElementById('icone-loja').style.display = 'none';
@@ -365,7 +372,7 @@ function item(idItem, npersonagem) {
   console.log("Chamou item")
 }
 
-function limpaItem(nomeitem) {
+function limpaItem() {
   document.getElementById("hud-itens").style.zIndex = "-1";
   document.getElementById("hud-itens").style.display = "none";
 }
@@ -486,9 +493,10 @@ function salvarLogJogador(nome, nivel, botao) {
 }
 
 jogador = {
-  horas_com: 1000,
+  horas_com: 100,
   coxinha: 0,
   pacote_pokemon: 0,
+  mini_megafone: 0,
 };
 // dialogos: os números abaixo do nome do personagem são os diálogos diferentes dependendo da resposta do jogador
 //OBS: quanto maior o nível, mais rude o jogador foi com o personagem

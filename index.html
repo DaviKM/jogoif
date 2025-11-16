@@ -130,7 +130,7 @@
   </section>
 
   <div id="menu-icones">
-    <i class="fa-solid fa-user icone" style="color: white;" onclick="exibeMenuPer()" id="icone-relacionamento"></i>
+    <i class="fa-solid fa-user icone" onclick="exibeMenuPer()" id="icone-relacionamento"></i>
     <i class="fa-solid fa-store icone" onclick="mostraloja()" id="icone-loja"></i>
     <div id="hudinventario">
       <ol>
@@ -173,11 +173,11 @@
           class="opcao">
           Patio
         </button>
-        <button type="button" onclick="vaiPara('mataBaratas');trocaFundo('minigame')" class="opcao">
-          minigame
-        </button>
-        <button type="button" onclick="trocaDialogo(this, 'theo','sair');trocaFundo('biblioteca')" class="opcao">
+        <button type="button" onclick="trocaDialogo(this , 'theo', 0);trocaFundo('biblioteca'); chamafoto('theo')" class="opcao">
           teo
+        </button>
+        <button type="button" onclick="trocaDialogo(this, 'auditorio',0);trocaFundo('auditorio')" class="opcao">
+          megafone
         </button>
       </div>
     </div>
@@ -339,13 +339,17 @@
       <button type="button"
         onclick="trocaDialogo(this, 'lula',0);chamafoto('lula');calculaVotos();exibirRelacionamento('jogador')"
         class="opcao">Começar o debate</button>
+
+        <button type="button" class="opcao" onclick="darItem('mini_megafone','jogador',15); chamafoto('lula');calculaVotos(); exibirRelacionamento('jogador'); ">
+        Começar o debate com o megafone [concede bõnus na chance de voto]
+      </button>
     </div>
 
     <p id="dialogo-auditorio-1">
       Assim que você termina o primeiro debate das eleições, você escuta alguém abrindo a porta do auditório:
     </p>
     <div id="botoes-auditorio-1">
-      <button type="button" onclick="trocaDialogo(this, 'nikolas',0);chamafoto('nikolas')" class="opcao">Nikolas
+      <button type="button" onclick="trocaDialogo(this, 'nikolas',0);chamafoto('nikolas');exibirRelacionamento('jogador')" class="opcao">Nikolas
         Ferreira</button>
     </div>
 
@@ -370,6 +374,7 @@
     </p>
     <div id="botoes-auditorio-4">
     </div>
+
   </section>
 
   <!--Minigame-->
@@ -475,6 +480,12 @@
             <img src="images/itens/pacote_pokemon.png" alt="Pacote de cartas Pokemon">
             Pacotes de cartas Pokemon [30 Horas]
             <button type="button" onclick="comprar('pacote_pokemon',30)" class="botaocomprar">Comprar</button>
+          </div>
+
+          <div id="mini_megafone" class="imgLoja">
+            <img src="images/itens/mini_megafone.png" alt="Mini megafone">
+            Mini Megafone [50 Horas]
+            <button type="button" onclick="comprar('mini_megafone',50)" class="botaocomprar">Comprar</button>
           </div>
 
         </div>
@@ -2463,7 +2474,7 @@
       Quem foge de cobrança não lidera, se esconde. E quem se esconde perde o rumo. É assim que o IF continua igual.
     </p>
     <div id="botoes-lula-8" class="bot-opc">
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'lula','sair');menosRelacionamento('jogador',10)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'lula','sair');menosRelacionamento('jogador',5)">
         Então que venham as cobranças. Eu aguento.
       </button>
     </div>
@@ -2475,7 +2486,7 @@
       Boa fala. Ambição é o combustível, mas o freio é o propósito. Um sem o outro, o carro bate.
     </p>
     <div id="botoes-lula-9" class="bot-opc">
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'lula','sair');maisRelacionamento('jogador',10)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'lula','sair');maisRelacionamento('jogador',5)">
         Então vamos acelerar com propósito.
       </button>
     </div>
@@ -2487,7 +2498,7 @@
       O destaque cega rápido. Quem busca luz demais acaba queimado pelos holofotes.
     </p>
     <div id="botoes-lula-10" class="bot-opc">
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'lula','sair');menosRelacionamento('jogador',10)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'lula','sair');menosRelacionamento('jogador',5)">
         Prefiro arriscar e brilhar do que passar despercebido.
       </button>
     </div>
@@ -2499,7 +2510,7 @@
       Você tem visão. Equilíbrio entre ação e reflexão é o segredo. É o que diferencia impulso de estratégia.
     </p>
     <div id="botoes-lula-11" class="bot-opc">
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'lula','sair');maisRelacionamento('jogador',10)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'lula','sair');maisRelacionamento('jogador',5)">
         Estratégia e coragem andam juntas.
       </button>
     </div>
@@ -2511,7 +2522,7 @@
       Agir sem pensar é pular de paraquedas sem mochila. O impacto é rápido… e dói.
     </p>
     <div id="botoes-lula-12" class="bot-opc">
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'lula','sair');menosRelacionamento('jogador',10)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'lula','sair');menosRelacionamento('jogador',5)">
         Às vezes é o único jeito de fazer história.
       </button>
     </div>
@@ -2523,7 +2534,7 @@
       É isso! Respeito é o que sustenta o legado. Aplauso passa, mas o nome fica.
     </p>
     <div id="botoes-lula-13" class="bot-opc">
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'lula','sair');maisRelacionamento('jogador',15)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'lula','sair');maisRelacionamento('jogador',5)">
         Então vamos fazer o nome valer.
       </button>
     </div>
@@ -2535,7 +2546,7 @@
       Cuidado com a vaidade, candidato. O povo sente quando a ambição ultrapassa o propósito. E aí, nem a coxinha salva.
     </p>
     <div id="botoes-lula-14" class="bot-opc">
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'lula','sair');menosRelacionamento('jogador',15)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'lula','sair');menosRelacionamento('jogador',5)">
         Se for pra mudar o jogo, aceito o risco.
       </button>
     </div>
@@ -2564,10 +2575,10 @@
       um desses ou tem coragem de falar a verdade?
     </p>
     <div id="botoes-nikolas-0" class="bot-opc">
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 1); maisRelacionamento('jogador', 8)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 1); maisRelacionamento('jogador', 5)">
         Coragem é o que não me falta. E eu não fujo de debate.
       </button>
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 2); menosRelacionamento('jogador', 8)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 2); menosRelacionamento('jogador', 5)">
         Acho que o importante é respeitar todo mundo e evitar conflito.
       </button>
     </div>
@@ -2579,10 +2590,10 @@
       É assim que se fala! Líder que tem medo de desagradar não muda nada. Mas coragem sem propósito é só barulho.
     </p>
     <div id="botoes-nikolas-1" class="bot-opc">
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 3); maisRelacionamento('jogador', 8)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 3); maisRelacionamento('jogador', 5)">
         Meu propósito é fazer o grêmio funcionar de verdade, sem enrolação.
       </button>
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 4); menosRelacionamento('jogador', 8)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 4); menosRelacionamento('jogador', 5)">
         Propósito é ouvir todos e tentar agradar a maioria.
       </button>
     </div>
@@ -2595,10 +2606,10 @@
       razão”.
     </p>
     <div id="botoes-nikolas-2" class="bot-opc">
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 5); maisRelacionamento('jogador',8)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 5); maisRelacionamento('jogador',5)">
         Firmeza é essencial. Quem tenta agradar todo mundo não agrada ninguém.
       </button>
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 6); menosRelacionamento('jogador', 8)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 6); menosRelacionamento('jogador', 5)">
         Acho que é possível liderar sem precisar confrontar sempre.
       </button>
     </div>
@@ -2610,10 +2621,10 @@
       Boa. Gosto de quem fala em resultado, não em sentimento. Política de grêmio não é terapia de grupo.
     </p>
     <div id="botoes-nikolas-3" class="bot-opc">
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 7); maisRelacionamento('jogador', 8)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 7); maisRelacionamento('jogador', 5)">
         Concordo. É gestão e responsabilidade, não choradeira.
       </button>
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 8); menosRelacionamento('jogador', 8)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 8); menosRelacionamento('jogador', 5)">
         Um pouco de empatia também não faz mal.
       </button>
     </div>
@@ -2625,11 +2636,11 @@
       Agradar maioria? É assim que o grêmio vira bagunça. Líder não segue multidão, ele guia.
     </p>
     <div id="botoes-nikolas-4" class="bot-opc">
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 9); maisRelacionamento('jogador', 8)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 9); maisRelacionamento('jogador', 5)">
         Guiar é responsabilidade, não popularidade.
       </button>
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 10); menosRelacionamento('jogador', 8)">
+        onclick="trocaDialogo(this, 'nikolas', 10); menosRelacionamento('jogador', 5)">
         Às vezes, seguir o grupo evita conflito desnecessário.
       </button>
     </div>
@@ -2642,11 +2653,11 @@
       discorda?
     </p>
     <div id="botoes-nikolas-5" class="bot-opc">
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 11); maisRelacionamento('jogador', 8)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 11); maisRelacionamento('jogador', 5)">
         Com todos. Justiça não escolhe lado.
       </button>
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 12); menosRelacionamento('jogador', 8)">
+        onclick="trocaDialogo(this, 'nikolas', 12); menosRelacionamento('jogador', 5)">
         Tento evitar atritos com quem pensa parecido comigo.
       </button>
     </div>
@@ -2658,11 +2669,11 @@
       Liderar sem confronto é impossível. Quem tem medo de desagradar vira fantoche de grupo.
     </p>
     <div id="botoes-nikolas-6" class="bot-opc">
-      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 13); maisRelacionamento('jogador',8)">
+      <button type="button" class="opcao" onclick="trocaDialogo(this, 'nikolas', 13); maisRelacionamento('jogador',5)">
         Confronto é parte do progresso. Sem debate, não há avanço.
       </button>
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 14); menosRelacionamento('jogador', 8)">
+        onclick="trocaDialogo(this, 'nikolas', 14); menosRelacionamento('jogador', 5)">
         Às vezes, evitar conflito é a melhor forma de manter a paz.
       </button>
     </div>
@@ -2675,11 +2686,11 @@
     </p>
     <div id="botoes-nikolas-7" class="bot-opc">
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador', 10)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador', 5)">
         Eu encaro pressão de frente, pode apostar.
       </button>
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador', 8)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador', 5)">
         Às vezes é melhor evitar desgaste.
       </button>
     </div>
@@ -2692,11 +2703,11 @@
     </p>
     <div id="botoes-nikolas-8" class="bot-opc">
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador', 10)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador', 5)">
         Exato. Liderança é decisão, não hesitação.
       </button>
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador', 10)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador', 5)">
         Empatia é o que mantém as pessoas unidas.
       </button>
     </div>
@@ -2709,11 +2720,11 @@
     </p>
     <div id="botoes-nikolas-9" class="bot-opc">
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador',10)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador',5)">
         Carregar o peso faz parte do papel de quem lidera.
       </button>
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador',10)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador',5)">
         Status ajuda a convencer os outros também.
       </button>
     </div>
@@ -2726,11 +2737,11 @@
     </p>
     <div id="botoes-nikolas-10" class="bot-opc">
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador', 8)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador', 5)">
         Concordo, o confronto certo evita caos depois.
       </button>
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador', 8)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador', 5)">
         Às vezes o grupo precisa de calma, não tensão.
       </button>
     </div>
@@ -2743,11 +2754,11 @@
     </p>
     <div id="botoes-nikolas-11" class="bot-opc">
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador',10)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador',5)">
         Mérito é essencial. O esforço precisa ser recompensado.
       </button>
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador',10)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador',5)">
         Às vezes mérito não mostra tudo. Circunstâncias também pesam.
       </button>
     </div>
@@ -2760,11 +2771,11 @@
     </p>
     <div id="botoes-nikolas-12" class="bot-opc">
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador',8)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador',5)">
         Respeito se conquista com atitude.
       </button>
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador',8)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador',5)">
         Às vezes liderança é mais sobre diálogo do que pulso.
       </button>
     </div>
@@ -2777,11 +2788,11 @@
     </p>
     <div id="botoes-nikolas-13" class="bot-opc">
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador',10)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador',5)">
         Ser firme é respeito com quem acredita na mudança.
       </button>
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador',10)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador',5)">
         Às vezes ser duro afasta as pessoas.
       </button>
     </div>
@@ -2794,11 +2805,11 @@
     </p>
     <div id="botoes-nikolas-14" class="bot-opc">
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador',10)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); maisRelacionamento('jogador',5)">
         Eu aguento. A liderança vem com o peso da cobrança.
       </button>
       <button type="button" class="opcao"
-        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador',10)">
+        onclick="trocaDialogo(this, 'nikolas', 'sair'); menosRelacionamento('jogador',5)">
         Nem todo mundo precisa aguentar tudo o tempo todo.
       </button>
     </div>

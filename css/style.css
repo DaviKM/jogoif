@@ -57,7 +57,6 @@ nav ol {
     justify-content: space-evenly;
     height: 100%;
     align-items: center;
-
 }
 
 
@@ -172,7 +171,6 @@ main {
     cursor: pointer;
 }
 
-/* Switch case / cenas */
 .cenas,
 section {
     display: none;
@@ -339,6 +337,11 @@ section {
     gap: 30px;
 }
 
+#icone-loja{
+    margin: 0;
+    padding: 0;
+}
+
 #vencedor{
     display: flex;
     align-self: center;
@@ -440,11 +443,11 @@ section {
     left: -40%;
     z-index: 10;
     display: none;                      
-    height: 200px;
+    height: 210px;
     width: 200px;
-    gap: 10px;
-    justify-content: space-between;
+    gap: 20px;
     padding: 8px;
+    justify-content: start;
     border-radius: 8px;
     flex-wrap: wrap;            
     background-color: #0b2f34e1;
@@ -522,7 +525,7 @@ section {
     padding: 40px;
     z-index: 15;
     color: white;
-    gap: 10%;
+    gap: 6%;
 }
 #quadrado-loja h2{
     font-size: 40pt;
@@ -530,12 +533,14 @@ section {
 }
 #menu-loja{
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 20%;
     
 }
 
 .imgLoja img{
-    width: 180px;
+    width: 200px;
     height: 180px;
 }
 .imgLoja{
