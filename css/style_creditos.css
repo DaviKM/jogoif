@@ -1,3 +1,7 @@
+*{
+    font-family: "Delius", cursive;
+}
+
 body {
   --s: 60px;
   --c1: #a6dae4;
@@ -19,7 +23,10 @@ body {
 nav {
     position: fixed;
     background-color: rgb(0, 70, 128);
-    width: 100%;
+    width: 40%;
+    justify-self: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     height: 8vh;
     top: 0;
 }
@@ -30,6 +37,7 @@ nav ol {
     justify-content: space-evenly;
     height: 70%;
     align-items: center;
+    padding: 0;
 }
 
 i {
@@ -52,12 +60,13 @@ li {
 
 li a {
     display: flex;
-    width: 180px;
-
+    width: 200px;
+    gap: 10px;
+    text-align: start;
 }
 
 li span {
-    margin-left: 10px;
+    margin-left: 0px;
     text-align: end;
     align-content: center;
     font-size: large;
@@ -67,17 +76,12 @@ li span {
 
 body,
 html {
-  margin: 0;
-  padding: 0;
-}
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: end;
-  height: 100vh;
-  font-family: Arial, sans-serif;
-  
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 header {
   display: flex;
@@ -89,67 +93,26 @@ header {
 }
 a {
   text-decoration: none;
-  color: black;
   font-size: 16pt;
 }
-.personagem img {
-  border-radius: 10px;
-  margin-bottom: 10px;
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-.personagem:hover{
-  transform: scale(1.5);
-  transition: ease-in-out 0.4s;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-  z-index: 2;
-  background-color: #ffffff;
-}
-#conteiner-pers {
-  display: flex;
-  justify-content: start;
-  flex-direction: column;
-  background-color: #ffffff;
-  height: 92vh;
-  width: 80vw;
-}
-#r1, #r2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.personagem {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin: 20px;
-  height: 200px;
-  width: 200px;
-  border-radius: 10px;
-}
-.botao_voltar {
-  text-align: center;
-  margin-top: 5%;
-}
-.botao_voltar a{
-    background-color: #95dbe7;
-    border: 2px solid rgb(3, 135, 243);
-    padding: 8px;
-    color: black;
-    border-radius: 10px;
-}
-.botao_voltar a:hover{
-    background-color: #527980;
-    transition: ease-in-out 0.5s;
-}
-.titulo{
-    text-align: center;
-}
-.row{
-    width: 100%;
-    height: 30%;
+main {
     display: flex;
+    align-items: end;
+    width: 80vw;
+    height: 80vh;
+    border: solid 3px rgb(99, 98, 98);
+    border-radius: 10px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #6e638d;
+}
+.div-dev{
+    width: 40%;
+    text-align: center;
+    color: white;
+}
+.div-dev img{
+    border-radius: 100%;
+    width: 40%;
+    border: 3px solid white;
 }

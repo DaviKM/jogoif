@@ -77,9 +77,9 @@
         </a>
       </li>
       <li>
-        <a href="#" onclick="abreMenu('logPersonagens')">
-          <i class="fa-solid fa-gear"></i>
-          <span>botao teste log</span>
+        <a href="#" onclick="abreMenu('logPersonagens')" id="icone-log">
+          <i class="fa-solid fa-comment"></i>
+          <span>Conversas</span>
         </a>
       </li>
     </ol>
@@ -172,12 +172,6 @@
           onclick="trocaFundo('patio');trocaDialogo(this, 'messi',0); chamafoto('messi');exibirRelacionamento('messi'); horasComp(0)"
           class="opcao">
           Patio
-        </button>
-        <button type="button" onclick="trocaDialogo(this , 'theo', 0);trocaFundo('biblioteca'); chamafoto('theo')" class="opcao">
-          teo
-        </button>
-        <button type="button" onclick="trocaDialogo(this, 'auditorio',0);trocaFundo('auditorio')" class="opcao">
-          megafone
         </button>
       </div>
     </div>
@@ -1086,7 +1080,7 @@
       Vi isso no grupo. Tá rodando em tudo quanto é story. O cara virou confeiteiro agora. Você devia responder de
       algum jeito. Não igual, mas algo que chame atenção também.
     </p>
-    <div class="bot-opc">
+    <div class="bot-opc" id="botoes-gustavo-6">
       <button type="button" onclick="trocaDialogo(this, 'gustavo',9); maisRelacionamento('gustavo',25)" class="opcao">
         Talvez eu poste algo engraçado, tipo uma resposta criativa.
       </button>

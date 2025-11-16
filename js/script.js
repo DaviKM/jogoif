@@ -69,7 +69,7 @@ function exibeMenuPer() {
           </div>
         `;
         }
-        document.getElementById('hud-' + id).innerHTML += `<img src="images/personagens/${id}.png" class="img-hud" onclick="darItem('coxinha','${id}',10)">`;
+        document.getElementById('hud-' + id).innerHTML += `<img src="images/logPersonagens/${id}.png" class="img-hud" onclick="darItem('coxinha','${id}',10)">`;
         document.getElementById('nome-hud-' + id).innerHTML = `${personagem[id].nome} ${personagem[id].snome}`;
         contLinha++
       }
@@ -493,7 +493,7 @@ function salvarLogJogador(nome, nivel, botao) {
 }
 
 jogador = {
-  horas_com: 100,
+  horas_com: 0,
   coxinha: 0,
   pacote_pokemon: 0,
   mini_megafone: 0,
