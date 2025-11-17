@@ -499,6 +499,31 @@ function salvarLogJogador(nome, nivel, botao) {
     personagem[nome].log[tamanho] = fala;
   }
 }
+function trocaTema(botao){
+  fundo = document.querySelector("body")
+
+  if(botao.value == 0){
+    fundo.className = "fundoPreto"
+    botao.value = 1;
+  }
+  else{
+    fundo.className = "fundoBranco"
+    botao.value = 0;
+  }
+}
+
+function mutaMusica(botao){
+  musica = document.getElementById("musica-fundo")
+
+  if (botao.value == 0){
+    musica.volume = 0 ;
+    botao.value = 1 ;
+  }
+  else {
+    musica.volume = 1 ;
+    botao.value = 0 ;
+  }
+}
 
 jogador = {
   horas_com: 0,

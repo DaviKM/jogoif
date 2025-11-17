@@ -20,6 +20,7 @@ html {
     background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),
         linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);
     background-size: 55px 55px;
+    transition: all 0.3s linear;
 }
 
 .fundoBranco {
@@ -28,6 +29,7 @@ html {
     background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),
         linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);
     background-size: 55px 55px;
+    transition: all 0.3s linear;
 }
 
 body,
@@ -912,11 +914,12 @@ a {
     position: absolute;
     display: flex;
     background-color: rgb(50, 50, 50);
-    height: 70%;
-    width: 30%;
+    height: 50%;
+    width: 20%;
     z-index: 11;
     border-radius: 6px;
     flex-direction: column;
+    color: white;
 }
 
 #configHeader {
@@ -928,13 +931,22 @@ a {
     background-color: rgb(34, 34, 34);
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
-    color: white;
 }
 
 #configBody {
     height: 92%;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
+
+.configSection {
+    width: 72%;
+    display: flex;
+    justify-content: space-between;
+    justify-self: center;
+}
+
 
 /*Switch do tema*/
 /* From Uiverse.io by andrew-demchenk0 */
@@ -959,7 +971,7 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #73C0FC;
+    background-color: #b6b6b6;
     transition: .4s;
     border-radius: 30px;
 }
@@ -1037,13 +1049,28 @@ a {
 }
 
 .input:checked+.slider {
-    background-color: #183153;
+    background-color: #38a841;
 }
 
 .input:focus+.slider {
-    box-shadow: 0 0 1px #183153;
+    box-shadow: 0 0 1px #38a841;
 }
 
 .input:checked+.slider:before {
     transform: translateX(30px);
+}
+
+
+
+.sliderTema {
+    background-color: #73C0FC;
+}
+
+
+.input:checked+.sliderTema {
+    background-color: #183153;
+}
+
+.input:focus+.sliderTema {
+    box-shadow: 0 0 1px #183153;
 }
