@@ -218,6 +218,8 @@ function areaNaoEscolhida(areaEscolhida) {
 
 timer = 15;
 function iniciarMinigame() {
+  
+  document.getElementById('musica-fundo').pause();
   document.getElementById('menu-icones').style.display = 'none';
   document.getElementById('icone-loja').style.display = 'none';
   document.getElementById('temporizador').style.display = 'block'
@@ -270,10 +272,16 @@ function atualizaTempo() {
   document.getElementById('tempo').innerHTML = timer;
 }
 
+function voltamusica(){
+  document.getElementById('musica-fundo').play();
+  document.getElementById('musica-fundo').currentTime = 0;
+}
+
 function mataBarata(contbarata) {
   baratasMortas++;
   document.getElementById('barata' + contbarata).remove();
   horasComp(5);
+  new Audio("audio/matabarata.mp3").play();
 }
 
 //funções de relacionamento/fofoca, etc
