@@ -803,7 +803,7 @@ a {
     margin-top: 22px;
 }
 
-#x {
+.x {
     color: white;
     background-color: red;
     transform: scale(0.5);
@@ -912,7 +912,7 @@ a {
 
 #config {
     position: absolute;
-    display: flex;
+    display: none;
     background-color: rgb(50, 50, 50);
     height: 50%;
     width: 20%;

@@ -100,11 +100,10 @@ a {
   object-fit: cover;
 }
 .personagem:hover{
-  transform: scale(1.5);
+  transform: scale(1.2);
   transition: ease-in-out 0.4s;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
   z-index: 2;
-  background-color: #ffffff;
 }
 #conteiner-pers {
   display: flex;
@@ -120,6 +119,10 @@ a {
   align-items: center;
 }
 
+
+#r2{
+  margin-top: 5%;
+}
 
 .personagem {
   display: flex;

@@ -108,7 +108,7 @@ function darItem(item,nome,rel){
     }
   }
   else{
-    document.getElementById('body').innerHTML += `<span id='sem-${item}-${nome}' class='sem-coxinha'">Você não tem ${itemspan}</span>`
+    document.getElementById('tela').innerHTML += `<span id='sem-${item}-${nome}' class='sem-coxinha'">Você não tem ${itemspan}</span>`
     setTimeout(() => {
       document.getElementById('sem-'+item+'-'+nome).style.top = "50%";
     }, 1);
@@ -218,8 +218,8 @@ function areaNaoEscolhida(areaEscolhida) {
 
 timer = 15;
 function iniciarMinigame() {
-  
   document.getElementById('musica-fundo').pause();
+  document.getElementById('musica-minigame').play();
   document.getElementById('menu-icones').style.display = 'none';
   document.getElementById('icone-loja').style.display = 'none';
   document.getElementById('temporizador').style.display = 'block'
@@ -251,7 +251,7 @@ function diminuiTempo() {
     document.getElementById('hudinventario').style.display = 'flex';
     chamafoto('enzo');
     if (baratasMortas == 0) {
-      document.getElementById('fim-enzo').innerHTML = 'Seu filho da puta, inutil do caralho';
+      document.getElementById('fim-enzo').innerHTML = 'Como você não conseguiu matar nenhuma barata, que político inútil!';
       menosRelacionamento('enzo', 30);
 
     }
@@ -273,6 +273,7 @@ function atualizaTempo() {
 }
 
 function voltamusica(){
+  document.getElementById('musica-minigame').pause();
   document.getElementById('musica-fundo').play();
   document.getElementById('musica-fundo').currentTime = 0;
 }
@@ -281,13 +282,12 @@ function mataBarata(contbarata) {
   baratasMortas++;
   document.getElementById('barata' + contbarata).remove();
   horasComp(5);
-  new Audio("audio/matabarata.mp3").play();
+  document.getElementById('som-barata').innerHTML += `<audio src="audio/matabarata.mp3" id="som-barata${contbarata}" autoplay></audio>`
 }
 
 //funções de relacionamento/fofoca, etc
 function maisRelacionamento(personagemID, relacionamento) {
   personagem[personagemID].relacionamento += relacionamento;
-  console.log("socorro")
   exibirRelacionamento(personagemID);
   if (personagem[personagemID].relacionamento > 100) {
     personagem[personagemID].relacionamento = 100;
