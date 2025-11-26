@@ -94,7 +94,7 @@ function darItem(item,nome,rel){
     jogador[item]--;
     if(item=="pacote_pokemon"){
       maisRelacionamento(nome,rel);
-      trocaDialogo(this, nome,15);
+      trocaDialogo(document.getElementById("darItemTheo"), nome,15);
     }
     if(item=="mini_megafone"){
       trocaDialogo(this, 'lula', 0);
