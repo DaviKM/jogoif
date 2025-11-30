@@ -244,13 +244,25 @@ function diminuiTempo() {
   if (timer == 0) {
     clearInterval(ponteirobarata);
     clearInterval(ponteirotempo);
-    vaiPara('fim-minigame');
+    document.getElementById("tela").innerHTML = `
+    <div id="imgpersonagem" class="personagem"></div>
+      <div id="hud" class="hud">
+        <p id="dialogos" class="dialogo">
+          <span id="fim-enzo"></span>
+        </p>
+        <div id="botoes" class="bot-opc">
+          <button type="button"
+            onclick="trocaFundo('biblioteca');mostraIcones();trocaDialogo(this, 'biblioteca',1); chamafoto('');limpaBarra();voltamusica()"
+            class="opcao">
+            Continuar
+          </button>
+        </div>
+      </div>`
     document.getElementById('hudinventario').style.display = 'flex';
     chamafoto('enzo');
     if (baratasMortas == 0) {
       document.getElementById('fim-enzo').innerHTML = 'Como você não conseguiu matar nenhuma barata, que político inútil!';
       menosRelacionamento('enzo', 30);
-
     }
     else if (baratasMortas < 6) {
       document.getElementById('fim-enzo').innerHTML = 'Vejo que você matou algumas baratas, mas não o suficiente, não gosto desses políticos que só falam.';
