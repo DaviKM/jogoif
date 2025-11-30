@@ -152,17 +152,17 @@ function calculaFinal() {
   vencedor = document.getElementById("vencedor");
   if (votosFinal < 35) {
     trocaFundo('final-nikolas');
-    console.log("Nikolas Ferreira");
+    
     vencedor.innerHTML = 'Nikolas Ferreira!';
   }
   else if (votosFinal >= 35 && votosFinal < 65) {
     trocaFundo('final-lula');
-    console.log("Lula");
+    
     vencedor.innerHTML = 'Lula!'
   }
   else {
     trocaFundo('final-jogador');
-    console.log("Jogador");
+    
     vencedor.innerHTML = 'Você!!!!'
   }
 }
@@ -180,7 +180,7 @@ function trocaDialogo(elementoBotao, personagem, id) {
   }
 
   if (id != 0) {
-    salvarLogJogador(personagem, id, elementoBotao);
+    salvarLogJogador(personagem, elementoBotao);
   }
   salvarLogPers(personagem, dialogo);
 
@@ -394,7 +394,7 @@ function maisRelacionamentoItem(gPersonagem, vAumento) {
     if (personagem[id].relacionamento > 100) {
       personagem[id].relacionamento = 100;
     }
-    console.log(`${personagem[id].relacionamento}`);
+    
   }
 }
 
@@ -511,11 +511,13 @@ function limpaBarra() {
 }
 
 function abreMenu(menu) {
+  //A classe desabilita a interação fora do menu
   document.querySelector("main").classList.add("disabled")
   document.querySelector("nav").classList.add("disabled")
   document.getElementById("menu-icones").classList.add("disabled")
 
   document.getElementById(menu).style.display = "flex"
+  // Timeout pra transição não ficar bugada
   setTimeout(() => {
     document.getElementById(menu).style.opacity = "1";
     document.getElementById(menu).style.transform = "scale(1)"
@@ -528,14 +530,16 @@ function fechaMenu(menu) {
   setTimeout(() => {
     document.getElementById(menu).style.display = "none"
   }, 0.26 * 1000)
+  //Remove a classe para habilitar a interação
   document.querySelector("main").classList.remove("disabled")
   document.querySelector("nav").classList.remove("disabled")
   document.getElementById("menu-icones").classList.remove("disabled")
 }
 
 function abreConversa(pers){
+  // Vai montar a conversa do personagem que o jogador clicou
   document.getElementById("log-img-conversa").innerHTML = `<img src="images/logPersonagens/${pers}.png">`
-  console.log("chamou")
+  
   document.getElementById("log-nome-conversa").innerHTML = `${personagem[pers].nome} ${personagem[pers].snome}`
 
   for(let i = 0; i < personagem[pers].log.length; i++){
@@ -555,23 +559,23 @@ function fechaConversa(){
   document.getElementById("logMenu").style.display = 'block'
   document.getElementById("logConversa").style.display = 'none'
 
+  // Limpa toda a conversa
   document.getElementById("conversaLog").innerHTML = ''
 
 }
 function salvarLogPers(nome, dialogo) {
   if (nome in personagem) {
     tamanho = personagem[nome].log.length;
+    // Usa o innerHTML para pegar o texto dentro do elemento e tira os espaços em branco com o trim()
     fala = document.getElementById(dialogo).innerHTML.trim();
 
     personagem[nome].log[tamanho] = fala
   }
 }
 
-function salvarLogJogador(nome, nivel, botao) {
+function salvarLogJogador(nome, botao) {
   if (nome in personagem) {
     tamanho = personagem[nome].log.length;
-    console.log(nivel)
-
     fala = botao.innerHTML.trim()
 
     personagem[nome].log[tamanho] = fala;
@@ -580,6 +584,7 @@ function salvarLogJogador(nome, nivel, botao) {
 function trocaTema(botao){
   fundo = document.querySelector("body")
 
+  //Verifica o valor do botão e troca a cor do fundo usando className
   if(botao.value == 0){
     fundo.className = "fundoPreto"
     botao.value = 1;
@@ -609,8 +614,7 @@ jogador = {
   pacote_pokemon: 0,
   mini_megafone: 0,
 };
-// dialogos: os números abaixo do nome do personagem são os diálogos diferentes dependendo da resposta do jogador
-//OBS: quanto maior o nível, mais rude o jogador foi com o personagem
+
 personagem = {
   //objeto do jogador controla a quantidade de votos finais da cena do debate
   jogador: {
