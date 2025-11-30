@@ -1,8 +1,5 @@
 function vaiPara(cena) {
-  if (cena.indexOf("-") == -1) {
-    cena += "-0";
-  }
-  document.getElementById("tela").innerHTML =
+    document.getElementById("tela").innerHTML =
     document.getElementById(cena).innerHTML;
 }
 
