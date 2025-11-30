@@ -24,16 +24,19 @@ function atualizaRelacionamento() {
     let relpersonagem = personagem[id].relacionamento;
     let barra = document.getElementById('barra-' + id);
 
-    //muda o tamanho da barra conforme o relacionamento do personagem (limitado a 100)
-    barra.style.width = `${relpersonagem}%`;
-
-    //conforme o relacionamento, troca a cor da barra
-    if (relpersonagem < 40) {
-      barra.style.backgroundColor = 'red';
-    } else if (relpersonagem < 70) {
-      barra.style.backgroundColor = 'yellow';
-    } else {
-      barra.style.backgroundColor = 'green';
+    //testa se a barra não é null
+    if (barra){   
+      //muda o tamanho da barra conforme o relacionamento do personagem (limitado a 100)
+      barra.style.width = `${relpersonagem}%`;
+      
+      //conforme o relacionamento, troca a cor da barra
+      if (relpersonagem < 40) {
+        barra.style.backgroundColor = 'red';
+      } else if (relpersonagem < 70) {
+        barra.style.backgroundColor = 'yellow';
+      } else {
+        barra.style.backgroundColor = 'green';
+      }
     }
   }
 }
@@ -304,6 +307,7 @@ function diminuiTempo() {
         </div>
       </div>`
     document.getElementById('hudinventario').style.display = 'flex';
+    document.getElementById('icone-loja').style.display = 'block';
     chamafoto('enzo');
 
     //conforme quantas baratas foram mortas, exibe diálogos diferentes com o enzo
