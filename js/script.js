@@ -4,13 +4,12 @@ function vaiPara(cena) {
 }
 
 function calculaVotos() {
+  //laço que percorre o objeto dos personagens
   for (let id in personagem) {
     let aux = personagem[id].relacionamento;
-    if (aux == "jogador") {
-      console.log("Chamou a função calculaVoto()");
-    }
-    else {
+    if (aux != "jogador") {
       let naleat = numeroAleatorio(100);
+      //se o número aleatório for menor que o relacionamento, adiciona um voto
       if (naleat <= aux) {
         personagem["jogador"].votos++;
         personagem["jogador"].relacionamento += 8;
@@ -20,13 +19,15 @@ function calculaVotos() {
 }
 
 function atualizaRelacionamento() {
+  //percorre o objeto dos personagens
   for (let id in personagem) {
     let relpersonagem = personagem[id].relacionamento;
     let barra = document.getElementById('barra-' + id);
-    if (!barra) continue;
 
+    //muda o tamanho da barra conforme o relacionamento do personagem (limitado a 100)
     barra.style.width = `${relpersonagem}%`;
 
+    //conforme o relacionamento, troca a cor da barra
     if (relpersonagem < 40) {
       barra.style.backgroundColor = 'red';
     } else if (relpersonagem < 70) {
@@ -39,7 +40,11 @@ function atualizaRelacionamento() {
 
 contMenuPer = 0;
 function exibeMenuPer() {
+
+  //variável que controla em qual div do menu cada personagem vai ficar
   let contLinha=0;
+
+  //quando chama a função, mostra o menu na tela
   let menu = document.getElementById('menu-relacionamento');
   menu.style.display = "flex";
   menu.style.height = "80%";
@@ -47,6 +52,7 @@ function exibeMenuPer() {
   menu.style.borderColor = 'white';
   menu.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
 
+  //se for a primeira chamada da função, adiciona os personagens no menu
   if (contMenuPer === 0) {
     for (let id in personagem) {
       if (id != 'jogador' && id != 'lula' && id != 'nikolas') {   
@@ -71,13 +77,18 @@ function exibeMenuPer() {
         contLinha++
       }
     }
+    //garante que os personagens só serão adicionados uma vez
     contMenuPer++;
   }
   atualizaRelacionamento();
 }
 
 function darItem(item,nome,rel){
+
+  //variável que adiciona o nome do item no span de "não tem mais (item)"
   var itemspan = item;
+
+  //funções que adicionam especificamente cada nome no span de "não tem mais"
   if(item!="coxinha" && jogador[item]==0){
       if(item=="pacote_pokemon"){
         itemspan = "pacote de cartinhas"
@@ -86,6 +97,10 @@ function darItem(item,nome,rel){
         itemspan = "mini megafone";
       }
   }
+
+  //como cada item tem funções muito diferentes, não consegui achar outro jeito de realizar isso
+
+  //se o jogador estiver com o item no inventário, executa isso
   if(jogador[item] > 0){
     document.getElementById(item).remove();
     jogador[item]--;
@@ -97,15 +112,20 @@ function darItem(item,nome,rel){
       trocaDialogo(this, 'lula', 0);
     }
     else{
+    //se entra aqui é coxinha
     personagem[nome].relacionamento += rel;
     atualizaRelacionamento();
     }
+    //controla o máximo do relacionamento em 100
     if(personagem[nome].relacionamento>100){
       personagem[nome].relacionamento = 100;
     }
   }
+  //adiciona o span de "não tem mais"
   else{
     document.getElementById('tela').innerHTML += `<span id='sem-${item}-${nome}' class='sem-coxinha'">Você não tem ${itemspan}</span>`
+
+    //animaçãp dp item subindo (sei que dava pra fazer com keyframes, mas fiz isso antes da aula de keyframes e to com preguiça de trocar)
     setTimeout(() => {
       document.getElementById('sem-'+item+'-'+nome).style.top = "50%";
     }, 1);
@@ -123,7 +143,11 @@ function fechaMenuPer() {
 }
 
 function calculaFinal() {
+
+  //retira a foto do personagem da tela
   chamafoto('');
+
+  //pega o relacionamento geral do personagem com o público e calcula qual final ele vai ter
   var votosFinal = personagem["jogador"].relacionamento;
   vencedor = document.getElementById("vencedor");
   if (votosFinal < 35) {
@@ -160,6 +184,7 @@ function trocaDialogo(elementoBotao, personagem, id) {
   }
   salvarLogPers(personagem, dialogo);
 
+  //se a função trocadialogo() receber o parâmetro sair(sai de um diálogo), adiciona a hora da conversa no menu de log
   if (String(id).indexOf("sair") == 0) {
     data = new Date();
     horas = String(data.getHours())
@@ -176,6 +201,8 @@ function trocaDialogo(elementoBotao, personagem, id) {
 }
 
 function addLogPers(pers) {
+
+  //se o personagem está np objeto "personagem" adiciona a opção de conversa no log
   if (pers in personagem) {
     document.getElementById("listaPersonagens").innerHTML += `
         <li onclick="abreConversa('${pers}')">
@@ -188,20 +215,22 @@ function addLogPers(pers) {
 
 function chamafoto(personagem) {
   foto = document.getElementById('imgpersonagem');
+  //se foi passado um valor para o personagem adiciona a foto
   if (personagem) {
     foto.style.display = "block";
     foto.innerHTML = '<img src="images/personagens/' + personagem + '.png" alt="' + personagem + '" class="personagem" />';
   }
+  //se o valor for nulo, esconde a foto
   else {
     foto.style.display = "none";
   }
 }
 
-//Função utilizada para adicionar a area não escolhida na parte do intervalo, sim é a coisa mais tosca já vista, mas funcioan especificamente para o único lugar que vai ter escolha pra onde ir no jogo
-//OBS: só funciona pra cena com 2 áreas
+//Função utilizada para adicionar a area não escolhida na parte do intervalo, sim é a coisa mais tosca já vista, mas funciona especificamente para o único lugar que vai ter escolha pra onde ir no jogo
 controle = 0;
 function areaNaoEscolhida(areaEscolhida) {
   controle++;
+  //se o jogador escolhe a biblioteca, adiciona a opção da cantina na outra cena, se não, faz o contrário
   if (areaEscolhida == 'biblioteca') {
     document.getElementById("areaNaoEscolhida").innerHTML = "cantina";
     nEscolhida = "cantina";
@@ -213,22 +242,37 @@ function areaNaoEscolhida(areaEscolhida) {
 
 }
 
+//variável que determina quantos segundos o minigame terá
 timer = 15;
 function iniciarMinigame() {
+  //muda a música
   document.getElementById('musica-fundo').pause();
   document.getElementById('musica-minigame').play();
+
+  //esconde os menus
   document.getElementById('menu-icones').style.display = 'none';
   document.getElementById('icone-loja').style.display = 'none';
+
+  //mostra o temporizador
   document.getElementById('temporizador').style.display = 'block'
   atualizaTempo();
+
+  //remove os botões de iniciar o minigame
   document.getElementById('minigame').remove();
+
+  //ponteiro para controle do tempo e da aparição das baratas
   ponteirotempo = setInterval(diminuiTempo, 1000);
   ponteirobarata = setInterval(apareceBarata, 1500);
 }
 
+//variável que controla qual barata que o jogador clicou para matar
 contBarata = 1;
+
+//conta quantas baratas o jogador matou
 baratasMortas = 0;
+
 function apareceBarata() {
+  //simplesmente spawna uma barata em um lugar aleatório de uma área delimitada
   document.getElementById('spawnBarata').innerHTML += `
       <img src = "images/minigame/barata.gif" onclick="mataBarata(${contBarata})" class="barata" id="barata${contBarata}">
       `
@@ -241,6 +285,7 @@ function apareceBarata() {
 
 function diminuiTempo() {
   timer--;
+  //se o timer acaba, exibe a cena final do enzo e acaba com os setInterval
   if (timer == 0) {
     clearInterval(ponteirobarata);
     clearInterval(ponteirotempo);
@@ -260,13 +305,15 @@ function diminuiTempo() {
       </div>`
     document.getElementById('hudinventario').style.display = 'flex';
     chamafoto('enzo');
+
+    //conforme quantas baratas foram mortas, exibe diálogos diferentes com o enzo
     if (baratasMortas == 0) {
       document.getElementById('fim-enzo').innerHTML = 'Como você não conseguiu matar nenhuma barata, que político inútil!';
       menosRelacionamento('enzo', 30);
     }
     else if (baratasMortas < 6) {
       document.getElementById('fim-enzo').innerHTML = 'Vejo que você matou algumas baratas, mas não o suficiente, não gosto desses políticos que só falam.';
-      menosRelacionamento('enzo', 30);
+      menosRelacionamento('enzo', 15);
     }
     else if (baratasMortas >= 6) {
       document.getElementById('fim-enzo').innerHTML = 'Nossa, nem sei como te agradecer, mas meu voto em você já está garantido';
@@ -278,23 +325,25 @@ function diminuiTempo() {
 }
 
 function atualizaTempo() {
+  //atualiza o timer exibido na tela
   document.getElementById('tempo').innerHTML = timer;
 }
 
 function voltamusica(){
+  //volta a música do início
   document.getElementById('musica-minigame').pause();
   document.getElementById('musica-fundo').play();
   document.getElementById('musica-fundo').currentTime = 0;
 }
 
 function mataBarata(contbarata) {
+  //remove a barata da tela e toca o áudio da morte dela
   baratasMortas++;
   document.getElementById('barata' + contbarata).remove();
   horasComp(5);
   document.getElementById('som-barata').innerHTML += `<audio src="audio/matabarata.mp3" id="som-barata${contbarata}" autoplay></audio>`
 }
 
-//funções de relacionamento/fofoca, etc
 function maisRelacionamento(personagemID, relacionamento) {
   personagem[personagemID].relacionamento += relacionamento;
   exibirRelacionamento(personagemID);
@@ -312,13 +361,20 @@ function menosRelacionamento(personagemID, relacionamento) {
 }
 
 function exibirRelacionamento(personagemID) {
-  //armazena o valor do relacionamento em uma variavel
-  //usa a "gambiarra" de usar id como variável que o sor mostrou na aula
+  //mostra a barra de relacionamento no lado direito da tela
   document.getElementById("hudRelacionamento").style.backgroundColor = "rgb(0, 70, 128)";
   document.getElementById("barraExterna").style.backgroundColor = "rgb(255, 255, 255, 1)";
+
+  //variável que guarda o valor do relacionamento com o personagem
   valorRelacionamento = personagem[personagemID].relacionamento;
+
+  //altera o tamanho da barra com base no valor do relaiconamento
   barraInterna.style.height = `${valorRelacionamento}%`;
+
+  //mostra o nome na barra
   document.getElementById("nomeBarra").innerHTML = `${personagem[personagemID].nome} ${personagem[personagemID].snome}`;
+
+  //conforme o valor do relacionamento troca a cor da barra
   if (valorRelacionamento < 40) {
     barraInterna.style.backgroundColor = "rgba(255,0,0,0.7)";
   }
@@ -344,7 +400,7 @@ function maisRelacionamentoItem(gPersonagem, vAumento) {
 
 //aumenta o relacionamento com todos
 function maisRelacionamentoTodos(vAumento) {
-  //id recebe as chaves de texto: 'messi', 'sheldon', 'gustavo', etc.
+  //percorre o objeot dos personagens
   for (let id in personagem) {
     personagem[id].relacionamento += vAumento;
     if (personagem[id].relacionamento > 100) {
@@ -365,6 +421,7 @@ function calculaSair(nomePersonagem, minRel) {
   }
 }
 
+//aumenta as horas complementares do jogador e mostra o relógio na tela
 function horasComp(horas) {
   jogador.horas_com += horas;
   document.getElementById('horas').innerHTML = '<i class="fa-regular fa-clock" style="color: #ffffff;"></i><span id="nhoras">  ' + jogador.horas_com + "</span>";
@@ -374,7 +431,7 @@ function numeroAleatorio(max) {
   return Math.floor(Math.random() * max);
 }
 
-//Função que exibe o item na tela
+//mostra o menu de recompensa quando o jogador ganha um item
 function item(idItem, npersonagem) {
   let hud = document.getElementById("hud-itens");
   hud.style.display = "flex";
@@ -383,20 +440,26 @@ function item(idItem, npersonagem) {
   hud.style.width = "70vw";
   hud.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
   hud.style.borderColor = "white";
+
+  //pega o menu de recompensa e adiciona o html que está no index, com a imagem e os spans paraa inserir o nome e descrição do determinado item
   hud.innerHTML = document.getElementById(idItem).innerHTML;
+
+  //mostra o nome do item na tela
   document.getElementById("n" + idItem).innerHTML = itens[npersonagem].Inome;
+
+  //mostra a descrição do item na tela
   document.getElementById("d" + idItem).innerHTML = itens[npersonagem].DescItem;
-  console.log("Chamou item")
 }
 
 function limpaItem() {
+  //precisa do Zindex porque, mesmo invisível, o menu impedia de clicar em alguns botões
   document.getElementById("hud-itens").style.zIndex = "-1";
   document.getElementById("hud-itens").style.display = "none";
 }
 
 function addInvent(item) {
+  //adiciona um determinado item no menu de inventário
     document.getElementById("inventario").innerHTML += '<img src="images/itens/' + item + '.png" alt="' + item + '" class="itemInvent" id="' + item + '"/>';
-  console.log("Chamou a funcao invent");
 }
 
 function mostraIcones() {
@@ -404,14 +467,18 @@ function mostraIcones() {
 }
 
 function mostraloja() {
+  //precisa do classList porque a classe "disabled" faz um elemento não ser mais clicável
   document.getElementById("icone-relacionamento").classList.add("disabled");
   document.getElementById("icone-loja").classList.add("disabled");
+  document.getElementById("icone-log").classList.add("disabled");
+
+  //mostra a div da loja no menu d aloja
   document.getElementById("tela").innerHTML += document.getElementById("itensLoja").innerHTML;
-  document.getElementById("hud-loja").style.display = "none";
 }
 
 function comprar(itemID, preco) {
   jogador[itemID]++;
+  //se o jogador tem horas complementares suficienter, diminui as horas com o preço do item e adiciona ele no inventário
   if (jogador.horas_com >= preco) {
     addInvent(itemID);
     horasComp(-preco);
@@ -423,6 +490,7 @@ function comprar(itemID, preco) {
 function fecharLoja() {
   document.getElementById("icone-loja").classList.remove("disabled");
   document.getElementById("icone-relacionamento").classList.remove("disabled");
+  document.getElementById("icone-log").classList.remove("disabled");
   document.getElementById("quadrado-loja").remove();
   document.getElementById("hud-loja").style.display = "block";
 }
@@ -433,6 +501,8 @@ function trocaFundo(fundo) {
   ).style = `background-image: url(images/cenarios/${fundo}.png);`;
 }
 
+
+//em momentos de transição entre cenas, é necessário fazer a barra desaparecer
 function limpaBarra() {
   document.getElementById("barraExterna").style.backgroundColor = "rgba(255, 255, 255, 0)";
   document.getElementById("nomeBarra").innerHTML = "";
