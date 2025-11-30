@@ -401,7 +401,6 @@ function addInvent(item) {
 
 function mostraIcones() {
   document.getElementById("menu-icones").style.display = 'flex';
-  document.getElementById("icone-loja").style.display = 'flex';
 }
 
 function mostraloja() {

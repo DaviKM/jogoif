@@ -111,7 +111,7 @@ main {
     justify-content: end;
     width: 80vw;
     height: 80vh;
-    border: solid 3px rgb(99, 98, 98);
+    border: solid 3px rgb(15, 42, 82);
     flex-direction: column;
     border-radius: 10px;
     background-image: url("../images/hud/ódio\ salgado.png");
@@ -349,11 +349,13 @@ section {
     top: 11%;
     color: white;
     gap: 30px;
+
 }
 
 #icone-loja {
     margin: 0;
     padding: 0;
+    
 }
 
 #vencedor {
@@ -365,6 +367,10 @@ section {
 
 .icone {
     cursor: pointer;
+    padding: 6px 5px !important;
+    max-height: 28pt;
+    border-radius: 7px;
+    background-color: rgba(15, 42, 82, 0.75);
 }
 
 #menu-relacionamento {
